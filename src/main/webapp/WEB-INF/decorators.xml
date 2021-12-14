@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/views/layouts">
+
+	<!-- Trang Login -->
+	<decorator name="login" page="login.jsp">
+		<pattern>/login</pattern>
+	</decorator>
+	<decorator name="access_denied" page="">
+		<pattern>/access_denied</pattern>
+	</decorator>
+
+
+
+	<!-- Phần Member -->
+	<decorator name="user" page="user.jsp">
+		<pattern>/user/*</pattern>
+	</decorator>
+	
+	
+	
+	<!-- Phần Project Manager -->
+	<decorator name="pm" page="project_manager.jsp">
+		<pattern>/pm/*</pattern>
+	</decorator>
+	
+	
+	
+	<!-- Phần Account Manager -->
+	<decorator name="am" page="account_manager.jsp">
+		<pattern>/am/*</pattern>
+	</decorator>
+	
+	
+	
+	<!-- Phần Chief -->
+	<decorator name="chief" page="chief.jsp">
+		<pattern>/chief/*</pattern>
+	</decorator>
+	
+	
+	
+	<!-- Phần Admin -->
+	<decorator name="admin" page="admin.jsp">
+		<pattern>/admin/*</pattern>
+	</decorator>
+	
+</decorators>

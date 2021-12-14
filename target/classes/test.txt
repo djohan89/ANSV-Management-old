@@ -1,0 +1,1 @@
+File này tạo ra để giữ cho folder test/resources được đẩy lên github
