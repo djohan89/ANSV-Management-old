@@ -13,9 +13,19 @@ public class ChiefController extends ChiefBaseController {
 	public ModelAndView chiefHome(@PathVariable int week) {
 		
 		InitCEO(week);
+		_mvShare.addObject("project",_projectService.getAllByWeek(week));
 		_mvShare.setViewName("chief/chief_dashboard");
 		
 		return _mvShare;
 	}
 
+	@RequestMapping(value = { "/chief/project_details" }, method = RequestMethod.GET)
+	public ModelAndView chiefCustomer() {
+		
+		
+		
+		_mvShare.setViewName("chief/project_details");
+		
+		return _mvShare;
+	}
 }

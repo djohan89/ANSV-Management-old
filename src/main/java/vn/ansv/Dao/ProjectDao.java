@@ -49,7 +49,7 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN customers ON project.customer = customers.id "
 				+ "INNER JOIN pic ON project.id = pic.project_id "
 				+ "INNER JOIN users ON pic.pic = users.id "
-				+ "WHERE project.week = 43";
+				+ "WHERE project.week = ?";
 		
 		list = _jdbcTemplate.query(sql, new DashboardProjectsDtoMapper(), week);
 		return list;
