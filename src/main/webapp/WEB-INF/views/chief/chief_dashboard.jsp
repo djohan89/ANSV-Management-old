@@ -47,7 +47,7 @@
 				<div class="row">
 					<!-- right col (We are only adding the ID to make the widgets sortable)-->
 
-					<div class="col-lg-4 col-sm-6">
+					<div class="col-lg-6 col-sm-6">
 						<!-- Map card -->
 						<div class="card" style="background: white">
 							<div class="card-header border-0 d-flex flex-row">
@@ -67,7 +67,7 @@
 											<i class="fas fa-exclamation-triangle"></i>
 										</button>
 
-
+										<c:if test="${not empty project }">
 										<!-- Modal -->
 										<div class="modal fade" id="myModal" role="dialog">
 											<div class="modal-dialog">
@@ -82,24 +82,26 @@
 														style="font-size: 15px; color: black">
 														<div class="owl-carousel owl-theme" id="detail_slide">
 														<!-- ===== Phần chèn thêm HTML ===== -->
-														<c:forEach items="${project }" var="project_item" varStatus="project_index">
-															<c:if test="${project_item.project_type == 'Triển khai' && project_item.project_status =='High' }">
-																<div class="container item">
-																	<div>
-																		<h5 class="pb-2 pt-1 pl-3" style="background: red;border-radius: 16px; ">
-																			<a href="javascript:void(0)" style="color: #fff">${project_item.ten_du_an_goi_thau }</a>
-																		</h5>
-																		<p><b>Người phụ trách:</b></b> ${project_item.pic }</p>
+														
+															<c:forEach items="${project }" var="project_item" varStatus="project_index">
+																<c:if test="${project_item.type == 'Triển khai' && project_item.status =='High' && project_item.pic_role=='ROLE_PM' }">
+																	<div class="container item">
+																		<div>
+																			<h5 class="pb-2 pt-1 pl-3" style="background: red;border-radius: 16px; ">
+																				<a href="javascript:void(0)" style="color: #fff">${project_item.name }</a>
+																			</h5>
+																			<p><b>Người phụ trách:</b></b> ${project_item.pic_name }</p>
+																		</div>
 																	</div>
-																</div>
-															</c:if>
-														</c:forEach>
-															
+																</c:if>
+															</c:forEach>
+														
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
+										</c:if>	
 									</div>
 								</div>
 							</div>
@@ -110,46 +112,46 @@
 											<th>Dự án</th>
 											<th>Priority</th>
 											<th>Nhóm</th>
-											<th style="width: 22%;">PIC</th>
+											<th style="width: 22%;">pic_name</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach items="${project }" var="project_item" varStatus="project_index">
-											<c:if test="${project_item.project_type == 'Triển khai' }">
+											<c:if test="${project_item.type == 'Triển khai' && project_item.pic_role =='ROLE_PM' }">
 												<tr>
 													<td>
-														<c:if test="${project_item.project_status =='High' }">
+														<c:if test="${project_item.status =='High' }">
 															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.ten_du_an_goi_thau }
+																${project_item.name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
-														<c:if test="${project_item.project_status =='Medium' }">
+														<c:if test="${project_item.status =='Medium' }">
 															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.ten_du_an_goi_thau }
+																${project_item.name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
-														<c:if test="${project_item.project_status =='Low' }">
+														<c:if test="${project_item.status =='Low' }">
 															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.ten_du_an_goi_thau }
+																${project_item.name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 													</td>
 													<td>
-														<c:if test="${project_item.project_status =='High' }">
+														<c:if test="${project_item.status =='High' }">
 															<button type="button" class="btn btn-danger" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.project_status =='Medium' }">
+														<c:if test="${project_item.status =='Medium' }">
 															<button type="button" class="btn btn-warning" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.project_status =='Low' }">
+														<c:if test="${project_item.status =='Low' }">
 															<button type="button" class="btn btn-success" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
-													<td>${project_item.pic }</td>
+													<td>${project_item.pic_name }</td>
 												</tr>
 											</c:if>
 										</c:forEach>	
@@ -159,7 +161,7 @@
 						</div>
 						<!-- /.card -->
 					</div>
-					<div class="col-sm-6 col-lg-4">
+					<div class="col-sm-6 col-lg-6">
 						<!-- solid sales graph -->
 						<div class="card" style="background: white">
 							<div class="card-header border-0 d-flex flex-row">
@@ -184,46 +186,46 @@
 											<th>Dự án</th>
 											<th>Priority</th>
 											<th>Nhóm</th>
-											<th style="width: 22%;">PIC</th>
+											<th style="width: 22%;">pic_name</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach items="${project }" var="project_item" varStatus="project_index">
-											<c:if test="${project_item.project_type == 'Viễn thông' }">
+											<c:if test="${project_item.type == 'Viễn thông' }">
 												<tr>
 													<td>
-														<c:if test="${project_item.project_status =='High' }">
+														<c:if test="${project_item.status =='High' }">
 															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.ten_du_an_goi_thau }
+																${project_item.name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
-														<c:if test="${project_item.project_status =='Medium' }">
+														<c:if test="${project_item.status =='Medium' }">
 															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.ten_du_an_goi_thau }
+																${project_item.name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
-														<c:if test="${project_item.project_status =='Low' }">
+														<c:if test="${project_item.status =='Low' }">
 															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.ten_du_an_goi_thau }
+																${project_item.name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 													</td>
 													<td>
-														<c:if test="${project_item.project_status =='High' }">
+														<c:if test="${project_item.status =='High' }">
 															<button type="button" class="btn btn-danger" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.project_status =='Medium' }">
+														<c:if test="${project_item.status =='Medium' }">
 															<button type="button" class="btn btn-warning" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.project_status =='Low' }">
+														<c:if test="${project_item.status =='Low' }">
 															<button type="button" class="btn btn-success" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
-													<td>${project_item.pic }</td>
+													<td>${project_item.pic_name }</td>
 												</tr>
 											</c:if>
 										</c:forEach>
@@ -237,7 +239,13 @@
 						</div>
 						<!-- /.card -->
 					</div>
-					<div class="col-md-6 col-lg-4">
+					
+					<!-- /.card -->
+
+					<!-- right col -->
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-lg-12">
 						<!-- Calendar -->
 						<div class="card" style="background: white">
 							<div class="card-header border-0 d-flex flex-row">
@@ -262,46 +270,46 @@
 											<th>Dự án</th>
 											<th>Priority</th>
 											<th>Nhóm</th>
-											<th style="width: 22%;">PIC</th>
+											<th style="width: 22%;">pic_name</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach items="${project }" var="project_item" varStatus="project_index">
-											<c:if test="${project_item.project_type == 'Chuyển đổi số' }">
+											<c:if test="${project_item.type == 'Chuyển đổi số' }">
 												<tr>
 													<td>
-														<c:if test="${project_item.project_status =='High' }">
+														<c:if test="${project_item.status =='High' }">
 															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.ten_du_an_goi_thau }
+																${project_item.name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
-														<c:if test="${project_item.project_status =='Medium' }">
+														<c:if test="${project_item.status =='Medium' }">
 															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.ten_du_an_goi_thau }
+																${project_item.name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
-														<c:if test="${project_item.project_status =='Low' }">
+														<c:if test="${project_item.status =='Low' }">
 															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.ten_du_an_goi_thau }
+																${project_item.name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 													</td>
 													<td>
-														<c:if test="${project_item.project_status =='High' }">
+														<c:if test="${project_item.status =='High' }">
 															<button type="button" class="btn btn-danger" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.project_status =='Medium' }">
+														<c:if test="${project_item.status =='Medium' }">
 															<button type="button" class="btn btn-warning" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.project_status =='Low' }">
+														<c:if test="${project_item.status =='Low' }">
 															<button type="button" class="btn btn-success" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
-													<td>${project_item.pic }</td>
+													<td>${project_item.pic_name }</td>
 												</tr>
 											</c:if>
 										</c:forEach>
@@ -311,9 +319,6 @@
 
 						</div>
 					</div>
-					<!-- /.card -->
-
-					<!-- right col -->
 				</div>
 				<!-- /.row (main row) -->
 			</div>
