@@ -29,12 +29,12 @@ public class ChiefController extends ChiefBaseController {
 		return _mvShare;
 	}
 	
-	@RequestMapping(value = { "/chief/detail_tk/{week}/{id}" }, method = RequestMethod.GET)
-	public ModelAndView chiefDetail(@PathVariable  int id,@PathVariable  int week) {
+	@RequestMapping(value = { "/chief/detail_tk/{id}" }, method = RequestMethod.GET)
+	public ModelAndView chiefDetail(@PathVariable  int id) {
 		
 		
-		InitCEO(week);
-		_mvShare.addObject("detail",_projectService.getAllDetailByweek(week,id));
+		
+		_mvShare.addObject("detail",_projectService.getAllDetailByweek(id));
 		_mvShare.setViewName("chief/detail_tk");
 		
 		return _mvShare;
