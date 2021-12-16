@@ -15,6 +15,6 @@ public interface IProjectService {
 	@Autowired
 	public List<DashboardProjectsDto> getAllByWeek(int week);
 	public List<MenuProjectsDto> getMenu(int week);
-	public List<ProjectDetailDto> getAllDetailByweek(int week, int id);
+	public List<ProjectDetailDto> getAllDetailByweek(int id);
 	
 }

@@ -23,8 +23,8 @@ public class ProjectServiceImpl implements IProjectService {
 	public List<MenuProjectsDto> getMenu(int week) {
 		return projectDao.getMenu(week);
 	}
-	public List<ProjectDetailDto> getAllDetailByweek(int week,int id) {
-		return projectDao.getAllDetailByweek(week,id);
+	public List<ProjectDetailDto> getAllDetailByweek(int id) {
+		return projectDao.getAllDetailByweek(id);
 	}
 
 }

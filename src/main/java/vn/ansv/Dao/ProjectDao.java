@@ -57,7 +57,7 @@ public class ProjectDao extends BaseDao {
 		return list;
 	}
 	
-	public List<ProjectDetailDto> getAllDetailByweek(int week, int id){
+	public List<ProjectDetailDto> getAllDetailByweek( int id){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
 		String sql = "SELECT project.id,project.name,project.week,projects_types.name AS type, priorities.name AS priority,"
 				+ " projects_status.name AS status,customers.name AS customer,users.id AS pic_id, users.display_name AS pic_name,"
@@ -73,9 +73,9 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN customers ON project.customer = customers.id "
 				+ "INNER JOIN pic ON project.id = pic.project_id "
 				+ "INNER JOIN users ON pic.pic = users.id "
-				+ "WHERE project.week = ? "
-				+ "AND project.id = ?";
-		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(),week,id);
+				+ "WHERE project.id = ? ";
+				
+		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(),id);
 		return list;
 		
 	}
