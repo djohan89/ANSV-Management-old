@@ -35,7 +35,7 @@ a:hover {
           <section class="content">
           	<div class="container-fluid">
           		<div class=" mt-3">
-        <h2 style="text-align: center;">VNPT Tỉnh, thành phố</h2>
+        <h2 style="text-align: center;">VNPT Tỉnh, thành phố </h2>
         
         <!-- Nav tabs -->
         <div class="btn-group btn-group1 ">
