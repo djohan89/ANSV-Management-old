@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import vn.ansv.Dao.ProjectDao;
 import vn.ansv.Dto.DashboardProjectsDto;
+import vn.ansv.Dto.ProjectDetailDto;
 import vn.ansv.Dto.Menu.MenuProjectsDto;
 
 @Service
@@ -21,6 +22,9 @@ public class ProjectServiceImpl implements IProjectService {
 
 	public List<MenuProjectsDto> getMenu(int week) {
 		return projectDao.getMenu(week);
+	}
+	public List<ProjectDetailDto> getAllDetailByweek(int week,int id) {
+		return projectDao.getAllDetailByweek(week,id);
 	}
 
 }

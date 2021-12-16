@@ -15,7 +15,11 @@
 	href="<c:url value="/assets/user/vendor/dist/assets/owl.carousel.min.css" />">
 <script src="<c:url value="/assets/user/vendor/dist/owl.carousel.min.js" />"></script>
 <script src="<c:url value="/assets/user/vendor/dist/jquery.mousewheel.min.js" />"></script> <!-- Thư viện sử dụng con lăn chuột -->
-
+<style>
+.content-wrapper {
+    background-color: #fff; 
+}
+</style>
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
@@ -54,7 +58,7 @@
 								<div class="title-card">
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
-										<b id="name_sheet_1"> Báo cáo vướng mắc tuần ${week } </b><br>
+										<b id="name_sheet_1"> Báo cáo triển khai tuần ${week } </b><br>
 										<br>
 									</h3>
 								</div>
@@ -121,19 +125,19 @@
 												<tr>
 													<td>
 														<c:if test="${project_item.status =='High' }">
-															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="../detail_tk/${project_item.id }" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
-															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="../detail_tk/${project_item.id }" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
-															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="../detail_tk/${project_item.id }" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
