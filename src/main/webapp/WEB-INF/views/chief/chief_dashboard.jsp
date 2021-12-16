@@ -125,19 +125,19 @@
 												<tr>
 													<td>
 														<c:if test="${project_item.status =='High' }">
-															<a href="../detail_tk/${project_item.id }" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail_tk/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
-															<a href="../detail_tk/${project_item.id }" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail_tk/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
-															<a href="../detail_tk/${project_item.id }" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail_tk/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>

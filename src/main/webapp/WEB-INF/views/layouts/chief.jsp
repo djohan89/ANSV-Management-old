@@ -158,6 +158,10 @@
 			padding-top: 3px;
 			margin-right: -10px;
 		}
+		
+		.badge-statistics {
+			min-width: 23px;
+		}
 	</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

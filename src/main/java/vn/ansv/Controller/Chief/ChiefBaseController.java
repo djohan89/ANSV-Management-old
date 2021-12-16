@@ -27,10 +27,11 @@ public class ChiefBaseController {
 	public ModelAndView _mvShare = new ModelAndView();
 	
 	public ModelAndView InitCEO(int week) {
-		_mvShare.addObject("project_types", _projectTypesService.getAllByWeek(week));
-		_mvShare.addObject("customers", _customersService.getAllByWeek(week));
-		_mvShare.addObject("pic", _usersService.getAllByWeek(week));
-		_mvShare.addObject("menu_project", _projectService.getMenu(week));
+		_mvShare.addObject("project_types", _projectTypesService.getAllByWeek(week));	// Danh sách loại dự án hiển thị trên menu
+		_mvShare.addObject("customers", _customersService.getAllByWeek(week));			// Danh sách khách hàng hiển thị trên menu (theo loại dự án)
+		_mvShare.addObject("pic", _usersService.getAllByWeek(week)); 					// Danh sách PIC hiển thị trên menu
+		_mvShare.addObject("statistics",_projectService.thong_ke(week)); 				// Đẩy dữ liệu thống kê lên giao diện (header)
+		_mvShare.addObject("menu_project", _projectService.getMenu(week));				// Danh sách dự án hiển thị trên menu (theo PIC)
 		
 		return _mvShare;
 	}

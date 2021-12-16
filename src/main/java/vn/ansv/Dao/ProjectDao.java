@@ -9,6 +9,8 @@ import vn.ansv.Dto.DashboardProjectsDto;
 import vn.ansv.Dto.DashboardProjectsDtoMapper;
 import vn.ansv.Dto.ProjectDetailDto;
 import vn.ansv.Dto.ProjectDetailDtoMapper;
+import vn.ansv.Dto.ProjectStatisticsDto;
+import vn.ansv.Dto.ProjectStatisticsDtoMapper;
 import vn.ansv.Dto.Menu.MenuProjectsDto;
 import vn.ansv.Dto.Menu.MenuProjectsDtoMapper;
 
@@ -54,6 +56,21 @@ public class ProjectDao extends BaseDao {
 				+ "WHERE project.week = ?";
 		
 		list = _jdbcTemplate.query(sql, new DashboardProjectsDtoMapper(), week);
+		return list;
+	}
+	
+	// Project's statistics for header
+	public List<ProjectStatisticsDto> getProjectStatistics(int week) {
+		List<ProjectStatisticsDto> list = new ArrayList<ProjectStatisticsDto>();
+		
+		String sql = "SELECT projects_types.name AS type, priorities.name AS priority, projects_status.name AS status "
+				+ "FROM project "
+				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
+				+ "INNER JOIN priorities ON project.priority = priorities.id "
+				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
+				+ "WHERE project.week = ?";
+		
+		list = _jdbcTemplate.query(sql, new ProjectStatisticsDtoMapper(), week);
 		return list;
 	}
 	

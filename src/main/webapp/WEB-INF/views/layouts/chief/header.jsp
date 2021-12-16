@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/layouts/taglib.jsp"%>
 
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 	<!-- Left navbar links -->
@@ -52,25 +53,62 @@
 				<b>Thống kê</b>
 				<i class="fas fa-angle-left"></i>
 			</a>
-			<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right not-close" style="max-width: 800px; min-width: 600px;">
-				<div class="dropdown-item">
+			<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right not-close" style="min-width: 650px;">
+			
+				<c:forEach items="${ project_types }" var="types" varStatus="type_status">
+				
+					<c:forEach items="${ statistics }" var="statistics" varStatus="statistics_status">
+						<c:if test="${theCount.index <= 3}"></c:if>
+					</c:forEach>
+				
+					<div class="dropdown-item">
+						<div class="row">
+							<div class="col-md-5">Báo cáo - ${ types.name } (tuần ...)</div>
+							
+							<c:url value="${ 0 + type_status.index * 10 }" var="position"/> <!-- Tạo biến đánh số vị trí trong mảng thống kê -->
+							
+							<div class="col-2">
+								<span class="badge badge-danger right badge-statistics">${ statistics[position] }</span>
+	                   			<span class="badge badge-warning right badge-statistics">${ statistics[position + 1] }</span>
+	                   			<span class="badge badge-success right badge-statistics">${ statistics[position + 2] }</span>
+							</div>
+							<div class="col-2">
+								<span class="badge badge-danger right badge-statistics">${ statistics[position + 3] }</span>
+	                   			<span class="badge badge-warning right badge-statistics">${ statistics[position + 4] }</span>
+	                   			<span class="badge badge-success right badge-statistics">${ statistics[position + 5] }</span>
+							</div>
+							<div class="col-2">
+								<span class="badge badge-danger right badge-statistics">${ statistics[position + 6] }</span>
+	                   			<span class="badge badge-warning right badge-statistics">${ statistics[position + 7] }</span>
+	                   			<span class="badge badge-success right badge-statistics">${ statistics[position + 8] }</span>
+							</div>
+							<div class="col-1 pl-3">
+								<span class="badge badge-primary right badge-statistics">${ statistics[position + 9] }</span>
+							</div>
+							
+						</div>
+					</div>
+					<div class="dropdown-divider"></div>
+				</c:forEach>
+			
+				<%-- <div class="dropdown-item">
 					<div class="row">
-						<div class="col-md-5">Báo cáo triển khai (tuần ...)</div>
+						<div class="col-md-5">Báo cáo triển khai (tuần ...) ${ statistics.size() }</div>
 						<div class="col-md-2 pl-4">
-							<span class="badge badge-success right">23</span>
-                   			<span class="badge badge-warning right">34</span>
-                   			<span class="badge badge-danger right">45</span>
+							<span class="badge badge-success right">${ statistics[0] }</span>
+                   			<span class="badge badge-warning right">${ statistics[1] }</span>
+                   			<span class="badge badge-danger right">${ statistics[2] }</span>
 						</div>
 						<div class="col-md-1"></div>
 						<div class="col-md-2" style="margin-left: -2%;">
-							<span class="badge badge-success right">23</span>
-                   			<span class="badge badge-warning right">34</span>
-                   			<span class="badge badge-danger right">45</span>
+							<span class="badge badge-success right">${ statistics[3] }</span>
+                   			<span class="badge badge-warning right">${ statistics[4] }</span>
+                   			<span class="badge badge-danger right">${ statistics[5] }</span>
 						</div>
 						<div class="col-md-2 pl-4">
-							<span class="badge badge-success right">23</span>
-                   			<span class="badge badge-warning right">34</span>
-                   			<span class="badge badge-danger right">45</span>
+							<span class="badge badge-success right">${ statistics[6] }</span>
+                   			<span class="badge badge-warning right">${ statistics[7] }</span>
+                   			<span class="badge badge-danger right">${ statistics[8] }</span>
 						</div>
 					</div>
 				</div>
@@ -79,13 +117,13 @@
 					<div class="row">
 						<div class="col-md-5">Báo cáo viễn thông (tuần ...)</div>
 						<div class="col-md-2 pl-4">
-							<span class="badge badge-success right">23</span>
-                   			<span class="badge badge-warning right">34</span>
-                   			<span class="badge badge-danger right">45</span>
+							<span class="badge badge-success right">${ statistics[9] }</span>
+                   			<span class="badge badge-warning right">${ statistics[10] }</span>
+                   			<span class="badge badge-danger right">${ statistics[11] }</span>
 						</div>
 						<div class="col-md-1"></div>
 						<div class="col-md-2" style="margin-left: -2%;">
-							<span class="badge badge-success right">23</span>
+							<span class="badge badge-success right">${ statistics[12] }</span>
                    			<span class="badge badge-warning right">34</span>
                    			<span class="badge badge-danger right">45</span>
 						</div>
@@ -117,15 +155,14 @@
                    			<span class="badge badge-danger right">45</span>
 						</div>
 					</div>
-				</div>
-				<div class="dropdown-divider"></div>
+				</div> --%>
 				<div class="dropdown-item">
 					<div class="row">
 						<div class="col-md-5">Ưu tiên</div>
-						<div class="col-md-2" style="padding-left: 8.2%;">Cao</div>
-						<div class="col-md-1"></div>
-						<div class="col-md-2" style="padding-left: 2.3%;">Trung</div>
-						<div class="col-md-2" style="padding-left: 5.5%;">Thấp</div>
+						<div class="col-md-2" style="padding-left: 5.2%;">Cao</div>
+						<div class="col-md-2" style="padding-left: 4.2%;">Trung</div>
+						<div class="col-md-2" style="padding-left: 4.6%;">Thấp</div>
+						<div class="col-md-1">Done</div>
 					</div>
 				</div>
 			</div>

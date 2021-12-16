@@ -14,6 +14,7 @@ public class ChiefController extends ChiefBaseController {
 		
 		InitCEO(week);
 		_mvShare.addObject("project",_projectService.getAllByWeek(week));
+		
 		_mvShare.setViewName("chief/chief_dashboard");
 		
 		return _mvShare;
