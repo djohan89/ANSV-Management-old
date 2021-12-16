@@ -62,14 +62,16 @@
 										<br>
 									</h3>
 								</div>
-								<div class="card-tools">
+								<div class=" ml-auto card-tools">
 									<div class="container">
 										<!-- Trigger the modal with a button -->
+										<c:if test="${not empty project }">
 										<button type="button" class="btn btn-danger btn-sm"
 											data-toggle="modal" data-target="#myModal">
 											<!-- <i class="fas fa-exclamation-triangle"></i> -->
 											<i class="fas fa-exclamation-triangle"></i>
 										</button>
+										</c:if>
 
 										<c:if test="${not empty project }">
 										<!-- Modal -->
@@ -95,7 +97,93 @@
 																				<a href="javascript:void(0)" style="color: #fff">${project_item.name }</a>
 																			</h5>
 																			<p><b>Người phụ trách:</b></b> ${project_item.pic_name }</p>
+																			<div class="row">
+																				<div class="col-6">
+																					<p style="white-space: pre-wrap;"><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
+																				</div>
+																				<div class="col-6">
+																					<p><b>Tổng giá trị:</b> ${project_item.tong_gia_tri_thuc_te }</p>
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-6"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
+																				<div class="col-6"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
+																			</div>
 																		</div>
+																		<div class="table-responsive">
+														            		<table class="table table-bordered table-hover">
+														            			<thead>
+														            				<tr>
+														            					<th colspan="3">Kế hoạch nghiệm thu</th>
+														            					<th colspan="2">Thanh toán tạm ứng</th>
+														            					<th colspan="2">Thanh toán DAC</th>
+														            					<th colspan="2">Thanh toán PAC</th>
+														            					<th colspan="2">Thanh toán FAC</th>
+														            				</tr>
+														            				<tr>
+																			            <th>DAC</th>
+																			            <th>PAC</th>
+																			            <th>FAC</th>
+																			            <th>Số tiền</th>
+																			            <th>Kế hoạch</th>
+																			            <th>Số tiền</th>
+																			            <th>Kế hoạch</th>
+																			            <th>Số tiền</th>
+																			            <th>Kế hoạch</th>
+																			            <th>Số tiền</th>
+																			            <th>Kế hoạch</th>
+																	            	</tr>
+																	            </thead>
+														            			<tbody>
+														            				<td>${project_item.DAC }</td>
+														                			<td>${project_item.PAC }</td>
+														                			<td>${project_item.FAC }</td>
+														                			<!--Kế hoạch nghiệm thu -->
+														                			<td>
+														                				<c:if test="${project_item.so_tien_tam_ung  !=0} ">
+																							<fmt:formatNumber type="number"
+																								value="${project_item.so_tien_tam_ung  }" />
+																						</c:if>
+														                			</td>
+														                			<td>${project_item.ke_hoach_tam_ung }</td>
+																					<!-- Thanh toán tạm ứng --> +
+														            				<td>
+														            					<c:if test="${project_item.so_tien_DAC  !=0} ">
+																							<fmt:formatNumber type="number"
+																								value="${project_item.so_tien_DAC }" />
+																						</c:if>
+														            				</td>
+														                			<td>${project_item.ke_hoach_thanh_toan_DAC }</td>
+																					<!-- Thanh toán DAC --> 
+														            				<td>
+														            					<c:if test="${project_item.so_tien_PAC  !=0} ">
+																							<fmt:formatNumber type="number"
+																								value="${project_item.so_tien_PAC }" />
+																						</c:if>
+														            				</td>
+														                			<td>${project_item.ke_hoach_thanh_toan_PAC }</td>
+																					<!-- Thanh toán PAC --> 
+														            				<td>
+														            					<c:if test="${project_item.so_tien_FAC  !=0} ">
+																							<fmt:formatNumber type="number"
+																								value="${project_item.so_tien_FAC }" />
+																						</c:if>
+														            				</td>
+														                			<td>${project_item.ke_hoach_thanh_toan_FAC }</td>
+																					<!-- Thanh toán FAC --> 
+														            			</tbody>
+														            		</table>
+														            	</div>
+														            	<div class="d-flex">
+														            		<div >
+														            			<p><b>Tình trạng:</b> </p>
+														            			<p style="white-space: pre-wrap;"> ${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
+														                	</div>
+														                	<div class="pl-5">
+														                		<p><b>Kết quả thực hiện kế hoạch:</b> </p>
+														                		<p style="white-space: pre-wrap;"> ${project_item.ket_qua_thuc_hien_ke_hoach }</p>
+														                	</div>
+														                </div>
 																	</div>
 																</c:if>
 															</c:forEach>
@@ -125,19 +213,19 @@
 												<tr>
 													<td>
 														<c:if test="${project_item.status =='High' }">
-															<a href="<c:url value='/chief/detail_tk/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
-															<a href="<c:url value='/chief/detail_tk/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
-															<a href="<c:url value='/chief/detail_tk/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
@@ -199,19 +287,19 @@
 												<tr>
 													<td>
 														<c:if test="${project_item.status =='High' }">
-															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
-															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
-															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
@@ -283,19 +371,19 @@
 												<tr>
 													<td>
 														<c:if test="${project_item.status =='High' }">
-															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
-															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
-															<a href="javascript:void(0)" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
