@@ -17,6 +17,6 @@ public interface IProjectService {
 	public List<DashboardProjectsDto> getAllByWeek(int week);
 	public List<MenuProjectsDto> getMenu(int week);
 	public List<ProjectStatisticsDto> getProjectStatistics(int week);
-	public List<ProjectDetailDto> getAllDetailByweek(int id);
-	
+	public List<ProjectDetailDto> getAllDetailById(int id);
+	public List<ProjectDetailDto> getAllProjectByCustomerAndWeek(int customer_id,int week);
 }

@@ -6,6 +6,7 @@ public class DashboardProjectsDto {
 
 	private int id;
 	private int week;
+	
 	private String type;
 	private String priority;
 	private String status;
@@ -41,6 +42,7 @@ public class DashboardProjectsDto {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 
 	public int getWeek() {
 		return week;
