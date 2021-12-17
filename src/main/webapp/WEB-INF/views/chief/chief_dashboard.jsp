@@ -65,7 +65,7 @@
 								<div class=" ml-auto card-tools">
 									<div class="container">
 										<!-- Trigger the modal with a button -->
-										<c:if test="${not empty project }">
+										<c:if test="${not empty project_slideshow }">
 										<button type="button" class="btn btn-danger btn-sm"
 											data-toggle="modal" data-target="#myModal">
 											<!-- <i class="fas fa-exclamation-triangle"></i> -->
@@ -73,7 +73,7 @@
 										</button>
 										</c:if>
 
-										<c:if test="${not empty project }">
+										<c:if test="${not empty project_slideshow }">
 										<!-- Modal -->
 										<div class="modal fade" id="myModal" role="dialog">
 											<div class="modal-dialog">
@@ -89,14 +89,15 @@
 														<div class="owl-carousel owl-theme" id="detail_slide">
 														<!-- ===== Phần chèn thêm HTML ===== -->
 														
-															<c:forEach items="${project }" var="project_item" varStatus="project_index">
-																<c:if test="${project_item.type == 'Triển khai' && project_item.status =='High' && project_item.pic_role=='ROLE_PM' }">
+															<c:forEach items="${project_slideshow }" var="project_item" varStatus="project_index">
+																<c:if test="${project_item.status =='High'}">
 																	<div class="container item">
 																		<div>
 																			<h5 class="pb-2 pt-1 pl-3" style="background: red;border-radius: 16px; ">
 																				<a href="javascript:void(0)" style="color: #fff">${project_item.name }</a>
 																			</h5>
-																			<p><b>Người phụ trách:</b></b> ${project_item.pic_name }</p>
+																			<p><b>Người phụ trách:</b></b> ${project_item.pm }</p>
+																			<p><b>Người đầu mối:</b></b> ${project_item.am }</p>
 																			<div class="row">
 																				<div class="col-6"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
 																				<div class="col-6"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
@@ -215,25 +216,25 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${project }" var="project_item" varStatus="project_index">
+										<c:forEach items="${project_table }" var="project_item" varStatus="project_index">
 											<c:if test="${project_item.type == 'Triển khai' && project_item.pic_role =='ROLE_PM' }">
 												<tr>
 													<td>
 														<c:if test="${project_item.status =='High' }">
 															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.name }
+																${project_item.project_name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
 															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.name }
+																${project_item.project_name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
 															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.name }
+																${project_item.project_name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
@@ -250,7 +251,7 @@
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
-													<td>${project_item.pic_name }</td>
+													<td>${project_item.pic }</td>
 												</tr>
 											</c:if>
 										</c:forEach>	
@@ -289,25 +290,25 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${project }" var="project_item" varStatus="project_index">
+										<c:forEach items="${project_table }" var="project_item" varStatus="project_index">
 											<c:if test="${project_item.type == 'Viễn thông' }">
 												<tr>
 													<td>
 														<c:if test="${project_item.status =='High' }">
 															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.name }
+																${project_item.project_name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
 															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.name }
+																${project_item.project_name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
 															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.name }
+																${project_item.project_name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
@@ -324,7 +325,7 @@
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
-													<td>${project_item.pic_name }</td>
+													<td>${project_item.pic }</td>
 												</tr>
 											</c:if>
 										</c:forEach>
@@ -373,25 +374,25 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${project }" var="project_item" varStatus="project_index">
+										<c:forEach items="${project_table }" var="project_item" varStatus="project_index">
 											<c:if test="${project_item.type == 'Chuyển đổi số' }">
 												<tr>
 													<td>
 														<c:if test="${project_item.status =='High' }">
 															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.name }
+																${project_item.project_name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
 															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.name }
+																${project_item.project_name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
 															<a href="<c:url value='/chief/detail/${project_item.id }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.name }
+																${project_item.project_name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
@@ -408,7 +409,7 @@
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
-													<td>${project_item.pic_name }</td>
+													<td>${project_item.pic }</td>
 												</tr>
 											</c:if>
 										</c:forEach>

@@ -2,47 +2,47 @@ package vn.ansv.Dto;
 
 import java.sql.Date;
 
-public class DashboardProjectsDto {
+public class SlideshowProjectsDto {
 
-	private int id;
+	private int id_pk;
 	private int week;
-	
-	private String type;
 	private String priority;
 	private String status;
 	private String name;
+	
 	private String customer;
-	private String pic_id;
-	private String pic_name;
-	private String pic_role;
+	private String pm;
+	private String am;
 	private String pham_vi_cung_cap;
 	private double tong_gia_tri_thuc_te;
+	
 	private Date DAC;
 	private Date PAC;
 	private Date FAC;
 	private double so_tien_tam_ung;
 	private Date ke_hoach_tam_ung;
+	
 	private double so_tien_DAC;
 	private Date ke_hoach_thanh_toan_DAC;
 	private double so_tien_PAC;
 	private Date ke_hoach_thanh_toan_PAC;
 	private double so_tien_FAC;
 	private Date ke_hoach_thanh_toan_FAC;
+	
 	private String ket_qua_thuc_hien_ke_hoach;
 	private String tinh_trang_va_ke_hoach_chi_tiet;
 	
-	public DashboardProjectsDto() {
+	public SlideshowProjectsDto() {
 		super();
 	}
 
-	public int getId() {
-		return id;
+	public int getId_pk() {
+		return id_pk;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId_pk(int id_pk) {
+		this.id_pk = id_pk;
 	}
-	
 
 	public int getWeek() {
 		return week;
@@ -50,14 +50,6 @@ public class DashboardProjectsDto {
 
 	public void setWeek(int week) {
 		this.week = week;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public String getPriority() {
@@ -92,28 +84,20 @@ public class DashboardProjectsDto {
 		this.customer = customer;
 	}
 
-	public String getPic_id() {
-		return pic_id;
+	public String getPm() {
+		return pm;
 	}
 
-	public void setPic_id(String pic_id) {
-		this.pic_id = pic_id;
+	public void setPm(String pm) {
+		this.pm = pm;
 	}
 
-	public String getPic_name() {
-		return pic_name;
+	public String getAm() {
+		return am;
 	}
 
-	public void setPic_name(String pic_name) {
-		this.pic_name = pic_name;
-	}
-
-	public String getPic_role() {
-		return pic_role;
-	}
-
-	public void setPic_role(String pic_role) {
-		this.pic_role = pic_role;
+	public void setAm(String am) {
+		this.am = am;
 	}
 
 	public String getPham_vi_cung_cap() {
@@ -235,7 +219,5 @@ public class DashboardProjectsDto {
 	public void setTinh_trang_va_ke_hoach_chi_tiet(String tinh_trang_va_ke_hoach_chi_tiet) {
 		this.tinh_trang_va_ke_hoach_chi_tiet = tinh_trang_va_ke_hoach_chi_tiet;
 	}
-
-	
 	
 }

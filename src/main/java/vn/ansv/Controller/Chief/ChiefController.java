@@ -13,7 +13,8 @@ public class ChiefController extends ChiefBaseController {
 	public ModelAndView chiefHome(@PathVariable int week) {
 		
 		InitCEO(week);
-		_mvShare.addObject("project",_projectService.getAllByWeek(week));
+		_mvShare.addObject("project_table",_projectService.getDashboardTableByWeek(week)); // Dữ liệu khái quát hiển thị lên dashboard (datatable)
+		_mvShare.addObject("project_slideshow",_projectService.getSlideshowProject(week)); // Dữ liệu dự án triển khai hiển thị trên Slideshow
 		
 		_mvShare.setViewName("chief/chief_dashboard");
 		

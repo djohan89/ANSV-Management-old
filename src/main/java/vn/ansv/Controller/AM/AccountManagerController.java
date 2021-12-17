@@ -16,7 +16,6 @@ public class AccountManagerController extends AccountManagerBaseController {
 		_mvShare.addObject("project_types", _projectTypesService.getAllByWeek(week));
 		_mvShare.addObject("customers", _customersService.getAllByWeek(week));
 		_mvShare.addObject("pic", _usersService.getAllByWeek(week));
-		_mvShare.addObject("project", _projectService.getAllByWeek(week));
 		_mvShare.setViewName("AM/am_dashboard"); 
 		
 		return _mvShare;

@@ -1,20 +1,19 @@
 package vn.ansv.Dto;
 
-public class ProjectDto {
+public class DashboardProjectDto {
 	
 	private int id;
 	private String pic;
-	private String project_type;
+	private String pic_role;
+	private String type;
 	private String priority;
-	private String project_status;
+	private String status;
 	private String customer;
-	private String project_id;
 	private String project_name;
 	private String tinh_trang_va_ke_hoach_chi_tiet;
-	private String ket_qua_thuc_hien_ke_hoach;
 	private int week;
 	
-	public ProjectDto() {
+	public DashboardProjectDto() {
 		super();
 	}
 
@@ -34,12 +33,20 @@ public class ProjectDto {
 		this.pic = pic;
 	}
 
-	public String getProject_type() {
-		return project_type;
+	public String getPic_role() {
+		return pic_role;
 	}
 
-	public void setProject_type(String project_type) {
-		this.project_type = project_type;
+	public void setPic_role(String pic_role) {
+		this.pic_role = pic_role;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getPriority() {
@@ -50,12 +57,12 @@ public class ProjectDto {
 		this.priority = priority;
 	}
 
-	public String getProject_status() {
-		return project_status;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setProject_status(String project_status) {
-		this.project_status = project_status;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getCustomer() {
@@ -64,14 +71,6 @@ public class ProjectDto {
 
 	public void setCustomer(String customer) {
 		this.customer = customer;
-	}
-
-	public String getProject_id() {
-		return project_id;
-	}
-
-	public void setProject_id(String project_id) {
-		this.project_id = project_id;
 	}
 
 	public String getProject_name() {
@@ -88,14 +87,6 @@ public class ProjectDto {
 
 	public void setTinh_trang_va_ke_hoach_chi_tiet(String tinh_trang_va_ke_hoach_chi_tiet) {
 		this.tinh_trang_va_ke_hoach_chi_tiet = tinh_trang_va_ke_hoach_chi_tiet;
-	}
-
-	public String getKet_qua_thuc_hien_ke_hoach() {
-		return ket_qua_thuc_hien_ke_hoach;
-	}
-
-	public void setKet_qua_thuc_hien_ke_hoach(String ket_qua_thuc_hien_ke_hoach) {
-		this.ket_qua_thuc_hien_ke_hoach = ket_qua_thuc_hien_ke_hoach;
 	}
 
 	public int getWeek() {
