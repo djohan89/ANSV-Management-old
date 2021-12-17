@@ -30,8 +30,11 @@ public class ProjectServiceImpl implements IProjectService {
 		return projectDao.getProjectStatistics(week);
 	}
 	
-	public List<ProjectDetailDto> getAllDetailByweek(int id) {
-		return projectDao.getAllDetailByweek(id);
+	public List<ProjectDetailDto> getAllDetailById(int id) {
+		return projectDao.getAllDetailById(id);
+	}
+	public List<ProjectDetailDto> getAllProjectByCustomerAndWeek(int week,int customer_id) {
+		return projectDao.getAllProjectByCustomerAndWeek(week,customer_id);
 	}
 	
 	

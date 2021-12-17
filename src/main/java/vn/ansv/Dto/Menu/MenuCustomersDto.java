@@ -3,6 +3,7 @@ package vn.ansv.Dto.Menu;
 public class MenuCustomersDto {
 
 	private int project_id;
+	private int customer_id;
 	private String project_type;
 	private String customer;
 	private int number;
@@ -51,5 +52,15 @@ public class MenuCustomersDto {
 	public void setWeek(int week) {
 		this.week = week;
 	}
+
+	public int getCustomer_id() {
+		return customer_id;
+	}
+
+	public void setCustomer_id(int customer_id) {
+		this.customer_id = customer_id;
+	}
+	
+	
 	
 }

@@ -98,17 +98,24 @@
 																			</h5>
 																			<p><b>Người phụ trách:</b></b> ${project_item.pic_name }</p>
 																			<div class="row">
+																				<div class="col-6"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
+																				<div class="col-6"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
+																			</div>
+																			<div class="row">
 																				<div class="col-6">
 																					<p style="white-space: pre-wrap;"><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
 																				</div>
 																				<div class="col-6">
-																					<p><b>Tổng giá trị:</b> ${project_item.tong_gia_tri_thuc_te }</p>
+																					<p><b>Tổng giá trị:</b> 
+																						<c:if
+																							test="${ project_item.tong_gia_tri_thuc_te !=0}">
+																							<fmt:formatNumber type="number"
+																								value="${project_item.tong_gia_tri_thuc_te }" />
+																						</c:if>
+																					</p>
 																				</div>
 																			</div>
-																			<div class="row">
-																				<div class="col-6"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
-																				<div class="col-6"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
-																			</div>
+																			
 																		</div>
 																		<div class="table-responsive">
 														            		<table class="table table-bordered table-hover">
@@ -146,7 +153,7 @@
 																						</c:if>
 														                			</td>
 														                			<td>${project_item.ke_hoach_tam_ung }</td>
-																					<!-- Thanh toán tạm ứng --> +
+																					<!-- Thanh toán tạm ứng --> 
 														            				<td>
 														            					<c:if test="${project_item.so_tien_DAC  !=0} ">
 																							<fmt:formatNumber type="number"

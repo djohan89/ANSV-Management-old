@@ -12,6 +12,7 @@ public class ProjectDetailDtoMapper implements RowMapper<ProjectDetailDto> {
 		detail.setId(rs.getInt("id"));
 		detail.setPic_id(rs.getString("pic_id"));
 		detail.setPic_name(rs.getString("pic_name"));
+		detail.setCustomer_id(rs.getInt("customer_id"));
 		detail.setType(rs.getString("type"));
 		detail.setPriority(rs.getString("priority"));
 		detail.setStatus(rs.getString("status"));
