@@ -89,7 +89,7 @@
 								
 									<c:if test="${ customers.project_type == item.name }">
 										<li class="nav-item">
-			                                <a href="<c:url value='/chief/customer_detail/${week}/${customers.customer_id}/${customers.project_type }' />" class="nav-link">
+			                                <a href="<c:url value='/chief/customer_detail/${week}/${item.id }/${customers.customer_id}' />" class="nav-link">
 			                                    <i class="far fa-circle nav-icon"></i>
 			                                    <span style="font-size: 14px;">${ customers.customer }</span>
 			                                    <span class="badge badge-info right">${ customers.number }</span>

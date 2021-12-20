@@ -96,7 +96,6 @@
 	<!-- Cookie -->
 	<session-config>
 		<tracking-mode>COOKIE</tracking-mode>
-		<session-timeout>1</session-timeout>
 	</session-config>
 	
 	<welcome-file-list>
