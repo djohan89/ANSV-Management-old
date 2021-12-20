@@ -89,7 +89,7 @@
 								
 									<c:if test="${ customers.project_type == item.name }">
 										<li class="nav-item">
-			                                <a href="<c:url value='/chief/customer_detail/${week}/${customers.customer_id}' />" class="nav-link">
+			                                <a href="<c:url value='/chief/customer_detail/${week}/${customers.customer_id}/${customers.project_type }' />" class="nav-link">
 			                                    <i class="far fa-circle nav-icon"></i>
 			                                    <span style="font-size: 14px;">${ customers.customer }</span>
 			                                    <span class="badge badge-info right">${ customers.number }</span>
@@ -122,7 +122,7 @@
 							<c:forEach var="project" items="${ menu_project }" varStatus="index_project">
 								<c:if test="${ project.pic == pic.pic_id }">
 									<li class="nav-item">
-										<a href="<c:url value='/chief/detail/${project.id }' />" class="nav-link">
+										<a href="<c:url value='/chief/detail/${project.week }/${project.id }' />" class="nav-link">
 											<i class="far fa-circle nav-icon"></i><p>${ project.name }</p>
 										</a>
 									</li>
