@@ -1,61 +1,27 @@
 package vn.ansv.Dto;
 
-public class DashboardProjectDto {
-	
-	private int id;
-	private String id_user;
-	private String pic;
-	private String pic_role;
-	private String type;
+public class DashboardProjectPicDto {
+	private int id_pk;
 	private String priority;
 	private String status;
+	private String name;
 	private String customer;
-	private String project_name;
+	private String type;
+	private String am;
+	private String pm;
 	private String tinh_trang_va_ke_hoach_chi_tiet;
 	private int week;
 	
-	public DashboardProjectDto() {
+	public DashboardProjectPicDto() {
 		super();
 	}
 
-	public int getId() {
-		return id;
+	public int getId_pk() {
+		return id_pk;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getId_user() {
-		return id_user;
-	}
-
-	public void setId_user(String id_user) {
-		this.id_user = id_user;
-	}
-
-	public String getPic() {
-		return pic;
-	}
-
-	public void setPic(String pic) {
-		this.pic = pic;
-	}
-
-	public String getPic_role() {
-		return pic_role;
-	}
-
-	public void setPic_role(String pic_role) {
-		this.pic_role = pic_role;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
+	public void setId_pk(int id_pk) {
+		this.id_pk = id_pk;
 	}
 
 	public String getPriority() {
@@ -74,6 +40,14 @@ public class DashboardProjectDto {
 		this.status = status;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getCustomer() {
 		return customer;
 	}
@@ -82,12 +56,28 @@ public class DashboardProjectDto {
 		this.customer = customer;
 	}
 
-	public String getProject_name() {
-		return project_name;
+	public String getType() {
+		return type;
 	}
 
-	public void setProject_name(String project_name) {
-		this.project_name = project_name;
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getAm() {
+		return am;
+	}
+
+	public void setAm(String am) {
+		this.am = am;
+	}
+
+	public String getPm() {
+		return pm;
+	}
+
+	public void setPm(String pm) {
+		this.pm = pm;
 	}
 
 	public String getTinh_trang_va_ke_hoach_chi_tiet() {
@@ -105,5 +95,7 @@ public class DashboardProjectDto {
 	public void setWeek(int week) {
 		this.week = week;
 	}
-
+	
+	
+	
 }

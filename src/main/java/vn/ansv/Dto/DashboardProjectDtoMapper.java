@@ -12,6 +12,7 @@ public class DashboardProjectDtoMapper implements RowMapper<DashboardProjectDto>
 		DashboardProjectDto project = new DashboardProjectDto();
 		
 		project.setId(rs.getInt("id"));
+		project.setId_user(rs.getString("id_user"));
 		project.setPic(rs.getString("pic"));
 		project.setPic_role(rs.getString("pic_role"));
 		project.setType(rs.getString("type"));

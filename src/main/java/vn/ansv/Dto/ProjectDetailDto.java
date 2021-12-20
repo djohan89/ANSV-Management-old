@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class ProjectDetailDto {
 	private int id;
-	private int customer_id;
 	private String type;
 	private String priority;
 	private String pic_id;
@@ -48,14 +47,6 @@ public class ProjectDetailDto {
 		this.id = id;
 	}
 	
-	public int getCustomer_id() {
-		return customer_id;
-	}
-
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
-	}
-
 	public String getType() {
 		return type;
 	}
