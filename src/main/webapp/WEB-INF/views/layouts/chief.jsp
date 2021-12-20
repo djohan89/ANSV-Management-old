@@ -122,6 +122,10 @@
 		  	color: black;
 		}
 		
+		.dropdown1{
+			left: 100% !important; 
+		}
+		
 		.tooltip_css .tooltiptext {
 			font-size: 11px;
 		  	visibility: hidden;
