@@ -17,6 +17,12 @@
 }
 </style>
 	<div class="content-wrapper">
+	<div class="content-header">
+		<a href="<c:url value='/AM/create/${week }' />" class="btn btn-info" role="button">Thêm dự án</a>
+				
+			<!-- /.container-fluid -->
+		</div>
+
 		<section class="content">
 			<div class="container-fluid">
 				<c:forEach var="detail" items="${detail }" varStatus="detailIndex">
@@ -160,7 +166,7 @@
 										</div>
 									</div>
 									<button type="button" class="btn btn-warning mr-2">
-										<a href="./update_tk" style="color: white;">Sửa</a>
+										<a href="<c:url value='/AM/update/${week}/${detail.id}'/>" style="color: white;">Sửa</a> 
 									</button>
 								</div>
 							</div>
@@ -253,7 +259,7 @@
 										</div>
 									</div>
 									<button type="button" class="btn btn-warning mr-2">
-										<a href="./update_tk" style="color: white;">Sửa</a>
+										<a href="<c:url value='/AM/update/${week}/${detail.id}' />" style="color: white;">Sửa</a>
 									</button>
 								</div>
 							</div>
@@ -347,7 +353,7 @@
 										</div>
 									</div>
 									<button type="button" class="btn btn-warning mr-2">
-										<a href="./update_tk" style="color: white;">Sửa</a>
+										<a href="<c:url value='/AM/update/${week}/${detail.id}' />" style="color: white;">Sửa</a>
 									</button>
 								</div>
 							</div>

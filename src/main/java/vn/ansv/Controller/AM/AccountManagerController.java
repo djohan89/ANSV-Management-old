@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AccountManagerController extends AccountManagerBaseController {
 
 	@RequestMapping(value = { "/dashboard/{week}" }, method = RequestMethod.GET)
-	public ModelAndView amHome(@PathVariable int week,HttpSession session) {
+	public ModelAndView AmHome(@PathVariable int week,HttpSession session) {
 		
 		InitAM(week);
 		String pic_id = (String) session.getAttribute("user_id");
@@ -25,7 +25,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 	}
 	
 	@RequestMapping(value = { "/detail/{week}/{id}" }, method = RequestMethod.GET)
-	public ModelAndView chiefDetail(@PathVariable int week, @PathVariable  int id) {
+	public ModelAndView AmDetail(@PathVariable int week, @PathVariable  int id) {
 		
 		
 		InitAM(week);
@@ -35,4 +35,32 @@ public class AccountManagerController extends AccountManagerBaseController {
 		return _mvShare;
 	}
 	
+	@RequestMapping(value = { "/update/{week}/{id}" }, method = RequestMethod.GET)
+	public ModelAndView AmUpdate(@PathVariable int week, @PathVariable  int id) {
+		
+		
+		InitAM(week);
+		_mvShare.addObject("detail",_projectService.getAllDetailById(week,id));
+		_mvShare.addObject("customers",_customersService.getAllCustomer());
+		_mvShare.addObject("priorities",_priorityService.getAllPriority());
+		_mvShare.addObject("status",_priorityService.getAllStatus());
+		_mvShare.addObject("type",_priorityService.getAllType());
+		_mvShare.setViewName("AM/update");
+		
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = { "/create/{week}" }, method = RequestMethod.GET)
+	public ModelAndView AmCreate(@PathVariable int week) {
+		
+		
+		InitAM(week);
+		_mvShare.addObject("customers",_customersService.getAllCustomer());
+		_mvShare.addObject("priorities",_priorityService.getAllPriority());
+		_mvShare.addObject("status",_priorityService.getAllStatus());
+		_mvShare.addObject("type",_priorityService.getAllType());
+		_mvShare.setViewName("AM/create");
+		
+		return _mvShare;
+	}
 }

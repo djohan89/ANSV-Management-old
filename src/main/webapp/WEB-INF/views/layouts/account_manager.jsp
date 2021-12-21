@@ -222,6 +222,12 @@
 	<!-- ChartJS -->
 	<script
 		src="<c:url value='/assets/user/plugins/chart.js/Chart.min.js' />"></script>
+	<!--CkEditor  -->
+	<script
+		src="<c:url value='/assets/user/plugins/ckeditor/ckeditor.js' />"></script>
+	<script
+		src="<c:url value='/assets/user/plugins/ckeditor/adapters/jquery.js' />"></script>
+		
 	<!-- Sparkline -->
 	<script
 		src="<c:url value='/assets/user/plugins/sparklines/sparkline.js' />"></script>
@@ -262,6 +268,48 @@
 				textContent = display_name.textContent;
 			$("#display_name").text("${ role } | " + textContent);
 			console.log(pathArray, get_role, textContent);
+			
+			$("#ud_tinh_trang").ckeditor({
+				toolbar : 'Basic',
+				uiColor : '#F7D358',
+				height : 100
+			});
+			
+			$("#ud_ket_qua").ckeditor({
+				toolbar : 'Basic',
+				uiColor : '#F7D358',
+				height : 100
+			});
+			
+			$("#ud_swot").ckeditor({
+				toolbar : 'Basic',
+				uiColor : '#F7D358',
+				height : 100
+			});
+			
+			$("#cr_mo_ta_du_an").ckeditor({
+			    toolbar : 'Basic',
+			    uiColor : '#F7D358',
+			    height  : 50
+			  });
+
+			  $("#cr_swot").ckeditor({
+			    toolbar : 'Basic',
+			    uiColor : '#F7D358',
+			    height  : 50
+			  });
+
+			  $("#cr_tinh_trang").ckeditor({
+			    toolbar : 'Basic',
+			    uiColor : '#F7D358',
+			    height  : 50
+			  });
+
+			  $("#cr_ket_qua").ckeditor({
+			    toolbar : 'Basic',
+			    uiColor : '#F7D358',
+			    height  : 50
+			  });
 		});
 	</script>
 	

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import vn.ansv.Dao.CustomersDao;
 import vn.ansv.Dto.Menu.MenuCustomersDto;
+import vn.ansv.Entity.Customer;
 
 @Service
 public class CustomersServiceImpl implements ICustomersService {
@@ -16,6 +17,11 @@ public class CustomersServiceImpl implements ICustomersService {
 	
 	public List<MenuCustomersDto> getAllByWeek(int week) {
 		return customersDao.getAllByWeek(week);
+	}
+
+	public List<Customer> getAllCustomer() {
+		
+		return customersDao.getAllCustomer();
 	}
 
 }
