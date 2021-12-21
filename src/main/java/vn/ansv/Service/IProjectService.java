@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import vn.ansv.Dto.DashboardProjectDto;
+import vn.ansv.Dto.DashboardProjectPicDto;
 import vn.ansv.Dto.ProjectDetailDto;
 import vn.ansv.Dto.ProjectStatisticsDto;
 import vn.ansv.Dto.SlideshowProjectsDto;
@@ -21,4 +22,5 @@ public interface IProjectService {
 	public List<ProjectStatisticsDto> getProjectStatistics(int week);
 	public List<ProjectDetailDto> getAllDetailById(int week,int id);
 	public List<ProjectDetailDto> getAllProjectByCustomerAndWeek(int week, int customer, int type);
+	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week,String pic_id );
 }

@@ -153,6 +153,10 @@
 	}
 	
 	.tooltip_css:hover .tooltiptext {
+		  	visibility: visible;
+		}
+	
+	.tooltip_css:hover .tooltiptext {
 	  	visibility: visible;
 	}
 	</style>

@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/java/vn/ansv/Controller/AM/AccountManagerBaseController.java=UTF-8
+encoding//src/main/java/vn/ansv/Controller/AM/AccountManagerController.java=UTF-8
 encoding//src/main/java/vn/ansv/Controller/Chief/ChiefBaseController.java=UTF-8
 encoding//src/main/java/vn/ansv/Controller/Chief/ChiefController.java=UTF-8
 encoding//src/main/java/vn/ansv/Controller/Security/LoginController.java=UTF-8

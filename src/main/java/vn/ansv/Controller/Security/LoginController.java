@@ -72,6 +72,7 @@ public class LoginController {
 		    
 		    session.setAttribute("username", userDetails.getUsername());
 		    session.setAttribute("display_name", usersService.getByUser(userName).getDisplay_name());
+		    session.setAttribute("user_id", usersService.getByUser(userName).getId());
 		    
 		    
 		    

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import vn.ansv.Dao.ProjectDao;
 import vn.ansv.Dto.DashboardProjectDto;
+import vn.ansv.Dto.DashboardProjectPicDto;
 import vn.ansv.Dto.ProjectDetailDto;
 import vn.ansv.Dto.ProjectStatisticsDto;
 import vn.ansv.Dto.SlideshowProjectsDto;
@@ -41,7 +42,10 @@ public class ProjectServiceImpl implements IProjectService {
 	public List<ProjectDetailDto> getAllProjectByCustomerAndWeek(int week, int customer, int type) {
 		return projectDao.getAllProjectByCustomerAndWeek(week, customer, type);
 	}
-	
+	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week, String pic_id) {
+		// TODO Auto-generated method stub
+		return projectDao.getDashboardTableByPIC(week, pic_id);
+	}
 	
 	
 	// Đầu: Thống kê số lượng dự án theo loại dự án, ưu tiên và tình trạng
@@ -131,5 +135,7 @@ public class ProjectServiceImpl implements IProjectService {
 		
 		return thong_ke;
 	}
+
+	
 
 }
