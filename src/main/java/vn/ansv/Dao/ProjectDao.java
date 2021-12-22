@@ -86,7 +86,9 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN priorities ON project.priority = priorities.id "
 				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
 				+ "INNER JOIN customers ON project.customer = customers.id "
-				+ "WHERE project.week = ? AND project.project_type = 1";
+				+ "WHERE project.week = ? "
+				+ "AND project.project_type = 1 "
+				+ "AND project.project_status = 1";
 		
 		list = _jdbcTemplate.query(sql, new SlideshowProjectsDtoMapper(), week);
 		return list;

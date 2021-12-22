@@ -58,7 +58,7 @@
 								<div class="title-card">
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
-										<b id="name_sheet_1"> Báo cáo triển khai tuần ${week } </b><br>
+										<b id="name_sheet_1"> Báo cáo triển khai tuần ${week } ${project_slideshow.size() } </b><br>
 										<br>
 									</h3>
 								</div>
@@ -77,11 +77,12 @@
 										<!-- Modal -->
 										<div class="modal fade" id="myModal" role="dialog">
 											<div class="modal-dialog">
-
+											<c:forEach items="${project_slideshow }" var="project_item" varStatus="project_index">
+												<c:if test="${project_item.status =='High'}">
 												<!-- Modal content-->
 												<div class="modal-content" style="color: black;">
 													<div class="modal-header" style="border-bottom: none">
-														<!-- <h5 class="modal-title" id="modal_title">Các dự án chậm tiến độ</h5> -->
+														 <span class="modal-title" id="modal_title">${project_index.index +1 } of ${project_slideshow.size() }</span> 
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
 													</div>
 													<div class="modal-body"
@@ -89,8 +90,7 @@
 														<div class="owl-carousel owl-theme" id="detail_slide">
 														<!-- ===== Phần chèn thêm HTML ===== -->
 														
-															<c:forEach items="${project_slideshow }" var="project_item" varStatus="project_index">
-																<c:if test="${project_item.status =='High'}">
+															
 																	<div class="container item">
 																		<div>
 																			<h5 class="pb-2 pt-1 pl-3" style="background: red;border-radius: 16px; ">
