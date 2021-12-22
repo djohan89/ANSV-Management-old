@@ -53,8 +53,8 @@
 
 					<div class="col-lg-6 col-sm-6">
 						<!-- Map card -->
-						<div class="card" style="background: white">
-							<div class="card-header border-0 d-flex flex-row">
+						<div class="card border border-primary shadow">
+							<div class="card-header border-0 d-flex flex-row" style="background-color: #04355d; color: white;">
 								<div class="title-card">
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
@@ -210,7 +210,7 @@
 									<thead>
 										<tr>
 											<th>Dự án</th>
-											<th>Priority</th>
+											<th style="width: 14%;">Priority</th>
 											<th>Nhóm</th>
 											<th style="width: 22%;">pic_name</th>
 										</tr>
@@ -241,13 +241,13 @@
 													</td>
 													<td>
 														<c:if test="${project_item.status =='High' }">
-															<button type="button" class="btn btn-danger" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-danger w-100"><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
-															<button type="button" class="btn btn-warning" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
-															<button type="button" class="btn btn-success" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
@@ -263,8 +263,8 @@
 					</div>
 					<div class="col-sm-6 col-lg-6">
 						<!-- solid sales graph -->
-						<div class="card" style="background: white">
-							<div class="card-header border-0 d-flex flex-row">
+						<div class="card border border-primary shadow">
+							<div class="card-header border-0 d-flex flex-row" style="background-color: #04355d; color: white;">
 								<div class="title-card">
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
@@ -284,7 +284,7 @@
 									<thead>
 										<tr>
 											<th>Dự án</th>
-											<th>Priority</th>
+											<th style="width: 14%;">Priority</th>
 											<th>Nhóm</th>
 											<th style="width: 22%;">pic_name</th>
 										</tr>
@@ -315,13 +315,13 @@
 													</td>
 													<td>
 														<c:if test="${project_item.status =='High' }">
-															<button type="button" class="btn btn-danger" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-danger w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
-															<button type="button" class="btn btn-warning" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
-															<button type="button" class="btn btn-success" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
@@ -335,8 +335,8 @@
 							<!-- /.card-footer -->
 						</div>
 						
-						<div class="card" style="background: white">
-							<div class="card-header border-0 d-flex flex-row">
+						<div class="card border border-primary shadow mt-4">
+							<div class="card-header border-0 d-flex flex-row" style="background-color: #04355d; color: white;">
 								<div class="title-card">
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
@@ -356,7 +356,7 @@
 									<thead>
 										<tr>
 											<th>Dự án</th>
-											<th>Priority</th>
+											<th style="width: 14%;">Priority</th>
 											<th>Nhóm</th>
 											<th style="width: 22%;">pic_name</th>
 										</tr>
@@ -387,13 +387,13 @@
 													</td>
 													<td>
 														<c:if test="${project_item.status =='High' }">
-															<button type="button" class="btn btn-danger" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-danger w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
-															<button type="button" class="btn btn-warning" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
-															<button type="button" class="btn btn-success" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
@@ -420,165 +420,7 @@
 		<!-- /.content -->
 	</div>
 <script type="text/javascript">	
-	$(document).ready(function(){
-		var groupColumn = 2;
-		/*Option table 1  */
-		$('#example_1').DataTable( {
-		    "scrollY": 300,
-		    "scrollX": true,
-		    "scrollCollapse": true,
-		    "paging":         false,
-		    "responsive": true,
-		    "displayLength": 25,
-		    "columnDefs": [
-	            { "visible": false, "targets": groupColumn },
-	            ],
-		    "order": [
-	            [groupColumn, 'asc']
-	        ],
-		    "drawCallback": function(settings) {
-	            var api = this.api();
-	            var rows = api.rows({ page: 'current' }).nodes();
-	            var last = null;
-
-	            api.column(groupColumn, { page: 'current' }).data().each(function(group, i) {
-	                if (last !== group) {
-	                    $(rows).eq(i).before(
-	                        '<tr class="group">' + 
-	                        	'<td colspan="18" align="center" style="background-color: #D3D3D3;">' + 
-	                        		'<b>----- ' + group + ' -----</b>' + 
-	                        	'</td>' + 
-	                        '</tr>'
-	                    );
-
-	                    last = group;
-	                }
-	            });
-	        },
-
-		} );
-		$('#example_1 tbody').on('click', 'tr.group', function() {
-	        var currentOrder = example_1.order()[0];
-	        if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
-	            example_1.order([groupColumn, 'desc']).draw();
-	        } else {
-	            example_1.order([groupColumn, 'asc']).draw();
-	        }
-	    });
-		
-		/* Option table 2 */
-		
-		$('#example_2').DataTable( {
-		    "scrollY": 300,
-		    "scrollX": true,
-		    "scrollCollapse": true,
-		    "paging":         false,
-		    "responsive": true,
-		    "displayLength": 25,
-		    "columnDefs": [
-	            { "visible": false, "targets": groupColumn },
-	            ],
-		    "order": [
-	            [groupColumn, 'asc']
-	        ],
-		    "drawCallback": function(settings) {
-	            var api = this.api();
-	            var rows = api.rows({ page: 'current' }).nodes();
-	            var last = null;
-
-	            api.column(groupColumn, { page: 'current' }).data().each(function(group, i) {
-	                if (last !== group) {
-	                    $(rows).eq(i).before(
-	                        '<tr class="group">' + 
-	                        	'<td colspan="18" align="center" style="background-color: #D3D3D3;">' + 
-	                        		'<b>----- ' + group + ' -----</b>' + 
-	                        	'</td>' + 
-	                        '</tr>'
-	                    );
-
-	                    last = group;
-	                }
-	            });
-	        },
-
-		} );
-		$('#example_2 tbody').on('click', 'tr.group', function() {
-	        var currentOrder = example_1.order()[0];
-	        if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
-	            example_1.order([groupColumn, 'desc']).draw();
-	        } else {
-	            example_1.order([groupColumn, 'asc']).draw();
-	        }
-	    });
-		
-		/*Option table 3  */
-		$('#example_3').DataTable( {
-		    "scrollY": 300,
-		    "scrollX": true,
-		    "scrollCollapse": true,
-		    "paging":         false,
-		    "responsive": true,
-		    "displayLength": 25,
-		    "columnDefs": [
-	            { "visible": false, "targets": groupColumn },
-	            ],
-		    "order": [
-	            [groupColumn, 'asc']
-	        ],
-		    "drawCallback": function(settings) {
-	            var api = this.api();
-	            var rows = api.rows({ page: 'current' }).nodes();
-	            var last = null;
-
-	            api.column(groupColumn, { page: 'current' }).data().each(function(group, i) {
-	                if (last !== group) {
-	                    $(rows).eq(i).before(
-	                        '<tr class="group">' + 
-	                        	'<td colspan="18" align="center" style="background-color: #D3D3D3;">' + 
-	                        		'<b>----- ' + group + ' -----</b>' + 
-	                        	'</td>' + 
-	                        '</tr>'
-	                    );
-
-	                    last = group;
-	                }
-	            });
-	        },
-
-		} );
-		$('#example_3 tbody').on('click', 'tr.group', function() {
-	        var currentOrder = example_1.order()[0];
-	        if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
-	            example_1.order([groupColumn, 'desc']).draw();
-	        } else {
-	            example_1.order([groupColumn, 'asc']).draw();
-	        }
-	    });
-		
-		var owl = $('.owl-carousel');
-	  	owl.owlCarousel({
-	       items: 1,
-	       loop: true,
-	       nav: true,
-	       margin: 10,
-	       autoplay: true,
-	       autoplayTimeout: 5000,
-	       responsiveClass: true,
-	       autoplayHoverPause: true
-	   	});
-	    
-	  	owl.on('mousewheel', '.owl-stage', function (e) {
-	        if (e.deltaY>0) {
-	            owl.trigger('next.owl');
-	        } else {
-	            owl.trigger('prev.owl');
-	        }
-	        e.preventDefault();
-	    });
-		
-	  	$('#myModal').modal('show');
-		$('div.dataTables_wrapper').addClass("change_font_size");
-	});
+	
 </script>
 </body>
 </html>

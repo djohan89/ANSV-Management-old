@@ -273,6 +273,10 @@
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="<c:url value='/assets/user/dist/js/pages/dashboard.js' />"></script>
 	
+<!-- ===== Dashboard ===== -->
+	<script src="<c:url value='/assets/user/js/datatable_dashboard.js' />"></script>
+	<script src="<c:url value='/assets/user/js/dashboard_template.js' />"></script>
+	
 	<script type="text/javascript">
 		$( document ).ready(function() {
 			/* var pathArray = window.location.pathname.split('/'); // Get item from url
