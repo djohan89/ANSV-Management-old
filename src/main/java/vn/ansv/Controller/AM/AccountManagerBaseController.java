@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.ansv.Service.CustomersServiceImpl;
+import vn.ansv.Service.PriorityServiceImpl;
 import vn.ansv.Service.ProjectServiceImpl;
 import vn.ansv.Service.ProjectTypesServiceImpl;
 import vn.ansv.Service.User.UsersServiceImpl;
@@ -23,6 +24,9 @@ public class AccountManagerBaseController {
 	
 	@Autowired 
 	UsersServiceImpl _usersService;
+	
+	@Autowired
+	PriorityServiceImpl _priorityService;
 	
 	public ModelAndView _mvShare = new ModelAndView();
 	

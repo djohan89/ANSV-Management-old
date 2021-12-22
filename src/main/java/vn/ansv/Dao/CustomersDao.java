@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import vn.ansv.Dto.Menu.MenuCustomersDto;
 import vn.ansv.Dto.Menu.MenuCustomersDtoMapper;
+import vn.ansv.Entity.Customer;
+import vn.ansv.Entity.CustomerMapper;
 
 @Repository
 public class CustomersDao extends BaseDao {
@@ -20,4 +22,11 @@ public class CustomersDao extends BaseDao {
 		return _jdbcTemplate.query(sql, new MenuCustomersDtoMapper(), week);
 	} 
 	
+	public List<Customer> getAllCustomer(){
+		String sql ="SELECT * FROM customers";
+		
+		
+		return _jdbcTemplate.query(sql, new CustomerMapper());
+		
+	}
 }

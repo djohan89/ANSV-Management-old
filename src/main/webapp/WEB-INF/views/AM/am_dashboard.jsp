@@ -23,7 +23,8 @@
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
-
+		<a href="<c:url value='/AM/create/${week }' />" class="btn btn-info" role="button">Thêm dự án</a>
+				
 			<!-- /.container-fluid -->
 		</div>
 		<!-- /.content-header -->
@@ -52,13 +53,16 @@
 					<!-- right col (We are only adding the ID to make the widgets sortable)-->
 
 					<div class="col-lg-12 col-sm-12">
+						<div>
+							
+						</div>
 						<!-- Map card -->
 						<div class="card" style="background: white">
 							<div class="card-header border-0 d-flex flex-row">
 								<div class="title-card">
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
-										<b id="name_sheet_1"> Báo cáo triển khai tuần ${week }</b><br>
+										<b id="name_sheet_1"> Báo cáo ${display_name } phụ trách</b><br>
 										<br>
 									</h3>
 								</div>
