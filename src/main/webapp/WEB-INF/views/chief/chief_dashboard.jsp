@@ -579,9 +579,6 @@
 	  	$('#myModal').modal('show');
 		$('div.dataTables_wrapper').addClass("change_font_size");
 	});
-
-
-
 </script>
 </body>
 </html>

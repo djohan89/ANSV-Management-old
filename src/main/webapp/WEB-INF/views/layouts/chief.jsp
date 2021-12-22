@@ -321,7 +321,7 @@
 
 			var week_option = "";
 			for (let i = tuan_nay; i >= 25; i--) {
-				if (i == tuan_nay - 1) {
+				if (i == ${week}) {
 					week_option += '<option value="' + '<c:url value="/chief/dashboard/" />' + i + '" selected>' + i + '</option>';
 				} else {
 					week_option += '<option value="' + '<c:url value="/chief/dashboard/" />' + i + '">' + i + '</option>';
