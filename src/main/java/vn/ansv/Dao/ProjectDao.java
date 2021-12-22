@@ -140,21 +140,23 @@ public class ProjectDao extends BaseDao {
 	/*Truy vấn dữ liệu chi tiết của sản phẩm theo khách hàng,tuần và theo loại project */
 	public List<ProjectDetailDto> getAllProjectByCustomerAndWeek(int week, int customer, int type){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
-		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id , role.name AS pic_role, projects_types.name AS type, priorities.name AS priority, projects_status.name AS status,customers.name AS customer,"
-				+ " project.name, project.tinh_trang_va_ke_hoach_chi_tiet, project.week,project.description,project.tong_muc_dau_tu_du_kien,project.hinh_thuc_dau_tu,project.muc_do_kha_thi,project.phan_tich_SWOT,project.pham_vi_cung_cap,"
-				+ " project.tong_gia_tri_thuc_te,project.DAC,project.FAC,project.PAC,project.so_tien_tam_ung,project.ke_hoach_tam_ung,project.so_tien_DAC,project.ke_hoach_thanh_toan_DAC,project.so_tien_PAC,project.ke_hoach_thanh_toan_PAC,"
-				+ " project.so_tien_FAC,project.ke_hoach_thanh_toan_FAC,project.ket_qua_thuc_hien_ke_hoach ,project.note "
-				+ " FROM project INNER JOIN pic ON project.id = pic.project_id "
-				+ " INNER JOIN users ON pic.pic = users.id "
-				+ " INNER JOIN users_roles ON users.id = users_roles.user "
-				+ " INNER JOIN role ON users_roles.role = role.id "
-				+ " INNER JOIN projects_types ON project.project_type = projects_types.id "
-				+ " INNER JOIN priorities ON project.priority = priorities.id "
-				+ " INNER JOIN projects_status ON project.project_status = projects_status.id "
-				+ " INNER JOIN customers ON project.customer = customers.id "
-				+ " WHERE project.week = ? "
+		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id , role.name AS pic_role, projects_types.name AS type, priorities.name AS priority, "
+				+ "projects_status.name AS status,customers.name AS customer, project.name, project.tinh_trang_va_ke_hoach_chi_tiet, project.week, project.description, "
+				+ "project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu,project.muc_do_kha_thi,project.phan_tich_SWOT,project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, "
+				+ "project.DAC, project.FAC, project.PAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung,project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, project.so_tien_PAC,"
+				+ "project.ke_hoach_thanh_toan_PAC, project.so_tien_FAC, project.ke_hoach_thanh_toan_FAC, project.ket_qua_thuc_hien_ke_hoach, project.note "
+				+ "FROM project INNER JOIN pic ON project.id = pic.project_id "
+				+ "INNER JOIN users ON pic.pic = users.id "
+				+ "INNER JOIN users_roles ON users.id = users_roles.user "
+				+ "INNER JOIN role ON users_roles.role = role.id "
+				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
+				+ "INNER JOIN priorities ON project.priority = priorities.id "
+				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
+				+ "INNER JOIN customers ON project.customer = customers.id "
+				+ "WHERE project.week = ? "
 				+ "AND customers.id = ? "
-				+ "AND projects_types.id  = ? ";
+				+ "AND projects_types.id  = ? "
+				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM')";
 				
 				
 		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(),week,customer,type);

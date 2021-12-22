@@ -115,7 +115,12 @@ public class LoginController {
 		}
 	    
 		session.setAttribute("role", "User");
-		return "redirect:/user/dashboard";
+		Calendar calendar = new GregorianCalendar();
+    	Date trialTime = new Date();   
+    	calendar.setTime(trialTime);     
+    	int week = calendar.get(Calendar.WEEK_OF_YEAR); // Get the curent week number
+    	int the_week_before = week - 1; // Get the week number before
+		return "redirect:/user/dashboard/"+the_week_before;
 	}
 	
 	@RequestMapping("/access_denied")
