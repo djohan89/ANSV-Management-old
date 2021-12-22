@@ -127,6 +127,7 @@
 		
 		.dropdown1{
 			left: 100% !important; 
+			transform: translate3d(-120px, 38px, 0px) !important;
 		}
 		
 		.tooltip_css .tooltiptext {

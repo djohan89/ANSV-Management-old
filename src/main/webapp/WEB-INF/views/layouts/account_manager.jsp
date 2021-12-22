@@ -269,46 +269,19 @@
 			$("#display_name").text("${ role } | " + textContent);
 			console.log(pathArray, get_role, textContent);
 			
-			$("#ud_tinh_trang").ckeditor({
-				toolbar : 'Basic',
-				uiColor : '#F7D358',
-				height : 100
-			});
-			
-			$("#ud_ket_qua").ckeditor({
-				toolbar : 'Basic',
-				uiColor : '#F7D358',
-				height : 100
-			});
-			
-			$("#ud_swot").ckeditor({
-				toolbar : 'Basic',
-				uiColor : '#F7D358',
-				height : 100
-			});
-			
-			$("#cr_mo_ta_du_an").ckeditor({
-			    toolbar : 'Basic',
-			    uiColor : '#F7D358',
-			    height  : 50
-			  });
-
-			  $("#cr_swot").ckeditor({
-			    toolbar : 'Basic',
-			    uiColor : '#F7D358',
-			    height  : 50
-			  });
-
-			  $("#cr_tinh_trang").ckeditor({
-			    toolbar : 'Basic',
-			    uiColor : '#F7D358',
-			    height  : 50
-			  });
-
-			  $("#cr_ket_qua").ckeditor({
-			    toolbar : 'Basic',
-			    uiColor : '#F7D358',
-			    height  : 50
+			$("#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua").ckeditor({
+				  toolbar: [
+						{ name: 'document', items: [ 'Source', '-' ] },											
+						{ name: 'undo', items: [ 'Undo', 'Redo' ] },																
+						{ name: 'align', items: [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-' ] },																									
+						{ name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-' ] },
+						{ name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+						{ name: 'indent', items: [ 'Outdent','Indent' ] },
+						{ name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+						{ name: 'tools', items: [ 'Maximize' ] },
+					],
+					uiColor : '#F7D358',
+					height  : 100 
 			  });
 		});
 	</script>

@@ -55,8 +55,110 @@
 <!-- summernote -->
 <link rel="stylesheet"
 	href="<c:url value='/assets/user/plugins/summernote/summernote-bs4.min.css' />">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- dataTable -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/>
+	<!--Script databasetable  -->
+	<script
+		src="<c:url value='/assets/user/plugins/jquery/jquery.min.js' />"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<style type="text/css">
+		table,table label, table thead{
+      font-size: 14px;
+    }
+    table.dataTable thead .sorting:after,
+    table.dataTable thead .sorting:before,
+    table.dataTable thead .sorting_asc:after,
+    table.dataTable thead .sorting_asc:before,
+    table.dataTable thead .sorting_asc_disabled:after,
+    table.dataTable thead .sorting_asc_disabled:before,
+    table.dataTable thead .sorting_desc:after,
+    table.dataTable thead .sorting_desc:before,
+    table.dataTable thead .sorting_desc_disabled:after,
+    table.dataTable thead .sorting_desc_disabled:before {
+      bottom: .5em;
+      font-size: 14px;
+    }
+    .table{
+      min-width: 100% ;
+    }
+    a.nav-link {
+        padding-left: 6px;
+    }
+    .change_font_size {
+      font-size: 11px;
+    }
+    .dataTables_scrollHeadInner {
+      min-width: 100%;
+    }
+    @media screen and (max-width: 1023px){
+      body .modal-content {
+      width: 100%;
+      position: absolute;
+      }
+    }
+
+    @media screen and (min-width: 1024px){
+      body .modal-content {
+      width: 220%;
+      position: absolute;
+      left: -50%;
+      }
+    }
+
+    .card-header{
+      background-color: rgb(0 0 0 / 25%);
+    }
+    
+    .dataTables_scrollHeadInner {
+		min-width: 96%;
+	}
+
+	.table {
+		min-width: 100%;
+	}
+	
+	.tooltip_css {
+	  	color: black;
+	}
+	
+	.tooltip_css .tooltiptext {
+		font-size: 11px;
+	  	visibility: hidden;
+	  	width: 77%;
+	  	color: #fff;
+	  	text-align: left;
+	  	border-radius: 6px;
+	  	padding: 5px 6px;
+		left:20%;
+	  	/* Position the tooltip */
+	  	position: absolute;
+	  	z-index: 1;
+	  	
+	  	/* Xuống dòng */
+	  	/* white-space: pre-wrap; */
+	  	
+	  	/* Khung viền */
+	  	border: 2px solid;
+	  	border-color: black;
+	}
+	
+	.tooltip_css:hover .tooltiptext {
+		  	visibility: visible;
+		}
+	
+	.tooltip_css:hover .tooltiptext {
+	  	visibility: visible;
+	}
+	</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
@@ -119,6 +221,12 @@
 	<!-- ChartJS -->
 	<script
 		src="<c:url value='/assets/user/plugins/chart.js/Chart.min.js' />"></script>
+	<!--CkEditor  -->
+	<script
+		src="<c:url value='/assets/user/plugins/ckeditor/ckeditor.js' />"></script>
+	<script
+		src="<c:url value='/assets/user/plugins/ckeditor/adapters/jquery.js' />"></script>
+		
 	<!-- Sparkline -->
 	<script
 		src="<c:url value='/assets/user/plugins/sparklines/sparkline.js' />"></script>
@@ -153,12 +261,64 @@
 	
 	<script type="text/javascript">
 		$( document ).ready(function() {
-			var pathArray = window.location.pathname.split('/'); // Get item from url
+			/* var pathArray = window.location.pathname.split('/'); // Get item from url
 			var get_role = pathArray[2]; // Get the third item
 			var display_name = document.getElementById('display_name'),
 				textContent = display_name.textContent;
 			$("#display_name").text("${ role } | " + textContent);
-			console.log(pathArray, get_role, textContent);
+			console.log(pathArray, get_role, textContent); */
+			
+			
+			$("#display_name").click(function () {
+				var element = document.getElementById("arrow_icon");
+				var check_class = element.classList.contains('fa-angle-left');
+				if (check_class == true) {
+					element.classList.remove("fa-angle-left");
+					element.classList.add("fa-angle-down");
+				} else {
+					element.classList.remove("fa-angle-down");
+					element.classList.add("fa-angle-left");
+				}
+		    });
+			$(".tree-toggle").click(function () {
+		        $(this).parent().children("ul.tree").toggle(200);
+		    });
+		    $(function () {
+		        $(".tree-toggle").parent().children("ul.tree").toggle(200);
+		    });
+		    
+		    
+			
+			$('.menu-click').click(function(){
+				if ($(this).children('.nav-link').hasClass( "active" )){
+					$(this).children('.nav-link').removeClass("active");
+				} else {
+					$(this).children('.nav-link').addClass("active");
+				}
+			});
+			
+			let now = new Date();
+			let onejan = new Date(now.getFullYear(), 0, 1);
+			let tuan_nay = Math.ceil((((now.getTime() - onejan.getTime()) / 86400000) + onejan.getDay() - 1) / 7);
+			
+			$('#select_week').select2();
+
+			var week_option = "";
+			for (let i = tuan_nay; i >= 25; i--) {
+				if (i == ${week}) {
+					week_option += '<option value="' + '<c:url value="/chief/dashboard/" />' + i + '" selected>' + i + '</option>';
+				} else {
+					week_option += '<option value="' + '<c:url value="/chief/dashboard/" />' + i + '">' + i + '</option>';
+				}
+			}
+			document.getElementById("select_week").innerHTML = week_option;
+			
+			
+			//
+			document.getElementById("yourLinkId").onclick = function() {
+				console.log("abc");
+			    document.getElementById("formLogout").submit();
+			}
 		});
 	</script>
 	
