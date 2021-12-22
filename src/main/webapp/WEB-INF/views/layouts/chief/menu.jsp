@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #04355d; color: white;">
 	<!-- Brand Logo -->
-	<a href="javascript:void(0)" class="brand-link"> 
+	<a href="<c:url value='/chief/dashboard/${week}' />" class="brand-link"> 
 		<img src="<c:url value='/assets/user/img/logo/logo_menu.png' />"
 			alt="ANSV Logo" class="brand-image img-circle elevation-3"
 			style="opacity: .8; width: 33px; height: 33px; background-color: white;">
@@ -31,9 +31,23 @@
 						</div>
                 	</label>
                     <ul class="nav nav-list tree">
-                        <li>
-	                        <i class="far fa-id-card" style="color: white; font-size: 25px;"></i>
-	                        <span style="margin-top: 5px;">Thông tin cá nhân</span>
+                        <li class="text-white pl-3" style="width: 100%;">
+                        	<a href="#">
+								<i class="far fa-id-card" style="font-size: 25px;"></i>
+	                        	<span class="pl-3">Thông tin cá nhân</span>
+							</a>
+	                    </li>
+	                    <li class="text-white pl-3 mt-1">
+                        	<a href="<c:url value='/j_spring_security_logout' />">
+                        		<i class="fas fa-sign-out-alt" style="font-size: 25px;"></i>
+	                        	<span class="pl-3">Đăng xuất</span>
+							</a>
+							<%-- <form action="<c:url value="/j_spring_security_logout" />" method="post">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								<button type="submit" class="btn btn-secondary btn-fill" style="font-size: 20px;">
+									<i class="fa fa-sign-out" style="font-weight: bold;"></i><b> Log out</b>
+								</button>
+							</form> --%>
 	                    </li>
                     </ul>
                 </li>
@@ -138,6 +152,8 @@
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->
+		
+		<div style="height: 25px;"></div>
 	</div>
 	<!-- /.sidebar -->
 </aside>

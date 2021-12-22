@@ -48,6 +48,9 @@
 <link rel="stylesheet"
 	href="<c:url value='/assets/user/plugins/daterangepicker/daterangepicker.css' />">
 
+<!-- === Select 2 === -->
+	<link href="<c:url value="/assets/user/vendor/select2/css/select2.min.css" />" rel="stylesheet" />
+
 <!-- summernote -->
 <link rel="stylesheet"
 	href="<c:url value='/assets/user/plugins/summernote/summernote-bs4.min.css' />">
@@ -166,6 +169,20 @@
 		.badge-statistics {
 			min-width: 23px;
 		}
+		
+		.select2-container--default .select2-selection--single{
+	        margin-left: 10px;
+	        padding: 2px 0;
+	        height: 30px;
+	        width: 65px; 
+	        font-size: 1.2em;  
+	        position: relative;
+	    }
+	    
+	    .select2-container--default .select2-dropdown.select2-dropdown--below {
+	        margin-left: 10px;
+	        width: 65px !important;
+	    }
 	</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -212,9 +229,9 @@
 		<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
-
-	<!-- jQuery -->
 	
+<!-- === Select 2 === -->
+	<script src="<c:url value="/assets/user/vendor/select2/js/select2.min.js" />"></script>
 	
 	<!-- jQuery UI 1.11.4 -->
 	<script
@@ -296,43 +313,21 @@
 				}
 			});
 			
-			// Jquery: Thay đổi icon arrow cho menu dọc (phần thống kê)
-			$('.thong-ke').click(function(){
-				/* if (!$(this).parent().children('div').hasClass("show")) {
-					$(this).parent().children('div').addClass("show");
-				} */
-				
-				if ($(this).children('i').hasClass("fa-angle-left")){
-					$(this).children('i').removeClass("fa-angle-left");
-					$(this).children('i').addClass("fa-angle-down");
-				}
-				
-				if ($(this).children('i').hasClass("fa-angle-down") && $(this).parent().children('div').hasClass("show")){
-					$(this).children('i').removeClass("fa-angle-down");
-					$(this).children('i').addClass("fa-angle-left");
-				}
-				
-				if ($(this).hasClass("thong-ke-click") && $(this).parent().children('div').hasClass("show")){
-					$(this).removeClass("thong-ke-click");
+			let now = new Date();
+			let onejan = new Date(now.getFullYear(), 0, 1);
+			let tuan_nay = Math.ceil((((now.getTime() - onejan.getTime()) / 86400000) + onejan.getDay() - 1) / 7);
+			
+			$('#select_week').select2();
+
+			var week_option = "";
+			for (let i = tuan_nay; i >= 25; i--) {
+				if (i == tuan_nay - 1) {
+					week_option += '<option value="' + '<c:url value="/chief/dashboard/" />' + i + '" selected>' + i + '</option>';
 				} else {
-					$(this).addClass("thong-ke-click");
+					week_option += '<option value="' + '<c:url value="/chief/dashboard/" />' + i + '">' + i + '</option>';
 				}
-				
-				
-			});
-			
-			// Jquery: Ngăn chặn việc đóng menu khi click vào item (phần thống kê)
-			$(document).on('click', '.not-close', function (e) {
-			  	e.stopPropagation();
-			});
-			
-			$('.nav-link').click(function(){
-				if (!$(this).hasClass("thong-ke")){
-					$('.nav-item, .dropdown').find('.thong-ke-click').removeClass("thong-ke-click");
-					$('.nav-item, .dropdown').find('.fa-angle-down').addClass("fa-angle-left");
-					$('.nav-item, .dropdown').find('.fa-angle-down').removeClass("fa-angle-down");
-				}
-			});
+			}
+			document.getElementById("select_week").innerHTML = week_option;
 			
 		});
 	</script>

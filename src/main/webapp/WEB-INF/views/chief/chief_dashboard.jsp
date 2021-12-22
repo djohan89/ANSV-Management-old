@@ -69,7 +69,7 @@
 										<button type="button" class="btn btn-danger btn-sm"
 											data-toggle="modal" data-target="#myModal">
 											<!-- <i class="fas fa-exclamation-triangle"></i> -->
-											<i class="fas fa-exclamation-triangle"></i>
+											<i class="fas fa-play"></i>
 										</button>
 										</c:if>
 
@@ -332,21 +332,9 @@
 									</tbody>
 								</table>
 							</div>
-
-
-
 							<!-- /.card-footer -->
 						</div>
-						<!-- /.card -->
-					</div>
-					
-					<!-- /.card -->
-
-					<!-- right col -->
-				</div>
-				<div class="row">
-					<div class="col-md-12 col-lg-12">
-						<!-- Calendar -->
+						
 						<div class="card" style="background: white">
 							<div class="card-header border-0 d-flex flex-row">
 								<div class="title-card">
@@ -418,7 +406,12 @@
 							</div>
 
 						</div>
+						<!-- /.card -->
 					</div>
+					
+					<!-- /.card -->
+
+					<!-- right col -->
 				</div>
 				<!-- /.row (main row) -->
 			</div>
