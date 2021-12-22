@@ -38,16 +38,13 @@
 							</a>
 	                    </li>
 	                    <li class="text-white pl-3 mt-1">
-                        	<a href="<c:url value='/j_spring_security_logout' />">
-                        		<i class="fas fa-sign-out-alt" style="font-size: 25px;"></i>
-	                        	<span class="pl-3">Đăng xuất</span>
-							</a>
-							<%-- <form action="<c:url value="/j_spring_security_logout" />" method="post">
+                        	<form action="<c:url value="/j_spring_security_logout" />" id="formLogout" method="post">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-								<button type="submit" class="btn btn-secondary btn-fill" style="font-size: 20px;">
-									<i class="fa fa-sign-out" style="font-weight: bold;"></i><b> Log out</b>
-								</button>
-							</form> --%>
+								<a href="javascript:void(0)" id="yourLinkId">
+	                        		<i class="fas fa-sign-out-alt" style="font-size: 25px;"></i>
+		                        	<span class="pl-3">Đăng xuất</span>
+								</a>
+							</form>
 	                    </li>
                     </ul>
                 </li>

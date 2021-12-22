@@ -329,6 +329,13 @@
 			}
 			document.getElementById("select_week").innerHTML = week_option;
 			
+			
+			//
+			document.getElementById("yourLinkId").onclick = function() {
+				console.log("abc");
+			    document.getElementById("formLogout").submit();
+			}
+			
 		});
 	</script>
 	
