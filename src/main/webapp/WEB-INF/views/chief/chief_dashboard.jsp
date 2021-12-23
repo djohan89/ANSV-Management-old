@@ -90,23 +90,29 @@
 														<!-- ===== Phần chèn thêm HTML ===== -->
 														
 															<c:forEach items="${project_slideshow }" var="project_item" varStatus="project_index">
-																<c:if test="${project_item.status =='High'}">
+																
 																	<div class="container item">
 																		<div>
 																			<h5 class="pb-2 pt-1 pl-3" style="background: red;border-radius: 16px; ">
 																				<a href="javascript:void(0)" style="color: #fff">${project_item.name }</a>
 																			</h5>
-																			<p><b>Người phụ trách:</b></b> ${project_item.pm }</p>
-																			<p><b>Người đầu mối:</b></b> ${project_item.am }</p>
 																			<div class="row">
-																				<div class="col-6"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
-																				<div class="col-6"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
+																				<div class="col-8">
+																					<p><b>Người phụ trách:</b></b> ${project_item.pm }</p>
+																				</div>
+																				<div class="col-4">
+																					<p><b>Người đầu mối:</b></b> ${project_item.am }</p>
+																				</div>
 																			</div>
 																			<div class="row">
-																				<div class="col-6">
+																				<div class="col-8"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
+																				<div class="col-4"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
+																			</div>
+																			<div class="row">
+																				<div class="col-8">
 																					<p style="white-space: pre-wrap;"><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
 																				</div>
-																				<div class="col-6">
+																				<div class="col-4">
 																					<p><b>Tổng giá trị:</b> 
 																						<c:if
 																							test="${ project_item.tong_gia_tri_thuc_te !=0}">
@@ -192,15 +198,16 @@
 														                		<p style="white-space: pre-wrap;"> ${project_item.ket_qua_thuc_hien_ke_hoach }</p>
 														                	</div>
 														                </div>
-																	</div>
-																</c:if>
+														                <div>
+														                	<figcaption class="text-center">${project_index.index +1 } / ${project_slideshow.size() } </figcaption>
+														                </div>
+																	</div> <!-- item carousel -->
 															</c:forEach>
-														
 														</div>
-													</div>
-												</div>
+													</div><!-- End body modal -->
+												</div><!--End modal content  -->
 											</div>
-										</div>
+										</div><!--End modal  -->
 										</c:if>	
 									</div>
 								</div>

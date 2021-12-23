@@ -129,6 +129,12 @@
 			left: 100% !important; 
 			transform: translate3d(-120px, 38px, 0px) !important;
 		}
+		figcaption {
+		    font-size: 14px;
+		    text-align: center;
+		    font-style: italic;
+		    
+		}
 		
 		.tooltip_css .tooltiptext {
 			font-size: 11px;
