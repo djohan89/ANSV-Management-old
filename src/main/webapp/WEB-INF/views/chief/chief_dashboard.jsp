@@ -58,7 +58,7 @@
 								<div class="title-card">
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
-										<b id="name_sheet_1"> Báo cáo triển khai tuần ${week } ${project_slideshow.size() } </b><br>
+										<b id="name_sheet_1"> Báo cáo triển khai tuần ${week } </b><br>
 										<br>
 									</h3>
 								</div>
@@ -77,12 +77,11 @@
 										<!-- Modal -->
 										<div class="modal fade" id="myModal" role="dialog">
 											<div class="modal-dialog">
-											<c:forEach items="${project_slideshow }" var="project_item" varStatus="project_index">
-												<c:if test="${project_item.status =='High'}">
+
 												<!-- Modal content-->
 												<div class="modal-content" style="color: black;">
 													<div class="modal-header" style="border-bottom: none">
-														 <span class="modal-title" id="modal_title">${project_index.index +1 } of ${project_slideshow.size() }</span> 
+														<!-- <h5 class="modal-title" id="modal_title">Các dự án chậm tiến độ</h5> -->
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
 													</div>
 													<div class="modal-body"
@@ -90,23 +89,30 @@
 														<div class="owl-carousel owl-theme" id="detail_slide">
 														<!-- ===== Phần chèn thêm HTML ===== -->
 														
-															
+															<c:forEach items="${project_slideshow }" var="project_item" varStatus="project_index">
+																
 																	<div class="container item">
 																		<div>
 																			<h5 class="pb-2 pt-1 pl-3" style="background: red;border-radius: 16px; ">
 																				<a href="javascript:void(0)" style="color: #fff">${project_item.name }</a>
 																			</h5>
-																			<p><b>Người phụ trách:</b></b> ${project_item.pm }</p>
-																			<p><b>Người đầu mối:</b></b> ${project_item.am }</p>
 																			<div class="row">
-																				<div class="col-6"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
-																				<div class="col-6"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
+																				<div class="col-8">
+																					<p><b>Người phụ trách:</b></b> ${project_item.pm }</p>
+																				</div>
+																				<div class="col-4">
+																					<p><b>Người đầu mối:</b></b> ${project_item.am }</p>
+																				</div>
 																			</div>
 																			<div class="row">
-																				<div class="col-6">
+																				<div class="col-8"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
+																				<div class="col-4"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
+																			</div>
+																			<div class="row">
+																				<div class="col-8">
 																					<p style="white-space: pre-wrap;"><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
 																				</div>
-																				<div class="col-6">
+																				<div class="col-4">
 																					<p><b>Tổng giá trị:</b> 
 																						<c:if
 																							test="${ project_item.tong_gia_tri_thuc_te !=0}">
@@ -192,15 +198,16 @@
 														                		<p style="white-space: pre-wrap;"> ${project_item.ket_qua_thuc_hien_ke_hoach }</p>
 														                	</div>
 														                </div>
-																	</div>
-																</c:if>
+														                <div>
+														                	<figcaption class="text-center">${project_index.index +1 } / ${project_slideshow.size() } </figcaption>
+														                </div>
+																	</div> <!-- item carousel -->
 															</c:forEach>
-														
 														</div>
-													</div>
-												</div>
+													</div><!-- End body modal -->
+												</div><!--End modal content  -->
 											</div>
-										</div>
+										</div><!--End modal  -->
 										</c:if>	
 									</div>
 								</div>
