@@ -22,9 +22,21 @@ public class CustomersDao extends BaseDao {
 		return _jdbcTemplate.query(sql, new MenuCustomersDtoMapper(), week);
 	} 
 	
-	public List<Customer> getAllCustomer(){
+	public List<Customer> getAllCustomerForm(){
 		String sql ="SELECT * FROM customers";
 		
+		return _jdbcTemplate.query(sql, new CustomerMapper());
+		
+	}
+	
+	public int getCount(){
+		String sql ="SELECT count(*) FROM customers";
+		return _jdbcTemplate.queryForObject(sql, Integer.class);
+		
+	}
+	
+	public List<Customer> getTest(){
+		String sql ="SELECT * FROM customers";
 		
 		return _jdbcTemplate.query(sql, new CustomerMapper());
 		

@@ -13,6 +13,6 @@ public interface ICustomersService {
 
 	@Autowired
 	public List<MenuCustomersDto> getAllByWeek(int week);
-	public List<Customer> getAllCustomer();
+	public List<Customer> getAllCustomerForm();
 	
 }

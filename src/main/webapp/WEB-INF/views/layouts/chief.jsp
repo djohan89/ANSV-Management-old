@@ -248,28 +248,25 @@
 		$.widget.bridge('uibutton', $.ui.button)
 	</script>
 	<!-- Bootstrap 4 -->
-	<script
-		src="<c:url value='/assets/user/plugins/bootstrap/js/bootstrap.bundle.min.js' />"></script>
+	<script src="<c:url value='/assets/user/plugins/bootstrap/js/bootstrap.bundle.min.js' />"></script>
+		
+	<!--CkEditor  -->
+	<script src="<c:url value='/assets/user/plugins/ckeditor/ckeditor.js' />"></script>
+	<script src="<c:url value='/assets/user/plugins/ckeditor/adapters/jquery.js' />"></script>
+		
 	<!-- ChartJS -->
-	<script
-		src="<c:url value='/assets/user/plugins/chart.js/Chart.min.js' />"></script>
+	<script src="<c:url value='/assets/user/plugins/chart.js/Chart.min.js' />"></script>
 	<!-- Sparkline -->
-	<script
-		src="<c:url value='/assets/user/plugins/sparklines/sparkline.js' />"></script>
+	<script src="<c:url value='/assets/user/plugins/sparklines/sparkline.js' />"></script>
 	<!-- jQuery Knob Chart -->
-	<script
-		src="<c:url value='/assets/user/plugins/jquery-knob/jquery.knob.min.js' />"></script>
+	<script src="<c:url value='/assets/user/plugins/jquery-knob/jquery.knob.min.js' />"></script>
 	<!-- daterangepicker -->
-	<script
-		src="<c:url value='/assets/user/plugins/moment/moment.min.js' />"></script>
-	<script
-		src="<c:url value='/assets/user/plugins/daterangepicker/daterangepicker.js' />"></script>
+	<script src="<c:url value='/assets/user/plugins/moment/moment.min.js' />"></script>
+	<script src="<c:url value='/assets/user/plugins/daterangepicker/daterangepicker.js' />"></script>
 	<!-- Tempusdominus Bootstrap 4 -->
-	<script
-		src="<c:url value='/assets/user/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' />"></script>
+	<script src="<c:url value='/assets/user/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' />"></script>
 	<!-- Summernote -->
-	<script
-		src="<c:url value='/assets/user/plugins/summernote/summernote-bs4.min.js' />"></script>
+	<script src="<c:url value='/assets/user/plugins/summernote/summernote-bs4.min.js' />"></script>
 	<!-- overlayScrollbars -->
 	<script
 		src="<c:url value='/assets/user/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' />"></script>
@@ -337,11 +334,26 @@
 			document.getElementById("select_week").innerHTML = week_option;
 			
 			
-			//
+			// Form logout cho thẻ a (menu)
 			document.getElementById("yourLinkId").onclick = function() {
 				console.log("abc");
 			    document.getElementById("formLogout").submit();
 			}
+			
+			$("#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua").ckeditor({
+			  	toolbar: [
+					{ name: 'document', items: [ 'Source', '-' ] },											
+					{ name: 'undo', items: [ 'Undo', 'Redo' ] },																
+					{ name: 'align', items: [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-' ] },																									
+					{ name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-' ] },
+					{ name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+					{ name: 'indent', items: [ 'Outdent','Indent' ] },
+					{ name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+					{ name: 'tools', items: [ 'Maximize' ] },
+				],
+				uiColor : '#F7D358',
+				height  : 100 
+		  	});
 			
 		});
 	</script>

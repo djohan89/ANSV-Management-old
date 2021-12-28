@@ -1,8 +1,8 @@
 package vn.ansv.Entity;
 
 public class Priority {
-	int id;
-	String name;
+	private int id;
+	private String name;
 	
 	public Priority() {
 		super();

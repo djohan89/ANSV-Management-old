@@ -22,10 +22,8 @@
 </style>
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
-		<div class="content-header">
-		<a href="<c:url value='/AM/create/${week }' />" class="btn btn-info" role="button">Thêm dự án</a>
-				
-			<!-- /.container-fluid -->
+		<div class="content-header ml-2">
+			<a href="<c:url value='/AM/create/${week}' />" class="btn btn-info" role="button">Thêm dự án</a>
 		</div>
 		<!-- /.content-header -->
 
@@ -73,14 +71,15 @@
 									<thead>
 										<tr>
 											<th>Dự án</th>
-											<th>Type</th>
-											<th>Priority</th> 
+											<th style="width: 15%;">Type</th>
+											<th style="width: 8%;">Priority</th> 
 											<th>Nhóm</th>
-											<th>PIC</th>
+											<th style="width: 15%;">PIC</th>
+											<th style="width: 11%;"></th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${project_table_pic }" var="project_item" varStatus="project_index">
+										<c:forEach items="${project_table_pic}" var="project_item" varStatus="project_index">
 
 												<tr>
 													<td>
@@ -104,19 +103,23 @@
 														</c:if>
 													</td>
 													<td>${project_item.type }</td>
-													<td>
+													<td align="center">
 														<c:if test="${project_item.status =='High' }">
-															<button type="button" class="btn btn-danger" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-danger w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
-															<button type="button" class="btn btn-warning" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
-															<button type="button" class="btn btn-success" ><font size="-1">${project_item.priority }</font></button>
+															<button type="button" class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
 													<td>${project_item.pm }</td>
+													<td class="d-flex" style="border-left: 1px solid black;">
+														<a href="<c:url value='/AM/edit/${project_item.id_pk}' />" class="btn btn-warning w-50" role="button">Sửa</a>
+														<a href="<c:url value='/AM/delete/${project_item.id_pk}' />" class="btn btn-danger w-50 ml-1" role="button">Xoá</a>
+													</td>
 												</tr>
 											
 										</c:forEach>	

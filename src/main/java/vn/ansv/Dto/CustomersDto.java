@@ -1,14 +1,14 @@
-package vn.ansv.Entity;
+package vn.ansv.Dto;
 
 import java.sql.Date;
 
-public class Customer {
+public class CustomersDto {
 	private int id;
 	private String name;
 	private String created_by;
 	private Date created_at;
 	
-	public Customer() {
+	public CustomersDto() {
 		super();
 	}
 

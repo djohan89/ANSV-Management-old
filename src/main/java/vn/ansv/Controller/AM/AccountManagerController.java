@@ -18,7 +18,6 @@ public class AccountManagerController extends AccountManagerBaseController {
 		InitAM(week);
 		String pic_id = (String) session.getAttribute("user_id");
 		_mvShare.addObject("project_table_pic",_projectService.getDashboardTableByPIC(week,pic_id )); // Dữ liệu khái quát hiển thị lên dashboard (datatable)
-
 		_mvShare.setViewName("AM/am_dashboard"); 
 		
 		return _mvShare; 
@@ -26,7 +25,6 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	@RequestMapping(value = { "/detail/{week}/{id}" }, method = RequestMethod.GET)
 	public ModelAndView AmDetail(@PathVariable int week, @PathVariable  int id) {
-		
 		
 		InitAM(week);
 		_mvShare.addObject("detail",_projectService.getAllDetailById(week,id));
@@ -38,10 +36,9 @@ public class AccountManagerController extends AccountManagerBaseController {
 	@RequestMapping(value = { "/update/{week}/{id}" }, method = RequestMethod.GET)
 	public ModelAndView AmUpdate(@PathVariable int week, @PathVariable  int id) {
 		
-		
 		InitAM(week);
 		_mvShare.addObject("detail",_projectService.getAllDetailById(week,id));
-		_mvShare.addObject("customers",_customersService.getAllCustomer());
+		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
 		_mvShare.addObject("priorities",_priorityService.getAllPriority());
 		_mvShare.addObject("status",_priorityService.getAllStatus());
 		_mvShare.addObject("type",_priorityService.getAllType());
@@ -53,9 +50,8 @@ public class AccountManagerController extends AccountManagerBaseController {
 	@RequestMapping(value = { "/create/{week}" }, method = RequestMethod.GET)
 	public ModelAndView AmCreate(@PathVariable int week) {
 		
-		
 		InitAM(week);
-		_mvShare.addObject("customers",_customersService.getAllCustomer());
+		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
 		_mvShare.addObject("priorities",_priorityService.getAllPriority());
 		_mvShare.addObject("status",_priorityService.getAllStatus());
 		_mvShare.addObject("type",_priorityService.getAllType());
