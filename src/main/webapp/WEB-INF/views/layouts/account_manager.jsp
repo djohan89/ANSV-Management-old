@@ -332,6 +332,7 @@
 			}
 			
 			$("#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua").ckeditor({
+				editorplaceholder: 'Nội dung...',
 			  	toolbar: [
 					{ name: 'document', items: [ 'Source', '-' ] },											
 					{ name: 'undo', items: [ 'Undo', 'Redo' ] },																

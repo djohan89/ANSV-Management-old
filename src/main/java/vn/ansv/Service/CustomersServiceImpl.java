@@ -20,7 +20,6 @@ public class CustomersServiceImpl implements ICustomersService {
 	}
 
 	public List<Customer> getAllCustomerForm() {
-		
 		return customersDao.getAllCustomerForm();
 	}
 

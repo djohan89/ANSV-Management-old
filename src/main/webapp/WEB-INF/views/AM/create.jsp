@@ -2,20 +2,30 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/layouts/taglib.jsp"%>
 
-<!DOCTYPE html>
-<html>
 <head>
 <meta charset="UTF-8">
 <title>AM | Create project</title>
 </head>
 <body>
-	<div class="content-wrapper">
+	<div class="content-wrapper bg-white">
 		<section class="content">
 			<div class="container-fluid">
-				<h2 class="text-center mt-3">Thêm dự án</h2>
+				<h2 class="text-center mt-3"><b>Tạo dự án</b></h2><br />
 				<form>
 					<div class="row">
 						<div class="col-md-5">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="loai_du_an">Loại dự án</label>
+								</div>
+								<select class="custom-select" id="loai_du_an"
+									onchange="typeObject(this);">
+									<option selected>Choose...</option>
+									<option value="2">Viễn thông</option>
+									<option value="3">Chuyển đổi số</option>
+								</select>
+							</div>
+						
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text">Tên dự án</span>
@@ -26,29 +36,15 @@
 
 							
 							<div class="input-group mb-3">
-										<div class="input-group-prepend">
-											<label class="input-group-text" for="khach_hang">Khách
-												hàng</label>
-										</div>
-										<select class="custom-select" id="khach_hang">
-											<option selected>Choose...</option>
-											<c:forEach var="customer" items="${customers}">
-												<option value="${customer.id }">${customer.name }</option> 
-											</c:forEach>
-											
-										</select>
-									</div>
-
-							<div class="input-group mb-3">
 								<div class="input-group-prepend">
-									<label class="input-group-text" for="loai_du_an">Loại
-										dự án</label>
+									<label class="input-group-text" for="khach_hang">Khách
+										hàng</label>
 								</div>
-								<select class="custom-select" id="loai_du_an"
-									onchange="typeObject(this);">
+								<select class="custom-select" id="khach_hang">
 									<option selected>Choose...</option>
-									<option value="2">Viễn thông</option>
-									<option value="3">Chuyển đổi số</option>
+									<c:forEach var="customer" items="${customers}">
+										<option value="${customer.id }">${customer.name }</option> 
+									</c:forEach>
 									
 								</select>
 							</div>
@@ -149,4 +145,3 @@
 		</section>
 	</div>
 </body>
-</html>

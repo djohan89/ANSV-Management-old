@@ -1,5 +1,7 @@
 package vn.ansv.Dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -22,10 +24,26 @@ public class CustomersDao extends BaseDao {
 		return _jdbcTemplate.query(sql, new MenuCustomersDtoMapper(), week);
 	} 
 	
-	public List<Customer> getAllCustomerForm(){
+	public List<Customer> getAll(){
 		String sql ="SELECT * FROM customers";
 		
 		return _jdbcTemplate.query(sql, new CustomerMapper());
+		
+	}
+	
+	public List<Customer> getAllCustomerForm(){
+		String sql ="SELECT id, name FROM customers";
+		
+		return _jdbcTemplate.query(sql, new CustomerMapper() {
+			public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Customer customer = new Customer();
+				
+				customer.setId(rs.getInt("id"));
+				customer.setName(rs.getString("name"));
+				
+				return customer;
+			}
+		});
 		
 	}
 	

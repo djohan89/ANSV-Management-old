@@ -28,6 +28,18 @@ public class LoginController {
 	@Autowired
 	RoleServiceImpl roleService;
 	
+	// Hàm lấy số tuần
+	public int getWeekOfYear(Date date) {
+		
+		Calendar calendar = new GregorianCalendar();
+    	calendar.setFirstDayOfWeek(Calendar.MONDAY);
+		calendar.setMinimalDaysInFirstWeek(3);
+		calendar.setTime(date);
+		int week = calendar.get(Calendar.WEEK_OF_YEAR);
+		
+		return week;
+	}
+	
 	@RequestMapping("/login")
 	public String login(@RequestParam(required = false) String message, final Model model) {
 		if (message != null && !message.isEmpty()) {
@@ -57,6 +69,29 @@ public class LoginController {
 	@RequestMapping("/login_success")
 	public String loginSuccess(HttpServletRequest request, HttpSession session, Model model, Authentication authentication) {
 		String userName = "- (*)Chưa đăng nhập!"; // Any default user  name
+		int the_week_before = 0;
+		
+		Date trialTime = new Date();   
+		int current_week = getWeekOfYear(trialTime); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int year = Calendar.getInstance().get(Calendar.YEAR); // Get the curent year
+    	System.out.println("The current year: " + year);
+		
+		// Kiểm tra tuần hiện tại => lấy ra tuần trước đó
+		if (current_week == 1) {
+			//Nếu tuần hiện tại lấy được là tuần đầu tiên của năm nay (tuần 1) => "Tuần trước" sẽ là tuần cuối cùng của năm trước
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(trialTime);
+			cal.add(Calendar.DATE, -7);
+			Date dateBefore7Days = cal.getTime();
+			System.out.println("abc: " + dateBefore7Days);
+			the_week_before = getWeekOfYear(dateBefore7Days); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+			year = year - 1;
+		} else {
+			the_week_before = current_week - 1; // Nếu ko phải thì chỉ cần trừ đi 1 => "Tuần trước"
+		}
+		System.out.println("The week before: " + the_week_before);
+		System.out.println("The current week: " + current_week);
+    	System.out.println("The current date: " + trialTime);
 
 		if (authentication != null) {
 	    	UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -82,45 +117,23 @@ public class LoginController {
 		    	return "redirect:/admin/dashboard";
 		    }
 			if (request.isUserInRole("ROLE_CEO")) {
-				Calendar calendar = new GregorianCalendar();
-		    	Date trialTime = new Date();   
-		    	calendar.setTime(trialTime);     
-		    	int week = calendar.get(Calendar.WEEK_OF_YEAR); // Get the curent week number
-		    	int the_week_before = week - 1; // Get the week number before
-		    	System.out.println("Week number:" + 
-		    	    calendar.get(Calendar.WEEK_OF_YEAR));
-		    	System.out.println("Date: " + trialTime);
-		    	
-		    	// The second user's role
-		    	session.setAttribute("role", "CEO");
-		    	return "redirect:/chief/dashboard/"+the_week_before;
+				session.setAttribute("role", "chief");
+		    	return "redirect:/chief/dashboard/" + the_week_before + year;
 		    }
 			if (request.isUserInRole("ROLE_AM")) {
-				Calendar calendar = new GregorianCalendar();
-		    	Date trialTime = new Date();   
-		    	calendar.setTime(trialTime);     
-		    	int week = calendar.get(Calendar.WEEK_OF_YEAR); // Get the curent week number
-		    	int the_week_before = week - 1; // Get the week number before
-		    	// The second user's role
-		    	session.setAttribute("role", "AM");
-		    	return "redirect:/AM/dashboard/"+the_week_before;
+				session.setAttribute("role", "AM");
+		    	return "redirect:/AM/dashboard/" + the_week_before + year;
 		    }
 			if (request.isUserInRole("ROLE_PM")) {
-				// The third user's role
-		    	session.setAttribute("role", "PM");
-		    	return "redirect:/PM/dashboard";
+				session.setAttribute("role", "PM");
+		    	return "redirect:/PM/dashboard/" + the_week_before + year;
 		    }
 			// End: Check user's role and then redirect
 		
 		}
 	    
-		session.setAttribute("role", "User");
-		Calendar calendar = new GregorianCalendar();
-    	Date trialTime = new Date();   
-    	calendar.setTime(trialTime);     
-    	int week = calendar.get(Calendar.WEEK_OF_YEAR); // Get the curent week number
-    	int the_week_before = week - 1; // Get the week number before
-		return "redirect:/user/dashboard/"+the_week_before;
+		session.setAttribute("role", "user");
+		return "redirect:/user/dashboard/"+the_week_before + year;
 	}
 	
 	@RequestMapping("/access_denied")

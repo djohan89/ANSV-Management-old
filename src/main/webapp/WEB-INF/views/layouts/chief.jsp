@@ -188,7 +188,11 @@
 	    
 	    .select2-container--default .select2-dropdown.select2-dropdown--below {
 	        margin-left: 10px;
-	        width: 65px !important;
+	        width: 60px !important;
+	    }
+	    
+	    .select2-container--default .select2-selection--single {
+	    	width: 60px !important;
 	    }
 	</style>
 </head>
@@ -279,12 +283,11 @@
 	
 	<script type="text/javascript">
 		$( document ).ready(function() {
-			/* var pathArray = window.location.pathname.split('/'); // Get item from url
-			var get_role = pathArray[2]; // Get the third item
-			var display_name = document.getElementById('display_name'),
-				textContent = display_name.textContent;
-			$("#display_name").text("${ role } | " + textContent); */
-			/* console.log(pathArray, get_role, textContent); */
+			var pathArray = window.location.pathname.split('/'); // Get item from url
+			var get_data_id_url = pathArray[4]; // Get the fifth item
+			var week_from_url = get_data_id_url.slice(0,2);
+			var year_from_url = get_data_id_url.slice(2);
+			console.log(week_from_url, year_from_url);
 			
 			
 			
@@ -321,23 +324,45 @@
 			let onejan = new Date(now.getFullYear(), 0, 1);
 			let tuan_nay = Math.ceil((((now.getTime() - onejan.getTime()) / 86400000) + onejan.getDay() - 1) / 7);
 			
+			
+			
+			/* ===== Đầu: Thiết lập select 2 cho phần Header ===== */
 			$('#select_week').select2();
-
+			$('#select_year').select2();
 			var week_option = "";
-			for (let i = tuan_nay; i >= 25; i--) {
-				if (i == ${week}) {
-					week_option += '<option value="' + '<c:url value="/chief/dashboard/" />' + i + '" selected>' + i + '</option>';
+			var year_option = "";
+			
+			for (let i = 2020; i <= 2022; i++) {
+				if (i == year_from_url) {
+					year_option += '<option value="' + i + '" selected>' + i + '</option>';
 				} else {
-					week_option += '<option value="' + '<c:url value="/chief/dashboard/" />' + i + '">' + i + '</option>';
+					year_option += '<option value="' + i + '">' + i + '</option>';
 				}
 			}
-			document.getElementById("select_week").innerHTML = week_option;
+			document.getElementById("select_year").innerHTML = year_option; // Nhúng HTML cho dữ liệu Select2 (year)
+			
+			for (let i = 1; i <= 53; i++) {
+				if (i == week_from_url) {
+					week_option += '<option value="' + i + '" selected>' + i + '</option>';
+				} else {
+					week_option += '<option value="' + i + '">' + i + '</option>';
+				}
+			}
+			document.getElementById("select_week").innerHTML = week_option; // Nhúng HTML cho dữ liệu Select2 (week)
+			
+			var year_link = "", week_link="";
+			$('#select_week').on('select2:select', function (e) {
+				week_link = $("#select_week").val();
+				year_link = $("#select_year").val();
+				console.log(year_link);
+				window.location.href = '<c:url value="/${role}/dashboard/' + week_link + year_link + '" />';
+			});
+			/* ===== Cuối: Thiết lập select 2 cho phần Header ===== */
 			
 			
 			// Form logout cho thẻ a (menu)
 			document.getElementById("yourLinkId").onclick = function() {
-				console.log("abc");
-			    document.getElementById("formLogout").submit();
+				document.getElementById("formLogout").submit();
 			}
 			
 			$("#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua").ckeditor({

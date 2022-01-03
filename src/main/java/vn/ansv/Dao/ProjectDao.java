@@ -17,6 +17,7 @@ import vn.ansv.Dto.SlideshowProjectsDto;
 import vn.ansv.Dto.SlideshowProjectsDtoMapper;
 import vn.ansv.Dto.Menu.MenuProjectsDto;
 import vn.ansv.Dto.Menu.MenuProjectsDtoMapper;
+import vn.ansv.Entity.Project;
 
 @Repository
 public class ProjectDao extends BaseDao {
@@ -195,5 +196,19 @@ public class ProjectDao extends BaseDao {
 		list = _jdbcTemplate.query(sql, new DashboardProjectPicDtoMapper(), week,pic_id);
 		return list;
 	}
+	
+	
+	
+/* ===== Đầu: Account Manager ===== */
+	public void save(Project project, int week) {
+		String sql = "INSERT INTO project (project_type, priority, project_status, customer, week, name, description, "
+				+ "tong_muc_dau_tu_du_kien, hinh_thuc_dau_tu, muc_do_kha_thi, phan_tich_SWOT, tinh_trang_va_ke_hoach_chi_tiet, "
+				+ "ket_qua_thuc_hien_ke_hoach) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		_jdbcTemplate.update(sql, project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), 
+				week, project.getName(), project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), 
+				project.getMuc_do_kha_thi(), project.getPhan_tich_SWOT(), project.getTinh_trang_va_ke_hoach_chi_tiet(), 
+				project.getKet_qua_thuc_hien_ke_hoach());
+	}
+/* ===== Cuối: Account Manager ===== */
 
 }

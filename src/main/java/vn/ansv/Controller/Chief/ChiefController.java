@@ -9,8 +9,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller(value = "Chief_HomeController")
 public class ChiefController extends ChiefBaseController {
 	
-	@RequestMapping(value = { "/chief/dashboard/{week}" }, method = RequestMethod.GET)
-	public ModelAndView chiefHome(@PathVariable int week) {
+	@RequestMapping(value = { "/chief/dashboard/{data_id}" }, method = RequestMethod.GET)
+	public ModelAndView chiefHome(@PathVariable String data_id) {
+		String data_week = data_id.substring(0,2); // Lấy ra 2 ký tự đầu từ dữ liệu truyền vào (tuần)
+		String data_year = data_id.substring(2); // Lấy ra những ký tự còn lại từ dữ liệu truyền vào (năm)
+		// Chuyển chuỗi con thành kiểu Int
+		int week = Integer.parseInt(data_week);
+		int year = Integer.parseInt(data_year);
+		System.out.println("Data week: " + week);
+		System.out.println("Data year: " + year);
 		
 		InitCEO(week);
 		_mvShare.addObject("project_table",_projectService.getDashboardTableByWeek(week)); // Dữ liệu khái quát hiển thị lên dashboard (datatable)
