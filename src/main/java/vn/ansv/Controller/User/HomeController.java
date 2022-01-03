@@ -27,7 +27,7 @@ public class HomeController extends UserBaseController {
 	public ModelAndView memberDetail(@PathVariable int week, @PathVariable  int id) {
 		
 		InitUser(week);
-		_mvShare.addObject("detail",_projectService.getAllDetailById(week,id));
+		_mvShare.addObject("detail",_projectService.getById(id));
 		_mvShare.setViewName("user/detail");
 		
 		return _mvShare;

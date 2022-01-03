@@ -9,41 +9,33 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller(value = "Chief_HomeController")
 public class ChiefController extends ChiefBaseController {
 	
-	@RequestMapping(value = { "/chief/dashboard/{data_id}" }, method = RequestMethod.GET)
-	public ModelAndView chiefHome(@PathVariable String data_id) {
-		String data_week = data_id.substring(0,2); // Lấy ra 2 ký tự đầu từ dữ liệu truyền vào (tuần)
-		String data_year = data_id.substring(2); // Lấy ra những ký tự còn lại từ dữ liệu truyền vào (năm)
-		// Chuyển chuỗi con thành kiểu Int
-		int week = Integer.parseInt(data_week);
-		int year = Integer.parseInt(data_year);
-		System.out.println("Data week: " + week);
-		System.out.println("Data year: " + year);
-		
-		InitCEO(week);
-		_mvShare.addObject("project_table",_projectService.getDashboardTableByWeek(week)); // Dữ liệu khái quát hiển thị lên dashboard (datatable)
-		_mvShare.addObject("project_slideshow",_projectService.getSlideshowProject(week)); // Dữ liệu dự án triển khai hiển thị trên Slideshow
-		
+	@RequestMapping(value = { "/chief/dashboard/{week}_{year}" }, method = RequestMethod.GET)
+	public ModelAndView chiefHome(@PathVariable int week, @PathVariable int year) {
+		InitCEO(week,year);
+		// Dữ liệu khái quát hiển thị lên dashboard (datatable)
+		_mvShare.addObject("project_table",_projectService.getDashboardTable(week,year));
+		// Dữ liệu dự án triển khai hiển thị trên Slideshow
+		_mvShare.addObject("project_slideshow",_projectService.getSlideshowProject(week,year));
 		_mvShare.setViewName("chief/chief_dashboard");
 		
 		return _mvShare;
 	}
 
-	@RequestMapping(value = { "/chief/customer_detail/{week}/{type}/{customer}" }, method = RequestMethod.GET)
-	public ModelAndView chiefCustomer(@PathVariable int week, @PathVariable int customer, @PathVariable int type) {
+	@RequestMapping(value = { "/chief/customer_detail/{week}_{year}_{type}_{customer}" }, method = RequestMethod.GET)
+	public ModelAndView chiefCustomer(@PathVariable int week, @PathVariable int year, @PathVariable int customer, @PathVariable int type) {
 		
-		InitCEO(week);
-		_mvShare.addObject("customer",_projectService.getAllProjectByCustomerAndWeek(week, customer, type));
+		InitCEO(week,year);
+		_mvShare.addObject("customer",_projectService.getAllProjectByCustomer(week, year, customer, type));
 		_mvShare.setViewName("chief/customer_detail");
 		
 		return _mvShare;
 	}
 	
-	@RequestMapping(value = { "/chief/detail/{week}/{id}" }, method = RequestMethod.GET)
-	public ModelAndView chiefDetail(@PathVariable int week, @PathVariable  int id) {
+	@RequestMapping(value = { "/chief/detail/{week}_{year}_{id}" }, method = RequestMethod.GET)
+	public ModelAndView chiefDetail(@PathVariable int week, @PathVariable int year, @PathVariable int id) {
 		
-		
-		InitCEO(week);
-		_mvShare.addObject("detail",_projectService.getAllDetailById(week,id));
+		InitCEO(week,year);
+		_mvShare.addObject("detail",_projectService.getById(id));
 		_mvShare.setViewName("chief/detail");
 		
 		return _mvShare;

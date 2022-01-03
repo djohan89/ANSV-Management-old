@@ -19,27 +19,27 @@ import vn.ansv.Entity.Project;
 @RequestMapping("AM")
 public class AccountManagerController extends AccountManagerBaseController {
 
-	@RequestMapping(value = { "/dashboard/{week}" }, method = RequestMethod.GET)
-	public ModelAndView AmHome(@PathVariable int week,HttpSession session) {
-		InitAM(week);
+	@RequestMapping(value = { "/dashboard/{week}_{year}" }, method = RequestMethod.GET)
+	public ModelAndView AmHome(@PathVariable int week, @PathVariable int year, HttpSession session) {
+		InitAM(week, year);
 		String pic_id = (String) session.getAttribute("user_id");
 		_mvShare.addObject("project_table_pic",_projectService.getDashboardTableByPIC(week,pic_id )); // Dữ liệu khái quát hiển thị lên dashboard (datatable)
 		_mvShare.setViewName("AM/am_dashboard"); 
 		return _mvShare; 
 	}
 	
-	@RequestMapping(value = { "/detail/{week}/{id}" }, method = RequestMethod.GET)
-	public ModelAndView AmDetail(@PathVariable int week, @PathVariable  int id) {
-		InitAM(week);
-		_mvShare.addObject("detail",_projectService.getAllDetailById(week,id));
+	@RequestMapping(value = { "/detail/{week}_{year}_{id}" }, method = RequestMethod.GET)
+	public ModelAndView AmDetail(@PathVariable int week, @PathVariable int year, @PathVariable  int id) {
+		InitAM(week, year);
+		_mvShare.addObject("detail",_projectService.getById(id));
 		_mvShare.setViewName("AM/detail");
 		return _mvShare;
 	}
 	
-	@RequestMapping(value = { "/update/{week}/{id}" }, method = RequestMethod.GET)
-	public ModelAndView AmUpdate(@PathVariable int week, @PathVariable  int id) {
-		InitAM(week);
-		_mvShare.addObject("detail",_projectService.getAllDetailById(week,id));
+	@RequestMapping(value = { "/update/{week}_{year}_{id}" }, method = RequestMethod.GET)
+	public ModelAndView AmUpdate(@PathVariable int week, @PathVariable int year, @PathVariable  int id) {
+		InitAM(week, year);
+		_mvShare.addObject("detail",_projectService.getById(id));
 		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
 		_mvShare.addObject("priorities",_priorityService.getAllPriority());
 		_mvShare.addObject("status",_priorityService.getAllStatus());
@@ -48,9 +48,9 @@ public class AccountManagerController extends AccountManagerBaseController {
 		return _mvShare;
 	}
 	
-	@RequestMapping(value = { "/create/{week}" }, method = RequestMethod.GET)
-	public ModelAndView AmCreate(@PathVariable int week) {
-		InitAM(week);
+	@RequestMapping(value = { "/create/{week}_{year}" }, method = RequestMethod.GET)
+	public ModelAndView AmCreate(@PathVariable int week, @PathVariable int year) {
+		InitAM(week, year);
 		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
 		_mvShare.addObject("priorities",_priorityService.getAllPriority());
 		_mvShare.addObject("status",_priorityService.getAllStatus());
@@ -59,9 +59,9 @@ public class AccountManagerController extends AccountManagerBaseController {
 		return _mvShare;
 	}
 	
-	@RequestMapping(value = { "/create_test/{week}" }, method = RequestMethod.GET)
-	public ModelAndView AmCreateTest(@PathVariable int week, Model model) {
-		InitAM(week);
+	@RequestMapping(value = { "/create_test/{week}_{year}" }, method = RequestMethod.GET)
+	public ModelAndView AmCreateTest(@PathVariable int week, @PathVariable int year, Model model) {
+		InitAM(week, year);
 		
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -79,7 +79,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 		return _mvShare;
 	}
 	
-	@RequestMapping("/insertProject/{week}")
+	@RequestMapping("/insertProject/{week}_{year}")
 	public String doSaveCustomer(@PathVariable int week, @ModelAttribute("Project") Project project, Model model) {
 		
 		return "redirect:/AM/dashboard/" + week;

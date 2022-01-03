@@ -34,9 +34,9 @@ public class AccountManagerBaseController {
 	
 	public ModelAndView _mvShare = new ModelAndView();
 	
-	public ModelAndView InitAM(int week) {
-		_mvShare.addObject("project_types", _projectTypesService.getAllByWeek(week));	// Danh sách loại dự án hiển thị trên menu
-		_mvShare.addObject("customers", _customersService.getAllByWeek(week));			// Danh sách khách hàng hiển thị trên menu (theo loại dự án)
+	public ModelAndView InitAM(int week, int year) {
+		_mvShare.addObject("project_types", _projectTypesService.getMenu(week,year));	// Danh sách loại dự án hiển thị trên menu
+		_mvShare.addObject("customers", _customersService.getMenu(week,year));			// Danh sách khách hàng hiển thị trên menu (theo loại dự án)
 		_mvShare.addObject("customers_count", _customersDao.getCount());				// Lấy ra tổng số bản ghi khách hàng
 		
 		return _mvShare;

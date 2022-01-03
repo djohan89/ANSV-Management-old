@@ -3,7 +3,7 @@
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #04355d; color: white;">
 	<!-- Brand Logo -->
-	<a href="<c:url value='/chief/dashboard/${week}' />" class="brand-link"> 
+	<a href="<c:url value='/chief/dashboard/${week}_${year}' />" class="brand-link"> 
 		<img src="<c:url value='/assets/user/img/logo/logo_menu.png' />"
 			alt="ANSV Logo" class="brand-image img-circle elevation-3"
 			style="opacity: .8; width: 33px; height: 33px; background-color: white;">
@@ -100,7 +100,7 @@
 								
 									<c:if test="${ customers.project_type == item.name }">
 										<li class="nav-item">
-			                                <a href="<c:url value='/chief/customer_detail/${week}/${item.id }/${customers.customer_id}' />" class="nav-link">
+			                                <a href="<c:url value='/chief/customer_detail/${week}_${year}_${item.id }_${customers.customer_id}' />" class="nav-link">
 			                                    <i class="far fa-circle nav-icon"></i>
 			                                    <span style="font-size: 14px;">${ customers.customer }</span>
 			                                    <span class="badge badge-info right">${ customers.number }</span>
@@ -133,7 +133,7 @@
 							<c:forEach var="project" items="${ menu_project }" varStatus="index_project">
 								<c:if test="${ project.pic == pic.pic_id }">
 									<li class="nav-item">
-										<a href="<c:url value='/chief/detail/${project.week }/${project.id }' />" class="nav-link">
+										<a href="<c:url value='/chief/detail/${project.week}_${year}_${project.id}' />" class="nav-link">
 											<i class="far fa-circle nav-icon"></i><p>${ project.name }</p>
 										</a>
 									</li>

@@ -22,8 +22,8 @@ import vn.ansv.Entity.Project;
 @Repository
 public class ProjectDao extends BaseDao {
 
-	// Get data for menu that showing project own each pic
-	public List<MenuProjectsDto> getMenu(int week) {
+	// Danh sách dự án hiển thị lên menu
+	public List<MenuProjectsDto> getMenu(int week, int year) {
 		List<MenuProjectsDto> list = new ArrayList<MenuProjectsDto>();
 		
 		String sql = "SELECT project.id, users.id AS pic, project.name, project.week "
@@ -32,9 +32,9 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN users ON pic.pic = users.id "
 				+ "INNER JOIN users_roles ON users.id = users_roles.user "
 				+ "INNER JOIN role ON users_roles.role = role.id "
-				+ "WHERE week = ? "
+				+ "WHERE week = ? AND year = ? "
 				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM')";
-		list = _jdbcTemplate.query(sql, new MenuProjectsDtoMapper(), week);
+		list = _jdbcTemplate.query(sql, new MenuProjectsDtoMapper(), week, year);
 		return list;
 	}
 	
@@ -42,7 +42,7 @@ public class ProjectDao extends BaseDao {
 	
 /* Đầu: Truy vấn dữ liệu (trang Dashboard) */
 	/* Toàn bộ bản ghi hiển thị trên trang Dashboard (phần Datatable) */
-	public List<DashboardProjectDto> getDashboardTableByWeek(int week) {
+	public List<DashboardProjectDto> getDashboardTable(int week, int year) {
 		List<DashboardProjectDto> list = new ArrayList<DashboardProjectDto>();
 		
 		String sql = "SELECT project.id, users.id AS id_user, users.display_name AS pic, role.name AS pic_role, projects_types.name AS type, priorities.name AS priority, projects_status.name AS status, "
@@ -56,14 +56,14 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN priorities ON project.priority = priorities.id "
 				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
 				+ "INNER JOIN customers ON project.customer = customers.id "
-				+ "WHERE project.week = ? "
+				+ "WHERE project.week = ? AND project.year = ? "
 				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM')";
-		list = _jdbcTemplate.query(sql, new DashboardProjectDtoMapper(), week);
+		list = _jdbcTemplate.query(sql, new DashboardProjectDtoMapper(), week, year);
 		return list;
 	}
 	
 	/* Toàn bộ bản ghi hiển thị trên trang Dashboard (phần Slideshow): Dự án triển khai */
-	public List<SlideshowProjectsDto> getSlideshowProject(int week) {
+	public List<SlideshowProjectsDto> getSlideshowProject(int week, int year) {
 		List<SlideshowProjectsDto> list = new ArrayList<SlideshowProjectsDto>();
 		
 		String sql = "SELECT project.id AS id_pk, project.week, priorities.name AS priority, projects_status.name AS status, project.name, customers.name AS customer, "
@@ -87,19 +87,17 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN priorities ON project.priority = priorities.id "
 				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
 				+ "INNER JOIN customers ON project.customer = customers.id "
-				+ "WHERE project.week = ? "
-				+ "AND project.project_type = 1 "
-				+ "AND project.project_status = 1";
+				+ "WHERE project.week = ? AND project.year = ? AND project.project_type = 1 AND project.project_status = 1";
 		
-		list = _jdbcTemplate.query(sql, new SlideshowProjectsDtoMapper(), week);
+		list = _jdbcTemplate.query(sql, new SlideshowProjectsDtoMapper(), week, year);
 		return list;
 	}
 /* Cuối: Truy vấn dữ liệu (trang Dashboard) */
 	
 	
 	
-	// Project's statistics for header
-	public List<ProjectStatisticsDto> getProjectStatistics(int week) {
+	// Thống kê dự án cho phần header
+	public List<ProjectStatisticsDto> getProjectStatistics(int week, int year) {
 		List<ProjectStatisticsDto> list = new ArrayList<ProjectStatisticsDto>();
 		
 		String sql = "SELECT projects_types.name AS type, priorities.name AS priority, projects_status.name AS status "
@@ -107,15 +105,15 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
 				+ "INNER JOIN priorities ON project.priority = priorities.id "
 				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
-				+ "WHERE project.week = ?";
+				+ "WHERE project.week = ? AND project.year = ?";
 		
-		list = _jdbcTemplate.query(sql, new ProjectStatisticsDtoMapper(), week);
+		list = _jdbcTemplate.query(sql, new ProjectStatisticsDtoMapper(), week, year);
 		return list;
 	}
 	
 	
 	/*Truy vấn dữ liệu chi tiết của sản phẩm theo tuần và theo id project */
-	public List<ProjectDetailDto> getAllDetailById(int week ,int id){
+	public List<ProjectDetailDto> getById(int id){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
 		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id , role.name AS pic_role, projects_types.name AS type, priorities.name AS priority, "
 				+ "projects_status.name AS status, customers.name AS customer, project.name, project.tinh_trang_va_ke_hoach_chi_tiet, project.week, project.description, "
@@ -131,17 +129,16 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN priorities ON project.priority = priorities.id "
 				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
 				+ "INNER JOIN customers ON project.customer = customers.id "
-				+ "WHERE project.week = ? "
-				+ "AND project.id = ? "
+				+ "WHERE project.id = ? "
 				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM')";
 		
-		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(),week,id);
+		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(), id);
 		return list;
 		
 	}
 	
 	/*Truy vấn dữ liệu chi tiết của sản phẩm theo khách hàng,tuần và theo loại project */
-	public List<ProjectDetailDto> getAllProjectByCustomerAndWeek(int week, int customer, int type){
+	public List<ProjectDetailDto> getAllProjectByCustomer(int week, int year, int customer, int type){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
 		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id , role.name AS pic_role, projects_types.name AS type, priorities.name AS priority, "
 				+ "projects_status.name AS status,customers.name AS customer, project.name, project.tinh_trang_va_ke_hoach_chi_tiet, project.week, project.description, "
@@ -156,13 +153,10 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN priorities ON project.priority = priorities.id "
 				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
 				+ "INNER JOIN customers ON project.customer = customers.id "
-				+ "WHERE project.week = ? "
-				+ "AND customers.id = ? "
-				+ "AND projects_types.id  = ? "
+				+ "WHERE project.week = ? AND project.year = ? AND customers.id = ? AND projects_types.id  = ? "
 				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM')";
 				
-				
-		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(),week,customer,type);
+		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(), week, year, customer, type);
 		return list;
 		
 	}

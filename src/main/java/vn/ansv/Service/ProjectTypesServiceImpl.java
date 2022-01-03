@@ -18,8 +18,8 @@ public class ProjectTypesServiceImpl implements IProjectTypesService {
 		return projectTypesDao.getAll();
 	}
 
-	public List<ProjectTypes> getAllByWeek(int week) {
-		return projectTypesDao.getAllByWeek(week);
+	public List<ProjectTypes> getMenu(int week, int year) {
+		return projectTypesDao.getMenu(week,year);
 	}
 	
 }

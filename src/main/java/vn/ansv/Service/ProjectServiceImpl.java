@@ -20,27 +20,27 @@ public class ProjectServiceImpl implements IProjectService {
 	@Autowired
 	private ProjectDao projectDao;
 	
-	public List<DashboardProjectDto> getDashboardTableByWeek(int week) {
-		return projectDao.getDashboardTableByWeek(week);
+	public List<DashboardProjectDto> getDashboardTable(int week, int year) {
+		return projectDao.getDashboardTable(week,year);
 	}
 	
-	public List<SlideshowProjectsDto> getSlideshowProject(int week) {
-		return projectDao.getSlideshowProject(week);
+	public List<SlideshowProjectsDto> getSlideshowProject(int week, int year) {
+		return projectDao.getSlideshowProject(week,year);
 	}
 
-	public List<MenuProjectsDto> getMenu(int week) {
-		return projectDao.getMenu(week);
+	public List<MenuProjectsDto> getMenu(int week, int year) {
+		return projectDao.getMenu(week,year);
 	}
 	
-	public List<ProjectStatisticsDto> getProjectStatistics(int week) {
-		return projectDao.getProjectStatistics(week);
+	public List<ProjectStatisticsDto> getProjectStatistics(int week, int year) {
+		return projectDao.getProjectStatistics(week,year);
 	}
 	
-	public List<ProjectDetailDto> getAllDetailById(int week, int id) {
-		return projectDao.getAllDetailById(week,id);
+	public List<ProjectDetailDto> getById(int id) {
+		return projectDao.getById(id);
 	}
-	public List<ProjectDetailDto> getAllProjectByCustomerAndWeek(int week, int customer, int type) {
-		return projectDao.getAllProjectByCustomerAndWeek(week, customer, type);
+	public List<ProjectDetailDto> getAllProjectByCustomer(int week, int year, int customer, int type) {
+		return projectDao.getAllProjectByCustomer(week, year, customer, type);
 	}
 	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week, String pic_id) {
 		// TODO Auto-generated method stub
@@ -49,10 +49,10 @@ public class ProjectServiceImpl implements IProjectService {
 	
 	
 	// Đầu: Thống kê số lượng dự án theo loại dự án, ưu tiên và tình trạng
-	public List<Integer> thong_ke(int week) {
+	public List<Integer> thong_ke(int week, int year) {
 		
 		List<ProjectStatisticsDto> list = new ArrayList<ProjectStatisticsDto>();
-		list = projectDao.getProjectStatistics(week);
+		list = projectDao.getProjectStatistics(week,year);
 		int size = list.size();
 		int count_status = 0,
 			position = 0;

@@ -12,6 +12,6 @@ public interface IProjectTypesService {
 
 	@Autowired
 	public List<ProjectTypes> getAll();
-	public List<ProjectTypes> getAllByWeek(int week);
+	public List<ProjectTypes> getMenu(int week, int year);
 	
 }

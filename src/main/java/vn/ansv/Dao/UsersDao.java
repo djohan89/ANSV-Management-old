@@ -46,18 +46,18 @@ public class UsersDao extends BaseDao {
 	}
 	
 	// Get data for menu showing PIC with project
-	public List<MenuPicDto> getAllByWeek(int week) {
+	public List<MenuPicDto> getMenu(int week, int year) {
 		String sql = "SELECT users.id AS pic_id, users.display_name, COUNT(*) AS number "
 				+ "FROM users "
 				+ "INNER JOIN pic ON users.id = pic.pic "
 				+ "INNER JOIN project ON pic.project_id = project.id "
 				+ "INNER JOIN users_roles ON users.id = users_roles.user "
 				+ "INNER JOIN role ON users_roles.role = role.id "
-				+ "WHERE project.week = ? "
+				+ "WHERE project.week = ? AND project.year = ? "
 				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM') "
 				+ "GROUP BY users.display_name "
 				+ "ORDER BY users.id";
-		return _jdbcTemplate.query(sql, new MenuPicDtoMapper(), week);
+		return _jdbcTemplate.query(sql, new MenuPicDtoMapper(), week, year);
 	}
 
 }

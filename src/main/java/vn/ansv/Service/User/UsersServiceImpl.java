@@ -28,8 +28,8 @@ public class UsersServiceImpl implements IUsersService {
 		return usersDao.getCountUsersRole(username);
 	}
 
-	public List<MenuPicDto> getAllByWeek(int week) {
-		return usersDao.getAllByWeek(week);
+	public List<MenuPicDto> getMenu(int week, int year) {
+		return usersDao.getMenu(week,year);
 	}
 	
 

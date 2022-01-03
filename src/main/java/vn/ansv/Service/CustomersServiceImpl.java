@@ -15,8 +15,8 @@ public class CustomersServiceImpl implements ICustomersService {
 	@Autowired
 	private CustomersDao customersDao;
 	
-	public List<MenuCustomersDto> getAllByWeek(int week) {
-		return customersDao.getAllByWeek(week);
+	public List<MenuCustomersDto> getMenu(int week, int year) {
+		return customersDao.getMenu(week,year);
 	}
 
 	public List<Customer> getAllCustomerForm() {

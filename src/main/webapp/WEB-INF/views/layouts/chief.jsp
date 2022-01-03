@@ -286,7 +286,7 @@
 			var pathArray = window.location.pathname.split('/'); // Get item from url
 			var get_data_id_url = pathArray[4]; // Get the fifth item
 			var week_from_url = get_data_id_url.slice(0,2);
-			var year_from_url = get_data_id_url.slice(2);
+			var year_from_url = get_data_id_url.slice(3);
 			console.log(week_from_url, year_from_url);
 			
 			
@@ -355,7 +355,7 @@
 				week_link = $("#select_week").val();
 				year_link = $("#select_year").val();
 				console.log(year_link);
-				window.location.href = '<c:url value="/${role}/dashboard/' + week_link + year_link + '" />';
+				window.location.href = '<c:url value="/${role}/dashboard/' + week_link + '_' + year_link + '" />';
 			});
 			/* ===== Cuối: Thiết lập select 2 cho phần Header ===== */
 			

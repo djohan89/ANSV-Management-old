@@ -118,7 +118,7 @@ public class LoginController {
 		    }
 			if (request.isUserInRole("ROLE_CEO")) {
 				session.setAttribute("role", "chief");
-		    	return "redirect:/chief/dashboard/" + the_week_before + year;
+		    	return "redirect:/chief/dashboard/" + the_week_before + "_" + year;
 		    }
 			if (request.isUserInRole("ROLE_AM")) {
 				session.setAttribute("role", "AM");

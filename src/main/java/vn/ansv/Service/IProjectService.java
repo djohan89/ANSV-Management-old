@@ -16,11 +16,11 @@ import vn.ansv.Dto.Menu.MenuProjectsDto;
 public interface IProjectService {
 
 	@Autowired
-	public List<DashboardProjectDto> getDashboardTableByWeek(int week);
-	public List<SlideshowProjectsDto> getSlideshowProject(int week);
-	public List<MenuProjectsDto> getMenu(int week);
-	public List<ProjectStatisticsDto> getProjectStatistics(int week);
-	public List<ProjectDetailDto> getAllDetailById(int week,int id);
-	public List<ProjectDetailDto> getAllProjectByCustomerAndWeek(int week, int customer, int type);
+	public List<DashboardProjectDto> getDashboardTable(int week, int year);
+	public List<SlideshowProjectsDto> getSlideshowProject(int week, int year);
+	public List<MenuProjectsDto> getMenu(int week, int year);
+	public List<ProjectStatisticsDto> getProjectStatistics(int week, int year);
+	public List<ProjectDetailDto> getById(int id);
+	public List<ProjectDetailDto> getAllProjectByCustomer(int week, int year, int customer, int type);
 	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week,String pic_id );
 }

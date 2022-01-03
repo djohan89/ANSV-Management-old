@@ -12,7 +12,7 @@ import vn.ansv.Entity.Customer;
 public interface ICustomersService {
 
 	@Autowired
-	public List<MenuCustomersDto> getAllByWeek(int week);
+	public List<MenuCustomersDto> getMenu(int week, int year);
 	public List<Customer> getAllCustomerForm();
 	
 }

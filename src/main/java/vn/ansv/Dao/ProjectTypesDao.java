@@ -16,13 +16,13 @@ public class ProjectTypesDao extends BaseDao {
 	} 
 	
 	// Lấy dữ liệu cho phần menu (CEO)
-	public List<ProjectTypes> getAllByWeek(int week) {
+	public List<ProjectTypes> getMenu(int week, int year) {
 		String sql = "SELECT projects_types.id, projects_types.name, COUNT(*) AS number FROM projects_types "
 				+ "INNER JOIN project ON projects_types.id = project.project_type "
-				+ "WHERE project.week = ? "
+				+ "WHERE project.week = ? AND project.year = ? "
 				+ "GROUP BY projects_types.name "
 				+ "ORDER BY projects_types.id";
-		return _jdbcTemplate.query(sql, new ProjectTypesMapper(), week);
+		return _jdbcTemplate.query(sql, new ProjectTypesMapper(), week, year);
 	}
 	
 }
