@@ -23,7 +23,7 @@
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<div class="content-header ml-2">
-			<a href="<c:url value='/AM/create/${week}' />" class="btn btn-info" role="button">Thêm dự án</a>
+			<a href="<c:url value='/AM/create/${week}_${year}' />" class="btn btn-info" role="button">Thêm dự án</a>
 		</div>
 		<!-- /.content-header -->
 
@@ -84,19 +84,19 @@
 												<tr>
 													<td>
 														<c:if test="${project_item.status =='High' }">
-															<a href="<c:url value='/AM/detail/${week }/${project_item.id_pk }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/AM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Medium' }">
-															<a href="<c:url value='/AM/detail/${week }/${project_item.id_pk }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/AM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
-															<a href="<c:url value='/AM/detail/${week }/${project_item.id_pk }' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															<a href="<c:url value='/AM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>

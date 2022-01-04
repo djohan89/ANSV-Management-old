@@ -2,6 +2,7 @@ package vn.ansv.Controller.AM;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,69 +20,91 @@ import vn.ansv.Entity.Project;
 @RequestMapping("AM")
 public class AccountManagerController extends AccountManagerBaseController {
 
+	// Hàm lấy số tuần
+	public int getWeekOfYear(Date date) {
+		
+		Calendar calendar = new GregorianCalendar();
+    	calendar.setFirstDayOfWeek(Calendar.MONDAY);
+		calendar.setMinimalDaysInFirstWeek(3);
+		calendar.setTime(date);
+		int week = calendar.get(Calendar.WEEK_OF_YEAR);
+		
+		return week;
+	}
+	
 	@RequestMapping(value = { "/dashboard/{week}_{year}" }, method = RequestMethod.GET)
 	public ModelAndView AmHome(@PathVariable int week, @PathVariable int year, HttpSession session) {
-		InitAM(week, year);
 		String pic_id = (String) session.getAttribute("user_id");
-		_mvShare.addObject("project_table_pic",_projectService.getDashboardTableByPIC(week,pic_id )); // Dữ liệu khái quát hiển thị lên dashboard (datatable)
+		InitAM(week, year, pic_id);
+		// Dữ liệu khái quát hiển thị lên dashboard (datatable)
+		_mvShare.addObject("project_table_pic",_projectService.getDashboardTableByPIC(week, year, pic_id));
 		_mvShare.setViewName("AM/am_dashboard"); 
 		return _mvShare; 
 	}
 	
 	@RequestMapping(value = { "/detail/{week}_{year}_{id}" }, method = RequestMethod.GET)
-	public ModelAndView AmDetail(@PathVariable int week, @PathVariable int year, @PathVariable  int id) {
-		InitAM(week, year);
-		_mvShare.addObject("detail",_projectService.getById(id));
+	public ModelAndView AmDetail(@PathVariable int week, @PathVariable int year, @PathVariable  int id, HttpSession session) {
+		String pic_id = (String) session.getAttribute("user_id");
+		InitAM(week, year, pic_id);
+		_mvShare.addObject("detail",_projectService.getByIdAndPic(id, pic_id));
 		_mvShare.setViewName("AM/detail");
 		return _mvShare;
 	}
 	
+//	@RequestMapping(value = { "/create/{week}_{year}" }, method = RequestMethod.GET)
+//	public ModelAndView AmCreate(@PathVariable int week, @PathVariable int year) {
+//		InitAM(week, year);
+//		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
+//		_mvShare.addObject("priorities",_priorityService.getAllPriorityForm());
+//		_mvShare.addObject("status",_priorityService.getAllStatusForm());
+//		_mvShare.addObject("type",_priorityService.getAllTypeForm());
+//		_mvShare.setViewName("AM/create");
+//		return _mvShare;
+//	}
+	
 	@RequestMapping(value = { "/update/{week}_{year}_{id}" }, method = RequestMethod.GET)
-	public ModelAndView AmUpdate(@PathVariable int week, @PathVariable int year, @PathVariable  int id) {
-		InitAM(week, year);
+	public ModelAndView AmUpdate(@PathVariable int week, @PathVariable int year, @PathVariable  int id, HttpSession session) {
+		String pic_id = (String) session.getAttribute("user_id");
+		InitAM(week, year, pic_id);
 		_mvShare.addObject("detail",_projectService.getById(id));
 		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
-		_mvShare.addObject("priorities",_priorityService.getAllPriority());
-		_mvShare.addObject("status",_priorityService.getAllStatus());
-		_mvShare.addObject("type",_priorityService.getAllType());
+		_mvShare.addObject("priorities",_priorityService.getAllPriorityForm());
+		_mvShare.addObject("status",_priorityService.getAllStatusForm());
+		_mvShare.addObject("type",_priorityService.getAllTypeForm());
 		_mvShare.setViewName("AM/update");
 		return _mvShare;
 	}
 	
 	@RequestMapping(value = { "/create/{week}_{year}" }, method = RequestMethod.GET)
-	public ModelAndView AmCreate(@PathVariable int week, @PathVariable int year) {
-		InitAM(week, year);
-		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
-		_mvShare.addObject("priorities",_priorityService.getAllPriority());
-		_mvShare.addObject("status",_priorityService.getAllStatus());
-		_mvShare.addObject("type",_priorityService.getAllType());
-		_mvShare.setViewName("AM/create");
-		return _mvShare;
-	}
-	
-	@RequestMapping(value = { "/create_test/{week}_{year}" }, method = RequestMethod.GET)
-	public ModelAndView AmCreateTest(@PathVariable int week, @PathVariable int year, Model model) {
-		InitAM(week, year);
+	public ModelAndView AmCreateTest(@PathVariable int week, @PathVariable int year, Model model, HttpSession session) {
+		String pic_id = (String) session.getAttribute("user_id");
+		int Project_new_id = _projectService.getMaxId() + 1;
+		InitAM(week, year, pic_id);
 		
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		int current_week = cal.get(Calendar.WEEK_OF_YEAR);
-		System.out.println("Week number:" + current_week);
-		
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_year = Calendar.getInstance().get(Calendar.YEAR); // Get the curent year
 		model.addAttribute("project", new Project());
 		
+		_mvShare.addObject("current_week", current_week);
+		_mvShare.addObject("current_year", current_year);
+		_mvShare.addObject("project_new_id", Project_new_id);
 		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
-		_mvShare.addObject("priorities",_priorityService.getAllPriority());
-		_mvShare.addObject("status",_priorityService.getAllStatus());
-		_mvShare.addObject("type",_priorityService.getAllType());
+		_mvShare.addObject("priorities",_priorityService.getAllPriorityForm());
+		_mvShare.addObject("status",_priorityService.getAllStatusForm());
+		_mvShare.addObject("type",_priorityService.getAllTypeForm());
 		_mvShare.setViewName("AM/create_new");
 		return _mvShare;
 	}
 	
 	@RequestMapping("/insertProject/{week}_{year}")
-	public String doSaveCustomer(@PathVariable int week, @ModelAttribute("Project") Project project, Model model) {
+	public String doSaveCustomer(@PathVariable int week, @PathVariable int year, @ModelAttribute("Project") Project project, Model model, HttpSession session) {
 		
-		return "redirect:/AM/dashboard/" + week;
+		String pic_id = (String) session.getAttribute("user_id");
+		int project_id = project.getId();
+		_projectService.save(project); // Insert dữ liệu dự án mới
+		_picService.save(project_id, pic_id); // Insert PIC tương ứng của dự án
+
+		return "redirect:/AM/dashboard/" + week + "_" + year;
 	}
 }

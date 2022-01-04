@@ -13,6 +13,7 @@ import vn.ansv.Dto.ProjectDetailDto;
 import vn.ansv.Dto.ProjectStatisticsDto;
 import vn.ansv.Dto.SlideshowProjectsDto;
 import vn.ansv.Dto.Menu.MenuProjectsDto;
+import vn.ansv.Entity.Project;
 
 @Service
 public class ProjectServiceImpl implements IProjectService {
@@ -39,12 +40,17 @@ public class ProjectServiceImpl implements IProjectService {
 	public List<ProjectDetailDto> getById(int id) {
 		return projectDao.getById(id);
 	}
+	
+	public List<ProjectDetailDto> getByIdAndPic(int id, String pic) {
+		return projectDao.getByIdAndPic(id,pic);
+	}
+	
 	public List<ProjectDetailDto> getAllProjectByCustomer(int week, int year, int customer, int type) {
 		return projectDao.getAllProjectByCustomer(week, year, customer, type);
 	}
-	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week, String pic_id) {
-		// TODO Auto-generated method stub
-		return projectDao.getDashboardTableByPIC(week, pic_id);
+	
+	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week, int year, String pic_id) {
+		return projectDao.getDashboardTableByPIC(week, year, pic_id);
 	}
 	
 	
@@ -136,6 +142,13 @@ public class ProjectServiceImpl implements IProjectService {
 		return thong_ke;
 	}
 
+	// Insert dự án
+	public void save(Project project){
+		projectDao.save(project);
+	}
 	
+	public int getMaxId(){
+		return projectDao.getMaxId();
+	}
 
 }

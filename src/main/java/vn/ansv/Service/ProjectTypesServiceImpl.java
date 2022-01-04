@@ -21,5 +21,9 @@ public class ProjectTypesServiceImpl implements IProjectTypesService {
 	public List<ProjectTypes> getMenu(int week, int year) {
 		return projectTypesDao.getMenu(week,year);
 	}
+
+	public List<ProjectTypes> getMenuByPic(int week, int year, String pic) {
+		return projectTypesDao.getMenuByPic(week,year,pic);
+	}
 	
 }

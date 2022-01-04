@@ -122,18 +122,18 @@ public class LoginController {
 		    }
 			if (request.isUserInRole("ROLE_AM")) {
 				session.setAttribute("role", "AM");
-		    	return "redirect:/AM/dashboard/" + the_week_before + year;
+		    	return "redirect:/AM/dashboard/" + the_week_before + "_" + year;
 		    }
 			if (request.isUserInRole("ROLE_PM")) {
 				session.setAttribute("role", "PM");
-		    	return "redirect:/PM/dashboard/" + the_week_before + year;
+		    	return "redirect:/PM/dashboard/" + the_week_before + "_" + year;
 		    }
 			// End: Check user's role and then redirect
 		
 		}
 	    
 		session.setAttribute("role", "user");
-		return "redirect:/user/dashboard/"+the_week_before + year;
+		return "redirect:/user/dashboard/"+the_week_before + "_" + year;
 	}
 	
 	@RequestMapping("/access_denied")

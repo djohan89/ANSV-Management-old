@@ -6,6 +6,7 @@ encoding//src/main/java/vn/ansv/Controller/Chief/ChiefController.java=UTF-8
 encoding//src/main/java/vn/ansv/Controller/Security/LoginController.java=UTF-8
 encoding//src/main/java/vn/ansv/Controller/User/HomeController.java=UTF-8
 encoding//src/main/java/vn/ansv/Dao/CustomersDao.java=UTF-8
+encoding//src/main/java/vn/ansv/Dao/PicDao.java=UTF-8
 encoding//src/main/java/vn/ansv/Dao/ProjectDao.java=UTF-8
 encoding//src/main/java/vn/ansv/Dao/ProjectTypesDao.java=UTF-8
 encoding//src/main/java/vn/ansv/Dto/DashboardProjectDto.java=UTF-8

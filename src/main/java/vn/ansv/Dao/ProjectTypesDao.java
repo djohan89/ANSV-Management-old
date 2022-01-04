@@ -15,7 +15,7 @@ public class ProjectTypesDao extends BaseDao {
 		return _jdbcTemplate.query(sql, new ProjectTypesMapper());
 	} 
 	
-	// Lấy dữ liệu cho phần menu (CEO)
+	// Lấy dữ liệu cho phần menu (role CEO)
 	public List<ProjectTypes> getMenu(int week, int year) {
 		String sql = "SELECT projects_types.id, projects_types.name, COUNT(*) AS number FROM projects_types "
 				+ "INNER JOIN project ON projects_types.id = project.project_type "
@@ -23,6 +23,17 @@ public class ProjectTypesDao extends BaseDao {
 				+ "GROUP BY projects_types.name "
 				+ "ORDER BY projects_types.id";
 		return _jdbcTemplate.query(sql, new ProjectTypesMapper(), week, year);
+	}
+	
+	// Lấy dữ liệu cho phần menu (role Account Manager)
+	public List<ProjectTypes> getMenuByPic(int week, int year, String pic) {
+		String sql = "SELECT projects_types.id, projects_types.name, COUNT(*) AS number FROM projects_types "
+				+ "INNER JOIN project ON projects_types.id = project.project_type "
+				+ "INNER JOIN pic ON project.id = pic.project_id "
+				+ "WHERE project.week = ? AND project.year = ? AND pic.pic = ? "
+				+ "GROUP BY projects_types.name "
+				+ "ORDER BY projects_types.id";
+		return _jdbcTemplate.query(sql, new ProjectTypesMapper(), week, year, pic);
 	}
 	
 }

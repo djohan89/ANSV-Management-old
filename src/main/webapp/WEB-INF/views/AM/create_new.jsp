@@ -7,16 +7,26 @@
 <title>AM | Create project</title>
 </head>
 <body>
+<c:url value="/AM/insertProject/${week}_${year}" var="insertProject"/>
+<form:form action="${insertProject}" method="POST" modelAttribute="project">
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
 			<div class="container-fluid">
 				<div class="row mb-2">
-					<div class="col-sm-6">
-						<h1 class="m-0">Tạo mới dự án</h1>
+					<div class="col-sm-5">
+						<h1 class="m-0">
+							<span style="float: left;">Tạo mới dự án tuần:</span>
+							<form:input path="week" class="form-control border-0" value="${current_week}" readonly="true" 
+								style="width: 58px; float: left; font-size: 30px; font-weight: bold; margin-top:-3px; background-color: #f4f6f9;" />
+							<span style="float: left;">- năm:</span>
+							<form:input path="year" class="form-control border-0" readonly="true" value="${current_year}" 
+								style="width: 88px; float: left; font-size: 30px; font-weight: bold; margin-top:-3px; background-color: #f4f6f9;" />
+						</h1>
 					</div>
+					<div class="col-sm-2"><button type="submit">Submit</button></div>
 					<!-- /.col -->
-					<div class="col-sm-6">
+					<div class="col-sm-5">
 						<ol class="breadcrumb float-sm-right">
 							<li class="breadcrumb-item"><a href="<c:url value='/AM/dashboard/${week}' />">Home</a></li>
 							<li class="breadcrumb-item active">Create</li>
@@ -37,9 +47,7 @@
 			<div class="container-fluid">
 			
 			
-			
-				<c:url value="/AM/insertProject/${week}" var="insertProject"/>
-				<form:form action="${insertProject}" method="POST" modelAttribute="project">
+
 					<!-- Main row -->
 					<div class="row">
 						<!-- Left col -->
@@ -64,6 +72,7 @@
 										<div class="input-group-prepend">
 											<label class="input-group-text">Tên dự án</label>
 										</div>
+										<form:hidden path="id" value="${project_new_id}" />
 										<form:input path="name" class="form-control" placeholder="Tên dự án..." />
 									</div>
 									
@@ -234,8 +243,6 @@
 						<!-- right col -->
 					</div>
 					<!-- /.row (main row) -->
-					<button type="submit">Submit</button>
-				</form:form>
 				
 				
 				
@@ -244,4 +251,5 @@
 		</section>
 		<!-- /.content -->
 	</div>
+</form:form>
 </body>

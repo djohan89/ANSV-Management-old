@@ -9,11 +9,14 @@
 				<i class="fas fa-bars"></i>
 			</a>
 		</li>
-		<li class="nav-item" style="width: 200px; padding-top: 7px;">
+		<li class="nav-item" style="width: 300px; padding-top: 7px;">
 			<font color="orange" style="font-size: 18px; padding-top: 1px">
-    			<b>Báo cáo tuần:</b>
+    			<b>Tuần / Năm:</b>
     		</font>
-    		<select id="select_week" onchange="location = this.value;"></select>
+    		<%-- <select id="select_week" onchange="location = this.value;" class="w-25"></select> --%>
+    		<select id="select_week" class="w-25"></select>
+    		<label class="ml-1 h5" style="margin-right: -8px;">/</label>
+    		<select id="select_year" class="w-25"></select>
 		</li>
 	</ul>
 

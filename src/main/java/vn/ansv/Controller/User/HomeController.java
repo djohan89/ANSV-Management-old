@@ -11,13 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller(value = "User_HomeController")
 public class HomeController extends UserBaseController {
 	
-	@RequestMapping(value = { "/user/dashboard/{week}" }, method = RequestMethod.GET)
-	public ModelAndView memberHome(@PathVariable int week,HttpSession session) {
+	@RequestMapping(value = { "/user/dashboard/{week}_{year}" }, method = RequestMethod.GET)
+	public ModelAndView memberHome(@PathVariable int week, @PathVariable int year, HttpSession session) {
 		
 		
 		InitUser(week);
 		String pic_id = (String) session.getAttribute("user_id");
-		_mvShare.addObject("project_table_pic",_projectService.getDashboardTableByPIC(week,pic_id )); // Dữ liệu khái quát hiển thị lên dashboard (datatable)
+		_mvShare.addObject("project_table_pic",_projectService.getDashboardTableByPIC(week, year, pic_id )); // Dữ liệu khái quát hiển thị lên dashboard (datatable)
 		_mvShare.setViewName("user/user_dashboard");
 		
 		return _mvShare;

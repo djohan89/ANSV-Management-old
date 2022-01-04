@@ -10,7 +10,7 @@ import vn.ansv.Entity.Priority;
 @Service
 public interface IPriorityService {
 	@Autowired
-	public List<Priority> getAllPriority();
-	public List<Priority> getAllStatus();
-	public List<Priority> getAllType();
+	public List<Priority> getAllPriorityForm();
+	public List<Priority> getAllStatusForm();
+	public List<Priority> getAllTypeForm();
 }

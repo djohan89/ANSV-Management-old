@@ -11,35 +11,36 @@ public class Project {
 	private int customer;
 	
 	private int week;
+	private int year;
 	private String project_id;
 	private String ma_so_ke_toan;
 	private String name;
-	private String description;
 	
+	private String description;
 	private String tong_muc_dau_tu_du_kien;
 	private String hinh_thuc_dau_tu;
 	private int muc_do_kha_thi;
 	private String phan_tich_SWOT;
-	private String pham_vi_cung_cap;
 	
+	private String pham_vi_cung_cap;
 	private double tong_gia_tri_thuc_te;
 	private Date DAC;
 	private Date PAC;
 	private Date FAC;
-	private double so_tien_tam_ung;
 	
+	private double so_tien_tam_ung;
 	private Date ke_hoach_tam_ung;
 	private double so_tien_DAC;
 	private Date ke_hoach_thanh_toan_DAC;
 	private double so_tien_PAC;
-	private Date ke_hoach_thanh_toan_PAC;
 	
+	private Date ke_hoach_thanh_toan_PAC;
 	private double so_tien_FAC;
 	private Date ke_hoach_thanh_toan_FAC;
 	private String tinh_trang_va_ke_hoach_chi_tiet;
 	private String ket_qua_thuc_hien_ke_hoach;
-	private String note;
 	
+	private String note;
 	private Date created_at;
 
 	
@@ -94,6 +95,14 @@ public class Project {
 
 	public void setWeek(int week) {
 		this.week = week;
+	}
+	
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
 	}
 
 	public String getProject_id() {

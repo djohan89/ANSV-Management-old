@@ -1,5 +1,6 @@
 package vn.ansv.Dao;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +22,10 @@ import vn.ansv.Entity.Project;
 
 @Repository
 public class ProjectDao extends BaseDao {
+	
+	private LocalDateTime _now = LocalDateTime.now();
 
-	// Danh sách dự án hiển thị lên menu
+	// Danh sách dự án hiển thị lên menu (role CEO)
 	public List<MenuProjectsDto> getMenu(int week, int year) {
 		List<MenuProjectsDto> list = new ArrayList<MenuProjectsDto>();
 		
@@ -112,7 +115,7 @@ public class ProjectDao extends BaseDao {
 	}
 	
 	
-	/*Truy vấn dữ liệu chi tiết của sản phẩm theo tuần và theo id project */
+	/*Truy vấn dữ liệu chi tiết của sản phẩm theo id project */
 	public List<ProjectDetailDto> getById(int id){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
 		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id , role.name AS pic_role, projects_types.name AS type, priorities.name AS priority, "
@@ -133,6 +136,31 @@ public class ProjectDao extends BaseDao {
 				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM')";
 		
 		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(), id);
+		return list;
+		
+	}
+	
+	/*Truy vấn dữ liệu chi tiết của sản phẩm theo id project của mỗi PIC */
+	public List<ProjectDetailDto> getByIdAndPic(int id, String pic){
+		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
+		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id , role.name AS pic_role, projects_types.name AS type, priorities.name AS priority, "
+				+ "projects_status.name AS status, customers.name AS customer, project.name, project.tinh_trang_va_ke_hoach_chi_tiet, project.week, project.description, "
+				+ "project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu, project.muc_do_kha_thi, project.phan_tich_SWOT, project.pham_vi_cung_cap, "
+				+ "project.tong_gia_tri_thuc_te, project.DAC, project.FAC, project.PAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, project.so_tien_DAC, "
+				+ "project.ke_hoach_thanh_toan_DAC, project.so_tien_PAC, project.ke_hoach_thanh_toan_PAC, project.so_tien_FAC, project.ke_hoach_thanh_toan_FAC, "
+				+ "project.ket_qua_thuc_hien_ke_hoach ,project.note "
+				+ "FROM project INNER JOIN pic ON project.id = pic.project_id "
+				+ "INNER JOIN users ON pic.pic = users.id "
+				+ "INNER JOIN users_roles ON users.id = users_roles.user "
+				+ "INNER JOIN role ON users_roles.role = role.id "
+				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
+				+ "INNER JOIN priorities ON project.priority = priorities.id "
+				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
+				+ "INNER JOIN customers ON project.customer = customers.id "
+				+ "WHERE project.id = ? AND pic.pic = ? "
+				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM')";
+		
+		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(), id, pic);
 		return list;
 		
 	}
@@ -162,46 +190,51 @@ public class ProjectDao extends BaseDao {
 	}
 	
 	/*Truy vấn danh sách dữ liệu theo pic  */
-	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week,String pic_id ) {
+	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week, int year, String pic_id) {
 		List<DashboardProjectPicDto> list = new ArrayList<DashboardProjectPicDto>();
 		
-		String sql = "SELECT project.id AS id_pk, project.week, priorities.name AS priority, projects_status.name AS status, project.name, customers.name AS customer, projects_types.name AS type,"
-				+ " (SELECT users.display_name FROM users "
-				+ " INNER JOIN users_roles ON users.id = users_roles.user "
-				+ " INNER JOIN role ON users_roles.role = role.id "
-				+ " INNER JOIN pic ON users.id = pic.pic "
-				+ " INNER JOIN project ON pic.project_id = project.id "
-				+ " WHERE role.name = 'ROLE_PM' AND project.id = id_pk) AS pm, "
+		String sql = "SELECT project.id AS id_pk, project.week, priorities.name AS priority, projects_status.name AS status, project.name, customers.name AS customer, projects_types.name AS type, "
 				+ "(SELECT users.display_name FROM users "
-				+ " INNER JOIN users_roles ON users.id = users_roles.user "
-				+ " INNER JOIN role ON users_roles.role = role.id "
-				+ " INNER JOIN pic ON users.id = pic.pic "
-				+ " INNER JOIN project ON pic.project_id = project.id WHERE role.name = 'ROLE_AM' "
-				+ " AND project.id = id_pk) AS am, project.tinh_trang_va_ke_hoach_chi_tiet "
-				+ " FROM project "
-				+ " INNER JOIN projects_types ON project.project_type = projects_types.id "
-				+ " INNER JOIN pic ON project.id =pic.project_id "
-				+ " INNER JOIN users ON pic.pic = users.id "
-				+ " INNER JOIN priorities ON project.priority = priorities.id "
-				+ " INNER JOIN projects_status ON project.project_status = projects_status.id "
-				+ " INNER JOIN customers ON project.customer = customers.id "
-				+ " WHERE project.week = ? "
-				+ " AND users.id = ?";
-		list = _jdbcTemplate.query(sql, new DashboardProjectPicDtoMapper(), week,pic_id);
+				+ "INNER JOIN users_roles ON users.id = users_roles.user "
+				+ "INNER JOIN role ON users_roles.role = role.id "
+				+ "INNER JOIN pic ON users.id = pic.pic "
+				+ "INNER JOIN project ON pic.project_id = project.id "
+				+ "WHERE role.name = 'ROLE_PM' AND project.id = id_pk) AS pm, "
+				+ "(SELECT users.display_name FROM users "
+				+ "INNER JOIN users_roles ON users.id = users_roles.user "
+				+ "INNER JOIN role ON users_roles.role = role.id "
+				+ "INNER JOIN pic ON users.id = pic.pic "
+				+ "INNER JOIN project ON pic.project_id = project.id WHERE role.name = 'ROLE_AM' "
+				+ "AND project.id = id_pk) AS am, project.tinh_trang_va_ke_hoach_chi_tiet "
+				+ "FROM project "
+				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
+				+ "INNER JOIN pic ON project.id =pic.project_id "
+				+ "INNER JOIN users ON pic.pic = users.id "
+				+ "INNER JOIN priorities ON project.priority = priorities.id "
+				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
+				+ "INNER JOIN customers ON project.customer = customers.id "
+				+ "WHERE project.week = ? AND project.year = ? AND users.id = ?";
+		list = _jdbcTemplate.query(sql, new DashboardProjectPicDtoMapper(), week, year, pic_id);
 		return list;
 	}
 	
 	
 	
 /* ===== Đầu: Account Manager ===== */
-	public void save(Project project, int week) {
-		String sql = "INSERT INTO project (project_type, priority, project_status, customer, week, name, description, "
+	public void save(Project project) {
+		String sql = "INSERT INTO project (id, project_type, priority, project_status, customer, week, year, name, description, "
 				+ "tong_muc_dau_tu_du_kien, hinh_thuc_dau_tu, muc_do_kha_thi, phan_tich_SWOT, tinh_trang_va_ke_hoach_chi_tiet, "
-				+ "ket_qua_thuc_hien_ke_hoach) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		_jdbcTemplate.update(sql, project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), 
-				week, project.getName(), project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), 
+				+ "ket_qua_thuc_hien_ke_hoach, created_at) VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		_jdbcTemplate.update(sql, project.getId(), project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), 
+				project.getWeek(), project.getName(), project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), 
 				project.getMuc_do_kha_thi(), project.getPhan_tich_SWOT(), project.getTinh_trang_va_ke_hoach_chi_tiet(), 
-				project.getKet_qua_thuc_hien_ke_hoach());
+				project.getKet_qua_thuc_hien_ke_hoach(), _now);
+	}
+	
+	public int getMaxId(){
+		String sql ="SELECT MAX(id) FROM project";
+		return _jdbcTemplate.queryForObject(sql, Integer.class);
+		
 	}
 /* ===== Cuối: Account Manager ===== */
 

@@ -6,6 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import vn.ansv.Dao.CustomersDao;
 import vn.ansv.Service.CustomersServiceImpl;
+import vn.ansv.Service.PicServiceImpl;
 import vn.ansv.Service.PriorityServiceImpl;
 import vn.ansv.Service.ProjectServiceImpl;
 import vn.ansv.Service.ProjectTypesServiceImpl;
@@ -32,12 +33,14 @@ public class AccountManagerBaseController {
 	@Autowired
 	CustomersDao _customersDao;
 	
+	@Autowired
+	PicServiceImpl _picService;
+	
 	public ModelAndView _mvShare = new ModelAndView();
 	
-	public ModelAndView InitAM(int week, int year) {
-		_mvShare.addObject("project_types", _projectTypesService.getMenu(week,year));	// Danh sách loại dự án hiển thị trên menu
-		_mvShare.addObject("customers", _customersService.getMenu(week,year));			// Danh sách khách hàng hiển thị trên menu (theo loại dự án)
-		_mvShare.addObject("customers_count", _customersDao.getCount());				// Lấy ra tổng số bản ghi khách hàng
+	public ModelAndView InitAM(int week, int year, String pic) {
+		_mvShare.addObject("project_types", _projectTypesService.getMenuByPic(week, year, pic));	// Danh sách loại dự án hiển thị trên menu
+		_mvShare.addObject("customers_count", _customersDao.getCount());							// Lấy ra tổng số bản ghi khách hàng
 		
 		return _mvShare;
 	}

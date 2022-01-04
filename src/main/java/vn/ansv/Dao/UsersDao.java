@@ -1,6 +1,5 @@
 package vn.ansv.Dao;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +12,6 @@ import vn.ansv.Dto.Menu.MenuPicDtoMapper;
 
 @Repository
 public class UsersDao extends BaseDao {
-
-	private LocalDateTime _now = LocalDateTime.now();
 
 	public List<UsersDto> getAllUsers() {
 		List<UsersDto> list = new ArrayList<UsersDto>();
