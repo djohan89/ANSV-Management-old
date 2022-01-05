@@ -23,8 +23,8 @@ public class HomeController extends UserBaseController {
 		return _mvShare;
 	}
 	
-	@RequestMapping(value = { "user/detail/{week}/{id}" }, method = RequestMethod.GET)
-	public ModelAndView memberDetail(@PathVariable int week, @PathVariable  int id) {
+	@RequestMapping(value = { "user/detail/{week}_{year}_{id}" }, method = RequestMethod.GET)
+	public ModelAndView memberDetail(@PathVariable int week,@PathVariable int year, @PathVariable  int id) {
 		
 		InitUser(week);
 		_mvShare.addObject("detail",_projectService.getById(id));

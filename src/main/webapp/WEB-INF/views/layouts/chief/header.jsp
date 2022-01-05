@@ -37,19 +37,19 @@
 					<c:url value="${ type_status.index * 10 }" var="position"/> <!-- Tạo biến đánh số vị trí trong mảng thống kê -->
 					
 					<div class="col-3">
-						<span class="badge badge-danger ">${ statistics[position] }</span>
-                		<span class="badge badge-warning  ">${ statistics[position + 1] }</span>
-                		<span class="badge badge-success  ">${ statistics[position + 2] }</span>
+						<span class="badge badge-danger">${ statistics[position] }</span>
+                		<span class="badge badge-warning">${ statistics[position + 1] }</span>
+                		<span class="badge badge-success">${ statistics[position + 2] }</span>
 					</div>
 					<div class="col-3">
-						<span class="badge badge-danger  ">${ statistics[position + 3] }</span>
-                  		<span class="badge badge-warning  ">${ statistics[position + 4] }</span>
-                  		<span class="badge badge-success  ">${ statistics[position + 5] }</span>
+						<span class="badge badge-danger">${ statistics[position + 3] }</span>
+                  		<span class="badge badge-warning">${ statistics[position + 4] }</span>
+                  		<span class="badge badge-success">${ statistics[position + 5] }</span>
 					</div>
 					<div class="col-3">
-						<span class="badge badge-danger  ">${ statistics[position + 6] }</span>
-                  		<span class="badge badge-warning  ">${ statistics[position + 7] }</span>
-                  		<span class="badge badge-success  ">${ statistics[position + 8] }</span>
+						<span class="badge badge-danger">${ statistics[position + 6] }</span>
+                  		<span class="badge badge-warning">${ statistics[position + 7] }</span>
+                  		<span class="badge badge-success">${ statistics[position + 8] }</span>
 					</div>
 					<div class="col-3 pl-3">
 						<span class="badge badge-primary  ">${ statistics[position + 9] }</span>

@@ -130,7 +130,12 @@
 	      	top:0;
 	      	
 	      }
-	      .topnav.responsive {position: relative;}
+	      .topnav.responsive {
+	      	position: relative;
+	      	
+	      	padding-left: 0;
+	      
+	      }
 	      
 	      .topnav.responsive #li_1 {
 		    float: none;
