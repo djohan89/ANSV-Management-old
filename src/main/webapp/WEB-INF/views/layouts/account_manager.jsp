@@ -153,7 +153,7 @@
 		  	/* white-space: pre-wrap; */
 		  	
 		  	/* Khung viền */
-		  	border: 2px solid;
+		  	border: 1px solid;
 		  	border-color: black;
 		}
 		
@@ -190,6 +190,22 @@
 	        margin-left: 10px;
 	        width: 65px !important;
 	    }
+	    
+	    .tooltip_for_icon {
+			font-size: 14px;
+		  	visibility: hidden;
+		  	width: 8%;
+		  	color: #FFFFFF!important;
+		  	font-weight: bold;
+		  	border-radius: 13px;
+		  	padding: 5px 6px;
+		  	position: absolute;
+		  	z-index: 1;
+		}
+		
+		.tooltip_icon:hover .tooltip_for_icon {
+		  	visibility: visible;
+		}
 	</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

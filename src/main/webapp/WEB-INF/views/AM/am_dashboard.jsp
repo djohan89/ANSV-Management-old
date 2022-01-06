@@ -9,21 +9,19 @@
 <title>Dashboard | AM</title>
 </head>
 <body>
-<link rel="stylesheet"
-	href="<c:url value="/assets/user/vendor/dist/assets/owl.theme.default.min.css" />">
-<link rel="stylesheet"
-	href="<c:url value="/assets/user/vendor/dist/assets/owl.carousel.min.css" />">
+<link rel="stylesheet" href="<c:url value="/assets/user/vendor/dist/assets/owl.theme.default.min.css" />">
+<link rel="stylesheet" href="<c:url value="/assets/user/vendor/dist/assets/owl.carousel.min.css" />">
 <script src="<c:url value="/assets/user/vendor/dist/owl.carousel.min.js" />"></script>
 <script src="<c:url value="/assets/user/vendor/dist/jquery.mousewheel.min.js" />"></script> <!-- Thư viện sử dụng con lăn chuột -->
 <style>
-.content-wrapper {
-    background-color: #fff; 
-}
+	.content-wrapper {
+	    background-color: #fff; 
+	}
 </style>
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<div class="content-header ml-2">
-			<a href="<c:url value='/AM/create/${week}_${year}' />" class="btn btn-info" role="button">Thêm dự án</a>
+			<a href="<c:url value='/AM/create_project/${week}_${year}' />" class="btn btn-info" role="button">Thêm dự án</a>
 		</div>
 		<!-- /.content-header -->
 
@@ -64,8 +62,9 @@
 										<br>
 									</h3>
 								</div>
-								
 							</div>
+							
+							<c:url value="0" var="week_link"/>
 							<div class="table-responsive card-body" style="padding: 5px;">
 								<table id="example_1" class="table " style="width: 100%;">
 									<thead>
@@ -75,33 +74,33 @@
 											<th style="width: 8%;">Priority</th> 
 											<th>Nhóm</th>
 											<th style="width: 15%;">PIC</th>
-											<th style="width: 11%;"></th>
+											<th style="width: 12%;"></th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach items="${project_table_pic}" var="project_item" varStatus="project_index">
 												<tr>
 													<td>
-														<c:if test="${project_item.status =='High' }">
+														<c:if test="${project_item.status == 'High' }">
 															<a href="<c:url value='/AM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
-														<c:if test="${project_item.status =='Medium' }">
+														<c:if test="${project_item.status == 'Medium' }">
 															<a href="<c:url value='/AM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
-														<c:if test="${project_item.status =='Low' }">
+														<c:if test="${project_item.status == 'Low' }">
 															<a href="<c:url value='/AM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 																${project_item.name }
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</a>
 														</c:if>
 													</td>
-													<td>${project_item.type }</td>
+													<td>${project_item.type}</td>
 													<td align="center">
 														<c:if test="${project_item.status =='High' }">
 															<button type="button" class="btn btn-danger w-100" ><font size="-1">${project_item.priority }</font></button>
@@ -115,9 +114,27 @@
 													</td>
 													<td>${project_item.customer }</td>
 													<td>${project_item.pm }</td>
-													<td class="d-flex" style="border-left: 1px solid black;">
-														<a href="<c:url value='/AM/edit/${project_item.id_pk}' />" class="btn btn-warning w-50" role="button">Sửa</a>
-														<a href="<c:url value='/AM/delete/${project_item.id_pk}' />" class="btn btn-danger w-50 ml-1" role="button">Xoá</a>
+													<td style="border-left: 1px solid black;">
+														<a href="<c:url value='/AM/delete_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+															class="float-right tooltip_icon">
+															<i class="fas fa-trash-alt fa-2x text-danger"></i>
+															<span class="tooltip_for_icon bg-danger text-center" 
+																style="margin-left: -7.2%; margin-top: -2.8%;">Xoá dự án</span>
+														</a>
+														<a href="<c:url value='/AM/update_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+															class="float-right tooltip_icon mr-3">
+															<i class="fas fa-edit fa-2x text-warning"></i>
+															<span class="tooltip_for_icon bg-warning text-center" 
+																style="margin-left: -5.6%; margin-top: -2.8%;">Cập nhật</span>
+														</a>
+														
+														<c:if test="${project_item.type != 'Triển khai' }">
+															<a href="#" class="float-right tooltip_icon mr-3">
+																<i class="fas fa-thumbs-up fa-2x text-success"></i>
+																<span class="tooltip_for_icon bg-success text-center" 
+																	style="margin-left: -5.4%; margin-top: -2.8%;">Triển khai</span>
+															</a>
+														</c:if>
 													</td>
 												</tr>
 											
@@ -154,7 +171,7 @@
 		    "displayLength": 25,
 		    "columnDefs": [
 	            { "visible": false, "targets": groupColumn },
-	            ],
+	       	],
 		    "order": [
 	            [groupColumn, 'asc']
 	        ],

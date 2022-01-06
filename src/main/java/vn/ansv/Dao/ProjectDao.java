@@ -1,4 +1,4 @@
-package vn.ansv.Dao;
+	package vn.ansv.Dao;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -19,6 +19,7 @@ import vn.ansv.Dto.SlideshowProjectsDtoMapper;
 import vn.ansv.Dto.Menu.MenuProjectsDto;
 import vn.ansv.Dto.Menu.MenuProjectsDtoMapper;
 import vn.ansv.Entity.Project;
+import vn.ansv.Entity.ProjectDetailLessMapper;
 
 @Repository
 public class ProjectDao extends BaseDao {
@@ -44,7 +45,7 @@ public class ProjectDao extends BaseDao {
 	
 	
 /* Đầu: Truy vấn dữ liệu (trang Dashboard) */
-	/* Toàn bộ bản ghi hiển thị trên trang Dashboard (phần Datatable) */
+	/* Toàn bộ bản ghi hiển thị trên trang Dashboard (phần Datatable - role CEO) */
 	public List<DashboardProjectDto> getDashboardTable(int week, int year) {
 		List<DashboardProjectDto> list = new ArrayList<DashboardProjectDto>();
 		
@@ -115,7 +116,7 @@ public class ProjectDao extends BaseDao {
 	}
 	
 	
-	/*Truy vấn dữ liệu chi tiết của sản phẩm theo id project */
+	/*Truy vấn dữ liệu chi tiết của dự án theo id project */
 	public List<ProjectDetailDto> getById(int id){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
 		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id , role.name AS pic_role, projects_types.name AS type, priorities.name AS priority, "
@@ -137,6 +138,25 @@ public class ProjectDao extends BaseDao {
 		
 		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(), id);
 		return list;
+		
+	}
+	
+	/*Truy vấn dữ liệu (Chuyển đổi số hoặc Viễn thông) chi tiết của dự án theo id project */
+	public Project getLessById(int id, String pic){
+		Project object = new Project();
+		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, projects_status.id AS project_status, customers.id AS customer, "
+				+ "project.week, project.year, project.name, project.description, project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu, project.muc_do_kha_thi, "
+				+ "project.phan_tich_SWOT, project.tinh_trang_va_ke_hoach_chi_tiet, project.ket_qua_thuc_hien_ke_hoach, project.note "
+				+ "FROM project "
+				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
+				+ "INNER JOIN priorities ON project.priority = priorities.id "
+				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
+				+ "INNER JOIN customers ON project.customer = customers.id "
+				+ "INNER JOIN pic ON project.id = pic.project_id "
+				+ "WHERE project.id = ? AND pic.pic = ?";
+		
+		object = _jdbcTemplate.queryForObject(sql, new ProjectDetailLessMapper(), id, pic);
+		return object;
 		
 	}
 	
@@ -193,7 +213,7 @@ public class ProjectDao extends BaseDao {
 	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week, int year, String pic_id) {
 		List<DashboardProjectPicDto> list = new ArrayList<DashboardProjectPicDto>();
 		
-		String sql = "SELECT project.id AS id_pk, project.week, priorities.name AS priority, projects_status.name AS status, project.name, customers.name AS customer, projects_types.name AS type, "
+		String sql = "SELECT project.id AS id_pk, project.week, project.year, priorities.name AS priority, projects_status.name AS status, project.name, customers.name AS customer, projects_types.name AS type, "
 				+ "(SELECT users.display_name FROM users "
 				+ "INNER JOIN users_roles ON users.id = users_roles.user "
 				+ "INNER JOIN role ON users_roles.role = role.id "
@@ -221,6 +241,12 @@ public class ProjectDao extends BaseDao {
 	
 	
 /* ===== Đầu: Account Manager ===== */
+	public int getMaxId(){
+		String sql ="SELECT MAX(id) FROM project";
+		return _jdbcTemplate.queryForObject(sql, Integer.class);
+		
+	}
+	
 	public void save(Project project) {
 		String sql = "INSERT INTO project (id, project_type, priority, project_status, customer, week, year, name, description, "
 				+ "tong_muc_dau_tu_du_kien, hinh_thuc_dau_tu, muc_do_kha_thi, phan_tich_SWOT, tinh_trang_va_ke_hoach_chi_tiet, "
@@ -231,8 +257,24 @@ public class ProjectDao extends BaseDao {
 				project.getKet_qua_thuc_hien_ke_hoach(), _now);
 	}
 	
-	public int getMaxId(){
-		String sql ="SELECT MAX(id) FROM project";
+	public void update(Project project) {
+		String sql = "UPDATE project SET project_type = ?, priority = ?, project_status = ?, customer = ?, week = ?, year = ?, name = ?, description = ?, "
+				+ "tong_muc_dau_tu_du_kien = ?, hinh_thuc_dau_tu = ?, muc_do_kha_thi = ?, phan_tich_SWOT = ?, tinh_trang_va_ke_hoach_chi_tiet = ?, "
+				+ "ket_qua_thuc_hien_ke_hoach = ?, created_at = ?, note = ? "
+				+ "WHERE id = ?";
+		_jdbcTemplate.update(sql, project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), project.getWeek(), project.getYear(), 
+				project.getName(), project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), project.getMuc_do_kha_thi(), 
+				project.getPhan_tich_SWOT(), project.getTinh_trang_va_ke_hoach_chi_tiet(), project.getKet_qua_thuc_hien_ke_hoach(), _now, project.getNote(), 
+				project.getId());
+	}
+	
+	public void delete(int id) {
+		String sql = "DELETE FROM project WHERE id = " + id;
+		_jdbcTemplate.update(sql);
+	}
+	
+	public int getTypeForProject(int id){
+		String sql ="SELECT project_type FROM project WHERE id = " + id;
 		return _jdbcTemplate.queryForObject(sql, Integer.class);
 		
 	}

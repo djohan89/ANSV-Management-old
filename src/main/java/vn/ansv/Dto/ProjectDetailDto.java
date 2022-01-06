@@ -10,6 +10,8 @@ public class ProjectDetailDto {
 	private String pic_name;
 	private String status;
 	private String customer;
+	private int week;
+	private int year;
 	private String name;
 	private String pic_role;
 	private String tinh_trang_va_ke_hoach_chi_tiet;
@@ -33,7 +35,6 @@ public class ProjectDetailDto {
 	private double so_tien_FAC;
 	private Date ke_hoach_thanh_toan_FAC;
 	private String note;
-	private int week;
 	
 	public ProjectDetailDto() {
 		super();
@@ -46,7 +47,7 @@ public class ProjectDetailDto {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getType() {
 		return type;
 	}
@@ -93,6 +94,22 @@ public class ProjectDetailDto {
 
 	public void setCustomer(String customer) {
 		this.customer = customer;
+	}
+
+	public int getWeek() {
+		return week;
+	}
+
+	public void setWeek(int week) {
+		this.week = week;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
 	}
 
 	public String getName() {
@@ -278,14 +295,5 @@ public class ProjectDetailDto {
 	public void setNote(String note) {
 		this.note = note;
 	}
-
-	public int getWeek() {
-		return week;
-	}
-
-	public void setWeek(int week) {
-		this.week = week;
-	}
-
 	
 }

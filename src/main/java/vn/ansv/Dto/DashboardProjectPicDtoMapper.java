@@ -20,6 +20,7 @@ public class DashboardProjectPicDtoMapper implements RowMapper<DashboardProjectP
 		project.setPm(rs.getNString("pm"));
 		project.setTinh_trang_va_ke_hoach_chi_tiet(rs.getNString("tinh_trang_va_ke_hoach_chi_tiet"));
 		project.setWeek(rs.getInt("week"));
+		project.setYear(rs.getInt("year"));
 		
 		return project;
 	}

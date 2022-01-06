@@ -41,6 +41,10 @@ public class ProjectServiceImpl implements IProjectService {
 		return projectDao.getById(id);
 	}
 	
+	public Project getLessById(int id, String pic) {
+		return projectDao.getLessById(id, pic);
+	}
+	
 	public List<ProjectDetailDto> getByIdAndPic(int id, String pic) {
 		return projectDao.getByIdAndPic(id,pic);
 	}
@@ -147,8 +151,20 @@ public class ProjectServiceImpl implements IProjectService {
 		projectDao.save(project);
 	}
 	
+	public void update(Project project){
+		projectDao.update(project);
+	}
+	
+	public void delete(int id){
+		projectDao.delete(id);
+	}
+	
 	public int getMaxId(){
 		return projectDao.getMaxId();
+	}
+	
+	public int getTypeForProject(int id){
+		return projectDao.getTypeForProject(id);
 	}
 
 }

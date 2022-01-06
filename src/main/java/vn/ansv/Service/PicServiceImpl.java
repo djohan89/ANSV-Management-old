@@ -15,4 +15,8 @@ public class PicServiceImpl {
 		picDao.save(project_id, pic);
 	}
 	
+	public void delete(int project_id){
+		picDao.delete(project_id);
+	}
+	
 }

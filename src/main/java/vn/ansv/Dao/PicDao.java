@@ -10,6 +10,11 @@ public class PicDao extends BaseDao {
 		String sql = "INSERT INTO pic (project_id, pic) VALUES (?, ?)";
 		_jdbcTemplate.update(sql, project_id, pic);
 	}
+	
+	public void delete(int project_id) {
+		String sql = "DELETE FROM pic WHERE project_id = " + project_id;
+		_jdbcTemplate.update(sql);
+	}
 /* ===== Cuối: Account Manager ===== */
 	
 }

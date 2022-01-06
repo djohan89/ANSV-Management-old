@@ -11,7 +11,8 @@ public class DashboardProjectPicDto {
 	private String pm;
 	private String tinh_trang_va_ke_hoach_chi_tiet;
 	private int week;
-	
+	private int year;
+
 	public DashboardProjectPicDto() {
 		super();
 	}
@@ -96,6 +97,12 @@ public class DashboardProjectPicDto {
 		this.week = week;
 	}
 	
-	
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
 	
 }
