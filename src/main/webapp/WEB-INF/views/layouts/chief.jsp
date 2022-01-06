@@ -85,29 +85,88 @@
 	    .table{
 	      min-width: 100% ;
 	    }
+	    .nav-item a.icon{
+	    	display: none;
+	    	color: #f2f2f2;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+	    }
+	    .dp-il{
+	    display: inline-block;}
 	    a.nav-link {
 	        padding-left: 6px;
+	        display: inline-block;
 	    }
 	    .change_font_size {
-	      font-size: 11px;
+	    	font-size: 11px;
 	    }
 	    .dataTables_scrollHeadInner {
-	      min-width: 100%;
+	    	min-width: 100%;
 	    }
+	    /*Màn hình mobile  */
 	    @media screen and (max-width: 1023px){
 	      body .modal-content {
-	      width: 100%;
-	      position: absolute;
+	      	width: 100%;
+	      	position: absolute;
 	      }
+	      #thong-ke,#fullScreen{
+	      	display: none;	
+	      }
+	      .topnav #li_1{
+	      	display:none; 
+	      }
+	      #detail_slide_1{
+	      	display: block;
+	      }
+	      #detail_slide{
+	      	display: none;
+	      }
+	     
+	      .topnav .nav-item a.icon{
+	      	display: inline-block;
+	      	position: absolute;
+	      	right: 0;
+	      	top:0;
+	      	
+	      }
+	      .topnav.responsive {
+	      	position: relative;
+	      	
+	      	padding-left: 0;
+	      
+	      }
+	      
+	      .topnav.responsive #li_1 {
+		    float: none;
+		    display: block;
+		    text-align: left;
+		  }
+	      
 	    }
-	
+		/* End màn hình mobile */
+		/* Màn hình desktop */
 	    @media screen and (min-width: 1024px){
 	      body .modal-content {
 	      width: 220%;
 	      position: absolute;
 	      left: -50%;
 	      }
+	      #thong-ke,#fullScreen{
+	      	display: block;	
+	      }
+	      .topnav #li_1 {
+		    display: none;
+		   
+		  }
+		  #detail_slide_1{
+		  	display: none;
+		  }
+		  #detail_slide{
+		  	display: block;
+		  }
 	    }
+	    /* End màn hình desktop */
 	
 	    .card-header{
 	      background-color: rgb(0 0 0 / 25%);
@@ -160,7 +219,8 @@
 		.tooltip_css:hover .tooltiptext {
 		  	visibility: visible;
 		}
-		
+		ul li{
+		list-style-type: none;}
 		.dropdown-item:hover {     
   				background-color: #007bff;  
   				color: #FFFFFF;  
@@ -381,6 +441,16 @@
 		  	});
 			
 		});
+		
+		function myFunction() {
+			  var x = document.getElementById("myTopnav");
+			  if (x.className === "navbar-nav topnav") {
+			    x.className = "topnav responsive";
+			  } else {
+			    x.className = "navbar-nav topnav";
+			  }
+			  
+			}
 	</script>
 	
 </body>

@@ -86,6 +86,7 @@
 													</div>
 													<div class="modal-body"
 														style="font-size: 15px; color: black">
+														<!-- Slide cho màn hình lớn -->
 														<div class="owl-carousel owl-theme" id="detail_slide">
 														<!-- ===== Phần chèn thêm HTML ===== -->
 														
@@ -191,11 +192,116 @@
 														            	<div class="d-flex">
 														            		<div >
 														            			<p><b>Tình trạng:</b> </p>
-														            			<p style="white-space: pre-wrap;"> ${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
+														            			<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
 														                	</div>
 														                	<div class="pl-5">
 														                		<p><b>Kết quả thực hiện kế hoạch:</b> </p>
-														                		<p style="white-space: pre-wrap;"> ${project_item.ket_qua_thuc_hien_ke_hoach }</p>
+														                		<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.ket_qua_thuc_hien_ke_hoach }</p>
+														                	</div>
+														                </div>
+														                <div>
+														                	<figcaption class="text-center">${project_index.index +1 } / ${project_slideshow.size() } </figcaption>
+														                </div>
+																	</div> <!-- item carousel -->
+															</c:forEach>
+														</div>
+														<!-- Slide cho màn hình nhỏ -->
+														<div class="owl-carousel owl-theme" id="detail_slide_1">
+														<!-- ===== Phần chèn thêm HTML ===== -->
+														
+															<c:forEach items="${project_slideshow }" var="project_item" varStatus="project_index">
+																
+																	<div class="container item">
+																		<div>
+																			<h5 class="pb-2 pt-1 pl-3" style="background: red;border-radius: 16px; ">
+																				<a href="javascript:void(0)" style="color: #fff">${project_item.name }</a>
+																			</h5>
+																			<div class="row">
+																				<div class="col-6">
+																					<p><b>Người phụ trách:</b></b> ${project_item.pm }</p>
+																				</div>
+																				<div class="col-6">
+																					<p><b>Người đầu mối:</b></b> ${project_item.am }</p>
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-6"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
+																				<div class="col-6"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
+																			</div>
+																			<div class="row">
+																				<div class="col-6">
+																					<p style="white-space: pre-wrap;"><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
+																				</div>
+																				<div class="col-6">
+																					<p><b>Tổng giá trị:</b> 
+																						<c:if
+																							test="${ project_item.tong_gia_tri_thuc_te !=0}">
+																							<fmt:formatNumber type="number"
+																								value="${project_item.tong_gia_tri_thuc_te }" />
+																						</c:if>
+																					</p>
+																				</div>
+																			</div>
+																			
+																		</div>
+																		<div class="row">
+																			<div class="col-4"><b>Kế hoạch DAC: </b></div>
+																			<div class="col-4"><b>Kế hoạch PAC: </b></div>
+																			<div class="col-4"><b>Kế hoạch FAC: </b></div>
+																			<div class="col-4">${project_item.DAC }</div>
+																			<div class="col-4">${project_item.PAC }</div>
+																			<div class="col-4">${project_item.FAC }</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-6"><b>Số tiền thanh toán tạm ứng: </b>
+																				<c:if test="${project_item.so_tien_tam_ung  !=0} ">
+																					<fmt:formatNumber type="number"
+																						value="${project_item.so_tien_tam_ung  }" />
+																				</c:if>
+																			</div>
+																			<div class="col-6"><b>Kế hoạch thanh toán tạm ứng:</b>${project_item.ke_hoach_tam_ung } </div>
+																		</div>
+																		<div class="row">
+																			<div class="col-6"><b>Số tiền DAC: </b>
+																				<c:if test="${project_item.so_tien_DAC  !=0} ">
+																					<fmt:formatNumber type="number"
+																						value="${project_item.so_tien_DAC }" />
+																				</c:if>
+																			</div>
+																			<div class="col-6"><b>Kế hoạch DAC: </b>
+																				${project_item.ke_hoach_thanh_toan_DAC }
+																			</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-6"><b>Số tiền PAC: </b>
+																				<c:if test="${project_item.so_tien_PAC  !=0} ">
+																					<fmt:formatNumber type="number"
+																						value="${project_item.so_tien_PAC }" />
+																				</c:if>
+																			</div>
+																			<div class="col-6"><b>Kế hoạch PAC: </b>
+																				${project_item.ke_hoach_thanh_toan_PAC }
+																			</div>
+																		</div>
+																		<div class="row">
+																			<div class="col-6"><b>Số tiền FAC: </b>
+																				<c:if test="${project_item.so_tien_FAC  !=0} ">
+																					<fmt:formatNumber type="number"
+																						value="${project_item.so_tien_FAC }" />
+																				</c:if>
+																			</div>
+																			<div class="col-6"><b>Kế hoạch FAC: </b>
+																				${project_item.ke_hoach_thanh_toan_FAC }
+																			</div>
+																		</div>
+														            	<div class="d-flex">
+														            		<div >
+														            			<p><b>Tình trạng:</b> </p>
+														            			<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
+														                	</div>
+														                	<div class="pl-5">
+														                		<p><b>Kết quả thực hiện kế hoạch:</b> </p>
+														                		<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.ket_qua_thuc_hien_ke_hoach }</p>
 														                	</div>
 														                </div>
 														                <div>
@@ -227,24 +333,19 @@
 											<c:if test="${project_item.type == 'Triển khai' && project_item.pic_role =='ROLE_PM' }">
 												<tr>
 													<td>
-														<c:if test="${project_item.status =='High' }">
-															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.project_name }
+														
+														<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															${project_item.project_name }
+															<c:if test="${project_item.status =='High' }">
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
-															</a>
-														</c:if>
-														<c:if test="${project_item.status =='Medium' }">
-															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.project_name }
+															</c:if>
+															<c:if test="${project_item.status =='Medium' }">
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
-															</a>
-														</c:if>
-														<c:if test="${project_item.status =='Low' }">
-															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-																${project_item.project_name }
+															</c:if>
+															<c:if test="${project_item.status =='Low' }">
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
-															</a>
-														</c:if>
+															</c:if>
+														</a>
 													</td>
 													<td>
 														<c:if test="${project_item.status =='High' }">
@@ -512,9 +613,9 @@
 		$('#example_2 tbody').on('click', 'tr.group', function() {
 	        var currentOrder = example_1.order()[0];
 	        if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
-	            example_1.order([groupColumn, 'desc']).draw();
+	            example_2.order([groupColumn, 'desc']).draw();
 	        } else {
-	            example_1.order([groupColumn, 'asc']).draw();
+	            example_2.order([groupColumn, 'asc']).draw();
 	        }
 	    });
 		
@@ -556,9 +657,9 @@
 		$('#example_3 tbody').on('click', 'tr.group', function() {
 	        var currentOrder = example_1.order()[0];
 	        if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
-	            example_1.order([groupColumn, 'desc']).draw();
+	            example_3.order([groupColumn, 'desc']).draw();
 	        } else {
-	            example_1.order([groupColumn, 'asc']).draw();
+	            example_3.order([groupColumn, 'asc']).draw();
 	        }
 	    });
 		

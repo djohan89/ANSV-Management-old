@@ -80,7 +80,6 @@
 									</thead>
 									<tbody>
 										<c:forEach items="${project_table_pic}" var="project_item" varStatus="project_index">
-
 												<tr>
 													<td>
 														<c:if test="${project_item.status =='High' }">

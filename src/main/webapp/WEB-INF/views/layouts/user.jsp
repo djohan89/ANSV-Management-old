@@ -101,21 +101,23 @@
     }
     @media screen and (max-width: 1023px){
       body .modal-content {
-      width: 100%;
-      position: absolute;
+      	width: 100%;
+      	position: absolute;
       }
+     
     }
 
     @media screen and (min-width: 1024px){
       body .modal-content {
-      width: 220%;
-      position: absolute;
-      left: -50%;
+      	width: 220%;
+      	position: absolute;
+      	left: -50%;
       }
+      
     }
 
     .card-header{
-      background-color: rgb(0 0 0 / 25%);
+    	background-color: rgb(0 0 0 / 25%);
     }
     
     .dataTables_scrollHeadInner {
@@ -287,6 +289,9 @@
 		        $(".tree-toggle").parent().children("ul.tree").toggle(200);
 		    });
 		    
+		    document.getElementById("yourLinkId").onclick = function() {
+				document.getElementById("formLogout").submit();
+			}
 		    
 			
 			$('.menu-click').click(function(){

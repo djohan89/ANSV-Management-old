@@ -5,23 +5,24 @@
 	<!-- Left navbar links -->
 	<ul class="navbar-nav">
 		<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
-			href="#" role="button"><i class="fas fa-bars"></i></a></li>
-		<li class="nav-item d-none d-sm-inline-block"><a
-			href="index3.html" class="nav-link">Trang chủ</a></li>
-		<li class="nav-item d-none d-sm-inline-block"><a href="#"
-			class="nav-link">Liên hệ</a></li>
+			href="#" role="button"><i class="fas fa-bars" style="font-size: 25px;"></i></a></li>
+		<li class="nav-item" id="fullScreen">
+			<a class="nav-link" data-widget="fullscreen" id="fullScreen" href="#" role="button">
+				<i class="fas fa-expand-arrows-alt" style="font-size: 25px;"></i>
+			</a>
+		</li>
 		<li class="nav-item d-none d-sm-inline-block">
 			<form action="<c:url value="/j_spring_security_logout" />" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<button type="submit" class="btn btn-secondary btn-fill" style="font-size: 20px;">
+				<!-- <button type="submit" class="btn btn-secondary btn-fill" style="font-size: 20px;">
 					<i class="fa fa-sign-out" style="font-weight: bold;"></i><b> Log out</b>
-				</button>
+				</button> -->
 			</form>
 		</li>
 	</ul>
 
 	<!-- Right navbar links -->
-	<ul class="navbar-nav ml-auto">
+	<%-- <ul class="navbar-nav ml-auto">
 		<!-- Navbar Search -->
 		<li class="nav-item"><a class="nav-link"
 			data-widget="navbar-search" href="#" role="button"> <i
@@ -137,9 +138,9 @@
 		<li class="nav-item"><a class="nav-link" data-widget="fullscreen"
 			href="#" role="button"> <i class="fas fa-expand-arrows-alt"></i>
 		</a></li>
-		<%-- <li class="nav-item"><a class="nav-link"
+		<li class="nav-item"><a class="nav-link"
 			data-widget="control-sidebar" data-slide="true" href="#"
 			role="button"> <i class="fas fa-th-large"></i>
-		</a></li> --%>
-	</ul>
+		</a></li>
+	</ul> --%>
 </nav>
