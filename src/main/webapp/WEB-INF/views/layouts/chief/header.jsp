@@ -76,7 +76,7 @@
 				<div class="row">
 					<div class="col-md-5"><b>Báo cáo - ${ types.name } (tuần ${week})</b></div>
 					
-					<c:url value="${ type_status.index * 10 }" var="position"/> <!-- Tạo biến đánh số vị trí trong mảng thống kê -->
+					<c:url value="${ (types.id - 1) * 10 }" var="position"/> <!-- Tạo biến đánh số vị trí trong mảng thống kê -->
 					
 					<div class="col-2">
 						<span class="badge badge-danger right badge-statistics">${ statistics[position] }</span>

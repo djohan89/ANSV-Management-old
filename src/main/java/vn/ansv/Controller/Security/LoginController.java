@@ -109,6 +109,11 @@ public class LoginController {
 		    session.setAttribute("display_name", usersService.getByUser(userName).getDisplay_name());
 		    session.setAttribute("user_id", usersService.getByUser(userName).getId());
 		    
+		    String the_week_before_format = String.valueOf(the_week_before);
+		    
+		    if (the_week_before < 10) {
+		    	the_week_before_format = "0" + the_week_before_format;
+		    }
 		    
 		    
 		    // Check user's role and then redirect
@@ -118,15 +123,15 @@ public class LoginController {
 		    }
 			if (request.isUserInRole("ROLE_CEO")) {
 				session.setAttribute("role", "chief");
-		    	return "redirect:/chief/dashboard/" + the_week_before + "_" + year;
+		    	return "redirect:/chief/dashboard/" + the_week_before_format + "_" + year;
 		    }
 			if (request.isUserInRole("ROLE_AM")) {
 				session.setAttribute("role", "AM");
-		    	return "redirect:/AM/dashboard/" + the_week_before + "_" + year;
+		    	return "redirect:/AM/dashboard/" + the_week_before_format + "_" + year;
 		    }
 			if (request.isUserInRole("ROLE_PM")) {
 				session.setAttribute("role", "PM");
-		    	return "redirect:/PM/dashboard/" + the_week_before + "_" + year;
+		    	return "redirect:/PM/dashboard/" + the_week_before_format + "_" + year;
 		    }
 			// End: Check user's role and then redirect
 		

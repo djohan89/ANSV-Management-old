@@ -401,12 +401,18 @@
 			}
 			document.getElementById("select_year").innerHTML = year_option; // Nhúng HTML cho dữ liệu Select2 (year)
 			
+			var value_option_week = "";
 			for (let i = 1; i <= 53; i++) {
-				if (i == week_from_url) {
-					week_option += '<option value="' + i + '" selected>' + i + '</option>';
-				} else {
-					week_option += '<option value="' + i + '">' + i + '</option>';
+				if (i < 10) {
+					value_option_week = value_option_week + "0" + i;
 				}
+				
+				if (i == week_from_url) {
+					week_option += '<option value="' + value_option_week + '" selected>' + i + '</option>';
+				} else {
+					week_option += '<option value="' + value_option_week + '">' + i + '</option>';
+				}
+				value_option_week = "";
 			}
 			document.getElementById("select_week").innerHTML = week_option; // Nhúng HTML cho dữ liệu Select2 (week)
 			
