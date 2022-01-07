@@ -356,6 +356,8 @@
 			for (let i = 1; i <= 53; i++) {
 				if (i < 10) {
 					value_option_week = value_option_week + "0" + i;
+				} else {
+					value_option_week = i;
 				}
 				
 				if (i == week_from_url) {
