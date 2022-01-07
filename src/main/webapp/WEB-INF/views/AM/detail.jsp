@@ -187,7 +187,7 @@
 										</tr>
 										<tr>
 											<th>Tổng mức đầu tư</th>
-											<td>${detai.tong_muc_dau_tu_du_kien }</td>
+											<td>${detail.tong_muc_dau_tu_du_kien }</td>
 										</tr>
 										<tr>
 											<th>Hình thức đầu tư</th>
@@ -281,7 +281,7 @@
 										</tr>
 										<tr>
 											<th>Tổng mức đầu tư</th>
-											<td>${detai.tong_muc_dau_tu_du_kien }</td>
+											<td>${detail.tong_muc_dau_tu_du_kien }</td>
 										</tr>
 										<tr>
 											<th>Hình thức đầu tư</th>

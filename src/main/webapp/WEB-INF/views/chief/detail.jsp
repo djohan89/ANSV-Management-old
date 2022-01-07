@@ -24,8 +24,6 @@
 						test="${ detail.pic_role=='ROLE_PM' && detail.type=='Triển khai' }">
 						<h2 class="text-center mt-3">${detail.name }</h2>
 						<div class="row">
-
-
 							<div class="col-md-6">
 								<div class="table-responsive-sm">
 									<table class="table table-hover table-bordered">
@@ -164,6 +162,7 @@
 									</button>
 								</div>
 							</div>
+						</div>
 					</c:if>
 					<c:if test="${detail.type=='Viễn thông' }">
 						<h2 class="text-center mt-3">${detail.name }</h2>
@@ -181,7 +180,7 @@
 										</tr>
 										<tr>
 											<th>Tổng mức đầu tư</th>
-											<td>${detai.tong_muc_dau_tu_du_kien }</td>
+											<td>${detail.tong_muc_dau_tu_du_kien }</td>
 										</tr>
 										<tr>
 											<th>Hình thức đầu tư</th>
@@ -275,7 +274,7 @@
 										</tr>
 										<tr>
 											<th>Tổng mức đầu tư</th>
-											<td>${detai.tong_muc_dau_tu_du_kien }</td>
+											<td>${detail.tong_muc_dau_tu_du_kien }</td>
 										</tr>
 										<tr>
 											<th>Hình thức đầu tư</th>

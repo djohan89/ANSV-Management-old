@@ -85,6 +85,7 @@
 	    .table{
 	      min-width: 100% ;
 	    }
+	    
 	    .nav-item a.icon{
 	    	display: none;
 	    	color: #f2f2f2;
@@ -132,7 +133,7 @@
 	      }
 	      .topnav.responsive {
 	      	position: relative;
-	      	
+	      	width:100%;
 	      	padding-left: 0;
 	      
 	      }
@@ -141,6 +142,8 @@
 		    float: none;
 		    display: block;
 		    text-align: left;
+		    margin-left: 10%;
+		    margin-top: 3%;
 		  }
 	      
 	    }
@@ -236,7 +239,10 @@
 		.badge-statistics {
 			min-width: 23px;
 		}
-		
+		.badge-statistic {
+			min-width: 21px;
+		}
+		 
 		.select2-container--default .select2-selection--single{
 	        margin-left: 10px;
 	        padding: 2px 0;
@@ -245,10 +251,19 @@
 	        font-size: 1.2em;  
 	        position: relative;
 	    }
+	    .select2-container {
+			margin-right: 10px;
+		}
+	    
+	    span[data-select2-id="1"].select2-container--default .select2-selection--single,span[data-select2-id="1"]{
+	    	width: 55px !important;
+	    }
+	    span[data-select2-id="2"].select2-container--default .select2-selection--single,span[data-select2-id="2"]{
+	    	width: 70px !important;
+	    }
 	    
 	    .select2-container--default .select2-dropdown.select2-dropdown--below {
 	        margin-left: 10px;
-	        width: 60px !important;
 	    }
 	    
 	    .select2-container--default .select2-selection--single {
