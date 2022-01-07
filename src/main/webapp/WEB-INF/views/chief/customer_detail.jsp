@@ -112,16 +112,16 @@ a:hover {
         	<c:forEach var="item" items="${customer }" varStatus="index">
                		<c:if test="${ item.type=='Triển khai' && item.pic_role=='ROLE_PM'}">
                			 <c:if test="${index.first }">
-               			  <div id="du_an_${index.count }" class="container tab-pane active"><br>
+               			  <div id="du_an_${index.count }" class="tab-pane active"><br>
                				
                			</c:if>
                			<c:if test="${not index.first }">
-               			<div id="du_an_${index.count }" class="container tab-pane fade"><br>
+               			<div id="du_an_${index.count }" class="tab-pane fade"><br>
                				
                			</c:if> 
                				 <div>
 			                    <p>Người phụ trách: ${item.pic_name}</p>
-			                    <p>Tên dự án: <a style="color: #000" href="<c:url value='/chief/detail/${week }/${item.id}' />">${item.name}</a> </p>
+			                    <p>Tên dự án: <a style="color: #000" href="<c:url value='/chief/detail/${week}_${year}_${item.id}' />">${item.name}</a> </p>
 			                    <p >Phạm vi cung cấp: <span style="white-space: pre-wrap;">${item.pham_vi_cung_cap }</span></p>
 			                    <p>Tổng giá trị: <c:if
 												test="${ item.tong_gia_tri_thuc_te !=0}">
@@ -210,19 +210,20 @@ a:hover {
 			                </div>
 			           
                 			</div>
+                		
                     	</c:if>
                     	<c:if test="${ item.type=='Viễn thông'}">
                 			 <c:if test="${index.first }">
-                			  <div id="du_an_${index.count }" class="container tab-pane active"><br>
+                			  <div id="du_an_${index.count }" class="tab-pane active"><br>
                 				
                 			</c:if>
                 			<c:if test="${not index.first }">
-                			<div id="du_an_${index.count }" class="container tab-pane fade"><br>
+                			<div id="du_an_${index.count }" class="tab-pane fade"><br>
                 				
                 			</c:if> 
                 			<div>
                 				<p><b>Người phụ trách:</b> ${item.pic_name }</p>
-                				<p><b>Tên dự án:</b><a style="color: #000" href="<c:url value='/chief/detail/${week }/${item.id}' />">${item.name}</a></p>
+                				<p><b>Tên dự án:</b><a style="color: #000" href="<c:url value='/chief/detail/${week}_${year}_${item.id}' />">${item.name}</a></p>
                 				<p ><b>Mô tả dự án:</b><span style="white-space: pre-wrap;">${item.description }</span></p>
                 				<p><b>Tổng mức đầu tư:</b> 
 													${item.tong_muc_dau_tu_du_kien }
@@ -239,16 +240,16 @@ a:hover {
                 		
                 		<c:if test="${ item.type=='Chuyển đổi số'}">
                 			 <c:if test="${index.first }">
-                			  <div id="du_an_${index.count }" class="container tab-pane active"><br>
+                			  <div id="du_an_${index.count }" class="tab-pane active"><br>
                 				
                 			</c:if>
                 			<c:if test="${not index.first }">
-                			<div id="du_an_${index.count }" class="container tab-pane fade"><br>
+                			<div id="du_an_${index.count }" class="tab-pane fade"><br>
                 				
                 			</c:if> 
                 			<div>
                 				<p><b>Người phụ trách:</b> ${item.pic_name }</p>
-                				<p><b>Tên dự án:</b> <a style="color: #000" href="<c:url value='/chief/detail/${week }/${item.id}' />">${item.name}</a></p>
+                				<p><b>Tên dự án:</b> <a style="color: #000" href="<c:url value='/chief/detail/${week}_${year}_${item.id}' />">${item.name}</a></p>
                 				<p style="white-space: pre-wrap;"><b>Mô tả dự án:</b><span >${item.description }</span></p>
                 				<p><b>Tổng mức đầu tư:</b>  
 													${item.tong_muc_dau_tu_du_kien }
@@ -263,11 +264,9 @@ a:hover {
                 			</div>
                 		</c:if>
                 	</c:forEach>
-                
+                	
 	            </div>
-	               
-            
-        </div> 
+        	</div> 
         </section>
         <!-- <p class="act "><b>Active Tab</b>: <span></span></p>
         <p class="prev "><b>Previous Tab</b>: <span></span></p> -->

@@ -34,31 +34,31 @@
 				<div class="row">
 					<div class="col-12"><b>Báo cáo - ${ types.name } (tuần ${week})</b></div>
 					
-					<c:url value="${ type_status.index * 10 }" var="position"/> <!-- Tạo biến đánh số vị trí trong mảng thống kê -->
+					<c:url value="${ (types.id - 1) * 10 }" var="position"/> <!-- Tạo biến đánh số vị trí trong mảng thống kê -->
 					
 					<div class="col-3">
-						<span class="badge badge-danger">${ statistics[position] }</span>
-                		<span class="badge badge-warning">${ statistics[position + 1] }</span>
-                		<span class="badge badge-success">${ statistics[position + 2] }</span>
+						<span class="badge badge-statistic badge-danger">${ statistics[position] }</span>
+                		<span class="badge badge-statistic badge-warning">${ statistics[position + 1] }</span>
+                		<span class="badge badge-statistic badge-success">${ statistics[position + 2] }</span>
 					</div>
 					<div class="col-3">
-						<span class="badge badge-danger">${ statistics[position + 3] }</span>
-                  		<span class="badge badge-warning">${ statistics[position + 4] }</span>
-                  		<span class="badge badge-success">${ statistics[position + 5] }</span>
+						<span class="badge badge-statistic badge-danger">${ statistics[position + 3] }</span>
+                  		<span class="badge badge-statistic badge-warning">${ statistics[position + 4] }</span>
+                  		<span class="badge badge-statistic badge-success">${ statistics[position + 5] }</span>
 					</div>
 					<div class="col-3">
-						<span class="badge badge-danger">${ statistics[position + 6] }</span>
-                  		<span class="badge badge-warning">${ statistics[position + 7] }</span>
-                  		<span class="badge badge-success">${ statistics[position + 8] }</span>
+						<span class="badge badge-statistic badge-danger">${ statistics[position + 6] }</span>
+                  		<span class="badge badge-statistic badge-warning">${ statistics[position + 7] }</span>
+                  		<span class="badge badge-statistic badge-success">${ statistics[position + 8] }</span>
 					</div>
 					<div class="col-3 pl-3">
-						<span class="badge badge-primary  ">${ statistics[position + 9] }</span>
+						<span class="badge badge-statistics badge-primary  ">${ statistics[position + 9] }</span>
 					</div>
 				</div>
 			</c:forEach>
 
 			<div class="row" style="font-weight: bold;">
-				<div class="col-md-5"></div>
+				
 				<div class="col-3" >Ưu tiên 1</div>
 				<div class="col-3" >Ưu tiên 2</div>
 				<div class="col-3" >Ưu tiên 3</div>
