@@ -133,7 +133,7 @@
 							<c:forEach var="project" items="${ menu_project }" varStatus="index_project">
 								<c:if test="${ project.pic == pic.pic_id }">
 									<li class="nav-item">
-										<a href="<c:url value='/chief/detail/${project.week}_${year}_${project.id}' />" class="nav-link">
+										<a id="project-${project.id }" href="<c:url value='/chief/detail/${project.week}_${year}_${project.id}' />" class="nav-link">
 											<i class="far fa-circle nav-icon"></i><p>${ project.name }</p>
 										</a>
 									</li>

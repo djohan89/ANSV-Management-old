@@ -40,4 +40,13 @@ public class ChiefController extends ChiefBaseController {
 		
 		return _mvShare;
 	}
+	
+	@RequestMapping("chief/delete_project/{week}_{year}_{id}")
+	public String doDeleteCustomer(@PathVariable int week, @PathVariable int year, @PathVariable int id) {
+		_picService.delete(id);
+		_projectService.delete(id);
+		
+		// Sau khi insert thành công sẽ điều hướng về tuần chứa báo cáo đó
+		return "redirect:/chief/dashboard/" + week + "_" + year;
+	}
 }
