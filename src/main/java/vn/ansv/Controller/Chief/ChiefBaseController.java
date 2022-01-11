@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
+import vn.ansv.Dao.CustomersDao;
 import vn.ansv.Service.CustomersServiceImpl;
+import vn.ansv.Service.PicServiceImpl;
+import vn.ansv.Service.PriorityServiceImpl;
 import vn.ansv.Service.ProjectServiceImpl;
 import vn.ansv.Service.ProjectTypesServiceImpl;
 import vn.ansv.Service.User.UsersServiceImpl;
@@ -24,6 +27,14 @@ public class ChiefBaseController {
 	@Autowired
 	UsersServiceImpl _usersService;
 	
+	@Autowired
+	PriorityServiceImpl _priorityService;
+	
+	@Autowired
+	CustomersDao _customersDao;
+	
+	@Autowired
+	PicServiceImpl _picService;
 	public ModelAndView _mvShare = new ModelAndView();
 	
 	public ModelAndView InitCEO(int week, int year) {

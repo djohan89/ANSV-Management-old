@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin | Chi tiết dự án</title>
+<title>PM | Chi tiết dự án</title>
 </head>
 
 <body>
@@ -17,6 +17,11 @@
 }
 </style>
 	<div class="content-wrapper">
+	<div class="content-header">
+				
+			<!-- /.container-fluid -->
+		</div>
+
 		<section class="content">
 			<div class="container-fluid">
 				<c:forEach var="detail" items="${detail }" varStatus="detailIndex">
@@ -24,6 +29,7 @@
 						test="${ detail.pic_role=='ROLE_PM' && detail.type=='Triển khai' }">
 						<h2 class="text-center mt-3">${detail.name }</h2>
 						<div class="row">
+
 							<div class="col-md-6">
 								<div class="table-responsive-sm">
 									<table class="table table-hover table-bordered">
@@ -113,7 +119,7 @@
 										</tr>
 										<tr>
 											<th colspan="2">Tình trạng</th>
-											<td class="text-justify">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
+											<td>${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
 										</tr>
 										<tr>
 											<th colspan="2">Priority</th>
@@ -121,7 +127,7 @@
 										</tr>
 										<tr>
 											<th colspan="2">Kết quả thực hiện kế hoạch</th>
-											<td class="text-justify">${detail.ket_qua_thuc_hien_ke_hoach }</td>
+											<td>${detail.ket_qua_thuc_hien_ke_hoach }</td>
 										</tr>
 										<tr>
 											<th colspan="2">Phụ trách</th>
@@ -146,20 +152,22 @@
 														<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
-												<div class="modal-body">bạn có muốn đóng dự án
-													${detail.name }</div>
+												<div class="modal-body">Bạn có muốn đóng dự án
+													"${detail.name }"</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary"
 														data-dismiss="modal">Close</button>
-													<a type="button" href="<c:url value='/chief/delete_project/${week}_${year}_${detail.id}' />" class="btn btn-danger">Đóng
-														dự án</a>
+													<button type="button" class="btn btn-danger">Đóng
+														dự án</button>
 												</div>
 											</div>
 										</div>
 									</div>
+									<button type="button" class="btn btn-warning mr-2">
+										<a href="<c:url value='/PM/update_project/${week}/${year }/${detail.id}' />" style="color: white;">Sửa</a> 
+									</button>
 								</div>
 							</div>
-						</div>
 					</c:if>
 					<c:if test="${detail.type=='Viễn thông' }">
 						<h2 class="text-center mt-3">${detail.name }</h2>
@@ -204,15 +212,15 @@
 									<table class="table table-bordered table-hover">
 										<tr>
 											<th>Tình trạng & Kế hoạch chi tiết</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
+											<td style="white-space: pre-wrap;">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
 										</tr>
 										<tr>
 											<th>Phân tích SWOT</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.phan_tich_SWOT }</td>
+											<td style="white-space: pre-wrap;">${detail.phan_tich_SWOT }</td>
 										</tr>
 										<tr>
 											<th>Kết quả thực hiện kế hoạch</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.ket_qua_thuc_hien_ke_hoach }</td>
+											<td style="white-space: pre-wrap;">${detail.ket_qua_thuc_hien_ke_hoach }</td>
 										</tr>
 										<tr>
 											<th>Phụ trách</th>
@@ -237,17 +245,20 @@
 														<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
-												<div class="modal-body">bạn có muốn đóng dự án
-													${detail.name }</div>
+												<div class="modal-body">Bạn có muốn đóng dự án
+													"${detail.name }"</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary"
 														data-dismiss="modal">Close</button>
-													<a type="button" href="<c:url value='/chief/delete_project/${week}_${year}_${detail.id}' />" class="btn btn-danger">Đóng
-														dự án</a>
+													<button type="button" class="btn btn-danger">Đóng
+														dự án</button>
 												</div>
 											</div>
 										</div>
 									</div>
+									<button type="button" class="btn btn-warning mr-2">
+										<a href="<c:url value='/PM/update_project/${week}/${year }/${detail.id}' />" style="color: white;">Sửa</a>
+									</button>
 								</div>
 							</div>
 						</div>
@@ -295,15 +306,15 @@
 									<table class="table table-bordered table-hover">
 										<tr>
 											<th>Tình trạng & Kế hoạch chi tiết</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
+											<td style="white-space: pre-wrap;">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
 										</tr>
 										<tr>
 											<th>Phân tích SWOT</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.phan_tich_SWOT }</td>
+											<td style="white-space: pre-wrap;">${detail.phan_tich_SWOT }</td>
 										</tr>
 										<tr>
 											<th>Kết quả thực hiện kế hoạch</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.ket_qua_thuc_hien_ke_hoach }</td>
+											<td style="white-space: pre-wrap;">${detail.ket_qua_thuc_hien_ke_hoach }</td>
 										</tr>
 										<tr>
 											<th>Phụ trách</th>
@@ -328,17 +339,20 @@
 														<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
-												<div class="modal-body">bạn có muốn đóng dự án
-													${detail.name }</div>
+												<div class="modal-body">Bạn có muốn đóng dự án
+													"${detail.name }"</div> 
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary"
 														data-dismiss="modal">Close</button>
-													<a type="button" href="<c:url value='/chief/delete_project/${week}_${year}_${detail.id}' />" class="btn btn-danger">Đóng
-														dự án</a>
+													<button type="button" class="btn btn-danger">Đóng
+														dự án</button>
 												</div>
 											</div>
 										</div>
 									</div>
+									<button type="button" class="btn btn-warning mr-2">
+										<a href="<c:url value='/PM/update_project/${week}/${year }/${detail.id}' />" style="color: white;">Sửa</a>
+									</button>
 								</div>
 							</div>
 						</div>
