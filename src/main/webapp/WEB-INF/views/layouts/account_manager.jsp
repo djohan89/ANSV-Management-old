@@ -44,9 +44,8 @@
 <link rel="stylesheet"
 	href="<c:url value='/assets/user/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' />">
 
-<!-- Daterange picker -->
-<link rel="stylesheet"
-	href="<c:url value='/assets/user/plugins/daterangepicker/daterangepicker.css' />">
+<!-- Datepicker -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 
 <!-- === Select 2 === -->
 	<link href="<c:url value="/assets/user/vendor/select2/css/select2.min.css" />" rel="stylesheet" />
@@ -177,18 +176,17 @@
 			min-width: 23px;
 		}
 		
-		.select2-container--default .select2-selection--single{
+		.select2-container--default .select2-selection--single {
 	        margin-left: 10px;
 	        padding: 2px 0;
 	        height: 30px;
-	        width: 65px; 
+	        width: 65px !important; 
 	        font-size: 1.2em;  
 	        position: relative;
 	    }
 	    
 	    .select2-container--default .select2-dropdown.select2-dropdown--below {
 	        margin-left: 10px;
-	        width: 65px !important;
 	    }
 	    
 	    .tooltip_for_icon {
@@ -206,6 +204,34 @@
 		.tooltip_icon:hover .tooltip_for_icon {
 		  	visibility: visible;
 		}
+		
+		.select2-container {
+			margin-right: 10px;
+		}
+	    
+	    span[data-select2-id="1"].select2-container--default .select2-selection--single,span[data-select2-id="1"] {
+	    	width: 55px !important;
+	    }
+	    
+	    span[data-select2-id="2"].select2-container--default .select2-selection--single,span[data-select2-id="2"] {
+	    	width: 70px !important;
+	    }
+	    
+	    span[data-select2-id="3"].select2-container--default .select2-selection--single,span[data-select2-id="3"] {
+	    	width: 102% !important;
+	    	margin-top: -1.1px;;
+	    	margin-left: 0.5px;
+	        padding-top: 1%;
+	        height: 39px;
+	    }
+	    
+	    span[data-select2-id="3"].select2-container--default .select2-selection--single .select2-selection__arrow {
+	    	top: 14%;
+	    }
+	    
+	    /* span[data-select2-id="3"].select2-container--default .select2-dropdown.select2-dropdown--below,span[data-select2-id="3"] {
+	        margin-left: 0 !important;
+	    } */
 	</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -340,6 +366,7 @@
 			/* ===== Đầu: Thiết lập select 2 cho phần Header ===== */
 			$('#select_week').select2();
 			$('#select_year').select2();
+			$('#select_pic').select2();
 			var week_option = "";
 			var year_option = "";
 			
@@ -386,7 +413,7 @@
 			    document.getElementById("formLogout").submit();
 			}
 			
-			$("#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua").ckeditor({
+			$("#add_ckeditor,#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua").ckeditor({
 				editorplaceholder: 'Nội dung...',
 			  	toolbar: [
 					{ name: 'document', items: [ 'Source', '-' ] },											
@@ -401,6 +428,10 @@
 				uiColor : '#F7D358',
 				height  : 100 
 		  	});
+			
+			$( ".datepickerJavascript" ).datepicker({
+				dateFormat: 'dd / mm / yy'
+			});
 			
 		});
 	</script>

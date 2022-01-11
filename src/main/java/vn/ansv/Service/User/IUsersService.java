@@ -14,5 +14,6 @@ public interface IUsersService {
 	@Autowired
 	public List<UsersDto> getAllUsers();
 	public List<MenuPicDto> getMenu(int week, int year);
+	public List<MenuPicDto> getAllPicForm();
 	
 }

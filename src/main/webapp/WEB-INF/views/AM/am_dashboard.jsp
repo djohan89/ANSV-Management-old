@@ -28,21 +28,6 @@
 		<!-- Main content -->
 		<section class="content">
 			<div class="container-fluid">
-				<div class="row">
-					<section class="col-lg-4">
-						<!-- Sheet 1 card -->
-
-					</section>
-
-					<!-- === Content: Cột 2 (sheet 2) === -->
-
-
-					<!-- === Content: Cột 3 (sheet 3) === -->
-
-				</div>
-				<!-- /.row (main row) -->
-			</div>
-			<div class="container-fluid">
 				<!-- Small boxes (Stat box) -->
 				<!-- Main row -->
 				<div class="row">
@@ -123,7 +108,7 @@
 														</a>
 														
 														<c:if test="${project_item.type != 'Triển khai' }">
-															<a href="#" class="float-right tooltip_icon mr-3">
+															<a href="<c:url value='/AM/deployment/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" class="float-right tooltip_icon mr-3">
 																<i class="fas fa-thumbs-up fa-2x text-success"></i>
 																<span class="tooltip_for_icon bg-success text-center" 
 																	style="margin-left: -5.4%; margin-top: -2.8%;">Triển khai</span>

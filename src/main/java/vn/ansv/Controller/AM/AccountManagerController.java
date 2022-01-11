@@ -66,7 +66,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	// Link đến form insert dự án
 	@RequestMapping(value = { "/create_project/{week}_{year}" }, method = RequestMethod.GET)
-	public ModelAndView AmCreateTest(@PathVariable int week, @PathVariable int year, Model model, HttpSession session) {
+	public ModelAndView AmCreateProject(@PathVariable int week, @PathVariable int year, Model model, HttpSession session) {
 		String pic_id = (String) session.getAttribute("user_id");
 		int Project_new_id = _projectService.getMaxId() + 1;
 		InitAM(week, year, pic_id);
@@ -79,17 +79,14 @@ public class AccountManagerController extends AccountManagerBaseController {
 		_mvShare.addObject("current_week", current_week);
 		_mvShare.addObject("current_year", current_year);
 		_mvShare.addObject("project_new_id", Project_new_id);
-		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
-		_mvShare.addObject("priorities",_priorityService.getAllPriorityForm());
-		_mvShare.addObject("status",_priorityService.getAllStatusForm());
-		_mvShare.addObject("type",_priorityService.getAllTypeForm());
+		FormAM(); // Gọi hàm lấy dữ liệu cần thiết cho form báo cáo đầu ra
 		_mvShare.setViewName("AM/create_new");
 		return _mvShare;
 	}
 	
 	// Thực thi insert dự án
 	@RequestMapping("/insertProject/{week}_{year}")
-	public String doSaveCustomer(@PathVariable int week, @PathVariable int year, @ModelAttribute("Project") Project project, Model model, HttpSession session) {
+	public String doInsertProject(@PathVariable int week, @PathVariable int year, @ModelAttribute("Project") Project project, Model model, HttpSession session) {
 		
 		String pic_id = (String) session.getAttribute("user_id");
 		int project_id = project.getId();
@@ -107,7 +104,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	// Thực thi xoá dự án
 	@RequestMapping("/delete_project/{week}_{year}_{id}")
-	public String doDeleteCustomer(@PathVariable int week, @PathVariable int year, @PathVariable int id) {
+	public String doDeleteProject(@PathVariable int week, @PathVariable int year, @PathVariable int id) {
 		_picService.delete(id);
 		_projectService.delete(id);
 		
@@ -117,14 +114,11 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	// Link đến form update dự án
 	@RequestMapping(value = { "/update_project/{week}_{year}_{id}" }, method = RequestMethod.GET)
-	public ModelAndView AmUpdate(@PathVariable int week, @PathVariable int year, @PathVariable  int id, HttpSession session, Model model) {
+	public ModelAndView AmUpdateProject(@PathVariable int week, @PathVariable int year, @PathVariable int id, HttpSession session, Model model) {
 		String pic_id = (String) session.getAttribute("user_id");
 		InitAM(week, year, pic_id);
 		_mvShare.addObject("detail",_projectService.getById(id));
-		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
-		_mvShare.addObject("priorities",_priorityService.getAllPriorityForm());
-		_mvShare.addObject("status",_priorityService.getAllStatusForm());
-		_mvShare.addObject("type",_priorityService.getAllTypeForm());
+		FormAM(); // Gọi hàm lấy dữ liệu cần thiết cho form báo cáo đầu ra
 		
 		int check_type = _projectService.getTypeForProject(id);
 		if (check_type == 1) {
@@ -141,7 +135,38 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	// Thực thi update dự án
 	@RequestMapping("/updateProject/{week}_{year}_{id}")
-	public String doUpdateCustomer(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable  int id, Model model) {
+	public String doUpdateProject(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable  int id, Model model) {
+		_projectService.update(project);
+		
+		return "redirect:/AM/dashboard/" + week + "_" + year;
+	}
+	
+	// Link đến form chuyển giai đoạn dự án
+	@RequestMapping("/deployment/{week}_{year}_{id}")
+	public ModelAndView nextStepProject(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable  int id, 
+			HttpSession session, Model model) {
+		String pic_id = (String) session.getAttribute("user_id");
+		int Project_new_id = _projectService.getMaxId() + 1;
+		InitAM(week, year, pic_id);
+		
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_year = Calendar.getInstance().get(Calendar.YEAR); // Get the curent year
+		model.addAttribute("project", new Project());
+		
+		_mvShare.addObject("pic_form", _usersService.getAllPicForm());
+		
+		_mvShare.addObject("current_week", current_week);
+		_mvShare.addObject("current_year", current_year);
+		_mvShare.addObject("project_new_id", Project_new_id);
+		FormAM(); // Gọi hàm lấy dữ liệu cần thiết cho form báo cáo đầu ra
+		_mvShare.setViewName("AM/deployment");
+		return _mvShare;
+	}
+	
+	// Thực thi chuyển giai đoạn dự án
+	@RequestMapping("/createDeployment/{week}_{year}_{id}")
+	public String doDeployment(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable  int id, Model model) {
 		_projectService.update(project);
 		
 		return "redirect:/AM/dashboard/" + week + "_" + year;

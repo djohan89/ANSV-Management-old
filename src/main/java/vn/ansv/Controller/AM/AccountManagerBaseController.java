@@ -45,4 +45,13 @@ public class AccountManagerBaseController {
 		return _mvShare;
 	}
 	
+	public ModelAndView FormAM() {
+		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
+		_mvShare.addObject("priorities",_priorityService.getAllPriorityForm());
+		_mvShare.addObject("status",_priorityService.getAllStatusForm());
+		_mvShare.addObject("type",_priorityService.getAllTypeForm());
+		
+		return _mvShare;
+	}
+	
 }
