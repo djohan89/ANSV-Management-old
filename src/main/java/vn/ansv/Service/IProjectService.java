@@ -26,4 +26,5 @@ public interface IProjectService {
 	public List<ProjectDetailDto> getByIdAndPic(int id, String pic);
 	public List<ProjectDetailDto> getAllProjectByCustomer(int week, int year, int customer, int type);
 	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week, int year, String pic_id);
+	public Project getFormDeployment(int id);
 }

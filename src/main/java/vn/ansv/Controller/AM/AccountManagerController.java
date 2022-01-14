@@ -87,7 +87,6 @@ public class AccountManagerController extends AccountManagerBaseController {
 	// Thực thi insert dự án
 	@RequestMapping("/insertProject/{week}_{year}")
 	public String doInsertProject(@PathVariable int week, @PathVariable int year, @ModelAttribute("Project") Project project, Model model, HttpSession session) {
-		
 		String pic_id = (String) session.getAttribute("user_id");
 		int project_id = project.getId();
 		_projectService.save(project); // Insert dữ liệu dự án mới
@@ -159,6 +158,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 		_mvShare.addObject("current_week", current_week);
 		_mvShare.addObject("current_year", current_year);
 		_mvShare.addObject("project_new_id", Project_new_id);
+		_mvShare.addObject("project_old", _projectService.getFormDeployment(id)); // Lấy ra thông tin dự án trước khi chuyển sang giai đoạn triển khai
 		FormAM(); // Gọi hàm lấy dữ liệu cần thiết cho form báo cáo đầu ra
 		_mvShare.setViewName("AM/deployment");
 		return _mvShare;
@@ -166,10 +166,21 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	// Thực thi chuyển giai đoạn dự án
 	@RequestMapping("/createDeployment/{week}_{year}_{id}")
-	public String doDeployment(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable  int id, Model model) {
-		_projectService.update(project);
+	public String doDeployment(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable  int id, Model model, HttpSession session) {
+		String am_id = (String) session.getAttribute("user_id");
+		_projectService.saveDeployment(project, id); // Lưu dự án Triển khai (cột note sẽ chứa "id" của dự án giai đoạn trước)
+		_picService.save(project.getId(), am_id); // Insert Acount Manager (người tạo dự án)
+		_picService.save(project.getId(), project.getNote()); // Insert PIC được uỷ quyền thực hiện
 		
-		return "redirect:/AM/dashboard/" + week + "_" + year;
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_year = Calendar.getInstance().get(Calendar.YEAR); // Get the curent year
+		String week_link = "";
+		if (current_week < 10) {
+			week_link = "0" + current_week;
+	    }
+		
+		return "redirect:/AM/dashboard/" + week_link + "_" + current_year;
 	}
 	
 }

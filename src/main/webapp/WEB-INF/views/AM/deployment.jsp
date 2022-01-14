@@ -25,7 +25,10 @@
 							<span style="float: left;">)</span>
 						</h1>
 					</div>
-					<div class="col-sm-2"><button type="submit">Chuyển giai đoạn</button></div>
+					<div class="col-sm-2">
+						<button type="submit" onclick="return complete_form();">Chuyển giai đoạn</button>
+						<!-- <button type="button" onclick="return complete_form();">Button</button> -->
+					</div>
 					<!-- /.col -->
 					<div class="col-sm-3">
 						<ol class="breadcrumb float-sm-right">
@@ -80,7 +83,7 @@
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100">Tên dự án</label>
 										</div>
-										<form:input path="name" class="form-control" placeholder="Tên dự án..." />
+										<form:input path="name" class="form-control" value="${project_old.name}" placeholder="Tên dự án triển khai..." />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -90,10 +93,10 @@
 										<form:select path="customer" id="khach_hang" class="custom-select">  
         									<form:option value="0" label="Choose..."/>  
         									<c:forEach var="customer" items="${customers}">
-        										<c:if test="${customer.id == project.customer}">
-        											<form:option value="${customer.id }" label="${customer.name }" selected="true" />
+        										<c:if test="${customer.id == project_old.customer}">
+        											<form:option value="${customer.id }" label="${customer.name}" selected="true" class="font-weight-bold bg-info" />
 												</c:if>
-        										<c:if test="${customer.id != project.customer}">
+        										<c:if test="${customer.id != project_old.customer}">
 													<form:option value="${customer.id }" label="${customer.name }"/>
 												</c:if>
 											</c:forEach>
@@ -115,12 +118,14 @@
 										<form:select path="priority" id="priority" class="custom-select">  
         									<form:option value="0" label="Choose..."/>  
         									<c:forEach var="priority" items="${priorities}">
-        										<c:if test="${priority.id == project.priority}">
-        											<form:option value="${priority.id }" label="${priority.name }" selected="true" />
-												</c:if>
-        										<c:if test="${priority.id != project.priority}">
-													<form:option value="${priority.id }" label="${priority.name }"/>
-												</c:if>
+        										<c:choose>
+   													<c:when test="${priority.id == project_old.priority}">
+														<form:option value="${priority.id }" label="${priority.name}" selected="true" class="font-weight-bold bg-info" />
+													</c:when>
+   													<c:otherwise>
+														<form:option value="${priority.id }" label="${priority.name }"/>
+													</c:otherwise>
+												</c:choose>
 											</c:forEach>
         								</form:select>
 									</div>
@@ -132,12 +137,14 @@
 										<form:select path="project_status" id="status" class="custom-select">  
         									<form:option value="0" label="Choose..."/>  
         									<c:forEach var="status" items="${status}">
-        										<c:if test="${status.id == project.project_status}">
-													<form:option value="${status.id }" label="${status.name }" selected="true" />
-												</c:if>
-        										<c:if test="${status.id != project.project_status}">
-													<form:option value="${status.id}" label="${status.name}"/>
-												</c:if>
+        										<c:choose>
+   													<c:when test="${status.id == project_old.project_status}">
+														<form:option value="${status.id }" label="${status.name}" selected="true" class="font-weight-bold bg-info" />
+													</c:when>
+   													<c:otherwise>
+														<form:option value="${status.id }" label="${status.name }"/>
+													</c:otherwise>
+												</c:choose>
 											</c:forEach>
         								</form:select>
 									</div>
@@ -196,6 +203,7 @@
 										<div class="input-group-prepend w-100">
 											<span class="input-group-text w-100">Tình trạng kế hoạch</span>
 										</div>
+										<textarea id="tinh_trang_test" style="display:none;">${project_old.tinh_trang_va_ke_hoach_chi_tiet}</textarea>
 										<form:textarea path="tinh_trang_va_ke_hoach_chi_tiet" class="form-control" id="cr_tinh_trang" />
 									</div>
 		
@@ -203,6 +211,7 @@
 										<div class="input-group-prepend w-100">
 											<span class="input-group-text w-100">Kết quả thực hiện</span>
 										</div>
+										<textarea id="ket_qua_test" style="display:none;">${project_old.ket_qua_thuc_hien_ke_hoach}</textarea>
 										<form:textarea path="ket_qua_thuc_hien_ke_hoach" class="form-control" id="cr_ket_qua" />
 									</div>
 								</div>
@@ -236,35 +245,40 @@
 										<div class="input-group-prepend">
 											<label class="input-group-text">Tạm ứng (VNĐ)</label>
 										</div>
-										<form:input path="so_tien_tam_ung" value="0" class="form-control" id="so_tien_tam_ung" />
+										<input type="text" value="" class="form-control" id="so_tien_tam_ung_test" />
+										<form:input path="so_tien_tam_ung" class="form-control" id="so_tien_tam_ung" />
 									</div>
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
 											<label class="input-group-text">Kế hoạch tạm ứng</label>
 										</div>
-										<form:input type="text" path="ke_hoach_tam_ung" class="form-control datepickerJavascript" />
+										<input type="text" id="ke_hoach_tam_ung_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:input type="text" path="ke_hoach_tam_ung" id="ke_hoach_tam_ung" class="form-control" />
 									</div>
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100 text-center">DAC</label>
+											<label class="input-group-text w-100">DAC</label>
 										</div>
-										<form:input type="text" path="DAC" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="DAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:input type="text" path="DAC" class="form-control datepickerJavascript" id="DAC" />
 									</div>
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100">PAC</label>
 										</div>
-										<form:input type="text" path="PAC" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="PAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:input type="text" path="PAC" id="PAC" class="form-control datepickerJavascript" />
 									</div>
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100">FAC</label>
 										</div>
-										<form:input type="text" path="FAC" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="FAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:input type="text" path="FAC" id="FAC" class="form-control datepickerJavascript" />
 									</div>
 								</div>
 								<!-- /.card-body-->
@@ -275,66 +289,75 @@
 							<div class="card bg-gradient-info collapsed-card">
 								<div class="card-header border-0">
 									<h3 class="card-title">
-										<i class="fas fa-comments-dollar mr-2"></i> Chi tiết thanh toán
+										<i class="fas fa-clipboard-list mr-2"></i> Thanh toán
 									</h3>
-	
+									<!-- card tools -->
 									<div class="card-tools">
-										<button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
+										<button type="button" class="btn btn-info btn-sm"
+											data-card-widget="collapse" title="Collapse">
 											<i class="fas fa-plus"></i>
 										</button>
 									</div>
+									<!-- /.card-tools -->
 								</div>
 								<div class="card-body">
 									<div class="input-group mb-1">
-										<div class="input-group-prepend">
-											<label class="input-group-text">DAC (VNĐ)</label>
+										<div class="input-group-prepend w-25">
+											<label class="input-group-text w-100">DAC (VNĐ)</label>
 										</div>
-										<form:input path="so_tien_DAC" value="0" class="form-control" id="so_tien_DAC" />
+										<input type="text" value="" class="form-control" id="so_tien_DAC_test" />
+										<form:input path="so_tien_DAC" class="form-control" id="so_tien_DAC" />
 									</div>
 									
 									<div class="input-group mb-3">
-										<div class="input-group-prepend w-50">
-											<label class="input-group-text w-100">Kế hoạch DAC</label>
+										<div class="input-group-prepend w-25">
+											<label class="input-group-text w-100">Kế hoạch</label>
 										</div>
-										<form:input type="text" path="ke_hoach_thanh_toan_DAC" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_thanh_toan_DAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:input type="text" path="ke_hoach_thanh_toan_DAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_DAC" />
 									</div>
 									
 									<div class="input-group mb-1">
-										<div class="input-group-prepend">
-											<label class="input-group-text">PAC (VNĐ)</label>
+										<div class="input-group-prepend w-25">
+											<label class="input-group-text w-100">PAC (VNĐ)</label>
 										</div>
-										<form:input path="so_tien_PAC" value="0" class="form-control" id="so_tien_PAC" />
+										<input type="text" value="" class="form-control" id="so_tien_PAC_test" />
+										<form:input path="so_tien_PAC" class="form-control" id="so_tien_PAC" />
 									</div>
 									
 									<div class="input-group mb-3">
-										<div class="input-group-prepend w-50">
-											<label class="input-group-text w-100">Kế hoạch PAC</label>
+										<div class="input-group-prepend w-25">
+											<label class="input-group-text w-100">Kế hoạch</label>
 										</div>
-										<form:input type="text" path="ke_hoach_thanh_toan_PAC" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_thanh_toan_PAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:input type="text" path="ke_hoach_thanh_toan_PAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_PAC" />
 									</div>
 									
 									<div class="input-group mb-1">
-										<div class="input-group-prepend">
-											<label class="input-group-text">FAC (VNĐ)</label>
+										<div class="input-group-prepend w-25">
+											<label class="input-group-text w-100">FAC (VNĐ)</label>
 										</div>
-										<form:input path="so_tien_FAC" value="0" class="form-control" id="so_tien_FAC" />
+										<input type="text" value="" class="form-control" id="so_tien_FAC_test" />
+										<form:input path="so_tien_FAC" class="form-control" id="so_tien_FAC" />
 									</div>
 									
 									<div class="input-group mb-3">
-										<div class="input-group-prepend w-50">
-											<label class="input-group-text w-100">Kế hoạch FAC</label>
+										<div class="input-group-prepend w-25">
+											<label class="input-group-text w-100">Kế hoạch</label>
 										</div>
-										<form:input type="text" path="ke_hoach_thanh_toan_FAC" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_thanh_toan_FAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:input type="text" path="ke_hoach_thanh_toan_FAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_FAC" />
 									</div>
 									
-									<div class="input-group">
+									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text">Tổng giá trị</label>
+											<label class="input-group-text">Tổng giá trị (VNĐ)</label>
 										</div>
-										<form:input path="tong_gia_tri_thuc_te" value="0" class="form-control" id="tong_gia_tri_thuc_te" />
+										<input type="text" value="" class="form-control" id="tong_gia_tri_thuc_te_test" />
+										<form:input path="tong_gia_tri_thuc_te" class="form-control" id="tong_gia_tri_thuc_te" />
 									</div>
 								</div>
-								<!-- /.card-body -->
+								<!-- /.card-body-->
 							</div>
 							<!-- /.card -->
 						</section>
@@ -370,12 +393,50 @@
 	  	});
 	}
 	
-	let idList = ['so_tien_tam_ung', 'so_tien_DAC', 'so_tien_PAC', 'so_tien_FAC', 'tong_gia_tri_thuc_te']
+	let idList = ['so_tien_tam_ung_test', 'so_tien_DAC_test', 'so_tien_PAC_test', 'so_tien_FAC_test', 'tong_gia_tri_thuc_te_test'];
 	for (var i = 0; i < idList.length; i++) {
 		setInputFilter(document.getElementById(idList[i]), function(value) {
 			return /^(\d*\.?)*$/.test(value); // Allow digits and '.' only, using a RegExp
 		});
     }
 	
+	var tinh_trang = document.getElementById('tinh_trang_test').value;
+	var ket_qua = document.getElementById('ket_qua_test').value;
+	document.getElementById('cr_tinh_trang').value = tinh_trang;
+	document.getElementById('cr_ket_qua').value = ket_qua;
+	
+	function complete_form() {
+		let priceIdList = ['so_tien_tam_ung_test', 'tong_gia_tri_thuc_te_test', 'so_tien_DAC_test', 'so_tien_PAC_test', 'so_tien_FAC_test'];
+		let dateIdList = ['ke_hoach_tam_ung_test', 'DAC_test', 'PAC_test', 'FAC_test', 'ke_hoach_thanh_toan_DAC_test', 'ke_hoach_thanh_toan_PAC_test', 'ke_hoach_thanh_toan_FAC_test'];
+		
+		for (var i = 0; i < priceIdList.length; i++) {
+			price_into_form(priceIdList[i]);
+	    }
+		
+		for (var i = 0; i < dateIdList.length; i++) {
+			date_into_form(dateIdList[i]);
+	    }
+	}
+	
+	function price_into_form(data) {
+		var data_price_value = document.getElementById(data).value;
+		var string_replace = "";
+		
+		if (document.getElementById(data).value) {
+			string_replace = data_price_value.replaceAll(".", "");
+	  	}
+		
+		document.getElementById(data.replace("_test", "")).value = string_replace;
+	}
+	
+	function date_into_form(data) {
+	  	if (document.getElementById(data).value) {
+	  		var a = document.getElementById(data).value;
+	  		var day = a.substr(0, 2);
+	  		var month = a.substr(5, 2);
+	  		var year = a.substr(10, 4);
+	  		document.getElementById(data.replace("_test", "")).value = year + "-" + month + "-" + day;
+	  	}
+	}
 </script>
 </body>

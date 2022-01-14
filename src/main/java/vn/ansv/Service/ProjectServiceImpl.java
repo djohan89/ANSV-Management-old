@@ -146,7 +146,7 @@ public class ProjectServiceImpl implements IProjectService {
 		return thong_ke;
 	}
 
-	// Insert dự án
+	// Insert dự án (Viễn thông / Chuyển đổi số)
 	public void save(Project project){
 		projectDao.save(project);
 	}
@@ -165,6 +165,15 @@ public class ProjectServiceImpl implements IProjectService {
 	
 	public int getTypeForProject(int id){
 		return projectDao.getTypeForProject(id);
+	}
+
+	public Project getFormDeployment(int id) {
+		return projectDao.getFormDeployment(id);
+	}
+	
+	// Insert dự án (Triển khai)
+	public void saveDeployment(Project project, int id){
+		projectDao.saveDeployment(project, id);
 	}
 
 }

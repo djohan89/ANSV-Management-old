@@ -15,7 +15,7 @@ public class PicDao extends BaseDao {
 /* ===== Đầu: Account Manager ===== */
 	public void save(int project_id, String pic) {
 		String sql = "INSERT INTO pic (project_id, pic) VALUES (?, ?)";
-		_jdbcTemplate.update(sql, project_id, pic);
+		_jdbcTemplate.update(sql, project_id, pic); // Nếu PIC là Project Manager (Triển khai), cột note sẽ chứa id của Account Manager
 	}
 	
 	public void delete(int project_id) {

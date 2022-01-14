@@ -1,5 +1,7 @@
 	package vn.ansv.Dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,7 @@ import vn.ansv.Dto.Menu.MenuProjectsDto;
 import vn.ansv.Dto.Menu.MenuProjectsDtoMapper;
 import vn.ansv.Entity.Project;
 import vn.ansv.Entity.ProjectDetailLessMapper;
+import vn.ansv.Entity.ProjectMapper;
 
 @Repository
 public class ProjectDao extends BaseDao {
@@ -258,15 +261,41 @@ public class ProjectDao extends BaseDao {
 				project.getKet_qua_thuc_hien_ke_hoach(), _now);
 	}
 	
+	// Lấy ra các trường phù hợp cho form chuyển giai đoạn dự án
+	public Project getFormDeployment(int id) {
+		Project list = new Project();
+		
+		String sql = "SELECT name, customer, priority, project_status, tinh_trang_va_ke_hoach_chi_tiet, ket_qua_thuc_hien_ke_hoach FROM project WHERE id = ?";
+		list = _jdbcTemplate.queryForObject(sql, new ProjectMapper() {
+			public Project mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Project project = new Project();
+				
+				project.setName(rs.getString("name"));
+				project.setCustomer(rs.getInt("customer"));
+				project.setPriority(rs.getInt("priority"));
+				project.setProject_status(rs.getInt("project_status"));
+				project.setTinh_trang_va_ke_hoach_chi_tiet(rs.getString("tinh_trang_va_ke_hoach_chi_tiet"));
+				project.setKet_qua_thuc_hien_ke_hoach(rs.getString("ket_qua_thuc_hien_ke_hoach"));
+				
+				return project;
+			}
+		}, id);
+		return list;
+	}
+	
 	// Tạo dụ án (Triển khai)
-	public void saveDeloyment(Project project) {
-		String sql = "INSERT INTO project (id, project_type, priority, project_status, customer, week, year, name, description, "
-				+ "tong_muc_dau_tu_du_kien, hinh_thuc_dau_tu, muc_do_kha_thi, phan_tich_SWOT, tinh_trang_va_ke_hoach_chi_tiet, "
-				+ "ket_qua_thuc_hien_ke_hoach, created_at) VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	public void saveDeployment(Project project, int id) {
+		String sql = "INSERT INTO project (id, project_type, priority, project_status, customer, week, year, projects_id, ma_so_ke_toan, name, "
+				+ "pham_vi_cung_cap, tong_gia_tri_thuc_te, DAC, PAC, FAC, so_tien_tam_ung, ke_hoach_tam_ung, so_tien_DAC, ke_hoach_thanh_toan_DAC, "
+				+ "so_tien_PAC, ke_hoach_thanh_toan_PAC, so_tien_FAC, ke_hoach_thanh_toan_FAC, tinh_trang_va_ke_hoach_chi_tiet, "
+				+ "ket_qua_thuc_hien_ke_hoach, note, created_at) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		_jdbcTemplate.update(sql, project.getId(), project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), 
-				project.getWeek(), project.getName(), project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), 
-				project.getMuc_do_kha_thi(), project.getPhan_tich_SWOT(), project.getTinh_trang_va_ke_hoach_chi_tiet(), 
-				project.getKet_qua_thuc_hien_ke_hoach(), _now);
+				project.getWeek(), project.getProject_id(), project.getMa_so_ke_toan(), project.getName(), project.getPham_vi_cung_cap(), 
+				project.getTong_gia_tri_thuc_te(), project.getDAC(), project.getPAC(), project.getFAC(), project.getSo_tien_tam_ung(), 
+				project.getKe_hoach_tam_ung(), project.getSo_tien_DAC(), project.getKe_hoach_thanh_toan_DAC(), project.getSo_tien_PAC(), 
+				project.getKe_hoach_thanh_toan_PAC(), project.getSo_tien_FAC(), project.getKe_hoach_thanh_toan_FAC(), project.getTinh_trang_va_ke_hoach_chi_tiet(), 
+				project.getKet_qua_thuc_hien_ke_hoach(), id, _now);
 	}
 	
 	public void update(Project project) {
