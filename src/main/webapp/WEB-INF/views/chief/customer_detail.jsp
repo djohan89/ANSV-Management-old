@@ -155,15 +155,15 @@ a:hover {
 			                            </tr>
 			                        </thead>
 			                        <tbody>
-			                            <td>${item.DAC }</td>
-			                            <td>${item.PAC }</td>
-			                            <td>${item.FAC }</td>
+			                            <td>${item.DAC}</td>
+			                            <td>${item.PAC}</td>
+			                            <td>${item.FAC}</td>
 			                            <!--Kế hoạch nghiệm thu -->
 			                            <td>
 			                            	<c:if
-												test="${ item.so_tien_tam_ung !=0}">
+												test="${item.so_tien_tam_ung !=0}">
 												<fmt:formatNumber type="number"
-													value="${item.so_tien_tam_ung }" />
+													value="${item.so_tien_tam_ung}" />
 											</c:if>
 			                            </td>
 			                            <td>${item.ke_hoach_tam_ung }</td>
@@ -208,10 +208,10 @@ a:hover {
 			                        <p class="text-justify"> ${item.ket_qua_thuc_hien_ke_hoach }</p>
 			                    </div>
 			                </div>
-			           
-                			</div>
+			           	</c:if>
+                			
                 		
-                    	</c:if>
+                    	
                     	<c:if test="${ item.type=='Viễn thông'}">
                 			 <c:if test="${index.first }">
                 			  <div id="du_an_${index.count }" class="tab-pane active"><br>
@@ -264,7 +264,7 @@ a:hover {
                 			</div>
                 		</c:if>
                 	</c:forEach>
-                	
+                	</div>
 	            </div>
         	</div> 
         </section>

@@ -13,4 +13,5 @@ public interface IPriorityService {
 	public List<Priority> getAllPriorityForm();
 	public List<Priority> getAllStatusForm();
 	public List<Priority> getAllTypeForm();
+	public Priority getAllProductForm(int id);
 }

@@ -99,10 +99,10 @@
 																			</h5>
 																			<div class="row">
 																				<div class="col-8">
-																					<p><b>Người phụ trách:</b></b> ${project_item.pm }</p>
+																					<p><b>Người phụ trách (PM):</b></b> ${project_item.pm }</p>
 																				</div>
 																				<div class="col-4">
-																					<p><b>Người đầu mối:</b></b> ${project_item.am }</p>
+																					<p><b>Người đầu mối (AM):</b></b> ${project_item.am }</p>
 																				</div>
 																			</div>
 																			<div class="row">
@@ -111,7 +111,7 @@
 																			</div>
 																			<div class="row">
 																				<div class="col-8">
-																					<p style="white-space: pre-wrap;"><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
+																					<p><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
 																				</div>
 																				<div class="col-4">
 																					<p><b>Tổng giá trị:</b> 
@@ -155,7 +155,7 @@
 														                			<td>${project_item.FAC }</td>
 														                			<!--Kế hoạch nghiệm thu -->
 														                			<td>
-														                				<c:if test="${project_item.so_tien_tam_ung  !=0} ">
+														                				<c:if test="${project_item.so_tien_tam_ung  !=0}">
 																							<fmt:formatNumber type="number"
 																								value="${project_item.so_tien_tam_ung  }" />
 																						</c:if>
@@ -163,7 +163,7 @@
 														                			<td>${project_item.ke_hoach_tam_ung }</td>
 																					<!-- Thanh toán tạm ứng --> 
 														            				<td>
-														            					<c:if test="${project_item.so_tien_DAC  !=0} ">
+														            					<c:if test="${project_item.so_tien_DAC  !=0}">
 																							<fmt:formatNumber type="number"
 																								value="${project_item.so_tien_DAC }" />
 																						</c:if>
@@ -171,7 +171,7 @@
 														                			<td>${project_item.ke_hoach_thanh_toan_DAC }</td>
 																					<!-- Thanh toán DAC --> 
 														            				<td>
-														            					<c:if test="${project_item.so_tien_PAC  !=0} ">
+														            					<c:if test="${project_item.so_tien_PAC  !=0}">
 																							<fmt:formatNumber type="number"
 																								value="${project_item.so_tien_PAC }" />
 																						</c:if>
@@ -179,7 +179,7 @@
 														                			<td>${project_item.ke_hoach_thanh_toan_PAC }</td>
 																					<!-- Thanh toán PAC --> 
 														            				<td>
-														            					<c:if test="${project_item.so_tien_FAC  !=0} ">
+														            					<c:if test="${project_item.so_tien_FAC  !=0}">
 																							<fmt:formatNumber type="number"
 																								value="${project_item.so_tien_FAC }" />
 																						</c:if>
@@ -189,7 +189,7 @@
 														            			</tbody>
 														            		</table>
 														            	</div>
-														            	<div class="d-flex">
+														            	<div class="d-flex justify-content-between">
 														            		<div >
 														            			<p><b>Tình trạng:</b> </p>
 														            			<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
@@ -218,10 +218,10 @@
 																			</h5>
 																			<div class="row">
 																				<div class="col-6">
-																					<p><b>Người phụ trách:</b></b> ${project_item.pm }</p>
+																					<p><b>Người phụ trách (PM):</b></b> ${project_item.pm }</p>
 																				</div>
 																				<div class="col-6">
-																					<p><b>Người đầu mối:</b></b> ${project_item.am }</p>
+																					<p><b>Người đầu mối (AM):</b></b> ${project_item.am }</p>
 																				</div>
 																			</div>
 																			<div class="row">
@@ -254,7 +254,7 @@
 																		</div>
 																		<div class="row">
 																			<div class="col-6"><b>Số tiền thanh toán tạm ứng: </b>
-																				<c:if test="${project_item.so_tien_tam_ung  !=0} ">
+																				<c:if test="${project_item.so_tien_tam_ung  !=0}">
 																					<fmt:formatNumber type="number"
 																						value="${project_item.so_tien_tam_ung  }" />
 																				</c:if>
@@ -263,7 +263,7 @@
 																		</div>
 																		<div class="row">
 																			<div class="col-6"><b>Số tiền DAC: </b>
-																				<c:if test="${project_item.so_tien_DAC  !=0} ">
+																				<c:if test="${project_item.so_tien_DAC  !=0}">
 																					<fmt:formatNumber type="number"
 																						value="${project_item.so_tien_DAC }" />
 																				</c:if>
@@ -274,7 +274,7 @@
 																		</div>
 																		<div class="row">
 																			<div class="col-6"><b>Số tiền PAC: </b>
-																				<c:if test="${project_item.so_tien_PAC  !=0} ">
+																				<c:if test="${project_item.so_tien_PAC  !=0}">
 																					<fmt:formatNumber type="number"
 																						value="${project_item.so_tien_PAC }" />
 																				</c:if>
@@ -285,7 +285,7 @@
 																		</div>
 																		<div class="row">
 																			<div class="col-6"><b>Số tiền FAC: </b>
-																				<c:if test="${project_item.so_tien_FAC  !=0} ">
+																				<c:if test="${project_item.so_tien_FAC  !=0}">
 																					<fmt:formatNumber type="number"
 																						value="${project_item.so_tien_FAC }" />
 																				</c:if>
@@ -294,14 +294,14 @@
 																				${project_item.ke_hoach_thanh_toan_FAC }
 																			</div>
 																		</div>
-														            	<div class="d-flex">
+														            	<div class="d-flex justify-content-between">
 														            		<div >
 														            			<p><b>Tình trạng:</b> </p>
-														            			<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
+														            			<p class="text-justify" style="white-space: pre-wrap;">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
 														                	</div>
 														                	<div class="pl-5">
 														                		<p><b>Kết quả thực hiện kế hoạch:</b> </p>
-														                		<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.ket_qua_thuc_hien_ke_hoach }</p>
+														                		<p class="text-justify" style="white-space: pre-wrap;">${project_item.ket_qua_thuc_hien_ke_hoach }</p>
 														                	</div>
 														                </div>
 														                <div>

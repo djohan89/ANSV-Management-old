@@ -58,7 +58,7 @@
 								<div class="title-card">
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
-										<b id="name_sheet_1"> Báo cáo ${display_name } phụ trách</b><br>
+										<b id="name_sheet_1"> Báo cáo ${display_name } phụ trách </b><br>
 										<br>
 									</h3>
 								</div>

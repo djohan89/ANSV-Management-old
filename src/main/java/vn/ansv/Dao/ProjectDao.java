@@ -22,7 +22,9 @@ import vn.ansv.Dto.Menu.MenuProjectsDto;
 import vn.ansv.Dto.Menu.MenuProjectsDtoMapper;
 import vn.ansv.Entity.Project;
 import vn.ansv.Entity.ProjectDetailLessMapper;
+import vn.ansv.Entity.ProjectDetailMoreMapper;
 import vn.ansv.Entity.ProjectMapper;
+
 
 @Repository
 public class ProjectDao extends BaseDao {
@@ -163,6 +165,24 @@ public class ProjectDao extends BaseDao {
 		
 	}
 	
+	public Project getMorebyId(int id, String pic) {
+		Project object = new Project();
+		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, projects_status.id AS project_status, customers.id AS customer, "
+				+ "project.week, project.year, project.name, project.projects_id AS project_id, project.ma_so_ke_toan, project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, project.DAC, "
+				+ "project.PAC, project.FAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, project.so_tien_PAC, "
+				+ "project.ke_hoach_thanh_toan_PAC, project.so_tien_FAC, project.ke_hoach_thanh_toan_FAC, project.tinh_trang_va_ke_hoach_chi_tiet, project.ket_qua_thuc_hien_ke_hoach "
+				+ "FROM project "
+				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
+				+ "INNER JOIN priorities ON project.priority = priorities.id "
+				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
+				+ "INNER JOIN customers ON project.customer = customers.id "
+				+ "INNER JOIN pic ON project.id = pic.project_id "
+				+ "WHERE project.id = ? AND pic.pic = ?";
+		object = _jdbcTemplate.queryForObject(sql, new ProjectDetailMoreMapper(), id, pic);
+		return object;
+		
+	}
+	
 	/*Truy vấn dữ liệu chi tiết của sản phẩm theo id project của mỗi PIC */
 	public List<ProjectDetailDto> getByIdAndPic(int id, String pic){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
@@ -205,9 +225,9 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
 				+ "INNER JOIN customers ON project.customer = customers.id "
 				+ "WHERE project.week = ? AND project.year = ? AND customers.id = ? AND projects_types.id  = ? "
-				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM')";
+				+ "AND role.name = ?";
 				
-		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(), week, year, customer, type);
+		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(), week, year, customer, type, (type == 1)?"ROLE_PM":"ROLE_AM");
 		return list;
 		
 	}
@@ -307,7 +327,21 @@ public class ProjectDao extends BaseDao {
 				project.getName(), project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), project.getMuc_do_kha_thi(), 
 				project.getPhan_tich_SWOT(), project.getTinh_trang_va_ke_hoach_chi_tiet(), project.getKet_qua_thuc_hien_ke_hoach(), _now, project.getNote(), 
 				project.getId());
+		
+	}public void update_tk(Project project) {
+		String sql = "UPDATE project SET project_type = ?, priority = ?, project_status = ?, customer = ?, week = ?, year = ?, name = ?, projects_id = ?, "
+				+ "ma_so_ke_toan = ?, pham_vi_cung_cap = ?, tong_gia_tri_thuc_te = ?, DAC = ?, PAC = ?, FAC = ?, so_tien_tam_ung = ?, ke_hoach_tam_ung = ?, "
+				+ "so_tien_DAC = ?, ke_hoach_thanh_toan_DAC = ?, so_tien_PAC = ?, ke_hoach_thanh_toan_PAC = ?, so_tien_FAC = ?, ke_hoach_thanh_toan_FAC = ?,  "
+				+ "tinh_trang_va_ke_hoach_chi_tiet = ?, ket_qua_thuc_hien_ke_hoach = ?, created_at = ? "
+				+ "WHERE id = ?";
+		_jdbcTemplate.update(sql, project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), project.getWeek(), project.getYear(), 
+				project.getName(), project.getProject_id(), project.getMa_so_ke_toan(), project.getPham_vi_cung_cap(), project.getTong_gia_tri_thuc_te(), project.getDAC(),
+				project.getPAC(),project.getFAC(),project.getSo_tien_tam_ung(),project.getKe_hoach_tam_ung(),project.getSo_tien_DAC(),project.getKe_hoach_thanh_toan_DAC(),
+				project.getSo_tien_PAC(),project.getKe_hoach_thanh_toan_PAC(),project.getSo_tien_FAC(),project.getKe_hoach_thanh_toan_FAC(),
+				project.getTinh_trang_va_ke_hoach_chi_tiet(), project.getKet_qua_thuc_hien_ke_hoach(), _now, 
+				project.getId());
 	}
+	
 	
 	public void delete(int id) {
 		String sql = "DELETE FROM project WHERE id = " + id;

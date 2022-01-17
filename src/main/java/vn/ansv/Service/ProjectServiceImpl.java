@@ -45,6 +45,10 @@ public class ProjectServiceImpl implements IProjectService {
 		return projectDao.getLessById(id, pic);
 	}
 	
+	public Project getMorebyId(int id, String pic) {
+		return projectDao.getMorebyId(id, pic);
+	}
+	
 	public List<ProjectDetailDto> getByIdAndPic(int id, String pic) {
 		return projectDao.getByIdAndPic(id,pic);
 	}
@@ -153,6 +157,10 @@ public class ProjectServiceImpl implements IProjectService {
 	
 	public void update(Project project){
 		projectDao.update(project);
+	}
+	
+	public void update_tk(Project project){
+		projectDao.update_tk(project);
 	}
 	
 	public void delete(int id){

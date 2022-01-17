@@ -59,7 +59,7 @@
 										<tr>
 											<th rowspan="2">Thanh toán tạm ứng</th>
 											<th>Số tiền</th>
-											<td><c:if test="${detail.so_tien_tam_ung !=0} ">
+											<td><c:if test="${detail.so_tien_tam_ung !=0}">
 													<fmt:formatNumber type="number"
 														value="${detail.so_tien_tam_ung }" />
 												</c:if></td>
@@ -169,7 +169,7 @@
 									<table class="table table-hover table-bordered ">
 										<tr>
 											<th>Dự án/Gói thầu</th>
-											<td>${detail.name })</td>
+											<td>${detail.name }</td>
 										</tr>
 										<tr>
 											<th>Mô tả dự án</th>
@@ -260,7 +260,7 @@
 									<table class="table table-hover table-bordered ">
 										<tr>
 											<th>Dự án/Gói thầu</th>
-											<td>${detail.name })</td>
+											<td>${detail.name }</td>
 										</tr>
 										<tr>
 											<th>Mô tả dự án</th>
