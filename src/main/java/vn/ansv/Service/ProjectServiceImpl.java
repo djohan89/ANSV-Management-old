@@ -57,8 +57,12 @@ public class ProjectServiceImpl implements IProjectService {
 		return projectDao.getAllProjectByCustomer(week, year, customer, type);
 	}
 	
-	public List<DashboardProjectPicDto> getDashboardTableByPIC(int week, int year, String pic_id) {
-		return projectDao.getDashboardTableByPIC(week, year, pic_id);
+	public List<DashboardProjectPicDto> getDashboardAM(int week, int year, String pic_id) {
+		return projectDao.getDashboardAM(week, year, pic_id);
+	}
+	
+	public List<DashboardProjectPicDto> getDashboardPM(int week, int year, String pic_id) {
+		return projectDao.getDashboardPM(week, year, pic_id);
 	}
 	
 	

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,13 +41,13 @@ public class AccountManagerController extends AccountManagerBaseController {
 		String pic_id = (String) session.getAttribute("user_id");
 		InitAM(week, year, pic_id);
 		// Dữ liệu khái quát hiển thị lên dashboard (datatable)
-		_mvShare.addObject("project_table_pic",_projectService.getDashboardTableByPIC(week, year, pic_id));
+		_mvShare.addObject("project_table_pic",_projectService.getDashboardAM(week, year, pic_id));
 		_mvShare.setViewName("AM/am_dashboard"); 
 		return _mvShare; 
 	}
 	
 	@RequestMapping(value = { "/detail/{week}_{year}_{id}" }, method = RequestMethod.GET)
-	public ModelAndView AmDetail(@PathVariable int week, @PathVariable int year, @PathVariable  int id, HttpSession session) {
+	public ModelAndView AmDetail(@PathVariable int week, @PathVariable int year, @PathVariable int id, HttpSession session) {
 		String pic_id = (String) session.getAttribute("user_id");
 		InitAM(week, year, pic_id);
 		_mvShare.addObject("detail",_projectService.getByIdAndPic(id, pic_id));
@@ -134,7 +136,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	// Thực thi update dự án
 	@RequestMapping("/updateProject/{week}_{year}_{id}")
-	public String doUpdateProject(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable  int id, Model model) {
+	public String doUpdateProject(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable int id, Model model) {
 		_projectService.update(project);
 		
 		return "redirect:/AM/dashboard/" + week + "_" + year;
@@ -142,7 +144,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	// Link đến form chuyển giai đoạn dự án
 	@RequestMapping("/deployment/{week}_{year}_{id}")
-	public ModelAndView nextStepProject(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable  int id, 
+	public ModelAndView nextStepProject(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable int id, 
 			HttpSession session, Model model) {
 		String pic_id = (String) session.getAttribute("user_id");
 		int Project_new_id = _projectService.getMaxId() + 1;
@@ -166,7 +168,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	// Thực thi chuyển giai đoạn dự án
 	@RequestMapping("/createDeployment/{week}_{year}_{id}")
-	public String doDeployment(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable  int id, Model model, HttpSession session) {
+	public String doDeployment(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable int id, Model model, HttpSession session) {
 		String am_id = (String) session.getAttribute("user_id");
 		_projectService.saveDeployment(project, id); // Lưu dự án Triển khai (cột note sẽ chứa "id" của dự án giai đoạn trước)
 		_picService.save(project.getId(), am_id); // Insert Acount Manager (người tạo dự án)
@@ -181,6 +183,15 @@ public class AccountManagerController extends AccountManagerBaseController {
 	    }
 		
 		return "redirect:/AM/dashboard/" + week_link + "_" + current_year;
+	}
+	
+	@RequestMapping(value = { "/createDeployment_test/{week}_{year}_{id}" }, method = RequestMethod.POST)
+	public String doDeployment(BindingResult bindingResult, @ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable int id, Model model, HttpSession session) {
+		for( FieldError fieldError : bindingResult.getFieldErrors() ) {
+		    System.out.println(fieldError.getField() +" : "+fieldError.getDefaultMessage());
+		}
+		
+		return "redirect:/AM/dashboard/";
 	}
 	
 }

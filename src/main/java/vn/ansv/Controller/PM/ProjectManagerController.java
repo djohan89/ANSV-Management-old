@@ -37,7 +37,7 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 		String pic_id = (String) session.getAttribute("user_id");
 		InitPM(week, year, pic_id);
 		// Dữ liệu khái quát hiển thị lên dashboard (datatable)
-		_mvShare.addObject("project_table_pic", _projectService.getDashboardTableByPIC(week, year, pic_id));
+		_mvShare.addObject("project_table_pic", _projectService.getDashboardPM(week, year, pic_id));
 		_mvShare.setViewName("PM/pm_dashboard");
 		return _mvShare;
 	}

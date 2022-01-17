@@ -7,7 +7,7 @@
 <title>AM | Project into Deployment</title>
 </head>
 <body>
-<c:url value="/AM/createDeployment/${week}_${year}_${project.id}" var="createDeployment"/>
+<c:url value="/AM/createDeployment/${week}_${year}_${id}" var="createDeployment"/>
 <form:form action="${createDeployment}" method="POST" modelAttribute="project">
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
@@ -27,7 +27,7 @@
 					</div>
 					<div class="col-sm-2">
 						<button type="submit" onclick="return complete_form();">Chuyển giai đoạn</button>
-						<!-- <button type="button" onclick="return complete_form();">Button</button> -->
+						<button type="button" onclick="return complete_form();">Button</button>
 					</div>
 					<!-- /.col -->
 					<div class="col-sm-3">
@@ -253,7 +253,8 @@
 										<div class="input-group-prepend">
 											<label class="input-group-text">Kế hoạch tạm ứng</label>
 										</div>
-										<input type="text" id="ke_hoach_tam_ung_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_tam_ung_test" 
+											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
 										<form:input type="text" path="ke_hoach_tam_ung" id="ke_hoach_tam_ung" class="form-control" />
 									</div>
 									
@@ -261,7 +262,8 @@
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100">DAC</label>
 										</div>
-										<input type="text" id="DAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="DAC_test" 
+											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
 										<form:input type="text" path="DAC" class="form-control datepickerJavascript" id="DAC" />
 									</div>
 									
@@ -269,7 +271,8 @@
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100">PAC</label>
 										</div>
-										<input type="text" id="PAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="PAC_test" 
+											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
 										<form:input type="text" path="PAC" id="PAC" class="form-control datepickerJavascript" />
 									</div>
 									
@@ -277,7 +280,8 @@
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100">FAC</label>
 										</div>
-										<input type="text" id="FAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="FAC_test" 
+											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
 										<form:input type="text" path="FAC" id="FAC" class="form-control datepickerJavascript" />
 									</div>
 								</div>
@@ -311,9 +315,10 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">Kế hoạch</label>
+											<label class="input-group-text w-100">Kế hoạch DAC</label>
 										</div>
-										<input type="text" id="ke_hoach_thanh_toan_DAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_thanh_toan_DAC_test" 
+											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
 										<form:input type="text" path="ke_hoach_thanh_toan_DAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_DAC" />
 									</div>
 									
@@ -327,9 +332,10 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">Kế hoạch</label>
+											<label class="input-group-text w-100">Kế hoạch PAC</label>
 										</div>
-										<input type="text" id="ke_hoach_thanh_toan_PAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_thanh_toan_PAC_test" 
+											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
 										<form:input type="text" path="ke_hoach_thanh_toan_PAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_PAC" />
 									</div>
 									
@@ -343,9 +349,10 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">Kế hoạch</label>
+											<label class="input-group-text w-100">Kế hoạch FAC</label>
 										</div>
-										<input type="text" id="ke_hoach_thanh_toan_FAC_test" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_thanh_toan_FAC_test" 
+											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
 										<form:input type="text" path="ke_hoach_thanh_toan_FAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_FAC" />
 									</div>
 									
@@ -420,13 +427,13 @@
 	
 	function price_into_form(data) {
 		var data_price_value = document.getElementById(data).value;
-		var string_replace = "";
 		
 		if (document.getElementById(data).value) {
-			string_replace = data_price_value.replaceAll(".", "");
+			var string_replace = data_price_value.replaceAll(".", "");
+			document.getElementById(data.replace("_test", "")).value = string_replace;
+	  	} else {
+	  		document.getElementById(data.replace("_test", "")).remove();
 	  	}
-		
-		document.getElementById(data.replace("_test", "")).value = string_replace;
 	}
 	
 	function date_into_form(data) {
@@ -436,6 +443,8 @@
 	  		var month = a.substr(5, 2);
 	  		var year = a.substr(10, 4);
 	  		document.getElementById(data.replace("_test", "")).value = year + "-" + month + "-" + day;
+	  	} else {
+	  		document.getElementById(data.replace("_test", "")).remove();
 	  	}
 	}
 </script>

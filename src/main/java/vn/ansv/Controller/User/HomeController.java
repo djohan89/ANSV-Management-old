@@ -17,7 +17,7 @@ public class HomeController extends UserBaseController {
 		
 		InitUser(week);
 		String pic_id = (String) session.getAttribute("user_id");
-		_mvShare.addObject("project_table_pic",_projectService.getDashboardTableByPIC(week, year, pic_id )); // Dữ liệu khái quát hiển thị lên dashboard (datatable)
+		_mvShare.addObject("project_table_pic",_projectService.getDashboardPM(week, year, pic_id )); // Dữ liệu khái quát hiển thị lên dashboard (datatable)
 		_mvShare.setViewName("user/user_dashboard");
 		
 		return _mvShare;

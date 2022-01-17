@@ -21,7 +21,7 @@
 			<div class="container-fluid">
 				<c:forEach var="detail" items="${detail }" varStatus="detailIndex">
 					<c:if
-						test="${ detail.pic_role=='ROLE_PM' && detail.type=='Triển khai' }">
+						test="${detail.pic_role=='ROLE_PM' && detail.type=='Triển khai'}">
 						<h2 class="text-center mt-3">${detail.name }</h2>
 						<div class="row">
 							<div class="col-md-6">

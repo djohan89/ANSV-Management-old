@@ -95,23 +95,36 @@
 													<td>${project_item.pm }</td>
 													<td style="border-left: 1px solid black;">
 														<c:if test="${project_item.type != 'Triển khai' }">
-															<a href="<c:url value='/AM/delete_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
-																class="float-right tooltip_icon">
-																<i class="fas fa-trash-alt fa-2x text-danger"></i>
-																<span class="tooltip_for_icon bg-danger text-center" 
-																	style="margin-left: -7.2%; margin-top: -2.8%;">Xoá dự án</span>
-															</a>
-															<a href="<c:url value='/AM/update_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
-																class="float-right tooltip_icon mr-3">
-																<i class="fas fa-edit fa-2x text-warning"></i>
-																<span class="tooltip_for_icon bg-warning text-center" 
-																	style="margin-left: -5.6%; margin-top: -2.8%;">Cập nhật</span>
-															</a>
-															<a href="<c:url value='/AM/deployment/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" class="float-right tooltip_icon mr-3">
-																<i class="fas fa-thumbs-up fa-2x text-success"></i>
-																<span class="tooltip_for_icon bg-success text-center" 
-																	style="margin-left: -5.4%; margin-top: -2.8%;">Triển khai</span>
-															</a>
+															<%-- Nếu chưa từng được chuyển sang giai đoạn triển khai -> Cấp đầy đủ chức năng --%>
+															<c:if test="${project_item.note < 1 }">
+																<a href="<c:url value='/AM/delete_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+																	class="float-right tooltip_icon">
+																	<i class="fas fa-trash-alt fa-2x text-danger"></i>
+																	<span class="tooltip_for_icon bg-danger text-center" 
+																		style="margin-left: -7.2%; margin-top: -2.8%;">Xoá dự án</span>
+																</a>
+																<a href="<c:url value='/AM/update_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+																	class="float-right tooltip_icon mr-3">
+																	<i class="fas fa-edit fa-2x text-warning"></i>
+																	<span class="tooltip_for_icon bg-warning text-center" 
+																		style="margin-left: -5.6%; margin-top: -2.8%;">Cập nhật</span>
+																</a>
+																<a href="<c:url value='/AM/deployment/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" class="float-right tooltip_icon mr-3">
+																	<i class="fas fa-thumbs-up fa-2x text-success"></i>
+																	<span class="tooltip_for_icon bg-success text-center" 
+																		style="margin-left: -5.4%; margin-top: -2.8%;">Triển khai</span>
+																</a>
+															</c:if>
+															
+															<%-- Nếu đã từng được chuyển sang giai đoạn triển khai -> Ko thể chuyển giai đoạn, ko thể xoá --%>
+															<c:if test="${project_item.note >= 1 }">
+																<a href="<c:url value='/AM/update_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+																	class="float-right tooltip_icon" style="margin-right: 41px;">
+																	<i class="fas fa-edit fa-2x text-warning"></i>
+																	<span class="tooltip_for_icon bg-warning text-center" 
+																		style="margin-left: -5.6%; margin-top: -2.8%;">Cập nhật</span>
+																</a>
+															</c:if>
 														</c:if>
 													</td>
 												</tr>

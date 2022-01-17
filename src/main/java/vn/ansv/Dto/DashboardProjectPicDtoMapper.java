@@ -12,15 +12,16 @@ public class DashboardProjectPicDtoMapper implements RowMapper<DashboardProjectP
 		
 		project.setId_pk(rs.getInt("id_pk"));
 		project.setPriority(rs.getString("priority"));
-		project.setStatus(rs.getNString("status"));
-		project.setName(rs.getNString("name"));
-		project.setCustomer(rs.getNString("customer"));
-		project.setType(rs.getNString("type"));
-		project.setAm(rs.getNString("am"));
-		project.setPm(rs.getNString("pm"));
-		project.setTinh_trang_va_ke_hoach_chi_tiet(rs.getNString("tinh_trang_va_ke_hoach_chi_tiet"));
+		project.setStatus(rs.getString("status"));
+		project.setName(rs.getString("name"));
+		project.setCustomer(rs.getString("customer"));
+		project.setType(rs.getString("type"));
+		project.setAm(rs.getString("am"));
+		project.setPm(rs.getString("pm"));
+		project.setTinh_trang_va_ke_hoach_chi_tiet(rs.getString("tinh_trang_va_ke_hoach_chi_tiet"));
 		project.setWeek(rs.getInt("week"));
 		project.setYear(rs.getInt("year"));
+		project.setNote(rs.getString("Note"));
 		
 		return project;
 	}
