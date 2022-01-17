@@ -3,7 +3,6 @@ package vn.ansv.Controller.PM;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import vn.ansv.Dto.ProjectDetailDto;
-import vn.ansv.Entity.Priority;
 import vn.ansv.Entity.Project;
 
 @Controller(value = "PM_HomeController")
@@ -62,7 +59,7 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 			_projectService.delete(id);
 			Date now = new Date();   
 			int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
-			int current_year = Calendar.getInstance().get(Calendar.YEAR) - 1; // Get the curent year
+			int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
 			String week_link = "";
 			if (current_week < 10) {
 				week_link = "0" + current_week;
@@ -89,6 +86,19 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 	public String doUpdateProject(@ModelAttribute("Project") Project project, @PathVariable int week,
 			@PathVariable int year, @PathVariable int id, Model model) {
 		_projectService.update_tk(project);
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
+		String week_link = "";
+		if (current_week < 10) {
+			week_link = "0" + current_week;
+	    }
+		return "redirect:/PM/dashboard/" + week_link + "_" + current_year;
+	}
+	
+	@RequestMapping("/home/{week}_{year}")
+	public String home(@PathVariable int week, @PathVariable int year) {
+		
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year

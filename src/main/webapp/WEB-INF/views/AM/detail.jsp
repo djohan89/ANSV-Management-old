@@ -25,9 +25,8 @@
 
 		<section class="content">
 			<div class="container-fluid">
-				<c:forEach var="detail" items="${detail }" varStatus="detailIndex">
-					<c:if
-						test="${ detail.pic_role=='ROLE_PM' && detail.type=='Triển khai' }">
+				<c:forEach var="detail" items="${detail}" varStatus="detailIndex">
+					<c:if test="${detail.type == 'Triển khai'}">
 						<h2 class="text-center mt-3">${detail.name }</h2>
 						<div class="row">
 
@@ -67,7 +66,7 @@
 										<tr>
 											<th rowspan="2">Thanh toán tạm ứng</th>
 											<th>Số tiền</th>
-											<td><c:if test="${detail.so_tien_tam_ung !=0} ">
+											<td><c:if test="${detail.so_tien_tam_ung !=0}">
 													<fmt:formatNumber type="number"
 														value="${detail.so_tien_tam_ung }" />
 												</c:if></td>

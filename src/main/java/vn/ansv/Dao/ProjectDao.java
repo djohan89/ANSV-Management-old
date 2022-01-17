@@ -20,13 +20,10 @@ import vn.ansv.Dto.SlideshowProjectsDto;
 import vn.ansv.Dto.SlideshowProjectsDtoMapper;
 import vn.ansv.Dto.Menu.MenuProjectsDto;
 import vn.ansv.Dto.Menu.MenuProjectsDtoMapper;
-import vn.ansv.Entity.Priority;
 import vn.ansv.Entity.Project;
 import vn.ansv.Entity.ProjectDetailLessMapper;
-
-import vn.ansv.Entity.ProjectMapper;
-
 import vn.ansv.Entity.ProjectDetailMoreMapper;
+import vn.ansv.Entity.ProjectMapper;
 
 
 @Repository
@@ -228,9 +225,9 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
 				+ "INNER JOIN customers ON project.customer = customers.id "
 				+ "WHERE project.week = ? AND project.year = ? AND customers.id = ? AND projects_types.id  = ? "
-				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM')";
+				+ "AND role.name = ?";
 				
-		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(), week, year, customer, type);
+		list = _jdbcTemplate.query(sql, new ProjectDetailDtoMapper(), week, year, customer, type, (type == 1)?"ROLE_PM":"ROLE_AM");
 		return list;
 		
 	}
