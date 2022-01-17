@@ -143,7 +143,7 @@
 										<table class="table table-hover table-bordered ">
 											<tr>
 												<th>Dự án/Gói thầu</th>
-												<td>${detail.name })</td>
+												<td>${detail.name }</td>
 											</tr>
 											<tr>
 												<th>Mô tả dự án</th>
@@ -206,7 +206,7 @@
 										<table class="table table-hover table-bordered ">
 											<tr>
 												<th>Dự án/Gói thầu</th>
-												<td>${detail.name })</td>
+												<td>${detail.name }</td>
 											</tr>
 											<tr>
 												<th>Mô tả dự án</th>

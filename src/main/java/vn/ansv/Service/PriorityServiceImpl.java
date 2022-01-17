@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import vn.ansv.Dao.PriorityDao;
 import vn.ansv.Entity.Priority;
+import vn.ansv.Entity.Project;
 
 @Service
 public class PriorityServiceImpl implements IPriorityService{
@@ -23,6 +24,12 @@ public class PriorityServiceImpl implements IPriorityService{
 
 	public List<Priority> getAllTypeForm() {
 		return priorityDao.getAllTypeForm();
+	}
+	public Priority getAllProductForm(int id){
+		return priorityDao.getAllProductForm(id);
+	}
+	public void update_prd(Priority product){
+		priorityDao.update_prd(product);
 	}
 
 }

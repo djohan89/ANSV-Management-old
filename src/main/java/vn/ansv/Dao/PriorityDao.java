@@ -27,4 +27,15 @@ public class PriorityDao extends BaseDao{
 		return _jdbcTemplate.query(sql, new PriorityMapper());
 	}
 	
+	public Priority getAllProductForm(int id){
+		String sql = "SELECT * FROM products WHERE id = ?";
+		
+		return _jdbcTemplate.queryForObject(sql, new PriorityMapper(),id);
+	}
+	
+	public void update_prd(Priority product) {
+		String sql ="UPDATE products SET name = ? WHERE id = ?";
+		_jdbcTemplate.update(sql,product.getName(),product.getId());
+	}
+	
 }

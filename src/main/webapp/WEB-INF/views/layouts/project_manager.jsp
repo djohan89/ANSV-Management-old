@@ -400,7 +400,7 @@
 			    document.getElementById("formLogout").submit();
 			}
 			
-			$("#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua").ckeditor({
+			$("#add_ckeditor,#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua").ckeditor({
 				editorplaceholder: 'Nội dung...',
 			  	toolbar: [
 					{ name: 'document', items: [ 'Source', '-' ] },											
@@ -415,6 +415,49 @@
 				uiColor : '#F7D358',
 				height  : 100 
 		  	});
+			
+			$( ".datepickerJavascript" ).datepicker({
+				dateFormat: 'dd / mm / yy'
+			});
+			
+			
+			
+			load();
+			
+			function load(){
+				let priceId_list = ['so_tien_tam_ung1', 'tong_gia_tri_thuc_te1', 'so_tien_DAC1', 'so_tien_PAC1', 'so_tien_FAC1'];
+				let dateId_list = ['ke_hoach_tam_ung1', 'DAC1', 'PAC1', 'FAC1', 'ke_hoach_thanh_toan_DAC1', 'ke_hoach_thanh_toan_PAC1', 'ke_hoach_thanh_toan_FAC1'];
+				
+				for (var i = 0; i < priceId_list.length; i++) {
+					form_into_price(priceId_list[i]);
+			    }
+				
+				for (var i = 0; i < dateId_list.length; i++) {
+					form_into_date(dateId_list[i]);
+			    }
+			}
+			
+			
+			function form_into_price(data) {
+				var data_price_value = document.getElementById(data).value;
+				var string_replace = "";
+				
+				if (document.getElementById(data).value) {
+					string_replace = data_price_value.replaceAll(".", "");
+					document.getElementById(data.replace("1", "_test")).value = string_replace;
+			  	}
+				
+			}
+			
+			function form_into_date(data) {
+			  	if (document.getElementById(data).value) {
+			  		var a = document.getElementById(data).value;
+			  		var day = a.substr(8, 2);
+			  		var month = a.substr(5, 2);
+			  		var year = a.substr(0, 4);
+			  		document.getElementById(data.replace("1", "_test")).value = day + " / " + month + " / " + year;
+			  	}
+			}
 			
 		});
 	</script>
