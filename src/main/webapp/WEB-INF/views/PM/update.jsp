@@ -424,6 +424,8 @@
 		if (document.getElementById(data).value) {
 			string_replace = data_price_value.replaceAll(".", "");
 			document.getElementById(data.replace("_test", "1")).value = string_replace;
+	  	}else{
+	  		document.getElementById(data.replace("_test", "1")).remove();
 	  	}
 		
 		
@@ -436,6 +438,8 @@
 	  		var month = a.substr(5, 2);
 	  		var year = a.substr(10, 4);
 	  		document.getElementById(data.replace("_test", "1")).value = year + "-" + month + "-" + day;
+	  	}else{
+	  		document.getElementById(data.replace("_test", "1")).remove();
 	  	}
 	}
 	
