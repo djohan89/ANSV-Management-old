@@ -97,7 +97,7 @@
 				
 				<li class="nav-header">Quản lý</li>
 				<li class="nav-item">
-					<a href="<c:url value='/AM/customers' />" class="nav-link">
+					<a href="<c:url value='/AM/customer/${week}_${year}' />" class="nav-link">
 						<i class="nav-icon fas fa-list-alt"></i>
 						<p>
                             Khách hàng

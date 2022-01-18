@@ -9,15 +9,6 @@
 <title>Dashboard | AM</title>
 </head>
 <body>
-<link rel="stylesheet" href="<c:url value="/assets/user/vendor/dist/assets/owl.theme.default.min.css" />">
-<link rel="stylesheet" href="<c:url value="/assets/user/vendor/dist/assets/owl.carousel.min.css" />">
-<script src="<c:url value="/assets/user/vendor/dist/owl.carousel.min.js" />"></script>
-<script src="<c:url value="/assets/user/vendor/dist/jquery.mousewheel.min.js" />"></script> <!-- Thư viện sử dụng con lăn chuột -->
-<style>
-	.content-wrapper {
-	    background-color: #fff; 
-	}
-</style>
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<div class="content-header ml-2">
@@ -195,38 +186,7 @@
 	            example_1.order([groupColumn, 'asc']).draw();
 	        }
 	    });
-		
-		/* Option table 2 */
-		
-		
-		
-		var owl = $('.owl-carousel');
-	  	owl.owlCarousel({
-	       items: 1,
-	       loop: true,
-	       nav: true,
-	       margin: 10,
-	       autoplay: true,
-	       autoplayTimeout: 5000,
-	       responsiveClass: true,
-	       autoplayHoverPause: true
-	   	});
-	    
-	  	owl.on('mousewheel', '.owl-stage', function (e) {
-	        if (e.deltaY>0) {
-	            owl.trigger('next.owl');
-	        } else {
-	            owl.trigger('prev.owl');
-	        }
-	        e.preventDefault();
-	    });
-		
-	  	$('#myModal').modal('show');
-		$('div.dataTables_wrapper').addClass("change_font_size");
 	});
-
-
-
 </script>
 </body>
 </html>

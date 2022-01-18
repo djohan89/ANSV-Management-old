@@ -55,17 +55,6 @@ public class AccountManagerController extends AccountManagerBaseController {
 		return _mvShare;
 	}
 	
-//	@RequestMapping(value = { "/create/{week}_{year}" }, method = RequestMethod.GET)
-//	public ModelAndView AmCreate(@PathVariable int week, @PathVariable int year) {
-//		InitAM(week, year);
-//		_mvShare.addObject("customers",_customersService.getAllCustomerForm());
-//		_mvShare.addObject("priorities",_priorityService.getAllPriorityForm());
-//		_mvShare.addObject("status",_priorityService.getAllStatusForm());
-//		_mvShare.addObject("type",_priorityService.getAllTypeForm());
-//		_mvShare.setViewName("AM/create");
-//		return _mvShare;
-//	}
-	
 	// Link đến form insert dự án
 	@RequestMapping(value = { "/create_project/{week}_{year}" }, method = RequestMethod.GET)
 	public ModelAndView AmCreateProject(@PathVariable int week, @PathVariable int year, Model model, HttpSession session) {
@@ -192,6 +181,17 @@ public class AccountManagerController extends AccountManagerBaseController {
 		}
 		
 		return "redirect:/AM/dashboard/";
+	}
+	
+	// Trang danh sách khách hàng
+	@RequestMapping(value = { "/customer/{week}_{year}" }, method = RequestMethod.GET)
+	public ModelAndView customerAM(@PathVariable int week, @PathVariable int year, HttpSession session) {
+		String pic_id = (String) session.getAttribute("user_id");
+		InitAM(week, year, pic_id);
+		// Danh sách khách hàng
+		_mvShare.addObject("customer", _customersService.getAll());
+		_mvShare.setViewName("AM/customer_list"); 
+		return _mvShare; 
 	}
 	
 }

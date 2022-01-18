@@ -16,7 +16,9 @@ public class CustomersDao extends BaseDao {
 
 	// Lấy dữ liệu cho phần menu (CEO)
 	public List<MenuCustomersDto> getMenu(int week, int year) {
-		String sql = "SELECT project.id AS project_id, projects_types.name AS project_type,customers.id AS customer_id, customers.name AS customer, COUNT(*) AS number, project.week FROM customers "
+		String sql = "SELECT project.id AS project_id, projects_types.name AS project_type, "
+				+ "customers.id AS customer_id, customers.name AS customer, COUNT(*) AS number, project.week "
+				+ "FROM customers "
 				+ "INNER JOIN project ON customers.id = project.customer "
 				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
 				+ "WHERE project.week = ? AND project.year = ? "
@@ -25,10 +27,9 @@ public class CustomersDao extends BaseDao {
 	} 
 	
 	public List<Customer> getAll(){
-		String sql ="SELECT * FROM customers";
-		
+		String sql ="SELECT customers.id, customers.name, customers.created_at, users.display_name AS created_by FROM customers "
+				+ "INNER JOIN users ON customers.created_by = users.id";
 		return _jdbcTemplate.query(sql, new CustomerMapper());
-		
 	}
 	
 	public List<Customer> getAllCustomerForm(){

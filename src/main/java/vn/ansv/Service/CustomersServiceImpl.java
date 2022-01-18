@@ -19,6 +19,10 @@ public class CustomersServiceImpl implements ICustomersService {
 		return customersDao.getMenu(week,year);
 	}
 
+	public List<Customer> getAll() {
+		return customersDao.getAll();
+	}
+	
 	public List<Customer> getAllCustomerForm() {
 		return customersDao.getAllCustomerForm();
 	}
