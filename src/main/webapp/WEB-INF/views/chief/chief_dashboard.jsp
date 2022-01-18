@@ -150,51 +150,67 @@
 																	            	</tr>
 																	            </thead>
 														            			<tbody>
-														            				<td>${project_item.DAC }</td>
-														                			<td>${project_item.PAC }</td>
-														                			<td>${project_item.FAC }</td>
-														                			<!--Kế hoạch nghiệm thu -->
-														                			<td>
-														                				<c:if test="${project_item.so_tien_tam_ung  !=0}">
-																							<fmt:formatNumber type="number"
-																								value="${project_item.so_tien_tam_ung  }" />
-																						</c:if>
-														                			</td>
-														                			<td>${project_item.ke_hoach_tam_ung }</td>
-																					<!-- Thanh toán tạm ứng --> 
-														            				<td>
-														            					<c:if test="${project_item.so_tien_DAC  !=0}">
-																							<fmt:formatNumber type="number"
-																								value="${project_item.so_tien_DAC }" />
-																						</c:if>
-														            				</td>
-														                			<td>${project_item.ke_hoach_thanh_toan_DAC }</td>
-																					<!-- Thanh toán DAC --> 
-														            				<td>
-														            					<c:if test="${project_item.so_tien_PAC  !=0}">
-																							<fmt:formatNumber type="number"
-																								value="${project_item.so_tien_PAC }" />
-																						</c:if>
-														            				</td>
-														                			<td>${project_item.ke_hoach_thanh_toan_PAC }</td>
-																					<!-- Thanh toán PAC --> 
-														            				<td>
-														            					<c:if test="${project_item.so_tien_FAC  !=0}">
-																							<fmt:formatNumber type="number"
-																								value="${project_item.so_tien_FAC }" />
-																						</c:if>
-														            				</td>
-														                			<td>${project_item.ke_hoach_thanh_toan_FAC }</td>
-																					<!-- Thanh toán FAC --> 
+														            				<tr>
+															            				<td>
+															            					<fmt:formatDate value="${project_item.DAC}" pattern="dd/MM/yyyy" />
+															            				</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.PAC}" pattern="dd/MM/yyyy" />
+															                			</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.FAC}" pattern="dd/MM/yyyy" />
+															                			</td>
+															                			<!--Kế hoạch nghiệm thu -->
+															                			<td>
+															                				<c:if test="${project_item.so_tien_tam_ung  !=0}">
+																								<fmt:formatNumber type="number"
+																									value="${project_item.so_tien_tam_ung  }" />
+																							</c:if>
+															                			</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.ke_hoach_tam_ung}" pattern="dd/MM/yyyy" />
+															                			</td>
+																						<!-- Thanh toán tạm ứng --> 
+															            				<td>
+															            					<c:if test="${project_item.so_tien_DAC  !=0}">
+																								<fmt:formatNumber type="number"
+																									value="${project_item.so_tien_DAC }" />
+																							</c:if>
+															            				</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_DAC}" pattern="dd/MM/yyyy" />
+															                			</td>
+																						<!-- Thanh toán DAC --> 
+															            				<td>
+															            					<c:if test="${project_item.so_tien_PAC  !=0}">
+																								<fmt:formatNumber type="number"
+																									value="${project_item.so_tien_PAC }" />
+																							</c:if>
+															            				</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_PAC}" pattern="dd/MM/yyyy" />
+															                			</td>
+																						<!-- Thanh toán PAC --> 
+															            				<td>
+															            					<c:if test="${project_item.so_tien_FAC  !=0}">
+																								<fmt:formatNumber type="number"
+																									value="${project_item.so_tien_FAC }" />
+																							</c:if>
+															            				</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_FAC}" pattern="dd/MM/yyyy" />
+															                			</td>
+																						<!-- Thanh toán FAC --> 
+																					</tr>
 														            			</tbody>
 														            		</table>
 														            	</div>
-														            	<div class="d-flex justify-content-between">
-														            		<div >
+														            	<div class="row">
+														            		<div class="col-6">
 														            			<p><b>Tình trạng:</b> </p>
 														            			<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
 														                	</div>
-														                	<div class="pl-5">
+														                	<div class="col-6">
 														                		<p><b>Kết quả thực hiện kế hoạch:</b> </p>
 														                		<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.ket_qua_thuc_hien_ke_hoach }</p>
 														                	</div>
@@ -230,7 +246,7 @@
 																			</div>
 																			<div class="row">
 																				<div class="col-6">
-																					<p style="white-space: pre-wrap;"><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
+																					<p ><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
 																				</div>
 																				<div class="col-6">
 																					<p><b>Tổng giá trị:</b> 
@@ -248,9 +264,9 @@
 																			<div class="col-4"><b>Kế hoạch DAC: </b></div>
 																			<div class="col-4"><b>Kế hoạch PAC: </b></div>
 																			<div class="col-4"><b>Kế hoạch FAC: </b></div>
-																			<div class="col-4">${project_item.DAC }</div>
-																			<div class="col-4">${project_item.PAC }</div>
-																			<div class="col-4">${project_item.FAC }</div>
+																			<div class="col-4"><fmt:formatDate value="${project_item.DAC}" pattern="dd-MM-yyyy" /></div>
+																			<div class="col-4"><fmt:formatDate value="${project_item.PAC}" pattern="dd-MM-yyyy" /></div>
+																			<div class="col-4"><fmt:formatDate value="${project_item.FAC}" pattern="dd-MM-yyyy" /></div>
 																		</div>
 																		<div class="row">
 																			<div class="col-6"><b>Số tiền thanh toán tạm ứng: </b>
@@ -259,7 +275,7 @@
 																						value="${project_item.so_tien_tam_ung  }" />
 																				</c:if>
 																			</div>
-																			<div class="col-6"><b>Kế hoạch thanh toán tạm ứng:</b>${project_item.ke_hoach_tam_ung } </div>
+																			<div class="col-6"><b>Kế hoạch thanh toán tạm ứng:</b><fmt:formatDate value="${project_item.ke_hoach_tam_ung}" pattern="dd-MM-yyyy" /> </div>
 																		</div>
 																		<div class="row">
 																			<div class="col-6"><b>Số tiền DAC: </b>
@@ -269,7 +285,7 @@
 																				</c:if>
 																			</div>
 																			<div class="col-6"><b>Kế hoạch DAC: </b>
-																				${project_item.ke_hoach_thanh_toan_DAC }
+																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_DAC}" pattern="dd-MM-yyyy" />
 																			</div>
 																		</div>
 																		<div class="row">
@@ -280,7 +296,7 @@
 																				</c:if>
 																			</div>
 																			<div class="col-6"><b>Kế hoạch PAC: </b>
-																				${project_item.ke_hoach_thanh_toan_PAC }
+																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_PAC}" pattern="dd-MM-yyyy" />
 																			</div>
 																		</div>
 																		<div class="row">
@@ -291,15 +307,15 @@
 																				</c:if>
 																			</div>
 																			<div class="col-6"><b>Kế hoạch FAC: </b>
-																				${project_item.ke_hoach_thanh_toan_FAC }
+																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_FAC}" pattern="dd-MM-yyyy" />
 																			</div>
 																		</div>
-														            	<div class="d-flex justify-content-between">
-														            		<div >
+														            	<div class="row">
+														            		<div class="col-6">
 														            			<p><b>Tình trạng:</b> </p>
 														            			<p class="text-justify" style="white-space: pre-wrap;">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
 														                	</div>
-														                	<div class="pl-5">
+														                	<div class="col-6">
 														                		<p><b>Kết quả thực hiện kế hoạch:</b> </p>
 														                		<p class="text-justify" style="white-space: pre-wrap;">${project_item.ket_qua_thuc_hien_ke_hoach }</p>
 														                	</div>

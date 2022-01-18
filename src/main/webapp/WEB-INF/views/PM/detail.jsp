@@ -52,15 +52,15 @@
 										<tr>
 											<th rowspan="3">Kế hoạch nghiệm thu</th>
 											<th>DAC</th>
-											<td>${detail.DAC }</td>
+											<td><fmt:formatDate value="${detail.DAC}" pattern="dd / MM / yyyy" /></td>
 										</tr>
 										<tr>
 											<th>PAC</th>
-											<td>${detail.PAC }</td>
+											<td><fmt:formatDate value="${detail.PAC}" pattern="dd / MM / yyyy" /></td>
 										</tr>
 										<tr>
 											<th>FAC</th>
-											<td>${detail.FAC }</td>
+											<td><fmt:formatDate value="${detail.FAC}" pattern="dd / MM / yyyy" /></td>
 										</tr>
 										<tr>
 											<th rowspan="2">Thanh toán tạm ứng</th>
@@ -73,7 +73,7 @@
 										</tr>
 										<tr>
 											<th>Kế hoạch</th>
-											<td>${detail.ke_hoach_tam_ung }</td>
+											<td><fmt:formatDate value="${detail.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
 										</tr>
 										<tr>
 											<th rowspan="2">Thanh toán DAC</th>
@@ -87,7 +87,7 @@
 										</tr>
 										<tr>
 											<th>Kế hoạch</th>
-											<td>${detail.ke_hoach_thanh_toan_DAC }</td>
+											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_DAC}" pattern="dd / MM / yyyy" /></td>
 										</tr>
 										<tr>
 											<th rowspan="2">Thanh toán PAC</th>
@@ -100,7 +100,7 @@
 										</tr>
 										<tr>
 											<th>Kế hoạch</th>
-											<td>${detail.ke_hoach_thanh_toan_PAC }</td>
+											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_PAC}" pattern="dd / MM / yyyy" /></td>
 										</tr>
 									</table>
 								</div>
@@ -118,7 +118,7 @@
 										</tr>
 										<tr>
 											<th>Kế hoạch</th>
-											<td>${detail.ke_hoach_thanh_toan_FAC }</td>
+											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_FAC}" pattern="dd / MM / yyyy" /></td>
 										</tr>
 										<tr>
 											<th colspan="2">Tình trạng</th>

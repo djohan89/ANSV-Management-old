@@ -23,7 +23,7 @@
 	<!-- Right navbar links -->
 	<ul class="navbar-nav ml-auto">
 		<!-- Messages Dropdown Menu -->
-		<li class="nav-item dropdown"><a class="nav-link"
+		<%-- <li class="nav-item dropdown"><a class="nav-link"
 			data-toggle="dropdown" href="#"> <i class="far fa-comments"></i>
 				<span class="badge badge-danger navbar-badge">3</span>
 		</a>
@@ -110,7 +110,7 @@
 				<div class="dropdown-divider"></div>
 				<a href="#" class="dropdown-item dropdown-footer">See All
 					Notifications</a>
-			</div></li>
+			</div></li> --%>
 		<li class="nav-item"><a class="nav-link" data-widget="fullscreen"
 			href="#" role="button"> <i class="fas fa-expand-arrows-alt"></i>
 		</a></li>

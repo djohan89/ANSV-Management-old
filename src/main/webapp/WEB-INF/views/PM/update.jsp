@@ -237,7 +237,7 @@
 										<input type="text" value="" class="form-control" id="so_tien_tam_ung_test" />
 										<fmt:formatNumber type="number"
 														value="${project.so_tien_tam_ung }" var="so_tien_tam_ung"/>
-										<form:input path="so_tien_tam_ung" value="${so_tien_tam_ung }" class="form-control" id="so_tien_tam_ung1" />
+										<form:hidden path="so_tien_tam_ung" value="${so_tien_tam_ung }" class="form-control" id="so_tien_tam_ung1" />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -245,7 +245,7 @@
 											<label class="input-group-text">Kế hoạch tạm ứng</label>
 										</div>
 										<input type="text" id="ke_hoach_tam_ung_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
-										<form:input type="text" path="ke_hoach_tam_ung" id="ke_hoach_tam_ung1" class="form-control" />
+										<form:hidden  path="ke_hoach_tam_ung" id="ke_hoach_tam_ung1" class="form-control" />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -253,7 +253,7 @@
 											<label class="input-group-text w-100">DAC</label>
 										</div>
 										<input type="text" id="DAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
-										<form:input type="text" path="DAC" class="form-control datepickerJavascript" id="DAC1" />
+										<form:hidden path="DAC" class="form-control datepickerJavascript" id="DAC1" />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -261,7 +261,7 @@
 											<label class="input-group-text w-100">PAC</label>
 										</div>
 										<input type="text" id="PAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
-										<form:input type="text" path="PAC" id="PAC1" class="form-control datepickerJavascript" />
+										<form:hidden path="PAC" id="PAC1" class="form-control datepickerJavascript" />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -269,7 +269,7 @@
 											<label class="input-group-text w-100">FAC</label>
 										</div>
 										<input type="text" id="FAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
-										<form:input type="text" path="FAC" id="FAC1" class="form-control datepickerJavascript" />
+										<form:hidden path="FAC" id="FAC1" class="form-control datepickerJavascript" />
 									</div>
 								</div>
 								<!-- /.card-body-->
@@ -299,7 +299,7 @@
 										<input type="text" value="" class="form-control" id="so_tien_DAC_test" />
 										<fmt:formatNumber type="number"
 														value="${project.so_tien_DAC }" var="so_tien_DAC"/>
-										<form:input path="so_tien_DAC" class="form-control" value="${so_tien_DAC }" id="so_tien_DAC1" />
+										<form:hidden path="so_tien_DAC" class="form-control" value="${so_tien_DAC }" id="so_tien_DAC1" />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -307,7 +307,7 @@
 											<label class="input-group-text w-100">Kế hoạch</label>
 										</div>
 										<input type="text" id="ke_hoach_thanh_toan_DAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
-										<form:input type="text" path="ke_hoach_thanh_toan_DAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_DAC1" />
+										<form:hidden path="ke_hoach_thanh_toan_DAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_DAC1" />
 									</div>
 									
 									<div class="input-group mb-1">
@@ -317,7 +317,7 @@
 										<input type="text" class="form-control" value="" id="so_tien_PAC_test" />
 										<fmt:formatNumber type="number"
 														value="${project.so_tien_PAC }" var="so_tien_PAC"/>
-										<form:input path="so_tien_PAC" class="form-control" value="${so_tien_PAC }" id="so_tien_PAC1" />
+										<form:hidden path="so_tien_PAC" class="form-control" value="${so_tien_PAC }" id="so_tien_PAC1" />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -325,7 +325,7 @@
 											<label class="input-group-text w-100">Kế hoạch</label>
 										</div>
 										<input type="text" id="ke_hoach_thanh_toan_PAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
-										<form:input type="text" path="ke_hoach_thanh_toan_PAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_PAC1" />
+										<form:hidden  path="ke_hoach_thanh_toan_PAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_PAC1" />
 									</div>
 									
 									<div class="input-group mb-1">
@@ -335,7 +335,7 @@
 										<input type="text" value="" class="form-control" id="so_tien_FAC_test" />
 										<fmt:formatNumber type="number"
 														value="${project.so_tien_FAC }" var="so_tien_FAC"/>
-										<form:input path="so_tien_FAC" class="form-control" value="${so_tien_FAC }" id="so_tien_FAC1" />
+										<form:hidden path="so_tien_FAC" class="form-control" value="${so_tien_FAC }" id="so_tien_FAC1" />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -343,7 +343,7 @@
 											<label class="input-group-text w-100">Kế hoạch</label>
 										</div>
 										<input type="text" id="ke_hoach_thanh_toan_FAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
-										<form:input type="text" path="ke_hoach_thanh_toan_FAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_FAC1" />
+										<form:hidden path="ke_hoach_thanh_toan_FAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_FAC1" />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -353,7 +353,7 @@
 										<input type="text" value="" class="form-control" id="tong_gia_tri_thuc_te_test" />
 										<fmt:formatNumber type="number"
 														value="${project.tong_gia_tri_thuc_te }" var="tong_gia_tri"/>
-										<form:input path="tong_gia_tri_thuc_te" class="form-control" id="tong_gia_tri_thuc_te1" value="${tong_gia_tri }" />
+										<form:hidden path="tong_gia_tri_thuc_te" class="form-control" id="tong_gia_tri_thuc_te1" value="${tong_gia_tri }" />
 									</div>
 								</div>
 								<!-- /.card-body-->
@@ -439,7 +439,44 @@
 	  	}
 	}
 	
-	
+	$( document ).ready(function() {
+		load();
+		
+		function load(){
+			let priceId_list = ['so_tien_tam_ung1', 'tong_gia_tri_thuc_te1', 'so_tien_DAC1', 'so_tien_PAC1', 'so_tien_FAC1'];
+			let dateId_list = ['ke_hoach_tam_ung1', 'DAC1', 'PAC1', 'FAC1', 'ke_hoach_thanh_toan_DAC1', 'ke_hoach_thanh_toan_PAC1', 'ke_hoach_thanh_toan_FAC1'];
+			
+			for (var i = 0; i < priceId_list.length; i++) {
+				form_into_price(priceId_list[i]);
+		    }
+			
+			for (var i = 0; i < dateId_list.length; i++) {
+				form_into_date(dateId_list[i]);
+		    }
+		}
+		
+		
+		function form_into_price(data) {
+			var data_price_value = document.getElementById(data).value;
+			var string_replace = "";
+			
+			if (document.getElementById(data).value) {
+				string_replace = data_price_value.replaceAll(".", "");
+				document.getElementById(data.replace("1", "_test")).value = string_replace;
+		  	}
+			
+		}
+		
+		function form_into_date(data) {
+		  	if (document.getElementById(data).value) {
+		  		var a = document.getElementById(data).value;
+		  		var day = a.substr(8, 2);
+		  		var month = a.substr(5, 2);
+		  		var year = a.substr(0, 4);
+		  		document.getElementById(data.replace("1", "_test")).value = day + " / " + month + " / " + year;
+		  	}
+		}
+	});
 	
 	
 	
