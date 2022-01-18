@@ -120,15 +120,15 @@ a:hover {
                				
                			</c:if> 
                				 <div>
-			                    <p>Người phụ trách: ${item.pic_name}</p>
-			                    <p>Tên dự án: <a style="color: #000" href="<c:url value='/chief/detail/${week}_${year}_${item.id}' />">${item.name}</a> </p>
-			                    <p >Phạm vi cung cấp: <span style="white-space: pre-wrap;">${item.pham_vi_cung_cap }</span></p>
-			                    <p>Tổng giá trị: <c:if
+			                    <p><b>Người phụ trách:</b> ${item.pic_name}</p>
+			                    <p><b>Tên dự án:</b> <a style="color: #000" href="<c:url value='/chief/detail/${week}_${year}_${item.id}' />">${item.name}</a> </p>
+			                    <p><b>Phạm vi cung cấp:</b> <span style="white-space: pre-wrap;">${item.pham_vi_cung_cap }</span></p>
+			                    <p><b>Tổng giá trị:</b> <c:if
 												test="${ item.tong_gia_tri_thuc_te !=0}">
 												<fmt:formatNumber type="number"
 													value="${item.tong_gia_tri_thuc_te }" />
 											</c:if></p>
-			                    <p>Mức độ ưu tiên: ${item.status }</p>
+			                    <p><b>Mức độ ưu tiên:</b> ${item.status }</p>
 			                </div>
 			                <div class="table-responsive">
 			                    <table class="table table-bordered ">
@@ -155,59 +155,62 @@ a:hover {
 			                            </tr>
 			                        </thead>
 			                        <tbody>
-			                            <td>${item.DAC}</td>
-			                            <td>${item.PAC}</td>
-			                            <td>${item.FAC}</td>
-			                            <!--Kế hoạch nghiệm thu -->
-			                            <td>
-			                            	<c:if
-												test="${item.so_tien_tam_ung !=0}">
-												<fmt:formatNumber type="number"
-													value="${item.so_tien_tam_ung}" />
-											</c:if>
-			                            </td>
-			                            <td>${item.ke_hoach_tam_ung }</td>
-			                            <!-- Thanh toán tạm ứng -->
-			                            <td>
-			                            	<c:if
-												test="${ item.so_tien_DAC !=0}">
-												<fmt:formatNumber type="number"
-													value="${item.so_tien_DAC }" />
-											</c:if>
-			                            </td>
-			                            <td>${item.ke_hoach_thanh_toan_DAC }</td>
-			                            <!-- Thanh toán DAC -->
-			                            <td>
-			                            	<c:if
-												test="${ item.so_tien_PAC !=0}">
-												<fmt:formatNumber type="number"
-													value="${item.so_tien_PAC }" />
-											</c:if>
-			                            </td>
-			                            <td>${item.ke_hoach_thanh_toan_PAC }</td>
-			                            <!-- Thanh toán PAC -->
-			                            <td>
-			                            	<c:if
-												test="${ item.so_tien_FAC !=0}">
-												<fmt:formatNumber type="number"
-													value="${item.so_tien_FAC }" />
-											</c:if>
-			                            </td>
-			                            <td>${item.ke_hoach_thanh_toan_FAC }</td>
-			                            <!-- Thanh toán FAC -->
+			                        	<tr>
+				                            <td><fmt:formatDate value="${item.DAC}" pattern="dd/MM/yyyy" /></td>
+				                            <td><fmt:formatDate value="${item.PAC}" pattern="dd/MM/yyyy" /></td>
+				                            <td><fmt:formatDate value="${item.FAC}" pattern="dd/MM/yyyy" /></td>
+				                            <!--Kế hoạch nghiệm thu -->
+				                            <td>
+				                            	<c:if
+													test="${item.so_tien_tam_ung !=0}">
+													<fmt:formatNumber type="number"
+														value="${item.so_tien_tam_ung}" />
+												</c:if>
+				                            </td>
+				                            <td><fmt:formatDate value="${item.ke_hoach_tam_ung}" pattern="dd/MM/yyyy" /></td>
+				                            <!-- Thanh toán tạm ứng -->
+				                            <td>
+				                            	<c:if
+													test="${ item.so_tien_DAC !=0}">
+													<fmt:formatNumber type="number"
+														value="${item.so_tien_DAC }" />
+												</c:if>
+				                            </td>
+				                            <td><fmt:formatDate value="${item.ke_hoach_thanh_toan_DAC}" pattern="dd/MM/yyyy" /></td>
+				                            <!-- Thanh toán DAC -->
+				                            <td>
+				                            	<c:if
+													test="${ item.so_tien_PAC !=0}">
+													<fmt:formatNumber type="number"
+														value="${item.so_tien_PAC }" />
+												</c:if>
+				                            </td>
+				                            <td><fmt:formatDate value="${item.ke_hoach_thanh_toan_PAC}" pattern="dd/MM/yyyy" /></td>
+				                            <!-- Thanh toán PAC -->
+				                            <td>
+				                            	<c:if
+													test="${ item.so_tien_FAC !=0}">
+													<fmt:formatNumber type="number"
+														value="${item.so_tien_FAC }" />
+												</c:if>
+				                            </td>
+				                            <td><fmt:formatDate value="${item.ke_hoach_thanh_toan_FAC}" pattern="dd/MM/yyyy" /></td>
+				                            <!-- Thanh toán FAC -->
+			                            </tr>
 			                        </tbody>
 			                    </table>
 			                </div>
 			                <div class="d-flex">
 			                    <div style="width: 70%;">
-			                        <p>Tình trạng:</p>
+			                        <p><b>Tình trạng:</b></p>
 			                        <p class="text-justify"> ${item.tinh_trang_va_ke_hoach_chi_tiet }</p>
 			                    </div>
 			                    <div class="pl-5">
-			                        <p>Kết quả thực hiện kế hoạch:</p>
+			                        <p><b>Kết quả thực hiện kế hoạch:</b></p>
 			                        <p class="text-justify"> ${item.ket_qua_thuc_hien_ke_hoach }</p>
 			                    </div>
 			                </div>
+			               </div>
 			           	</c:if>
                 			
                 		
@@ -221,7 +224,6 @@ a:hover {
                 			<div id="du_an_${index.count }" class="tab-pane fade"><br>
                 				
                 			</c:if> 
-                			<div>
                 				<p><b>Người phụ trách:</b> ${item.pic_name }</p>
                 				<p><b>Tên dự án:</b><a style="color: #000" href="<c:url value='/chief/detail/${week}_${year}_${item.id}' />">${item.name}</a></p>
                 				<p ><b>Mô tả dự án:</b><span style="white-space: pre-wrap;">${item.description }</span></p>
@@ -247,7 +249,6 @@ a:hover {
                 			<div id="du_an_${index.count }" class="tab-pane fade"><br>
                 				
                 			</c:if> 
-                			<div>
                 				<p><b>Người phụ trách:</b> ${item.pic_name }</p>
                 				<p><b>Tên dự án:</b> <a style="color: #000" href="<c:url value='/chief/detail/${week}_${year}_${item.id}' />">${item.name}</a></p>
                 				<p style="white-space: pre-wrap;"><b>Mô tả dự án:</b><span >${item.description }</span></p>
