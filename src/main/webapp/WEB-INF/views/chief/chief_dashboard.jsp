@@ -264,9 +264,9 @@
 																			<div class="col-4"><b>Kế hoạch DAC: </b></div>
 																			<div class="col-4"><b>Kế hoạch PAC: </b></div>
 																			<div class="col-4"><b>Kế hoạch FAC: </b></div>
-																			<div class="col-4"><fmt:formatDate value="${project_item.DAC}" pattern="dd-MM-yyyy" /></div>
-																			<div class="col-4"><fmt:formatDate value="${project_item.PAC}" pattern="dd-MM-yyyy" /></div>
-																			<div class="col-4"><fmt:formatDate value="${project_item.FAC}" pattern="dd-MM-yyyy" /></div>
+																			<div class="col-4"><fmt:formatDate value="${project_item.DAC}" pattern="dd/MM/yyyy" /></div>
+																			<div class="col-4"><fmt:formatDate value="${project_item.PAC}" pattern="dd/MM/yyyy" /></div>
+																			<div class="col-4"><fmt:formatDate value="${project_item.FAC}" pattern="dd/MM/yyyy" /></div>
 																		</div>
 																		<div class="row">
 																			<div class="col-6"><b>Số tiền thanh toán tạm ứng: </b>
@@ -275,7 +275,7 @@
 																						value="${project_item.so_tien_tam_ung  }" />
 																				</c:if>
 																			</div>
-																			<div class="col-6"><b>Kế hoạch thanh toán tạm ứng:</b><fmt:formatDate value="${project_item.ke_hoach_tam_ung}" pattern="dd-MM-yyyy" /> </div>
+																			<div class="col-6"><b>Kế hoạch thanh toán tạm ứng:</b><fmt:formatDate value="${project_item.ke_hoach_tam_ung}" pattern="dd/MM/yyyy" /> </div>
 																		</div>
 																		<div class="row">
 																			<div class="col-6"><b>Số tiền DAC: </b>
@@ -285,7 +285,7 @@
 																				</c:if>
 																			</div>
 																			<div class="col-6"><b>Kế hoạch DAC: </b>
-																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_DAC}" pattern="dd-MM-yyyy" />
+																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_DAC}" pattern="dd/MM/yyyy" />
 																			</div>
 																		</div>
 																		<div class="row">
@@ -296,7 +296,7 @@
 																				</c:if>
 																			</div>
 																			<div class="col-6"><b>Kế hoạch PAC: </b>
-																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_PAC}" pattern="dd-MM-yyyy" />
+																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_PAC}" pattern="dd/MM/yyyy" />
 																			</div>
 																		</div>
 																		<div class="row">
@@ -307,7 +307,7 @@
 																				</c:if>
 																			</div>
 																			<div class="col-6"><b>Kế hoạch FAC: </b>
-																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_FAC}" pattern="dd-MM-yyyy" />
+																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_FAC}" pattern="dd/MM/yyyy" />
 																			</div>
 																		</div>
 														            	<div class="row">

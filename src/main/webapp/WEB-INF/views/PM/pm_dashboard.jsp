@@ -9,12 +9,6 @@
 <title>Dashboard | PM</title>
 </head>
 <body>
-
-<style>
-	.content-wrapper {
-	    background-color: #fff; 
-	}
-</style>
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<%-- <div class="content-header ml-2">
@@ -58,7 +52,7 @@
 								<div class="title-card">
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
-										<b id="name_sheet_1"> Báo cáo ${display_name } phụ trách </b><br>
+										<b id="name_sheet_1"> Dự án ${display_name } phụ trách tuần ${week }</b><br>
 										<br>
 									</h3>
 								</div>

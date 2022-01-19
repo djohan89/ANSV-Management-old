@@ -28,7 +28,7 @@
 						</h1>
 					</div>
 					<div class="col-sm-2">
-						<button type="submit" onclick="return complete_form();">Cập nhật</button>
+						<button type="submit" class="btn btn-success" onclick="return complete_form();">Cập nhật</button>
 						<!-- <button type="button" onclick="return complete_form();">Button</button> -->
 					</div>
 					<!-- /.col -->
@@ -106,7 +106,7 @@
 											<label class="input-group-text">Loại dự án</label>
 										</div>
 										<input type="text" value="Triển khai" readonly="readonly" class="form-control" />
-										<form:input type="number" path="project_type" value="1" class="form-control" readonly="true" />
+										<form:hidden  path="project_type" value="1" class="form-control" readonly="true" />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -190,7 +190,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-100">
-											<span class="input-group-text w-100">Tình trạng kế hoạch</span>
+											<label class="input-group-text w-100">Tình trạng kế hoạch</label>
 										</div>
 										<textarea id="tinh_trang_test" style="display:none;">${project.tinh_trang_va_ke_hoach_chi_tiet}</textarea>
 										<form:textarea path="tinh_trang_va_ke_hoach_chi_tiet" class="form-control" id="cr_tinh_trang" />
@@ -198,7 +198,7 @@
 		
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-100">
-											<span class="input-group-text w-100">Kết quả thực hiện</span>
+											<label class="input-group-text w-100">Kết quả thực hiện</label>
 										</div>
 										<textarea id="ket_qua_test" style="display:none;">${project.ket_qua_thuc_hien_ke_hoach}</textarea>
 										<form:textarea path="ket_qua_thuc_hien_ke_hoach" class="form-control" id="cr_ket_qua" />
