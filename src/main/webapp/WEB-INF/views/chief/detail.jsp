@@ -20,140 +20,138 @@
 		<section class="content">
 			<div class="container-fluid">
 				<c:forEach var="detail" items="${detail }" varStatus="detailIndex">
-					<c:if
-						test="${detail.pic_role=='ROLE_PM' && detail.type=='Triển khai'}">
-						<h2 class="text-center mt-3">${detail.name }</h2>
-						<div class="row">
-							<div class="col-md-6">
+					<c:if test="${detail.pic_role=='ROLE_PM' && detail.type=='Triển khai'}">
+						<h2 class="text-center mt-3">${detail.name}</h2>
+						<div class="row pt-2">
+							<div class="col-md-7">
 								<div class="table-responsive-sm">
 									<table class="table table-hover table-bordered">
 										<tr>
-											<th colspan="2">Khách hàng</th>
-											<td>${detail.customer }</td>
+											<td width="35%">
+												<span class="font-weight-bold">Status:</span>
+												<span class="pl-5">${detail.status}</span>
+											</td>
+											<td>
+												<span class="font-weight-bold">PIC:</span>
+												<span class="pl-2">${detail.pic_name}</span>
+											</td>
 										</tr>
 										<tr>
-											<th colspan="2">Phạm vi cung cấp</th>
-											<td>${detail.pham_vi_cung_cap }</td>
+											<td>
+												<span class="font-weight-bold">Priority:</span>
+												<span class="pl-5">${detail.priority}</span>
+											</td>
+											<td>
+												<span class="font-weight-bold">Khách hàng:</span>
+												<span class="pl-2">${detail.customer}</span>
+											</td>
+										</tr>
+									</table>
+									
+									<table class="table table-hover table-bordered">
+										<tr>
+											<th class="w-25">Phạm vi cung cấp</th>
+											<td>${detail.pham_vi_cung_cap}</td>
 										</tr>
 										<tr>
-											<th colspan="2">Tổng giá trị</th>
-											<td><c:if
-													test="${ detail.tong_gia_tri_thuc_te !=0}">
-													<fmt:formatNumber type="number"
-														value="${detail.tong_gia_tri_thuc_te }" />
-												</c:if></td>
+											<th>Tình trạng & kế hoạch chị tiết</th>
+											<td>${detail.tinh_trang_va_ke_hoach_chi_tiet}</td>
 										</tr>
 										<tr>
-											<th rowspan="3">Kế hoạch nghiệm thu</th>
-											<th>DAC</th>
-											<td><fmt:formatDate value="${detail.DAC}" pattern="dd / MM / yyyy" /></td>
-										</tr>
-										<tr>
-											<th>PAC</th>
-											<td><fmt:formatDate value="${detail.PAC}" pattern="dd / MM / yyyy" /></td>
-										</tr>
-										<tr>
-											<th>FAC</th>
-											<td><fmt:formatDate value="${detail.FAC}" pattern="dd / MM / yyyy" /></td>
-										</tr>
-										<tr>
-											<th rowspan="2">Thanh toán tạm ứng</th>
-											<th>Số tiền</th>
-											<td><c:if test="${detail.so_tien_tam_ung !=0}">
-													<fmt:formatNumber type="number"
-														value="${detail.so_tien_tam_ung }" />
-												</c:if></td>
-										</tr>
-										<tr>
-											<th>Kế hoạch</th>
-											<td><fmt:formatDate value="${detail.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
-										</tr>
-										<tr>
-											<th rowspan="2">Thanh toán DAC</th>
-											<th>Số tiền</th>
-											<td><c:if test="${ detail.so_tien_DAC !=0}">
-													<fmt:formatNumber type="number"
-														value="${detail.so_tien_DAC }" />
-												</c:if></td>
-										</tr>
-										<tr>
-											<th>Kế hoạch</th>
-											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_DAC}" pattern="dd / MM / yyyy" /></td>
-										</tr>
-										<tr>
-											<th rowspan="2">Thanh toán PAC</th>
-											<th>Số tiền</th>
-
-											<td><c:if test="${ detail.so_tien_PAC !=0}">
-													<fmt:formatNumber type="number"
-														value="${detail.so_tien_PAC }" />
-												</c:if></td>
-										</tr>
-										<tr>
-											<th>Kế hoạch</th>
-											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_PAC}" pattern="dd / MM / yyyy" /></td>
+											<th>Kết quả thực hiện kế hoạch</th>
+											<td>${detail.ket_qua_thuc_hien_ke_hoach}</td>
 										</tr>
 									</table>
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-5">
 								<div class="table-responsive-sm">
 									<table class="table table-hover table-bordered">
 										<tr>
-											<th rowspan="2">Thanh toán FAC</th>
-											<th>Số tiền</th>
-											<td><c:if test="${ detail.so_tien_FAC !=0}">
-													<fmt:formatNumber type="number"
-														value="${detail.so_tien_FAC }" />
-												</c:if></td>
+											<th style="width: 20%;" class="text-center">Kế hoạch</th>
+											<th class="text-center">Số tiền<br />(VNĐ)</th>
+											<th class="text-center" style="width: 26%;">Ngày thanh toán<br/>(D / M / Y)</th>
+											<th class="text-center" style="width: 26%;">Nghiệm thu<br/>(D / M / Y)</th>
 										</tr>
-										<tr>
-											<th>Kế hoạch</th>
+										<tr class="text-center">
+											<th>DAC</th>
+											<td class="text-right">
+												<c:if test="${detail.so_tien_DAC != 0}">
+													<fmt:formatNumber type="number" value="${detail.so_tien_DAC}" />
+												</c:if>
+											</td>
+											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_DAC}" pattern="dd / MM / yyyy" /></td>
+											<td><fmt:formatDate value="${detail.DAC}" pattern="dd / MM / yyyy" /></td>
+										</tr>
+										<tr class="text-center">
+											<th>PAC</th>
+											<td class="text-right">
+												<c:if test="${detail.so_tien_PAC != 0}">
+													<fmt:formatNumber type="number" value="${detail.so_tien_PAC}" />
+												</c:if>
+											</td>
+											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_PAC}" pattern="dd / MM / yyyy" /></td>
+											<td><fmt:formatDate value="${detail.PAC}" pattern="dd / MM / yyyy" /></td>
+										</tr>
+										<tr class="text-center">
+											<th>FAC</th>
+											<td class="text-right">
+												<c:if test="${detail.so_tien_FAC != 0}">
+													<fmt:formatNumber type="number" value="${detail.so_tien_FAC}" />
+												</c:if>
+											</td>
 											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_FAC}" pattern="dd / MM / yyyy" /></td>
+											<td><fmt:formatDate value="${detail.FAC}" pattern="dd / MM / yyyy" /></td>
 										</tr>
-										<tr>
-											<th colspan="2">Tình trạng</th>
-											<td class="text-justify">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
+										<tr class="text-center">
+											<th>Tổng</th>
+											<td class="text-right">
+												<c:if test="${detail.tong_gia_tri_thuc_te != 0}">
+													<fmt:formatNumber type="number" value="${detail.tong_gia_tri_thuc_te }" />
+												</c:if>
+											</td>
+											<td class="bg-dark"></td>
+											<td class="bg-dark"></td>
 										</tr>
-										<tr>
-											<th colspan="2">Priority</th>
-											<td>${detail.priority }</td>
-										</tr>
-										<tr>
-											<th colspan="2">Kết quả thực hiện kế hoạch</th>
-											<td class="text-justify">${detail.ket_qua_thuc_hien_ke_hoach }</td>
-										</tr>
-										<tr>
-											<th colspan="2">Phụ trách</th>
-											<td>${detail.pic_name }</td>
+										<tr class="text-center">
+											<th>Tạm ứng</th>
+											<td class="text-right">
+												<c:if test="${detail.so_tien_tam_ung != 0}">
+													<fmt:formatNumber type="number" value="${detail.so_tien_tam_ung }" />
+												</c:if>
+											</td>
+											<td><fmt:formatDate value="${detail.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
+											<td class="bg-dark"></td>
 										</tr>
 									</table>
 								</div>
-								<div class="btn-function d-flex flex-row-reverse mb-3">
-									<button data-toggle="modal" data-target="#delete-course-modal"
-										type="button" class="btn btn-danger">Đóng</button>
-									<!-- {{!-- Confirm delete courses --}} -->
-									<div class="modal fade" id="delete-course-modal" tabindex="-1"
-										role="dialog" aria-labelledby="exampleModalLabel"
-										aria-hidden="true">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Modal
-														title</h5>
-													<button type="button" class="close" data-dismiss="modal"
-														aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">bạn có muốn đóng dự án
-													${detail.name }</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary"
-														data-dismiss="modal">Close</button>
-													<a type="button" href="<c:url value='/chief/delete_project/${week}_${year}_${detail.id}' />" class="btn btn-danger">Đóng
-														dự án</a>
-												</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12 d-flex flex-row-reverse">
+								<button data-toggle="modal" data-target="#delete-course-modal" type="button" class="btn btn-danger">Đóng</button>
+								<!-- {{!-- Confirm delete courses --}} -->
+								<div class="modal fade" id="delete-course-modal" tabindex="-1"
+									role="dialog" aria-labelledby="exampleModalLabel"
+									aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Modal
+													title</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">bạn có muốn đóng dự án
+												${detail.name }</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Close</button>
+												<a type="button" href="<c:url value='/chief/delete_project/${week}_${year}_${detail.id}' />" class="btn btn-danger">Đóng
+													dự án</a>
 											</div>
 										</div>
 									</div>

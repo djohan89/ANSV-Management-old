@@ -174,15 +174,6 @@ public class AccountManagerController extends AccountManagerBaseController {
 		return "redirect:/AM/dashboard/" + week_link + "_" + current_year;
 	}
 	
-	@RequestMapping(value = { "/createDeployment_test/{week}_{year}_{id}" }, method = RequestMethod.POST)
-	public String doDeployment(BindingResult bindingResult, @ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable int id, Model model, HttpSession session) {
-		for( FieldError fieldError : bindingResult.getFieldErrors() ) {
-		    System.out.println(fieldError.getField() +" : "+fieldError.getDefaultMessage());
-		}
-		
-		return "redirect:/AM/dashboard/";
-	}
-	
 	// Trang danh sách khách hàng
 	@RequestMapping(value = { "/customer/{week}_{year}" }, method = RequestMethod.GET)
 	public ModelAndView customerAM(@PathVariable int week, @PathVariable int year, HttpSession session) {

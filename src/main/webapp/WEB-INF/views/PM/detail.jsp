@@ -12,15 +12,12 @@
 
 <body>
 	<style>
-.content-wrapper {
-	background-color: #fff;
-}
-</style>
+		.content-wrapper {
+			background-color: #fff;
+		}
+	</style>
 	<div class="content-wrapper">
-	<div class="content-header">
-				
-			<!-- /.container-fluid -->
-		</div>
+		<div class="content-header"></div>
 
 		<section class="content">
 			<div class="container-fluid">

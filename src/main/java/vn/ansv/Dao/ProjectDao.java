@@ -1,4 +1,4 @@
-	package vn.ansv.Dao;
+package vn.ansv.Dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,8 +54,9 @@ public class ProjectDao extends BaseDao {
 	public List<DashboardProjectDto> getDashboardTable(int week, int year) {
 		List<DashboardProjectDto> list = new ArrayList<DashboardProjectDto>();
 		
-		String sql = "SELECT project.id, users.id AS id_user, users.display_name AS pic, role.name AS pic_role, projects_types.name AS type, priorities.name AS priority, projects_status.name AS status, "
-				+ "customers.name AS customer, project.name AS project_name, project.tinh_trang_va_ke_hoach_chi_tiet, project.week "
+		String sql = "SELECT project.id, users.id AS id_user, users.display_name AS pic, role.name AS pic_role, projects_types.name AS type, "
+				+ "priorities.name AS priority, projects_status.name AS status, customers.name AS customer, project.name AS project_name, "
+				+ "project.tinh_trang_va_ke_hoach_chi_tiet, project.week "
 				+ "FROM project "
 				+ "INNER JOIN pic ON project.id = pic.project_id "
 				+ "INNER JOIN users ON pic.pic = users.id "

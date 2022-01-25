@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/layouts/taglib.jsp"%>
 
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Dashboard | Chief</title>
@@ -18,7 +20,6 @@
     background-color: #fff; 
 }
 </style>
-	<c:url value="pl-3" var="padding_left_slideshow"/>
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
@@ -29,6 +30,21 @@
 
 		<!-- Main content -->
 		<section class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<section class="col-lg-4">
+						<!-- Sheet 1 card -->
+
+					</section>
+
+					<!-- === Content: Cột 2 (sheet 2) === -->
+
+
+					<!-- === Content: Cột 3 (sheet 3) === -->
+
+				</div>
+				<!-- /.row (main row) -->
+			</div>
 			<div class="container-fluid">
 				<!-- Small boxes (Stat box) -->
 				<!-- Main row -->
@@ -64,128 +80,145 @@
 
 												<!-- Modal content-->
 												<div class="modal-content" style="color: black;">
-													<div class="modal-header" style="border-bottom: none;">
+													<div class="modal-header" style="border-bottom: none">
 														<!-- <h5 class="modal-title" id="modal_title">Các dự án chậm tiến độ</h5> -->
-														<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
 													</div>
-													<div class="modal-body" style="font-size: 15px; color: black; margin-top: -3%;">
+													<div class="modal-body"
+														style="font-size: 15px; color: black">
 														<!-- Slide cho màn hình lớn -->
 														<div class="owl-carousel owl-theme" id="detail_slide">
-															<!-- ===== Phần chèn thêm HTML ===== -->
+														<!-- ===== Phần chèn thêm HTML ===== -->
+														
 															<c:forEach items="${project_slideshow }" var="project_item" varStatus="project_index">
 																
-																<div class="container item">
-																	<div class="row d-flex">
-																		<h5 class="pb-2 pt-1 pl-3" style="width: 97%; background: red; border-radius: 16px; text-align: center;">
-																			<a href="javascript:void(0)" style="color: #fff; font-weight: bold;">${project_item.name }</a>
-																		</h5>
-																		<button type="button" class="close ml-3 pb-2" data-dismiss="modal">&times;</button>
-																	</div>
-																	
-																	<div class="row ml-2 pt-2 pb-1 pl-4 mb-4" style="width: 95.6%; padding-bottom: 0; background: lightgrey; border-radius: 0 0 16px 16px; margin-top: -1%;">
-																		<div class="col-5">
-																			<b>AM:</b><span class="${padding_left_slideshow}">${project_item.am}</span>
-																		</div>
-																		<div class="col-5">
-																			<b>PM:</b><span class="${padding_left_slideshow}">${project_item.pm}</span>
-																		</div>
-																		<div class="col-2 pl-4">
-																			<b>Priority:</b><span class="${padding_left_slideshow}">${project_item.priority}</span>
-																		</div>
-																	</div>
-																	
-																	<div class="table-responsive">
-																		<div class="row" style="width: 99.9%;">
-																			<div class="col-6">
-																				<p>
-																					<b>Phạm vi cung cấp:</b><br/>
-																					<span class="d-flex">
-																						<i class="far fa-hand-point-right"></i>
-																						<span class="ml-2 pl-2 border-left border-primary">${project_item.pham_vi_cung_cap}</span>	
-																					</span>
-																				</p><hr>
-																				<p>
-																					<b>Tình trạng:</b><br/>
-																					<span class="d-flex">
-																						<i class="far fa-hand-point-right"></i>
-																						<span class="ml-2 pl-2 border-left border-primary">${project_item.tinh_trang_va_ke_hoach_chi_tiet}</span>
-																					</span>
-																				</p>
+																	<div class="container item">
+																		<div>
+																			<h5 class="pb-2 pt-1 pl-3" style="background: red; border-radius: 16px; text-align: center;">
+																				<a href="javascript:void(0)" style="color: #fff">${project_item.name }</a>
+																			</h5>
+																			<div class="row">
+																				<div class="col-8">
+																					<p><b>Người phụ trách (PM):</b></b> ${project_item.pm }</p>
+																				</div>
+																				<div class="col-4">
+																					<p><b>Người đầu mối (AM):</b></b> ${project_item.am }</p>
+																				</div>
 																			</div>
-																			<div class="col-6 pl-4">
-																				<table class="table table-hover table-bordered">
-																					<tr>
-																						<th style="width: 20%;" class="text-center">Kế hoạch</th>
-																						<th class="text-center">Số tiền<br />(VNĐ)</th>
-																						<th class="text-center" style="width: 26%;">Ngày thanh toán<br/>(D / M / Y)</th>
-																						<th class="text-center" style="width: 26%;">Nghiệm thu<br/>(D / M / Y)</th>
-																					</tr>
-																					<tr class="text-center">
-																						<th>DAC</th>
-																						<td class="text-right">
-																							<c:if test="${project_item.so_tien_DAC != 0}">
-																								<fmt:formatNumber type="number" value="${project_item.so_tien_DAC}" />
-																							</c:if>
-																						</td>
-																						<td><fmt:formatDate value="${project_item.ke_hoach_thanh_toan_DAC}" pattern="dd / MM / yyyy" /></td>
-																						<td><fmt:formatDate value="${project_item.DAC}" pattern="dd / MM / yyyy" /></td>
-																					</tr>
-																					<tr class="text-center">
-																						<th>PAC</th>
-																						<td class="text-right">
-																							<c:if test="${project_item.so_tien_PAC != 0}">
-																								<fmt:formatNumber type="number" value="${project_item.so_tien_PAC}" />
-																							</c:if>
-																						</td>
-																						<td><fmt:formatDate value="${project_item.ke_hoach_thanh_toan_PAC}" pattern="dd / MM / yyyy" /></td>
-																						<td><fmt:formatDate value="${project_item.PAC}" pattern="dd / MM / yyyy" /></td>
-																					</tr>
-																					<tr class="text-center">
-																						<th>FAC</th>
-																						<td class="text-right">
-																							<c:if test="${project_item.so_tien_FAC != 0}">
-																								<fmt:formatNumber type="number" value="${project_item.so_tien_FAC}" />
-																							</c:if>
-																						</td>
-																						<td><fmt:formatDate value="${project_item.ke_hoach_thanh_toan_FAC}" pattern="dd / MM / yyyy" /></td>
-																						<td><fmt:formatDate value="${project_item.FAC}" pattern="dd / MM / yyyy" /></td>
-																					</tr>
-																					<tr class="text-center">
-																						<th>Tổng</th>
-																						<td class="text-right">
-																							<c:if test="${project_item.tong_gia_tri_thuc_te != 0}">
-																								<fmt:formatNumber type="number" value="${project_item.tong_gia_tri_thuc_te }" />
-																							</c:if>
-																						</td>
-																						<td class="bg-dark"></td>
-																						<td class="bg-dark"></td>
-																					</tr>
-																					<tr class="text-center">
-																						<th>Tạm ứng</th>
-																						<td class="text-right">
-																							<c:if test="${project_item.so_tien_tam_ung != 0}">
-																								<fmt:formatNumber type="number" value="${project_item.so_tien_tam_ung }" />
-																							</c:if>
-																						</td>
-																						<td><fmt:formatDate value="${project_item.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
-																						<td class="bg-dark"></td>
-																					</tr>
-																				</table>
+																			<div class="row">
+																				<div class="col-8"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
+																				<div class="col-4"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
 																			</div>
+																			<div class="row">
+																				<div class="col-8">
+																					<p><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
+																				</div>
+																				<div class="col-4">
+																					<p><b>Tổng giá trị:</b> 
+																						<c:if
+																							test="${ project_item.tong_gia_tri_thuc_te !=0}">
+																							<fmt:formatNumber type="number"
+																								value="${project_item.tong_gia_tri_thuc_te }" />
+																						</c:if>
+																					</p>
+																				</div>
+																			</div>
+																			
 																		</div>
-													            	</div>
-													            	<div class="row">
-													            		<div class="col-12">
-													                		<p class="text-justify">
-													                			<b>Kết quả thực hiện kế hoạch:</b><br/>
-													                			${project_item.ket_qua_thuc_hien_ke_hoach}
-													                		</p>
-													                	</div>
-													                </div>
-													                <div>
-													                	<figcaption class="text-center">${project_index.index +1 } / ${project_slideshow.size()}</figcaption>
-													                </div>
-																</div> <!-- item carousel -->
+																		<div class="table-responsive">
+														            		<table class="table table-bordered table-hover">
+														            			<thead>
+														            				<tr>
+														            					<th colspan="3">Kế hoạch nghiệm thu</th>
+														            					<th colspan="2">Thanh toán tạm ứng</th>
+														            					<th colspan="2">Thanh toán DAC</th>
+														            					<th colspan="2">Thanh toán PAC</th>
+														            					<th colspan="2">Thanh toán FAC</th>
+														            				</tr>
+														            				<tr>
+																			            <th>DAC</th>
+																			            <th>PAC</th>
+																			            <th>FAC</th>
+																			            <th>Số tiền</th>
+																			            <th>Kế hoạch</th>
+																			            <th>Số tiền</th>
+																			            <th>Kế hoạch</th>
+																			            <th>Số tiền</th>
+																			            <th>Kế hoạch</th>
+																			            <th>Số tiền</th>
+																			            <th>Kế hoạch</th>
+																	            	</tr>
+																	            </thead>
+														            			<tbody>
+														            				<tr>
+															            				<td>
+															            					<fmt:formatDate value="${project_item.DAC}" pattern="dd/MM/yyyy" />
+															            				</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.PAC}" pattern="dd/MM/yyyy" />
+															                			</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.FAC}" pattern="dd/MM/yyyy" />
+															                			</td>
+															                			<!--Kế hoạch nghiệm thu -->
+															                			<td>
+															                				<c:if test="${project_item.so_tien_tam_ung  !=0}">
+																								<fmt:formatNumber type="number"
+																									value="${project_item.so_tien_tam_ung  }" />
+																							</c:if>
+															                			</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.ke_hoach_tam_ung}" pattern="dd/MM/yyyy" />
+															                			</td>
+																						<!-- Thanh toán tạm ứng --> 
+															            				<td>
+															            					<c:if test="${project_item.so_tien_DAC  !=0}">
+																								<fmt:formatNumber type="number"
+																									value="${project_item.so_tien_DAC }" />
+																							</c:if>
+															            				</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_DAC}" pattern="dd/MM/yyyy" />
+															                			</td>
+																						<!-- Thanh toán DAC --> 
+															            				<td>
+															            					<c:if test="${project_item.so_tien_PAC  !=0}">
+																								<fmt:formatNumber type="number"
+																									value="${project_item.so_tien_PAC }" />
+																							</c:if>
+															            				</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_PAC}" pattern="dd/MM/yyyy" />
+															                			</td>
+																						<!-- Thanh toán PAC --> 
+															            				<td>
+															            					<c:if test="${project_item.so_tien_FAC  !=0}">
+																								<fmt:formatNumber type="number"
+																									value="${project_item.so_tien_FAC }" />
+																							</c:if>
+															            				</td>
+															                			<td>
+															                				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_FAC}" pattern="dd/MM/yyyy" />
+															                			</td>
+																						<!-- Thanh toán FAC --> 
+																					</tr>
+														            			</tbody>
+														            		</table>
+														            	</div>
+														            	<div class="row">
+														            		<div class="col-6">
+														            			<p><b>Tình trạng:</b> </p>
+														            			<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
+														                	</div>
+														                	<div class="col-6">
+														                		<p><b>Kết quả thực hiện kế hoạch:</b> </p>
+														                		<p class="text-justify" style="white-space: pre-wrap;"> ${project_item.ket_qua_thuc_hien_ke_hoach }</p>
+														                	</div>
+														                </div>
+														                <div>
+														                	<figcaption class="text-center">${project_index.index +1 } / ${project_slideshow.size() } </figcaption>
+														                </div>
+																	</div> <!-- item carousel -->
 															</c:forEach>
 														</div>
 														<!-- Slide cho màn hình nhỏ -->
@@ -201,15 +234,15 @@
 																			</h5>
 																			<div class="row">
 																				<div class="col-6">
-																					<p><b>PM:</b> ${project_item.pm }</p>
+																					<p><b>Người phụ trách (PM):</b></b> ${project_item.pm }</p>
 																				</div>
 																				<div class="col-6">
-																					<p><b>AM:</b> ${project_item.am }</p>
+																					<p><b>Người đầu mối (AM):</b></b> ${project_item.am }</p>
 																				</div>
 																			</div>
 																			<div class="row">
-																				<div class="col-6"><p><b>Priority:</b> ${project_item.priority }</p></div>
-																				<div class="col-6"><p><b>Status:</b>  ${project_item.status }</p></div>
+																				<div class="col-6"><p><b>Mức độ ưu tiên:</b> ${project_item.priority }</p></div>
+																				<div class="col-6"><p><b>Mức độ tình trạng:</b>  ${project_item.status }</p></div>
 																			</div>
 																			<div class="row">
 																				<div class="col-6">
@@ -679,3 +712,4 @@
 	});
 </script>
 </body>
+</html>
