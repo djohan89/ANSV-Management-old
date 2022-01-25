@@ -55,7 +55,7 @@
 <!-- summernote -->
 <link rel="stylesheet"
 	href="<c:url value='/assets/user/plugins/summernote/summernote-bs4.min.css' />">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
 
   <!-- dataTable -->
   <link
@@ -65,7 +65,7 @@
 	<script
 		src="<c:url value='/assets/user/plugins/jquery/jquery.min.js' />"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script -->>
 
   <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
@@ -302,7 +302,7 @@
 				}
 			});
 			
-			let now = new Date();
+			/* let now = new Date();
 			let onejan = new Date(now.getFullYear(), 0, 1);
 			let tuan_nay = Math.ceil((((now.getTime() - onejan.getTime()) / 86400000) + onejan.getDay() - 1) / 7);
 			
@@ -316,7 +316,7 @@
 					week_option += '<option value="' + '<c:url value="/chief/dashboard/" />' + i + '">' + i + '</option>';
 				}
 			}
-			document.getElementById("select_week").innerHTML = week_option;
+			document.getElementById("select_week").innerHTML = week_option; */
 			
 			
 			//

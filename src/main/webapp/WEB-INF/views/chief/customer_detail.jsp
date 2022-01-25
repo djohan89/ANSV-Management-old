@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Chief | Customer</title>
+<title>CEO | Customer</title>
 
 </head>
 <body>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin | Chi tiết dự án</title>
+<title>CEO | Chi tiết dự án</title>
 </head>
 
 <body>
@@ -128,7 +128,7 @@
 							</div>
 						</div>
 						
-						<div class="row">
+						<%-- <div class="row">
 							<div class="col-md-12 d-flex flex-row-reverse">
 								<button data-toggle="modal" data-target="#delete-course-modal" type="button" class="btn btn-danger">Đóng</button>
 								<!-- {{!-- Confirm delete courses --}} -->
@@ -157,7 +157,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> --%>
 					</c:if>
 					<c:if test="${detail.type=='Viễn thông' }">
 						<h2 class="text-center mt-3">${detail.name }</h2>
@@ -192,8 +192,6 @@
 											<th>Priority</th>
 											<td>${detail.priority }</td>
 										</tr>
-
-
 									</table>
 								</div>
 							</div>
@@ -218,7 +216,7 @@
 										</tr>
 									</table>
 								</div>
-								<div class="btn-function d-flex flex-row-reverse mb-3">
+								<%-- <div class="btn-function d-flex flex-row-reverse mb-3">
 									<button data-toggle="modal" data-target="#delete-course-modal"
 										type="button" class="btn btn-danger">Đóng</button>
 									<!-- {{!-- Confirm delete courses --}} -->
@@ -246,7 +244,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> --%>
 							</div>
 						</div>
 					</c:if>
@@ -283,8 +281,6 @@
 											<th>Priority</th>
 											<td>${detail.priority }</td>
 										</tr>
-
-
 									</table>
 								</div>
 							</div>
@@ -309,7 +305,7 @@
 										</tr>
 									</table>
 								</div>
-								<div class="btn-function d-flex flex-row-reverse mb-3">
+								<%-- <div class="btn-function d-flex flex-row-reverse mb-3">
 									<button data-toggle="modal" data-target="#delete-course-modal"
 										type="button" class="btn btn-danger">Đóng</button>
 									<!-- {{!-- Confirm delete courses --}} -->
@@ -337,13 +333,12 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> --%>
 							</div>
 						</div>
 					</c:if>
 				</c:forEach>
 			</div>
-
 		</section>
 	</div>
 </body>
