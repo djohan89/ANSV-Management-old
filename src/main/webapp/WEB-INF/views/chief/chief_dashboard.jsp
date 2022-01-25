@@ -4,7 +4,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Dashboard | Chief</title>
+<title>Dashboard | CEO</title>
 </head>
 <body>
 <link rel="stylesheet"
