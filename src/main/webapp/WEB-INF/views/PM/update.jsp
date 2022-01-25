@@ -16,7 +16,7 @@
 		<div class="content-header">
 			<div class="container-fluid">
 				<div class="row mb-2">
-					<div class="col-sm-7">
+					<div class="col-8">
 						<h1 class="m-0">
 							<span style="float: left;">Dự án - Giai đoạn triển khai (Tuần:</span>
 							<form:input path="week" class="form-control border-0" value="${current_week}" readonly="true" 
@@ -27,17 +27,17 @@
 							<span style="float: left;">)</span>
 						</h1>
 					</div>
-					<div class="col-sm-2">
+					<div class="col-4">
 						<button type="submit" class="btn btn-success" onclick="return complete_form();">Cập nhật</button>
 						<!-- <button type="button" onclick="return complete_form();">Button</button> -->
 					</div>
 					<!-- /.col -->
-					<div class="col-sm-3">
+					<%-- <div class="col-sm-3">
 						<ol class="breadcrumb float-sm-right">
 							<li class="breadcrumb-item"><a href="<c:url value='/AM/dashboard/${week}' />">Home</a></li>
 							<li class="breadcrumb-item active">Deployment</li>
 						</ol>
-					</div>
+					</div> --%>
 					<!-- /.col -->
 				</div>
 				<!-- /.row -->
