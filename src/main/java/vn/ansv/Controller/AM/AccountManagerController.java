@@ -9,8 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -159,9 +157,6 @@ public class AccountManagerController extends AccountManagerBaseController {
 	@RequestMapping("/createDeployment/{week}_{year}_{id}")
 	public String doDeployment(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable int id, Model model, HttpSession session) {
 		String am_id = (String) session.getAttribute("user_id");
-		_projectService.saveDeployment(project, id); // Lưu dự án Triển khai (cột note sẽ chứa "id" của dự án giai đoạn trước)
-		_picService.save(project.getId(), am_id); // Insert Acount Manager (người tạo dự án)
-		_picService.save(project.getId(), project.getNote()); // Insert PIC được uỷ quyền thực hiện
 		
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
@@ -170,6 +165,17 @@ public class AccountManagerController extends AccountManagerBaseController {
 		if (current_week < 10) {
 			week_link = "0" + current_week;
 	    }
+		
+		if (week == current_week) {
+			project.setId(id);
+			System.out.print(project.getId());
+			_projectService.update_tk(project); // Sửa lại dự án đã tồn tại trước đó, thay thế cho tuần hiện tại
+			_picService.save(project.getId(), project.getNote()); // Insert PIC được uỷ quyền thực hiện
+		} else {
+			_projectService.saveDeployment(project, id); // Lưu dự án Triển khai (cột note sẽ chứa "id" của dự án giai đoạn trước)
+			_picService.save(project.getId(), am_id); // Insert Acount Manager (người tạo dự án)
+			_picService.save(project.getId(), project.getNote()); // Insert PIC được uỷ quyền thực hiện
+		}
 		
 		return "redirect:/AM/dashboard/" + week_link + "_" + current_year;
 	}

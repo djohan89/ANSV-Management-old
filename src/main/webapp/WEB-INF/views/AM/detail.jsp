@@ -226,7 +226,8 @@
 								
 							</div>
 						</div>
-						<a type="button" class="btn btn-warning mr-2" href="<c:url value='/AM/update/${week}/${detail.id}' />" style="color: white;">Sửa</a>
+						<a type="button" class="btn btn-warning mr-2" 
+							href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" style="color: white;">Cập nhật</a>
 					</c:if>
 					<c:if test="${detail.type=='Chuyển đổi số' }">
 						<h2 class="text-center mt-3">${detail.name }</h2>
@@ -316,7 +317,8 @@
 								</div> --%>
 							</div>
 						</div>
-						<a type="button" class="btn btn-warning mr-2" href="<c:url value='/AM/update/${week}/${detail.id}' />" style="color: white;">Sửa</a>
+						<a type="button" class="btn btn-warning mr-2" 
+							href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" style="color: white;">Cập nhật</a>
 					</c:if>
 				</c:forEach>
 			</div>

@@ -27,7 +27,7 @@
 					</div>
 					<div class="col-sm-2">
 						<button type="submit" onclick="return complete_form();">Chuyển giai đoạn</button>
-						<button type="button" onclick="return complete_form();">Button</button>
+						<!-- <button type="button" onclick="return complete_form();">Button</button> -->
 					</div>
 					<!-- /.col -->
 					<div class="col-sm-3">
@@ -417,6 +417,12 @@
 		let priceIdList = ['so_tien_tam_ung_test', 'tong_gia_tri_thuc_te_test', 'so_tien_DAC_test', 'so_tien_PAC_test', 'so_tien_FAC_test'];
 		let dateIdList = ['ke_hoach_tam_ung_test', 'DAC_test', 'PAC_test', 'FAC_test', 'ke_hoach_thanh_toan_DAC_test', 'ke_hoach_thanh_toan_PAC_test', 'ke_hoach_thanh_toan_FAC_test'];
 		
+		let x = $('#select_pic :selected').val();
+		if (x == 0) {
+		    alert("Yêu cầu chọn PIC cho dự án");
+		    return false;
+		}
+		
 		for (var i = 0; i < priceIdList.length; i++) {
 			price_into_form(priceIdList[i]);
 	    }
@@ -424,6 +430,11 @@
 		for (var i = 0; i < dateIdList.length; i++) {
 			date_into_form(dateIdList[i]);
 	    }
+		
+		/* if (document.getElementById('select_pic').value > 0) {
+			return true;
+		}
+		return false; */
 	}
 	
 	function price_into_form(data) {
@@ -433,7 +444,9 @@
 			var string_replace = data_price_value.replaceAll(".", "");
 			document.getElementById(data.replace("_test", "")).value = string_replace;
 	  	} else {
-	  		document.getElementById(data.replace("_test", "")).remove();
+	  		if(document.getElementById(data.replace("_test", ""))){
+	  			document.getElementById(data.replace("_test", "")).remove();
+	  	    }
 	  	}
 	}
 	
@@ -445,7 +458,9 @@
 	  		var year = a.substr(10, 4);
 	  		document.getElementById(data.replace("_test", "")).value = year + "-" + month + "-" + day;
 	  	} else {
-	  		document.getElementById(data.replace("_test", "")).remove();
+	  		if(document.getElementById(data.replace("_test", ""))){
+	  			document.getElementById(data.replace("_test", "")).remove();
+	  	    }
 	  	}
 	}
 </script>
