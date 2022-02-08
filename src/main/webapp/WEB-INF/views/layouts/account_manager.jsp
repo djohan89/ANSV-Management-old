@@ -93,6 +93,10 @@
 	    .dataTables_scrollHeadInner {
 	      min-width: 100%;
 	    }
+	    
+	    .fw-400{
+	    font-weight: 400 !important;
+	    }
 	    @media screen and (max-width: 1023px){
 	      body .modal-content {
 	      width: 100%;

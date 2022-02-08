@@ -76,7 +76,7 @@
 								<div class="card-body">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">Tên dự án</label>
+											<label class="input-group-text w-100 fw-400">Tên dự án</label>
 										</div>
 										<form:hidden path="id"/>
 										<form:input path="name" class="form-control" value="${project.name}" placeholder="Tên dự án triển khai..." />
@@ -84,7 +84,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100" for="khach_hang">Khách hàng</label>
+											<label class="input-group-text w-100 fw-400" for="khach_hang">Khách hàng</label>
 										</div>
 										<form:select path="customer" id="khach_hang" class="custom-select">  
         									<form:option value="0" label="Choose..."/>  
@@ -103,7 +103,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text">Loại dự án</label>
+											<label class="input-group-text fw-400">Loại dự án</label>
 										</div>
 										<input type="text" value="Triển khai" readonly="readonly" class="form-control" />
 										<form:hidden  path="project_type" value="1" class="form-control" readonly="true" />
@@ -111,7 +111,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100" for="priority">Priority</label>
+											<label class="input-group-text w-100 fw-400" for="priority">Priority</label>
 										</div>
 										<form:select path="priority" id="priority" class="custom-select">  
         									<form:option value="0" label="Choose..."/>  
@@ -130,7 +130,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100" for="status">Status</label>
+											<label class="input-group-text w-100 fw-400" for="status">Status</label>
 										</div>
 										<form:select path="project_status" id="status" class="custom-select">  
         									<form:option value="0" label="Choose..."/>  
@@ -149,14 +149,14 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">Mã hợp đồng</label>
+											<label class="input-group-text w-100 fw-400">Mã hợp đồng</label>
 										</div>
 										<form:input path="project_id" class="form-control" />
 									</div>
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">MS kế toán</label>
+											<label class="input-group-text w-100 fw-400">MS kế toán</label>
 										</div>
 										<form:input path="ma_so_ke_toan" class="form-control" />
 									</div>
@@ -183,14 +183,14 @@
 								<div class="card-body">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-100">
-											<label class="input-group-text w-100">Phạm vi cung cấp</label>
+											<label class="input-group-text w-100 fw-400">Phạm vi cung cấp</label>
 										</div>
 										<form:textarea path="pham_vi_cung_cap" class="form-control" id="add_ckeditor" />
 									</div>
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-100">
-											<label class="input-group-text w-100">Tình trạng kế hoạch</label>
+											<label class="input-group-text w-100 fw-400">Tình trạng kế hoạch</label>
 										</div>
 										<textarea id="tinh_trang_test" style="display:none;">${project.tinh_trang_va_ke_hoach_chi_tiet}</textarea>
 										<form:textarea path="tinh_trang_va_ke_hoach_chi_tiet" class="form-control" id="cr_tinh_trang" />
@@ -198,7 +198,7 @@
 		
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-100">
-											<label class="input-group-text w-100">Kết quả thực hiện</label>
+											<label class="input-group-text w-100 fw-400">Kết quả thực hiện</label>
 										</div>
 										<textarea id="ket_qua_test" style="display:none;">${project.ket_qua_thuc_hien_ke_hoach}</textarea>
 										<form:textarea path="ket_qua_thuc_hien_ke_hoach" class="form-control" id="cr_ket_qua" />
@@ -232,7 +232,7 @@
 								<div class="card-body">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text">Tạm ứng (VNĐ)</label>
+											<label class="input-group-text fw-400">Tạm ứng (VNĐ)</label>
 										</div>
 										<input type="text" value="" class="form-control" id="so_tien_tam_ung_test" />
 										<fmt:formatNumber type="number"
@@ -242,7 +242,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text">Kế hoạch tạm ứng</label>
+											<label class="input-group-text fw-400">Kế hoạch tạm ứng</label>
 										</div>
 										<input type="text" id="ke_hoach_tam_ung_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden  path="ke_hoach_tam_ung" id="ke_hoach_tam_ung1" class="form-control" />
@@ -250,7 +250,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">DAC</label>
+											<label class="input-group-text w-100 fw-400">DAC</label>
 										</div>
 										<input type="text" id="DAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="DAC" class="form-control datepickerJavascript" id="DAC1" />
@@ -258,7 +258,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">PAC</label>
+											<label class="input-group-text w-100 fw-400">PAC</label>
 										</div>
 										<input type="text" id="PAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="PAC" id="PAC1" class="form-control datepickerJavascript" />
@@ -266,7 +266,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">FAC</label>
+											<label class="input-group-text w-100 fw-400">FAC</label>
 										</div>
 										<input type="text" id="FAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="FAC" id="FAC1" class="form-control datepickerJavascript" />
@@ -294,7 +294,7 @@
 								<div class="card-body">
 									<div class="input-group mb-1">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">DAC (VNĐ)</label>
+											<label class="input-group-text w-100 fw-400">DAC (VNĐ)</label>
 										</div>
 										<input type="text" value="" class="form-control" id="so_tien_DAC_test" />
 										<fmt:formatNumber type="number"
@@ -304,7 +304,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">Kế hoạch</label>
+											<label class="input-group-text w-100 fw-400">Kế hoạch</label>
 										</div>
 										<input type="text" id="ke_hoach_thanh_toan_DAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="ke_hoach_thanh_toan_DAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_DAC1" />
@@ -312,7 +312,7 @@
 									
 									<div class="input-group mb-1">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">PAC (VNĐ)</label>
+											<label class="input-group-text w-100 fw-400">PAC (VNĐ)</label>
 										</div>
 										<input type="text" class="form-control" value="" id="so_tien_PAC_test" />
 										<fmt:formatNumber type="number"
@@ -322,7 +322,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">Kế hoạch</label>
+											<label class="input-group-text w-100 fw-400">Kế hoạch</label>
 										</div>
 										<input type="text" id="ke_hoach_thanh_toan_PAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden  path="ke_hoach_thanh_toan_PAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_PAC1" />
@@ -330,7 +330,7 @@
 									
 									<div class="input-group mb-1">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">FAC (VNĐ)</label>
+											<label class="input-group-text w-100 fw-400">FAC (VNĐ)</label>
 										</div>
 										<input type="text" value="" class="form-control" id="so_tien_FAC_test" />
 										<fmt:formatNumber type="number"
@@ -340,7 +340,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100">Kế hoạch</label>
+											<label class="input-group-text w-100 fw-400">Kế hoạch</label>
 										</div>
 										<input type="text" id="ke_hoach_thanh_toan_FAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="ke_hoach_thanh_toan_FAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_FAC1" />
@@ -348,7 +348,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text">Tổng giá trị (VNĐ)</label>
+											<label class="input-group-text fw-400">Tổng giá trị (VNĐ)</label>
 										</div>
 										<input type="text" value="" class="form-control" id="tong_gia_tri_thuc_te_test" />
 										<fmt:formatNumber type="number"

@@ -100,6 +100,9 @@
 	      position: absolute;
 	      }
 	    }
+	    .fw-400{
+	    font-weight: 400 !important;
+	    }
 	
 	    @media screen and (min-width: 1024px){
 	      body .modal-content {
