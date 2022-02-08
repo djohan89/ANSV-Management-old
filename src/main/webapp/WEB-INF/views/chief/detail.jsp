@@ -11,12 +11,7 @@
 </head>
 
 <body>
-	<style>
-.content-wrapper {
-	background-color: #fff;
-}
-</style>
-	<div class="content-wrapper">
+	<div class="content-wrapper bg-light">
 		<section class="content">
 			<div class="container-fluid">
 				<c:forEach var="detail" items="${detail }" varStatus="detailIndex">
@@ -110,8 +105,8 @@
 													<fmt:formatNumber type="number" value="${detail.tong_gia_tri_thuc_te }" />
 												</c:if>
 											</td>
-											<td class="bg-dark"></td>
-											<td class="bg-dark"></td>
+											<td>N/A</td>
+											<td>N/A</td>
 										</tr>
 										<tr class="text-center">
 											<th>Tạm ứng</th>
@@ -121,7 +116,7 @@
 												</c:if>
 											</td>
 											<td><fmt:formatDate value="${detail.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
-											<td class="bg-dark"></td>
+											<td>N/A</td>
 										</tr>
 									</table>
 								</div>
@@ -338,7 +333,8 @@
 						</div>
 					</c:if>
 				</c:forEach>
-			</div>
+				<a href="javascript:history.back()" class="float-right">Quay lại</a>
+			</div> <!-- End: container-fluid -->
 		</section>
 	</div>
 </body>

@@ -157,8 +157,8 @@
 																								<fmt:formatNumber type="number" value="${project_item.tong_gia_tri_thuc_te }" />
 																							</c:if>
 																						</td>
-																						<td class="bg-dark"></td>
-																						<td class="bg-dark"></td>
+																						<td>N/A</td>
+																						<td>N/A</td>
 																					</tr>
 																					<tr class="text-center">
 																						<th>Tạm ứng</th>
@@ -168,7 +168,7 @@
 																							</c:if>
 																						</td>
 																						<td><fmt:formatDate value="${project_item.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
-																						<td class="bg-dark"></td>
+																						<td>N/A</td>
 																					</tr>
 																				</table>
 																			</div>
