@@ -193,12 +193,18 @@
 														<!-- ===== Phần chèn thêm HTML ===== -->
 														
 															<c:forEach items="${project_slideshow }" var="project_item" varStatus="project_index">
-																
 																	<div class="container item">
 																		<div>
-																			<h5 class="pb-2 pt-1 pl-3" style="background: red;border-radius: 16px; ">
-																				<a href="javascript:void(0)" style="color: #fff">${project_item.name }</a>
-																			</h5>
+																			<div class="row">
+																				<div class="col-11">
+																					<h5 class="pb-2 pt-1 pl-3" style="background: red;border-radius: 16px; ">
+																						<a href="javascript:void(0)" style="color: #fff">${project_item.name }</a>
+																					</h5>
+																				</div>
+																				<div class="col-1">
+																					<button type="button" class="close" data-dismiss="modal">&times;</button>
+																				</div>
+																			</div>
 																			<div class="row">
 																				<div class="col-6">
 																					<p><b>PM:</b> ${project_item.pm }</p>

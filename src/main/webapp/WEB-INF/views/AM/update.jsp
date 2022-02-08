@@ -71,7 +71,7 @@
 								<div class="card-body">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text">Tên dự án</label>
+											<label class="input-group-text fw-400" >Tên dự án</label>
 										</div>
 										<form:hidden path="id" />
 										<form:input path="name" class="form-control" placeholder="Tên dự án..." />
@@ -146,7 +146,7 @@
 								<div class="card-body">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100" for="loai_du_an">Loại dự án</label>
+											<label class="input-group-text w-100 fw-400"  for="loai_du_an">Loại dự án</label>
 										</div>
 										<form:select path="project_type" id="loai_du_an" class="custom-select">  
         									<form:option value="0" label="Choose..."/>  
@@ -165,7 +165,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100" for="khach_hang">Khách hàng</label>
+											<label class="input-group-text w-100 fw-400"  for="khach_hang">Khách hàng</label>
 										</div>
 										<form:select path="customer" id="khach_hang" class="custom-select">  
         									<form:option value="0" label="Choose..."/>  
@@ -182,7 +182,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100" for="priority">Priority</label>
+											<label class="input-group-text w-100 fw-400"  for="priority">Priority</label>
 										</div>
 										<form:select path="priority" id="priority" class="custom-select">  
         									<form:option value="0" label="Choose..."/>  
@@ -199,7 +199,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100" for="status">Status</label>
+											<label class="input-group-text w-100 fw-400"  for="status">Status</label>
 										</div>
 										<form:select path="project_status" id="status" class="custom-select">  
         									<form:option value="0" label="Choose..."/>  
@@ -216,7 +216,7 @@
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text">Hình thức đầu tư</label>
+											<label class="input-group-text fw-400" >Hình thức đầu tư</label>
 										</div>
 										<form:input path="hinh_thuc_dau_tu" class="form-control" id="hinh_thuc_dau_tu" placeholder="Hình thức đầu tư..." />
 									</div>
@@ -241,28 +241,28 @@
 								<div class="card-body">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text">Tổng mức đầu tư</label>
+											<label class="input-group-text fw-400" >Tổng mức đầu tư</label>
 										</div>
 										<form:input path="tong_muc_dau_tu_du_kien" class="form-control" id="tong_muc_dau_tu" placeholder="Tổng mức đầu tư..." />
 									</div>
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text">Mức độ khả thi (%)</label>
+											<label class="input-group-text fw-400" >Mức độ khả thi (%)</label>
 										</div>
 										<form:input type="number" min="0" path="muc_do_kha_thi" class="form-control" id="muc_do_kha_thi" placeholder="Mức độ khả thi..." />
 									</div>
 								
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-100">
-											<label class="input-group-text w-100">Phân tích SWOT</label>
+											<label class="input-group-text w-100 fw-400" >Phân tích SWOT</label>
 										</div>
 										<form:textarea path="phan_tich_SWOT" class="form-control" id="cr_swot" />
 									</div>
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text">Ghi chú</label>
+											<label class="input-group-text fw-400" >Ghi chú</label>
 										</div>
 										<form:input path="note" class="form-control" id="note" placeholder="Ghi chú..." />
 									</div>
