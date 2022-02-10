@@ -166,7 +166,7 @@
 										</tr>
 										<tr>
 											<th>Mô tả dự án</th>
-											<td style="white-space: pre-wrap;">${detail.description }</td>
+											<td >${detail.description }</td>
 										</tr>
 										<tr>
 											<th>Tổng mức đầu tư</th>
@@ -255,7 +255,7 @@
 										</tr>
 										<tr>
 											<th>Mô tả dự án</th>
-											<td style="white-space: pre-wrap;">${detail.description }</td>
+											<td >${detail.description }</td>
 										</tr>
 										<tr>
 											<th>Tổng mức đầu tư</th>

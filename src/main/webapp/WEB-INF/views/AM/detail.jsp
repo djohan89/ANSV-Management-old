@@ -149,7 +149,7 @@
 										</tr>
 										<tr>
 											<th>Mô tả dự án</th>
-											<td style="white-space: pre-wrap;">${detail.description }</td>
+											<td >${detail.description }</td>
 										</tr>
 										<tr>
 											<th>Tổng mức đầu tư</th>
@@ -178,15 +178,15 @@
 									<table class="table table-bordered table-hover">
 										<tr>
 											<th>Tình trạng & Kế hoạch chi tiết</th>
-											<td style="white-space: pre-wrap;">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
+											<td >${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
 										</tr>
 										<tr>
 											<th>Phân tích SWOT</th>
-											<td style="white-space: pre-wrap;">${detail.phan_tich_SWOT }</td>
+											<td >${detail.phan_tich_SWOT }</td>
 										</tr>
 										<tr>
 											<th>Kết quả thực hiện kế hoạch</th>
-											<td style="white-space: pre-wrap;">${detail.ket_qua_thuc_hien_ke_hoach }</td>
+											<td >${detail.ket_qua_thuc_hien_ke_hoach }</td>
 										</tr>
 										<tr>
 											<th>Phụ trách</th>
@@ -248,7 +248,7 @@
 										</tr>
 										<tr>
 											<th>Mô tả dự án</th>
-											<td style="white-space: pre-wrap;">${detail.description }</td>
+											<td >${detail.description }</td>
 										</tr>
 										<tr>
 											<th>Tổng mức đầu tư</th>
@@ -277,15 +277,15 @@
 									<table class="table table-bordered table-hover">
 										<tr>
 											<th>Tình trạng & Kế hoạch chi tiết</th>
-											<td style="white-space: pre-wrap;">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
+											<td >${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
 										</tr>
 										<tr>
 											<th>Phân tích SWOT</th>
-											<td style="white-space: pre-wrap;">${detail.phan_tich_SWOT }</td>
+											<td >${detail.phan_tich_SWOT }</td>
 										</tr>
 										<tr>
 											<th>Kết quả thực hiện kế hoạch</th>
-											<td style="white-space: pre-wrap;">${detail.ket_qua_thuc_hien_ke_hoach }</td>
+											<td >${detail.ket_qua_thuc_hien_ke_hoach }</td>
 										</tr>
 										<tr>
 											<th>Phụ trách</th>
