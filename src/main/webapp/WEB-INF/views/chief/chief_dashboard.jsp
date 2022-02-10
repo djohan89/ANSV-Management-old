@@ -314,7 +314,7 @@
 											<th>Dự án</th>
 											<th style="width: 14%;">Priority</th>
 											<th>Nhóm</th>
-											<th style="width: 22%;">pic_name</th>
+											<th style="width: 22%;">PIC</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -322,9 +322,14 @@
 											<c:if test="${project_item.type == 'Triển khai' && project_item.pic_role =='ROLE_PM' }">
 												<tr>
 													<td>
-														
-														<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+														<c:if test="${week < 10 }">
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
+														</c:if>
+														<c:if test="${week >10 }">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															${project_item.project_name }
+														</c:if>
 															<c:if test="${project_item.status =='High' }">
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
@@ -389,7 +394,7 @@
 											<th>Dự án</th>
 											<th style="width: 14%;">Priority</th>
 											<th>Nhóm</th>
-											<th style="width: 22%;">pic_name</th>
+											<th style="width: 22%;">PIC</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -397,8 +402,14 @@
 											<c:if test="${project_item.type == 'Viễn thông' }">
 												<tr>
 													<td>
-														<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+														<c:if test="${week < 10 }">
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
+														</c:if>
+														<c:if test="${week >10 }">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															${project_item.project_name }
+														</c:if>
 															<c:if test="${project_item.status =='High' }">
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
@@ -461,7 +472,7 @@
 											<th>Dự án</th>
 											<th style="width: 14%;">Priority</th>
 											<th>Nhóm</th>
-											<th style="width: 22%;">pic_name</th>
+											<th style="width: 22%;">PIC</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -469,8 +480,14 @@
 											<c:if test="${project_item.type == 'Chuyển đổi số' }">
 												<tr>
 													<td>
-														<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+														<c:if test="${week < 10 }">
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
+														</c:if>
+														<c:if test="${week >10 }">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															${project_item.project_name }
+														</c:if>
 															<c:if test="${project_item.status =='High' }">
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>

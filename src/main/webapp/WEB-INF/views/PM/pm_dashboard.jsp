@@ -76,8 +76,15 @@
 											<c:if test="${project_item.type =='Triển khai' }">
 												<tr>
 													<td>
-														<a href="<c:url value='/PM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+														<c:if test="${week < 10 }">
+															<a href="<c:url value='/PM/detail/0${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.name }
+														</c:if>
+														<c:if test="${week > 10 }">
+															<a href="<c:url value='/PM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
+															${project_item.name }
+														</c:if>
+														
 															<c:if test="${project_item.status == 'High' }">
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
@@ -102,20 +109,26 @@
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
-													<td>${project_item.am }</td>
+													<td>${project_item.pm }</td>
 													<td style="border-left: 1px solid black;">
 														<div class="d-flex justify-content-around">
 															<div class="">
-																<a href="<c:url value='/PM/delete_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+																<a href="javascript:void(0)" 
 																	class="float-right tooltip_icon">
 																	<i class="fas fa-trash-alt fa-2x text-danger"></i>
 																	<span class="tooltip_for_icon bg-danger text-center" 
-																		style="margin-left: -7.2%; margin-top: -2.8%;">Xoá dự án</span>
+																		style="margin-left: -7.2%; margin-top: -2.8%;">Đóng dự án</span>
 																</a>
 															</div>
 															<div class="">
-																<a href="<c:url value='/PM/update_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
-																	class="float-right tooltip_icon">
+																<c:if test="${project_item.week < 10 }">
+																	<a href="<c:url value='/PM/update_project/0${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+																		class="float-right tooltip_icon">
+																</c:if>
+																<c:if test="${project_item.week > 10 }">
+																	<a href="<c:url value='/PM/update_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+																		class="float-right tooltip_icon">
+																</c:if>
 																	<i class="fas fa-edit fa-2x text-warning"></i>
 																	<span class="tooltip_for_icon bg-warning text-center" 
 																		style="margin-left: -5.6%; margin-top: -2.8%;">Cập nhật</span>

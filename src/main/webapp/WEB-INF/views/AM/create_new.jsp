@@ -29,7 +29,7 @@
 					<!-- /.col -->
 					<div class="col-sm-5">
 						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item"><a href="<c:url value='/AM/dashboard/${week}' />">Home</a></li>
+							<li class="breadcrumb-item"><a href="<c:url value='/AM/home/${week}_${year}' />">Home</a></li>
 							<li class="breadcrumb-item active">Create</li>
 						</ol>
 					</div>

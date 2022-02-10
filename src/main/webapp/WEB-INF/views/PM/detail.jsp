@@ -111,8 +111,8 @@
 													<fmt:formatNumber type="number" value="${detail.tong_gia_tri_thuc_te }" />
 												</c:if>
 											</td>
-											<td class="bg-dark"></td>
-											<td class="bg-dark"></td>
+											<td >N/A</td>
+											<td >N/A</td>
 										</tr>
 										<tr class="text-center">
 											<th>Tạm ứng</th>
@@ -122,7 +122,7 @@
 												</c:if>
 											</td>
 											<td><fmt:formatDate value="${detail.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
-											<td class="bg-dark"></td>
+											<td >N/A</td>
 										</tr>
 									</table>
 								</div>
@@ -130,96 +130,13 @@
 						</div>
 					 
 					</c:if>
-					<c:if test="${detail.type=='Viễn thông' }">
-						<h2 class="text-center mt-3">${detail.name }</h2>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="table-responsive-sm">
-									<table class="table table-hover table-bordered ">
-										<tr>
-											<th>Dự án/Gói thầu</th>
-											<td>${detail.name }</td>
-										</tr>
-										<tr>
-											<th>Mô tả dự án</th>
-											<td style="white-space: pre-wrap;">${detail.description }</td>
-										</tr>
-										<tr>
-											<th>Tổng mức đầu tư</th>
-											<td>${detail.tong_muc_dau_tu_du_kien }</td>
-										</tr>
-										<tr>
-											<th>Hình thức đầu tư</th>
-											<td>${detail.hinh_thuc_dau_tu }</td>
-										</tr>
-										<tr>
-											<th>Mức độ khả thi</th>
-
-											<td><c:if test="${detail.muc_do_kha_thi != 0  }">
-													${detail.muc_do_kha_thi }%
-												</c:if></td>
-										</tr>
-										<tr>
-											<th>Priority</th>
-											<td>${detail.priority }</td>
-										</tr>
-									</table>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="table-responsive-sm">
-									<table class="table table-bordered table-hover">
-										<tr>
-											<th>Tình trạng & Kế hoạch chi tiết</th>
-											<td style="white-space: pre-wrap;">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
-										</tr>
-										<tr>
-											<th>Phân tích SWOT</th>
-											<td style="white-space: pre-wrap;">${detail.phan_tich_SWOT }</td>
-										</tr>
-										<tr>
-											<th>Kết quả thực hiện kế hoạch</th>
-											<td style="white-space: pre-wrap;">${detail.ket_qua_thuc_hien_ke_hoach }</td>
-										</tr>
-										<tr>
-											<th>Phụ trách</th>
-											<td>${detail.pic_name}</td>
-										</tr>
-									</table>
-								</div>
-								<%-- <div class="btn-function d-flex flex-row-reverse mb-3">
-									<button data-toggle="modal" data-target="#delete-course-modal"
-										type="button" class="btn btn-danger">Đóng</button>
-									<!-- {{!-- Confirm delete courses --}} -->
-									<div class="modal fade" id="delete-course-modal" tabindex="-1"
-										role="dialog" aria-labelledby="exampleModalLabel"
-										aria-hidden="true">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Modal
-														title</h5>
-													<button type="button" class="close" data-dismiss="modal"
-														aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">Bạn có muốn đóng dự án
-													"${detail.name }"</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary"
-														data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-danger">Đóng
-														dự án</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div> --%>
-							</div>
-						</div>
+					<c:if test="${week < 10 }">
+						<a type="button" class="btn btn-warning mr-2" href="<c:url value='/PM/update_project/0${week}_${year}_${detail.id}' />" style="color:white;" >Sửa</a>
 					</c:if>
-					<a type="button" class="btn btn-warning mr-2" href="<c:url value='/PM/update_project/${week}_${year}_${detail.id}' />" style="color:white;" >Sửa</a>
+					<c:if test="${week > 10 }">
+						<a type="button" class="btn btn-warning mr-2" href="<c:url value='/PM/update_project/${week}_${year}_${detail.id}' />" style="color:white;" >Sửa</a>
+					</c:if>
+					
 				</c:forEach>
 			</div>
 
