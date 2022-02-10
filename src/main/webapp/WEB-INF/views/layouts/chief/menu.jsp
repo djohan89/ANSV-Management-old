@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/layouts/taglib.jsp"%>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #04355d; color: white;">
 	<!-- Brand Logo -->
+	<c:if test="${week < 10}">
+		<c:url value="0${week}" var="week"/>
+	</c:if>
 	<a href="<c:url value='/chief/dashboard/${week}_${year}' />" class="brand-link"> 
 		<img src="<c:url value='/assets/user/img/logo/logo_menu.png' />"
 			alt="ANSV Logo" class="brand-image img-circle elevation-3"
@@ -133,8 +137,8 @@
 							<c:forEach var="project" items="${ menu_project }" varStatus="index_project">
 								<c:if test="${ project.pic == pic.pic_id }">
 									<li class="nav-item">
-										<a id="project-${project.id }" href="<c:url value='/chief/detail/${project.week}_${year}_${project.id}' />" class="nav-link">
-											<i class="far fa-circle nav-icon"></i><p>${ project.name }</p>
+										<a id="project-${project.id }" href="<c:url value='/chief/detail/${week}_${year}_${project.id}' />" class="nav-link">
+											<i class="far fa-circle nav-icon"></i><p>${project.name}</p>
 										</a>
 									</li>
 								</c:if>

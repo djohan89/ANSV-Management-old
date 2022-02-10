@@ -42,19 +42,41 @@ public class UsersDao extends BaseDao {
 		return result;
 	}
 	
-	// Get data for menu showing PIC with project
+	// Get data for menu showing PIC with project ----- (1)
 	public List<MenuPicDto> getMenu(int week, int year) {
 		String sql = "SELECT users.id AS pic_id, users.display_name, COUNT(*) AS number "
-				+ "FROM users "
-				+ "INNER JOIN pic ON users.id = pic.pic "
-				+ "INNER JOIN project ON pic.project_id = project.id "
+				+ "FROM project "
+				+ "INNER JOIN pic ON project.id = pic.project_id "
+				+ "INNER JOIN users ON pic.pic = users.id "
 				+ "INNER JOIN users_roles ON users.id = users_roles.user "
 				+ "INNER JOIN role ON users_roles.role = role.id "
-				+ "WHERE project.week = ? AND project.year = ? "
-				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM') "
-				+ "GROUP BY users.display_name "
-				+ "ORDER BY users.id";
+				+ "WHERE week = ? AND year = ? "
+				+ "AND role.name = IF((SELECT COUNT(*) "
+									+ "FROM pic "
+									+ "INNER JOIN users ON pic.pic = users.id "
+									+ "INNER JOIN users_roles ON users.id = users_roles.user "
+									+ "INNER JOIN role ON users_roles.role = role.id "
+									+ "WHERE pic.project_id = project.id AND role.name = 'ROLE_PM') = 1, 'ROLE_PM', 'ROLE_AM') GROUP BY users.display_name";
 		return _jdbcTemplate.query(sql, new MenuPicDtoMapper(), week, year);
+	}
+	
+	// Đếm số bản ghi theo mã pic từ danh sách lấy được từ (1)
+	public int getCountFrom1(String pic) {
+		String sql = "SELECT COUNT(*) "
+				+ "FROM (SELECT users.id AS pic "
+						+ "FROM project "
+						+ "INNER JOIN pic ON project.id = pic.project_id "
+						+ "INNER JOIN users ON pic.pic = users.id "
+						+ "INNER JOIN users_roles ON users.id = users_roles.user "
+						+ "INNER JOIN role ON users_roles.role = role.id "
+						+ "WHERE week = ? AND year = ? "
+						+ "AND role.name = IF((SELECT COUNT(*) FROM pic "
+											+ "INNER JOIN users ON pic.pic = users.id "
+											+ "INNER JOIN users_roles ON users.id = users_roles.user "
+											+ "INNER JOIN role ON users_roles.role = role.id "
+											+ "WHERE pic.project_id = project.id AND role.name = 'ROLE_PM') = 1, 'ROLE_PM', 'ROLE_AM')) AS view_count";
+		int result = _jdbcTemplate.queryForObject(sql, Integer.class, pic);
+		return result;
 	}
 
 }

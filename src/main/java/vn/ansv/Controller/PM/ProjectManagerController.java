@@ -58,7 +58,7 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 			_picService.delete(id);
 			_projectService.delete(id);
 			Date now = new Date();   
-			int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+			int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần trước đó
 			int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
 			String week_link = "";
 			if (current_week < 10) {
@@ -75,7 +75,14 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 			HttpSession session, Model model) {
 		String pic_id = (String) session.getAttribute("user_id");
 		FormPM();
+		
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
+		
 		Project project = _projectService.getMorebyId(id, pic_id);
+		_mvShare.addObject("current_week", current_week);
+		_mvShare.addObject("current_year", current_year);
 		model.addAttribute("project", project);
 
 		_mvShare.setViewName("PM/update");
@@ -87,7 +94,7 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 			@PathVariable int year, @PathVariable int id, Model model) {
 		_projectService.update_tk(project);
 		Date now = new Date();   
-		int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
 		String week_link = "";
 		if (current_week < 10) {

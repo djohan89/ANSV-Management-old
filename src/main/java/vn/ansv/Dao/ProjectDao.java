@@ -42,7 +42,11 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN users_roles ON users.id = users_roles.user "
 				+ "INNER JOIN role ON users_roles.role = role.id "
 				+ "WHERE week = ? AND year = ? "
-				+ "AND (role.name = 'ROLE_AM' OR role.name = 'ROLE_PM')";
+				+ "AND role.name = IF((SELECT COUNT(*) FROM pic "
+									+ "INNER JOIN users ON pic.pic = users.id "
+									+ "INNER JOIN users_roles ON users.id = users_roles.user "
+									+ "INNER JOIN role ON users_roles.role = role.id "
+									+ "WHERE pic.project_id = project.id AND role.name = 'ROLE_PM') = 1, 'ROLE_PM', 'ROLE_AM')";
 		list = _jdbcTemplate.query(sql, new MenuProjectsDtoMapper(), week, year);
 		return list;
 	}
