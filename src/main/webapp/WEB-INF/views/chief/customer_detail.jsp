@@ -262,7 +262,7 @@ a:hover {
 								href="<c:url value='/chief/detail/${week}_${year}_${item.id}' />">${item.name}</a>
 						</p>
 						<p>
-							<b>Mô tả dự án:</b><span style="white-space: pre-wrap;">${item.description }</span>
+							<b>Mô tả dự án:</b><span >${item.description }</span>
 						</p>
 						<p>
 							<b>Tổng mức đầu tư:</b> ${item.tong_muc_dau_tu_du_kien }
@@ -279,14 +279,13 @@ a:hover {
 						</p>
 						<p>
 							<b>Tình trạng & Kế hoạch chi tiết:</b><span class="text-justify"
-								style="white-space: pre-wrap;">${item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+								>${item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 						</p>
 						<p>
-							<b>Phân tích SWOT:</b><span style="white-space: pre-wrap;">${item.phan_tich_SWOT }</span>
+							<b>Phân tích SWOT:</b><span >${item.phan_tich_SWOT }</span>
 						</p>
 						<p>
-							<b>Kết quả thực hiện kế hoạch:</b> <span class="text-justify"
-								style="white-space: pre-wrap;">
+							<b>Kết quả thực hiện kế hoạch:</b> <span class="text-justify">
 								${item.ket_qua_thuc_hien_ke_hoach }</span>
 						</p>
 				</div>
@@ -308,7 +307,7 @@ a:hover {
 						<b>Tên dự án:</b> <a style="color: #000"
 							href="<c:url value='/chief/detail/${week}_${year}_${item.id}' />">${item.name}</a>
 					</p>
-					<p style="white-space: pre-wrap;">
+					<p>
 						<b>Mô tả dự án:</b><span>${item.description }</span>
 					</p>
 					<p>
@@ -325,15 +324,13 @@ a:hover {
 						<b>Mức độ khả thi:</b> ${item.muc_do_kha_thi }%
 					</p>
 					<p>
-						<b>Tình trạng & Kế hoạch chi tiết:</b><span class="text-justify"
-							style="white-space: pre-wrap;">${item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+						<b>Tình trạng & Kế hoạch chi tiết:</b><span class="text-justify">${item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 					</p>
 					<p>
-						<b>Phân tích SWOT:</b><span style="white-space: pre-wrap;">${item.phan_tich_SWOT }</span>
+						<b>Phân tích SWOT:</b><span >${item.phan_tich_SWOT }</span>
 					</p>
 					<p>
-						<b>Kết quả thực hiện kế hoạch:</b> <span class="text-justify"
-							style="white-space: pre-wrap;">
+						<b>Kết quả thực hiện kế hoạch:</b> <span class="text-justify">
 							${item.ket_qua_thuc_hien_ke_hoach }</span>
 					</p>
 			</div>

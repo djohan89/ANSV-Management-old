@@ -286,11 +286,11 @@
 														            	<div class="row">
 														            		<div class="col-6">
 														            			<p><b>Tình trạng:</b> </p>
-														            			<p class="text-justify" style="white-space: pre-wrap;">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
+														            			<p class="text-justify" >${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
 														                	</div>
 														                	<div class="col-6">
 														                		<p><b>Kết quả thực hiện kế hoạch:</b> </p>
-														                		<p class="text-justify" style="white-space: pre-wrap;">${project_item.ket_qua_thuc_hien_ke_hoach }</p>
+														                		<p class="text-justify" >${project_item.ket_qua_thuc_hien_ke_hoach }</p>
 														                	</div>
 														                </div>
 														                <div>
