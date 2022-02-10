@@ -11,9 +11,9 @@
 </footer> --%>
 
 <footer class="main-footer">
-	<strong> <a href="http://www.ansv.vn/">ANSV.vn</a>
+	<strong> <a href="http://www.ansv.vn/" style="color: #ff8b3e;">ANSV.vn</a>
 	</strong>
 	<div class="float-right d-none d-sm-inline-block">
-		<b>Technologies create future</b>
+		<b style="color: #1f8bff">Technologies create future</b>
 	</div>
-</footer>
+</footer>>

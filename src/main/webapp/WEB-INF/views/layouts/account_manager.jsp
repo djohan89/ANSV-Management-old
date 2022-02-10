@@ -329,7 +329,7 @@
 			var pathArray = window.location.pathname.split('/'); // Get item from url
 			var get_data_id_url = pathArray[4]; // Get the fifth item
 			var week_from_url = get_data_id_url.slice(0,2);
-			var year_from_url = get_data_id_url.slice(3);
+			var year_from_url = get_data_id_url.slice(3,7);
 			console.log(week_from_url, year_from_url);
 			
 			// Jquery: Menu dropdown cho phần hiển thị tên đăng nhập (menu)

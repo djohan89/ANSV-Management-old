@@ -116,8 +116,8 @@
 													<fmt:formatNumber type="number" value="${detail.tong_gia_tri_thuc_te }" />
 												</c:if>
 											</td>
-											<td class="bg-dark"></td>
-											<td class="bg-dark"></td>
+											<td >N/A</td>
+											<td >N/A</td>
 										</tr>
 										<tr class="text-center">
 											<th>Tạm ứng</th>
@@ -127,7 +127,7 @@
 												</c:if>
 											</td>
 											<td><fmt:formatDate value="${detail.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
-											<td class="bg-dark"></td>
+											<td >N/A</td>
 										</tr>
 									</table>
 								</div>
@@ -226,8 +226,15 @@
 								
 							</div>
 						</div>
-						<a type="button" class="btn btn-warning mr-2" 
+						<c:if test="${week < 10 }">
+							<a type="button" class="btn btn-warning mr-2" 
+							href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" style="color: white;">Cập nhật</a>
+						</c:if>
+						<c:if test="${week > 10 }">
+							<a type="button" class="btn btn-warning mr-2" 
 							href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" style="color: white;">Cập nhật</a>
+						</c:if>
+						
 					</c:if>
 					<c:if test="${detail.type=='Chuyển đổi số' }">
 						<h2 class="text-center mt-3">${detail.name }</h2>
@@ -317,8 +324,15 @@
 								</div> --%>
 							</div>
 						</div>
-						<a type="button" class="btn btn-warning mr-2" 
+						<c:if test="${week < 10 }">
+							<a type="button" class="btn btn-warning mr-2" 
+							href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" style="color: white;">Cập nhật</a>
+						</c:if>
+						<c:if test="${week > 10 }">
+							<a type="button" class="btn btn-warning mr-2" 
 							href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" style="color: white;">Cập nhật</a>
+						</c:if>
+						
 					</c:if>
 				</c:forEach>
 			</div>

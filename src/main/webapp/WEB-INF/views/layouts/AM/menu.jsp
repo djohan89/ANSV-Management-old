@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/layouts/taglib.jsp"%>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #04355d; color: white;">
 	<!-- Brand Logo -->
-	<a href="<c:url value='/AM/dashboard/${week}_${year}' />" class="brand-link"> 
+	<a href="<c:url value='/AM/home/${week}_${year}' />" class="brand-link"> 
 		<img src="<c:url value='/assets/user/img/logo/logo_menu.png' />"
 			alt="ANSV Logo" class="brand-image img-circle elevation-3"
 			style="opacity: .8; width: 33px; height: 33px; background-color: white;">
@@ -97,7 +98,13 @@
 				
 				<li class="nav-header">Quản lý</li>
 				<li class="nav-item">
-					<a href="<c:url value='/AM/customer/${week}_${year}' />" class="nav-link">
+					<c:if test="${week < 10 }">
+						<a href="<c:url value='/AM/customer/0${week}_${year}' />" class="nav-link">
+					</c:if>
+					<c:if test="${week > 10 }">
+						<a href="<c:url value='/AM/customer/${week}_${year}' />" class="nav-link">
+					</c:if>
+					
 						<i class="nav-icon fas fa-list-alt"></i>
 						<p>
                             Khách hàng

@@ -95,9 +95,16 @@ public class AccountManagerController extends AccountManagerBaseController {
 	public String doDeleteProject(@PathVariable int week, @PathVariable int year, @PathVariable int id) {
 		_picService.delete(id);
 		_projectService.delete(id);
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now) ; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
+		String week_link = "";
+		if (current_week < 10) {
+			week_link = "0" + current_week;
+	    }
 		
 		// Sau khi insert thành công sẽ điều hướng về tuần chứa báo cáo đó
-		return "redirect:/AM/dashboard/" + week + "_" + year;
+		return "redirect:/AM/dashboard/" + week_link + "_" + current_year;
 	}
 	
 	// Link đến form update dự án
@@ -189,6 +196,19 @@ public class AccountManagerController extends AccountManagerBaseController {
 		_mvShare.addObject("customer", _customersService.getAll());
 		_mvShare.setViewName("AM/customer_list"); 
 		return _mvShare; 
+	}
+	
+	@RequestMapping("/home/{week}_{year}")
+	public String home(@PathVariable int week, @PathVariable int year) {
+		
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
+		String week_link = "";
+		if (current_week < 10) {
+			week_link = "0" + current_week;
+	    }
+		return "redirect:/AM/dashboard/" + week_link + "_" + current_year;
 	}
 	
 }

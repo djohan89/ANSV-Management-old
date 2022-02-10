@@ -60,7 +60,7 @@ a:hover {
 					<!-- /.col -->
 					<div class="col-sm-2">
 						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item"><a href="<c:url value='/AM/dashboard/${week}_${year}' />">Home</a></li>
+							<li class="breadcrumb-item"><a href="<c:url value='/chief/home/${week}_${year}' />">Home</a></li>
 							<li class="breadcrumb-item active">Customer's Project</li>
 						</ol>
 					</div>
