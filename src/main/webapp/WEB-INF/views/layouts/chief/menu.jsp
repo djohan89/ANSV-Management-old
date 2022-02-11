@@ -104,7 +104,7 @@
 											<c:if test="${week < 10 }">
 												<a href="<c:url value='/chief/customer_detail/0${week}_${year}_${item.id }_${customers.customer_id}' />" class="nav-link">
 											</c:if>
-											<c:if test="${week > 10 }">
+											<c:if test="${week >= 10 }">
 												<a href="<c:url value='/chief/customer_detail/${week}_${year}_${item.id }_${customers.customer_id}' />" class="nav-link">
 											</c:if>
 			                               
@@ -143,7 +143,7 @@
 										<c:if test="${week < 10 }">
 											<a id="project-${project.id }" href="<c:url value='/chief/detail/0${week}_${year}_${project.id}' />" class="nav-link">
 										</c:if>
-										<c:if test="${week > 10 }">
+										<c:if test="${week >= 10 }">
 											<a id="project-${project.id }" href="<c:url value='/chief/detail/${week}_${year}_${project.id}' />" class="nav-link">
 										</c:if>
 											<i class="far fa-circle nav-icon"></i><p>${project.name}</p>

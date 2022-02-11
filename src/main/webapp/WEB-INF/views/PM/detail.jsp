@@ -133,7 +133,7 @@
 					<c:if test="${week < 10 }">
 						<a type="button" class="btn btn-warning mr-2" href="<c:url value='/PM/update_project/0${week}_${year}_${detail.id}' />" style="color:white;" >Sửa</a>
 					</c:if>
-					<c:if test="${week > 10 }">
+					<c:if test="${week >= 10 }">
 						<a type="button" class="btn btn-warning mr-2" href="<c:url value='/PM/update_project/${week}_${year}_${detail.id}' />" style="color:white;" >Sửa</a>
 					</c:if>
 					

@@ -101,7 +101,7 @@
 					<c:if test="${week < 10 }">
 						<a href="<c:url value='/AM/customer/0${week}_${year}' />" class="nav-link">
 					</c:if>
-					<c:if test="${week > 10 }">
+					<c:if test="${week >= 10 }">
 						<a href="<c:url value='/AM/customer/${week}_${year}' />" class="nav-link">
 					</c:if>
 					
