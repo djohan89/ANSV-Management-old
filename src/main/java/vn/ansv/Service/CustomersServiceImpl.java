@@ -26,5 +26,10 @@ public class CustomersServiceImpl implements ICustomersService {
 	public List<Customer> getAllCustomerForm() {
 		return customersDao.getAllCustomerForm();
 	}
+	
+	// Insert khách hàng
+	public void save(Customer customer){
+		customersDao.save(customer);
+	}
 
 }

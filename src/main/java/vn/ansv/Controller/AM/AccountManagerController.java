@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.ansv.Dto.ProjectDetailDto;
+import vn.ansv.Entity.Customer;
 import vn.ansv.Entity.Project;
 
 @Controller(value="AM_HomeController")
@@ -69,7 +70,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 		_mvShare.addObject("current_year", current_year);
 		_mvShare.addObject("project_new_id", Project_new_id);
 		FormAM(); // Gọi hàm lấy dữ liệu cần thiết cho form báo cáo đầu ra
-		_mvShare.setViewName("AM/create_new");
+		_mvShare.setViewName("AM/create_project");
 		return _mvShare;
 	}
 	
@@ -189,13 +190,28 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	// Trang danh sách khách hàng
 	@RequestMapping(value = { "/customer/{week}_{year}" }, method = RequestMethod.GET)
-	public ModelAndView customerAM(@PathVariable int week, @PathVariable int year, HttpSession session) {
+	public ModelAndView customerAM(@PathVariable int week, @PathVariable int year, Model model, HttpSession session) {
 		String pic_id = (String) session.getAttribute("user_id");
 		InitAM(week, year, pic_id);
 		// Danh sách khách hàng
+		model.addAttribute("customer_form", new Customer());
 		_mvShare.addObject("customer", _customersService.getAll());
 		_mvShare.setViewName("AM/customer_list"); 
 		return _mvShare; 
+	}
+	
+	// Thực thi insert khách hàng
+	@RequestMapping("/insertCustomer/{week}_{year}")
+	public String doInsertCustomer(@PathVariable int week, @PathVariable int year, @ModelAttribute("customer_form") Customer customer, Model model, HttpSession session) {
+		String pic_id = (String) session.getAttribute("user_id");
+		customer.setCreated_by(pic_id); // Trả mã người tạo
+		_customersService.save(customer); // Thực hiện thêm khách hàng
+		String week_link = "";
+		if (week < 10) {
+			week_link = "0" + week;
+		}
+		
+		return "redirect:/AM/customer/" + week_link + "_" + year;
 	}
 	
 	@RequestMapping("/home/{week}_{year}")

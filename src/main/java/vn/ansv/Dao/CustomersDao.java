@@ -2,6 +2,7 @@ package vn.ansv.Dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,8 @@ import vn.ansv.Entity.CustomerMapper;
 @Repository
 public class CustomersDao extends BaseDao {
 
+	private LocalDateTime _now = LocalDateTime.now();
+	
 	// Lấy dữ liệu cho phần menu (CEO)
 	public List<MenuCustomersDto> getMenu(int week, int year) {
 		String sql = "SELECT project.id AS project_id, projects_types.name AS project_type, "
@@ -59,5 +62,11 @@ public class CustomersDao extends BaseDao {
 		
 		return _jdbcTemplate.query(sql, new CustomerMapper());
 		
+	}
+	
+	// Thêm khách hàng
+	public void save(Customer customer) {
+		String sql = "INSERT INTO customers (name, created_by, created_at) VALUES (?, ?, ?)";
+		_jdbcTemplate.update(sql, customer.getName(), customer.getCreated_by(), _now);
 	}
 }

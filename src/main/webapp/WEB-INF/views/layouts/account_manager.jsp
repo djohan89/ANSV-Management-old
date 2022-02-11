@@ -105,11 +105,11 @@
 	    }
 	
 	    @media screen and (min-width: 1024px){
-	      body .modal-content {
-	      width: 220%;
-	      position: absolute;
-	      left: -50%;
-	      }
+	      	body .modal-content {
+	      		width: 110%;
+	      		position: absolute;
+	      		left: -3%;
+	      	}
 	    }
 	
 	    .card-header{
