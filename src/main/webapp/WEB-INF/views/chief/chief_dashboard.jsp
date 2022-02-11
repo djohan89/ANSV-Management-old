@@ -326,7 +326,7 @@
 															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
 														</c:if>
-														<c:if test="${week >10 }">
+														<c:if test="${week >=10 }">
 															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
 														</c:if>
@@ -406,7 +406,7 @@
 															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
 														</c:if>
-														<c:if test="${week >10 }">
+														<c:if test="${week >=10 }">
 															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
 														</c:if>
@@ -484,7 +484,7 @@
 															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
 														</c:if>
-														<c:if test="${week >10 }">
+														<c:if test="${week >=10 }">
 															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
 														</c:if>

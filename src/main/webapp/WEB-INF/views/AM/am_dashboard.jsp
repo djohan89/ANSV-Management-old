@@ -15,7 +15,7 @@
 			<c:if test="${week < 10 }">
 				<a href="<c:url value='/AM/create_project/0${week}_${year}' />" class="btn btn-info" role="button">Thêm dự án</a>
 			</c:if>
-			<c:if test="${week > 10 }">
+			<c:if test="${week >= 10 }">
 				<a href="<c:url value='/AM/create_project/${week}_${year}' />" class="btn btn-info" role="button">Thêm dự án</a>
 			</c:if>
 			
@@ -67,7 +67,7 @@
 															<a href="<c:url value='/AM/detail/0${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.name }
 														</c:if>
-														<c:if test="${week >10 }">
+														<c:if test="${week >=10 }">
 															<a href="<c:url value='/AM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.name }
 														</c:if>
@@ -110,7 +110,7 @@
 																	<a href="<c:url value='/AM/update_project/0${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
 																	class="float-right tooltip_icon mr-3">
 																</c:if>
-																<c:if test="${project_item.week > 10 }">
+																<c:if test="${project_item.week >= 10 }">
 																	<a href="<c:url value='/AM/update_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
 																	class="float-right tooltip_icon mr-3">
 																</c:if>
@@ -122,7 +122,7 @@
 																<c:if test="${project_item.week < 10 }">
 																	<a href="<c:url value='/AM/deployment/0${project_item.week}_${project_item.year}_${project_item.id_pk}' />" class="float-right tooltip_icon mr-3">
 																</c:if>
-																<c:if test="${project_item.week > 10 }">
+																<c:if test="${project_item.week >= 10 }">
 																	<a href="<c:url value='/AM/deployment/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" class="float-right tooltip_icon mr-3">
 																</c:if>
 																
@@ -138,7 +138,7 @@
 																	<a href="<c:url value='/AM/update_project/0${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
 																	class="float-right tooltip_icon" style="margin-right: 41px;">
 																</c:if>
-																<c:if test="${project_item.week > 10 }">
+																<c:if test="${project_item.week >= 10 }">
 																	<a href="<c:url value='/AM/update_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
 																	class="float-right tooltip_icon" style="margin-right: 41px;">
 																</c:if>
