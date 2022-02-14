@@ -67,7 +67,7 @@
 											<th style="width: 15%;">Type</th>
 											<th style="width: 8%;">Priority</th> 
 											<th>Nhóm</th>
-											<th style="width: 15%;">PIC</th>
+											<th style="width: 15%;">AM</th>
 											<th style="width: 12%;"></th>
 										</tr>
 									</thead>
@@ -109,7 +109,7 @@
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
-													<td>${project_item.pm }</td>
+													<td>${project_item.am }</td>
 													<td style="border-left: 1px solid black;">
 														<div class="d-flex justify-content-around">
 															<div class="">
