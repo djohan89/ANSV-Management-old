@@ -25,7 +25,8 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 
 		Calendar calendar = new GregorianCalendar();
 		calendar.setFirstDayOfWeek(Calendar.MONDAY);
-		calendar.setMinimalDaysInFirstWeek(3);
+		// Giới hạn tuần đầu tiên có ít nhất 1 ngày (Trong trường hợp ngày đầu năm là THỨ BẢY hoặc CHỦ NHẬT -> vẫn tính là 1 tuần)
+		calendar.setMinimalDaysInFirstWeek(1);
 		calendar.setTime(date);
 		int week = calendar.get(Calendar.WEEK_OF_YEAR);
 
