@@ -3,7 +3,6 @@ package vn.ansv.Controller.AM;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,9 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import vn.ansv.Dto.ProjectDetailDto;
 import vn.ansv.Entity.Customer;
 import vn.ansv.Entity.Project;
 
@@ -36,12 +35,32 @@ public class AccountManagerController extends AccountManagerBaseController {
 		return week;
 	}
 	
+	public String getWeekLink(int week) {
+		String week_link = "";
+		if (week < 10) {
+			week_link = "0" + week;
+	    }
+		return week_link;
+	}
+	
 	@RequestMapping(value = { "/dashboard/{week}_{year}" }, method = RequestMethod.GET)
-	public ModelAndView AmHome(@PathVariable int week, @PathVariable int year, HttpSession session) {
+	public ModelAndView AmHome(@PathVariable int week, @PathVariable int year, @RequestParam(required = false) String message, HttpSession session, Model model) {
+		
+		if (message != null && !message.isEmpty()) {
+			if (message.equals("update_error")) {
+				model.addAttribute("message", "(*) Hiện bạn không thể cập nhật dự án này!");
+			}
+		}
+		
 		String pic_id = (String) session.getAttribute("user_id");
 		InitAM(week, year, pic_id);
+		
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		
 		// Dữ liệu khái quát hiển thị lên dashboard (datatable)
 		_mvShare.addObject("project_table_pic",_projectService.getDashboardAM(week, year, pic_id));
+		_mvShare.addObject("current_week", current_week);
 		_mvShare.setViewName("AM/am_dashboard"); 
 		return _mvShare; 
 	}
@@ -80,6 +99,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 	public String doInsertProject(@PathVariable int week, @PathVariable int year, @ModelAttribute("Project") Project project, Model model, HttpSession session) {
 		String pic_id = (String) session.getAttribute("user_id");
 		int project_id = project.getId();
+		project.setInteractive("create");
 		_projectService.save(project); // Insert dữ liệu dự án mới
 		_picService.save(project_id, pic_id); // Insert PIC tương ứng của dự án
 		
@@ -119,8 +139,10 @@ public class AccountManagerController extends AccountManagerBaseController {
 		
 		int check_type = _projectService.getTypeForProject(id);
 		if (check_type == 1) {
-			List<ProjectDetailDto> project = _projectService.getById(id);
-			model.addAttribute("project", project);
+			// Nếu dự án là "TRIỂN KHAI" -> ko cho phép sửa, điều hướng trở lại vào báo lỗi
+			ModelAndView modelAndView =  new ModelAndView("redirect:/AM/dashboard/" + getWeekLink(week) + "_" + year);
+			modelAndView.addObject("message", "update_error");
+			return modelAndView;
 		} else {
 			Project project = _projectService.getLessById(id, pic_id);
 			model.addAttribute("project", project);
@@ -132,10 +154,35 @@ public class AccountManagerController extends AccountManagerBaseController {
 	
 	// Thực thi update dự án
 	@RequestMapping("/updateProject/{week}_{year}_{id}")
-	public String doUpdateProject(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable int id, Model model) {
-		_projectService.update(project);
+	public String doUpdateProject(@ModelAttribute("Project") Project project, @PathVariable int week, @PathVariable int year, @PathVariable int id, Model model, HttpSession session) {
 		
-		return "redirect:/AM/dashboard/" + week + "_" + year;
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		
+		String week_link = "";
+		if (week < 10) {
+			week_link = "0" + week;
+	    }
+		
+		if (project.getWeek() == current_week) {
+			_projectService.update(project);
+		} else {
+			if (current_week < 10) {
+				week_link = "0" + current_week;
+		    }
+			String pic_id = (String) session.getAttribute("user_id");
+			
+			_projectService.updateInteractive(project.getId(), "old"); // Cập nhật lại tình trạng bản ghi cũ
+			project.setNote(Integer.toString(project.getId()));
+			project.setId(_projectService.getMaxId() + 1);
+			project.setWeek(current_week);
+			project.setInteractive("update");
+			_projectService.save(project); // Insert dữ liệu đã cập nhật dưới dạng bản ghi mới
+			_picService.save(project.getId(), pic_id); // Insert PIC tương ứng của dự án
+			return "redirect:/AM/dashboard/" + week_link + "_" + year; // Sau khi thực hiện insert, điều hướng về thời điểm hiện tại
+		}
+		
+		return "redirect:/AM/dashboard/" + week_link + "_" + year;
 	}
 	
 	// Link đến form chuyển giai đoạn dự án

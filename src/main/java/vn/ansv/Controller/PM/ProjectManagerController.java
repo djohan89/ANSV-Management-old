@@ -37,8 +37,13 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 	public ModelAndView PmHome(@PathVariable int week, @PathVariable int year, HttpSession session) {
 		String pic_id = (String) session.getAttribute("user_id");
 		InitPM(week, year, pic_id);
+		
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		
 		// Dữ liệu khái quát hiển thị lên dashboard (datatable)
 		_mvShare.addObject("project_table_pic", _projectService.getDashboardPM(week, year, pic_id));
+		_mvShare.addObject("current_week", current_week);
 		_mvShare.setViewName("PM/pm_dashboard");
 		return _mvShare;
 	}
@@ -82,6 +87,7 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
 		
 		Project project = _projectService.getMorebyId(id, pic_id);
+		
 		_mvShare.addObject("current_week", current_week);
 		_mvShare.addObject("current_year", current_year);
 		model.addAttribute("project", project);
@@ -108,7 +114,7 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 	public String home(@PathVariable int week, @PathVariable int year) {
 		
 		Date now = new Date();   
-		int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_week = getWeekOfYear(now) - 1; // Gọi hàm lấy số tuần => Lấy số tuần trước
 		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
 		String week_link = "";
 		if (current_week < 10) {

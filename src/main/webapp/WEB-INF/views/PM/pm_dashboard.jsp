@@ -111,30 +111,35 @@
 													<td>${project_item.customer }</td>
 													<td>${project_item.am }</td>
 													<td style="border-left: 1px solid black;">
-														<div class="d-flex justify-content-around">
-															<div class="">
-																<a href="javascript:void(0)" 
-																	class="float-right tooltip_icon">
-																	<i class="fas fa-trash-alt fa-2x text-danger"></i>
-																	<span class="tooltip_for_icon bg-danger text-center" 
-																		style="margin-left: -7.2%; margin-top: -2.8%;">Đóng dự án</span>
-																</a>
-															</div>
-															<div class="">
-																<c:if test="${project_item.week < 10 }">
-																	<a href="<c:url value='/PM/update_project/0${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+														<c:if test="${project_item.week != current_week && project_item.week != (current_week - 1)}">
+															<span>Dự án cũ</span>
+														</c:if>
+														<c:if test="${project_item.week == current_week || project_item.week == (current_week - 1)}">
+															<div class="d-flex justify-content-around">
+																<%-- <div class="">
+																	<a href="javascript:void(0)" 
 																		class="float-right tooltip_icon">
-																</c:if>
-																<c:if test="${project_item.week >= 10 }">
-																	<a href="<c:url value='/PM/update_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
-																		class="float-right tooltip_icon">
-																</c:if>
-																	<i class="fas fa-edit fa-2x text-warning"></i>
-																	<span class="tooltip_for_icon bg-warning text-center" 
-																		style="margin-left: -5.6%; margin-top: -2.8%;">Cập nhật</span>
-																</a>
+																		<i class="fas fa-trash-alt fa-2x text-danger"></i>
+																		<span class="tooltip_for_icon bg-danger text-center" 
+																			style="margin-left: -7.2%; margin-top: -2.8%;">Đóng dự án</span>
+																	</a>
+																</div> --%>
+																<div class="">
+																	<c:if test="${project_item.week < 10 }">
+																		<a href="<c:url value='/PM/update_project/0${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+																			class="float-right tooltip_icon">
+																	</c:if>
+																	<c:if test="${project_item.week >= 10 }">
+																		<a href="<c:url value='/PM/update_project/${project_item.week}_${project_item.year}_${project_item.id_pk}' />" 
+																			class="float-right tooltip_icon">
+																	</c:if>
+																			<i class="fas fa-edit fa-2x text-warning"></i>
+																			<span class="tooltip_for_icon bg-warning text-center" 
+																				style="margin-left: -5.6%; margin-top: -2.8%;">Cập nhật</span>
+																		</a>
+																</div>
 															</div>
-														</div>
+														</c:if>
 													</td>
 												</tr>
 											</c:if>

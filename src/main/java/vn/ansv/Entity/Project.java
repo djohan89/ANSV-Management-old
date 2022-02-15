@@ -41,6 +41,7 @@ public class Project {
 	private String ket_qua_thuc_hien_ke_hoach;
 	
 	private String note;
+	private String interactive;
 	private Date created_at;
 
 	
@@ -295,6 +296,14 @@ public class Project {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+	
+	public String getInteractive() {
+		return interactive;
+	}
+
+	public void setInteractive(String interactive) {
+		this.interactive = interactive;
 	}
 
 	public Date getCreated_at() {

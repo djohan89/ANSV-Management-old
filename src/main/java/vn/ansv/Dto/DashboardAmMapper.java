@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-public class DashboardProjectPicDtoMapper implements RowMapper<DashboardProjectPicDto> {
+public class DashboardAmMapper implements RowMapper<DashboardProjectPicDto> {
 
 	public DashboardProjectPicDto mapRow(ResultSet rs, int rowNum) throws SQLException {
 		DashboardProjectPicDto project = new DashboardProjectPicDto();
@@ -22,6 +22,7 @@ public class DashboardProjectPicDtoMapper implements RowMapper<DashboardProjectP
 		project.setWeek(rs.getInt("week"));
 		project.setYear(rs.getInt("year"));
 		project.setNote(rs.getString("note"));
+		project.setInteractive(rs.getString("interactive"));
 		
 		return project;
 	}

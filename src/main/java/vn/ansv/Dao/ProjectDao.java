@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import vn.ansv.Dto.DashboardAmMapper;
 import vn.ansv.Dto.DashboardProjectDto;
 import vn.ansv.Dto.DashboardProjectDtoMapper;
 import vn.ansv.Dto.DashboardProjectPicDto;
@@ -268,7 +269,7 @@ public class ProjectDao extends BaseDao {
 				+ "(" + pm_name + ") AS pm, "
 				+ "(" + am_name + ") AS am, "
 				+ "project.tinh_trang_va_ke_hoach_chi_tiet, "
-				+ "(" + deployment + ") AS note "
+				+ "(" + deployment + ") AS note, interactive "
 				+ "FROM project "
 				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
 				+ "INNER JOIN pic ON project.id = pic.project_id "
@@ -277,7 +278,7 @@ public class ProjectDao extends BaseDao {
 				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
 				+ "INNER JOIN customers ON project.customer = customers.id "
 				+ "WHERE project.week = ? AND project.year = ? AND users.id = ?";
-		list = _jdbcTemplate.query(sql, new DashboardProjectPicDtoMapper(), week, year, pic_id);
+		list = _jdbcTemplate.query(sql, new DashboardAmMapper(), week, year, pic_id);
 		return list;
 	}
 	
@@ -291,11 +292,11 @@ public class ProjectDao extends BaseDao {
 	public void save(Project project) {
 		String sql = "INSERT INTO project (id, project_type, priority, project_status, customer, week, year, name, description, "
 				+ "tong_muc_dau_tu_du_kien, hinh_thuc_dau_tu, muc_do_kha_thi, phan_tich_SWOT, tinh_trang_va_ke_hoach_chi_tiet, "
-				+ "ket_qua_thuc_hien_ke_hoach, created_at) VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "ket_qua_thuc_hien_ke_hoach, note, interactive, created_at) VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		_jdbcTemplate.update(sql, project.getId(), project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), 
 				project.getWeek(), project.getName(), project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), 
 				project.getMuc_do_kha_thi(), project.getPhan_tich_SWOT(), project.getTinh_trang_va_ke_hoach_chi_tiet(), 
-				project.getKet_qua_thuc_hien_ke_hoach(), _now);
+				project.getKet_qua_thuc_hien_ke_hoach(), project.getNote(), project.getInteractive(), _now);
 	}
 	
 	// Lấy ra các trường phù hợp cho form chuyển giai đoạn dự án
@@ -344,6 +345,13 @@ public class ProjectDao extends BaseDao {
 				project.getName(), project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), project.getMuc_do_kha_thi(), 
 				project.getPhan_tich_SWOT(), project.getTinh_trang_va_ke_hoach_chi_tiet(), project.getKet_qua_thuc_hien_ke_hoach(), _now, project.getNote(), 
 				project.getId());
+		
+	}
+	
+	public void updateInteractive(int id, String interactive) {
+		String sql = "UPDATE project SET interactive = ? "
+				+ "WHERE id = ?";
+		_jdbcTemplate.update(sql, interactive, id);
 		
 	}
 	

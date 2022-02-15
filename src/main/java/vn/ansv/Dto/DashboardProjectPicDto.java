@@ -13,6 +13,9 @@ public class DashboardProjectPicDto {
 	private int week;
 	private int year;
 	private String note;
+	private String interactive;
+
+	
 
 	public DashboardProjectPicDto() {
 		super();
@@ -112,6 +115,14 @@ public class DashboardProjectPicDto {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+	
+	public String getInteractive() {
+		return interactive;
+	}
+
+	public void setInteractive(String interactive) {
+		this.interactive = interactive;
 	}
 	
 }

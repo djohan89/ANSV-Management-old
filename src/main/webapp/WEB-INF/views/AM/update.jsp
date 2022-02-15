@@ -17,7 +17,7 @@
 					<div class="col-sm-6">
 						<h4 class="m-0">
 							<span style="float: left;">Cập nhật dự án (Tuần:</span>
-							<form:input path="week" class="form-control border-0" value="${current_week}" readonly="true" 
+							<form:input path="week" class="form-control border-0" value="${week}" readonly="true" 
 								style="width: 58px; float: left; font-size: 30px; font-weight: bold; margin-top:-7px; background-color: #f4f6f9;" />
 							<span style="float: left;">- Năm:</span>
 							<form:input path="year" class="form-control border-0" readonly="true" value="${current_year}" 
@@ -30,7 +30,7 @@
 					<div class="col-sm-4">
 						<ol class="breadcrumb float-sm-right">
 							<li class="breadcrumb-item"><a href="<c:url value='/AM/home/${week}_${year}' />">Home</a></li>
-							<li class="breadcrumb-item active">Create</li>
+							<li class="breadcrumb-item active">Update</li>
 						</ol>
 					</div>
 					<!-- /.col -->

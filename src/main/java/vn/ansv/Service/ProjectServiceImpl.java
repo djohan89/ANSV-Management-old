@@ -163,6 +163,10 @@ public class ProjectServiceImpl implements IProjectService {
 		projectDao.update(project);
 	}
 	
+	public void updateInteractive(int id, String interactive){
+		projectDao.updateInteractive(id, interactive);
+	}
+	
 	public void update_tk(Project project){
 		projectDao.update_tk(project);
 	}
