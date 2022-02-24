@@ -23,6 +23,17 @@ public class PicDao extends BaseDao {
 		_jdbcTemplate.update(sql);
 	}
 	
+	public String getPICByProjectId(int project_id){
+		String sql ="SELECT pic.pic "
+				+ "FROM pic "
+				+ "INNER JOIN users_roles ON pic.pic = users_roles.user "
+				+ "INNER JOIN role ON users_roles.role = role.id "
+				+ "WHERE project_id = "+ project_id 
+				+ " AND role.name = 'ROLE_AM'";
+		return _jdbcTemplate.queryForObject(sql, String.class);
+		
+	}
+	
 	public List<MenuPicDto> getAllPicForm(){
 		String sql ="SELECT users.id AS pic_id, users.display_name FROM users "
 				+ "INNER JOIN users_roles ON users.id = users_roles.user "

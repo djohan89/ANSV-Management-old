@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.ansv.Entity.Project;
@@ -82,32 +83,49 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 		String pic_id = (String) session.getAttribute("user_id");
 		FormPM();
 		
-		Date now = new Date();   
-		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
-		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
-		
 		Project project = _projectService.getMorebyId(id, pic_id);
-		
-		_mvShare.addObject("current_week", current_week);
-		_mvShare.addObject("current_year", current_year);
 		model.addAttribute("project", project);
-
+		
 		_mvShare.setViewName("PM/update");
 		return _mvShare;
 	}
-
+	//Thực thi update dự án
 	@RequestMapping("/updateProjectPM/{week}_{year}_{id}")
 	public String doUpdateProject(@ModelAttribute("Project") Project project, @PathVariable int week,
-			@PathVariable int year, @PathVariable int id, Model model) {
-		_projectService.update_tk(project);
+			@PathVariable int year, @PathVariable int id, HttpSession session, Model model) {
+		
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
-		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
+		
 		String week_link = "";
-		if (current_week < 10) {
-			week_link = "0" + current_week;
+		if (week < 10) {
+			week_link = "0" + week;
 	    }
-		return "redirect:/PM/dashboard/" + week_link + "_" + current_year;
+		
+		if(project.getWeek() == current_week) {
+			_projectService.update_tk(project);
+		} else {
+			if(current_week<10) {
+				week_link = "0" + current_week;
+			}
+			String pic_id = (String) session.getAttribute("user_id");
+			
+			_projectService.updateInteractive(project.getId(), "old");
+			String am_id = _picService.getPICByProjectId(project.getId());
+			project.setNote(Integer.toString(project.getId()));
+			project.setId(_projectService.getMaxId() + 1);
+			project.setWeek(current_week);
+			project.setInteractive("update");
+			
+			_projectService.saveDep(project);
+			_picService.save(project.getId(), pic_id);
+			_picService.save(project.getId(), am_id);
+			return "redirect:/PM/dashboard/" + week_link + "_" + year;
+			
+		}
+		
+		
+		return "redirect:/PM/dashboard/" + week_link + "_" + year;
 	}
 	
 	@RequestMapping("/home/{week}_{year}")

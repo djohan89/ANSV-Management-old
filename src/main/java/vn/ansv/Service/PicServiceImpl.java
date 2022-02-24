@@ -19,4 +19,8 @@ public class PicServiceImpl {
 		picDao.delete(project_id);
 	}
 	
+	public String getPICByProjectId(int project_id) {
+		return picDao.getPICByProjectId(project_id);
+	}
+	
 }
