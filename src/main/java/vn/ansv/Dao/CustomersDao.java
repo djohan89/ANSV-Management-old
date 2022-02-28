@@ -30,13 +30,13 @@ public class CustomersDao extends BaseDao {
 	} 
 	
 	public List<Customer> getAll(){
-		String sql ="SELECT customers.id, customers.name, customers.created_at, users.display_name AS created_by FROM customers "
-				+ "INNER JOIN users ON customers.created_by = users.id";
+		String sql ="SELECT customers.id, customers.name, customers.created_by, users.display_name, customers.created_at "
+				+ "FROM customers INNER JOIN users ON customers.created_by = users.id WHERE customers.enabled = 1";
 		return _jdbcTemplate.query(sql, new CustomerMapper());
 	}
 	
 	public List<Customer> getAllCustomerForm(){
-		String sql ="SELECT id, name FROM customers";
+		String sql ="SELECT id, name FROM customers WHERE enabled = 1";
 		
 		return _jdbcTemplate.query(sql, new CustomerMapper() {
 			public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -52,7 +52,7 @@ public class CustomersDao extends BaseDao {
 	}
 	
 	public int getCount(){
-		String sql ="SELECT count(*) FROM customers";
+		String sql ="SELECT count(*) FROM customers WHERE enabled = 1";
 		return _jdbcTemplate.queryForObject(sql, Integer.class);
 		
 	}
@@ -66,7 +66,19 @@ public class CustomersDao extends BaseDao {
 	
 	// Thêm khách hàng
 	public void save(Customer customer) {
-		String sql = "INSERT INTO customers (name, created_by, created_at) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO customers (name, enabled, created_by, created_at) VALUES (?, 1, ?, ?)";
 		_jdbcTemplate.update(sql, customer.getName(), customer.getCreated_by(), _now);
+	}
+	
+	// Cập nhật khách hàng
+	public void update(Customer customer) {
+		String sql = "UPDATE customers SET name = ?, created_at = ? WHERE id = ?";
+		_jdbcTemplate.update(sql, customer.getName(), _now, customer.getId());
+	}
+	
+	// Xoá khách hàng (thực tế chỉ là chuyển tình trạng ko đc hoạt động của khách hàng đó)
+	public void enabled_customer(int id) {
+		String sql ="UPDATE customers SET enabled = 0 WHERE id = ?";
+		_jdbcTemplate.update(sql, id);
 	}
 }

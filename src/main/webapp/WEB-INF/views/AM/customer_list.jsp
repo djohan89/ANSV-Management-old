@@ -16,6 +16,7 @@
 			<div class="container-fluid">
 				<div class="row mb-2">
 					<div class="col-sm-10">
+						<c:url value="/AM/update_customer/" var="updateCustomer"/>
 						<c:url value="/AM/insertCustomer/${week}_${year}" var="insertCustomer"/>
 						<form:form action="${insertCustomer}" method="POST" modelAttribute="customer_form">
 							<div class="btn-group btn-group" role="group" aria-label="Basic">
@@ -84,6 +85,7 @@
 											<th>Tên</th>
 											<th width="13%">Ngày tạo</th> 
 											<th width="22%">Người tạo</th>
+											<th width="15%"></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -97,13 +99,80 @@
 														${customer.id}
 													</c:if>
 												</td>
-												<td class="pl-3">${customer.name}</td>
+												<td class="pl-3" id="name_${customer.id}">${customer.name}</td>
 												<td class="pl-3">${customer.created_at}</td>
-												<td class="pl-3">${customer.created_by}</td>
+												<td class="pl-3">${customer.display_name}</td>
+												<td>
+													<c:if test="${customer.created_by == user_id}">
+														<div class="btn-group btn-group" role="group" aria-label="Basic">
+															<button type="button" class="btn btn-warning" data-toggle="modal" 
+																data-target="#update-customer-modal" onclick="return set_form_update(${customer.id})">Cập nhật</button>
+															<button type="button" class="btn btn-danger" data-toggle="modal" 
+																data-target="#delete-customer-modal" onclick="return set_modal_delete(${customer.id})">Xóa</button>
+														</div>
+													</c:if>
+												</td>
 											</tr>
 										</c:forEach>	
 									</tbody>
 								</table>
+								
+								<!-- Form cập nhật khách hàng -->
+								<form:form action="${updateCustomer}" method="POST" modelAttribute="customer_form" id="form_update_customer">
+									<div class="modal fade" id="update-customer-modal" tabindex="-1" role="dialog" 
+										aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content" id="update_form">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">
+														<i class="fas fa-exclamation-circle text-danger"></i>
+														<span class="pl-1">Cập nhật</span>
+													</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body" id="modal-body">
+													<form:input path="id" id="input_id" class="form-control" />
+													<form:input path="name" id="input_name" class="form-control" placeholder="Tên khách hàng..." />
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-warning">Cập nhật</button>
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form:form>
+								
+								<!-- Delete customer modal -->
+								<div class="modal fade" id="delete-customer-modal" tabindex="-1" role="dialog" 
+									aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">
+													<i class="fas fa-exclamation-circle text-danger"></i>
+													<span class="pl-1">Cảnh báo</span>
+												</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body" align="center">
+												Bạn chắc chắn muốn xóa khách hàng này?<br>
+												<span class="pl-1 pr-1" style="font-size: 20px; font-weight: bold;" id="span_delete_name"></span>
+											</div>
+											<div class="modal-footer">
+												<a href="#" class="btn btn-danger" id="delete_submit" 
+													role="button">Có, xoá!</a>
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<!-- /.card -->
@@ -128,6 +197,39 @@
 			    "order": [[ 1, "asc" ]]
 	
 			});
+			
+			var save_success = 'save_success';
+			var delete_success = 'delete_success';
+			var update_success = 'update_success';
+			var update_error = 'update_error';
+			var url = window.location.href;
+			if(url.indexOf('?' + save_success + '=') != -1) {
+				alertify.success('Thêm khách hàng thành công!');
+			}
+			if(url.indexOf('?' + delete_success + '=') != -1) {
+				alertify.success('Xoá khách hàng thành công!');
+			}
+			if(url.indexOf('?' + update_success + '=') != -1) {
+				alertify.success('Cập nhật khách hàng thành công!');
+			}
+			if(url.indexOf('?' + update_error + '=') != -1) {
+				alertify.error('Cập nhật khách hàng thất bại!');
+			}
 		});
+		
+		function set_form_update(id) {
+			var name_id = "name_" + id;
+			document.getElementById("form_update_customer").action = "../update_customer/" + id;
+			document.getElementById("input_id").value = id;
+			document.getElementById("input_name").value = document.getElementById(name_id).innerText;
+		}
+		
+		function set_modal_delete(id) {
+			var name_id = "name_" + id;
+			var url_delete = "../delete_customer/" + id;
+			document.getElementById("span_delete_name").innerText = document.getElementById(name_id).innerText;
+			document.getElementById('delete_submit').setAttribute('href', url_delete);
+			console.log("set_modal_delete");
+		}
 	</script>
 </body>

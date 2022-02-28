@@ -31,5 +31,15 @@ public class CustomersServiceImpl implements ICustomersService {
 	public void save(Customer customer){
 		customersDao.save(customer);
 	}
+	
+	// Update khách hàng
+	public void update(Customer customer){
+		customersDao.update(customer);
+	}
+	
+	// Khoá khách hàng
+	public void enabled_customer(int id){
+		customersDao.enabled_customer(id);
+	}
 
 }

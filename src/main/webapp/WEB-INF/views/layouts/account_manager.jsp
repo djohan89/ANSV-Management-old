@@ -63,6 +63,16 @@
 	<%-- <script src="<c:url value='/assets/user/vendor/bootstrap4-handmade/bootstrap.min.js' />"></script> --%>
 
   	<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+  	
+<!-- Alertify CSS -->
+	<!-- CSS -->
+	<link rel="stylesheet" href="<c:url value="/assets/user/vendor/alertify/css/alertify.min.css" />" />
+	<!-- Default theme -->
+	<link rel="stylesheet" href="<c:url value="/assets/user/vendor/alertify/css/default.min.css" />" />
+	<!-- Semantic UI theme -->
+	<%-- <link rel="stylesheet" href="<c:url value="/assets/user/vendor/alertify/css/semantic.min.css" />" /> --%>
+	<!-- Bootstrap theme -->
+	<%-- <link rel="stylesheet" href="<c:url value="/assets/user/vendor/alertify/css/bootstrap.min.css" />" /> --%>
 	
 	<style type="text/css">
 		table,table label, table thead{
@@ -322,6 +332,9 @@
 	<script src="<c:url value='/assets/user/dist/js/demo.js' />"></script>
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="<c:url value='/assets/user/dist/js/pages/dashboard.js' />"></script>
+	
+	<!-- Alertify JS -->
+	<script src="<c:url value='/assets/user/vendor/alertify/js/alertify.min.js' />"></script>
 	
 	<script type="text/javascript">
 		$( document ).ready(function() {

@@ -13,6 +13,7 @@ public class CustomerMapper implements RowMapper<Customer> {
 		customer.setId(rs.getInt("id"));
 		customer.setName(rs.getString("name"));
 		customer.setCreated_by(rs.getString("created_by"));
+		customer.setDisplay_name(rs.getString("display_name"));
 		customer.setCreated_at(rs.getDate("created_at"));
 		
 		return customer;

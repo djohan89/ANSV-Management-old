@@ -6,6 +6,7 @@ public class Customer {
 	private int id;
 	private String name;
 	private String created_by;
+	private String display_name;
 	private Date created_at;
 	
 	public Customer() {
@@ -34,6 +35,14 @@ public class Customer {
 
 	public void setCreated_by(String created_by) {
 		this.created_by = created_by;
+	}
+	
+	public String getDisplay_name() {
+		return display_name;
+	}
+
+	public void setDisplay_name(String display_name) {
+		this.display_name = display_name;
 	}
 
 	public Date getCreated_at() {

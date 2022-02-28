@@ -36,7 +36,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 	}
 	
 	public String getWeekLink(int week) {
-		String week_link = "";
+		String week_link = Integer.toString(week);
 		if (week < 10) {
 			week_link = "0" + week;
 	    }
@@ -69,6 +69,9 @@ public class AccountManagerController extends AccountManagerBaseController {
 	public ModelAndView AmDetail(@PathVariable int week, @PathVariable int year, @PathVariable int id, HttpSession session) {
 		String pic_id = (String) session.getAttribute("user_id");
 		InitAM(week, year, pic_id);
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		_mvShare.addObject("current_week", current_week);
 		_mvShare.addObject("detail",_projectService.getByIdAndPic(id, pic_id));
 		_mvShare.setViewName("AM/detail");
 		return _mvShare;
@@ -243,6 +246,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 		InitAM(week, year, pic_id);
 		// Danh sách khách hàng
 		model.addAttribute("customer_form", new Customer());
+		_mvShare.addObject("user_id", pic_id);
 		_mvShare.addObject("customer", _customersService.getAll());
 		_mvShare.setViewName("AM/customer_list"); 
 		return _mvShare; 
@@ -254,12 +258,39 @@ public class AccountManagerController extends AccountManagerBaseController {
 		String pic_id = (String) session.getAttribute("user_id");
 		customer.setCreated_by(pic_id); // Trả mã người tạo
 		_customersService.save(customer); // Thực hiện thêm khách hàng
-		String week_link = "";
+		String week_link = Integer.toString(week);
 		if (week < 10) {
 			week_link = "0" + week;
 		}
 		
-		return "redirect:/AM/customer/" + week_link + "_" + year;
+		return "redirect:/AM/customer/" + week_link + "_" + year + "?save_success=true";
+	}
+	
+	// Thực thi xoá khách hàng
+	@RequestMapping("/delete_customer/{id}")
+	public String doDeleteCustomer(@PathVariable int id) {
+		
+		_customersService.enabled_customer(id);
+		
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now) ; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
+		// Sau khi insert thành công sẽ điều hướng về tuần chứa báo cáo đó
+		return "redirect:/AM/customer/" + getWeekLink(current_week) + "_" + current_year + "?delete_success=true";
+	}
+	
+	// Update khách hàng
+	@RequestMapping(value = { "/update_customer/{id}" })
+	public String AmUpdateCustomer(@ModelAttribute("customer_form") Customer customer, @PathVariable int id, HttpSession session, Model model) {
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now) ; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
+		
+		if (customer.getId() == id) {
+			_customersService.update(customer);
+			return "redirect:/AM/customer/" + getWeekLink(current_week) + "_" + current_year + "?update_success=true";
+		}
+		return "redirect:/AM/customer/" + getWeekLink(current_week) + "_" + current_year + "?update_error=true";
 	}
 	
 	@RequestMapping("/home/{week}_{year}")

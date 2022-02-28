@@ -11,10 +11,10 @@
 </head>
 
 <body>
-	<style>
-.content-wrapper {
-	background-color: #fff;
-}
+<style>
+	.content-wrapper {
+		background-color: #fff;
+	}
 </style>
 	<div class="content-wrapper">
 	<div class="content-header">
@@ -60,7 +60,7 @@
 											<td>${detail.pham_vi_cung_cap}</td>
 										</tr>
 										<tr>
-											<th>Tình trạng & kế hoạch chị tiết</th>
+											<th>Tình trạng & kế hoạch chi tiết</th>
 											<td>${detail.tinh_trang_va_ke_hoach_chi_tiet}</td>
 										</tr>
 										<tr>
@@ -133,10 +133,11 @@
 								</div>
 							</div>
 						</div>
-						
 						<!-- <a href="/ANSV-Management/AM/update/3/11" type="button" class="btn btn-warning mr-2" style="color: white;">Sửa</a> --> 
-						
 					</c:if>
+					
+					
+					
 					<c:if test="${detail.type=='Viễn thông' }">
 						<h2 class="text-center mt-3">${detail.name }</h2>
 						<div class="row">
@@ -226,17 +227,19 @@
 								
 							</div>
 						</div>
-						<c:if test="${week < 10 }">
-							<a type="button" class="btn btn-warning mr-2" 
-							href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" style="color: white;">Cập nhật</a>
+						<c:if test="${week == (current_week - 1) || week == current_week}">
+							<c:if test="${week < 10 }">
+								<a href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
+							</c:if>
+							<c:if test="${week > 10 }">
+								<a href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
+							</c:if>
 						</c:if>
-						<c:if test="${week > 10 }">
-							<a type="button" class="btn btn-warning mr-2" 
-							href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" style="color: white;">Cập nhật</a>
-						</c:if>
-						
 					</c:if>
-					<c:if test="${detail.type=='Chuyển đổi số' }">
+					
+					
+					
+					<c:if test="${detail.type=='Chuyển đổi số'}">
 						<h2 class="text-center mt-3">${detail.name }</h2>
 						<div class="row">
 							<div class="col-md-6">
@@ -324,15 +327,16 @@
 								</div> --%>
 							</div>
 						</div>
-						<c:if test="${week < 10 }">
-							<a type="button" class="btn btn-warning mr-2" 
-							href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" style="color: white;">Cập nhật</a>
+						<c:if test="${week == (current_week - 1) || week == current_week}">
+							<c:if test="${week < 10 }">
+								<a href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" 
+									class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
+							</c:if>
+							<c:if test="${week > 10 }">
+								<a href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" 
+									class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
+							</c:if>
 						</c:if>
-						<c:if test="${week > 10 }">
-							<a type="button" class="btn btn-warning mr-2" 
-							href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" style="color: white;">Cập nhật</a>
-						</c:if>
-						
 					</c:if>
 				</c:forEach>
 			</div>
