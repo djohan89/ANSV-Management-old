@@ -191,5 +191,9 @@ public class ProjectServiceImpl implements IProjectService {
 	public void saveDeployment(Project project, int id){
 		projectDao.saveDeployment(project, id);
 	}
+	
+	public void saveDep(Project project){
+		projectDao.saveDep(project);
+	}
 
 }

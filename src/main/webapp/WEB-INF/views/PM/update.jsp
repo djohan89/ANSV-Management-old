@@ -19,7 +19,7 @@
 					<div class="col-8">
 						<h1 class="m-0">
 							<span style="float: left;">Dự án - Giai đoạn triển khai (Tuần:</span>
-							<form:input path="week" class="form-control border-0" value="${current_week}" readonly="true" 
+							<form:input path="week" class="form-control border-0" value="${week}" readonly="true" 
 								style="width: 58px; float: left; font-size: 30px; font-weight: bold; margin-top:-2px; background-color: #f4f6f9;" />
 							<span style="float: left;">- Năm:</span>
 							<form:input path="year" class="form-control border-0" readonly="true" value="${current_year}" 
