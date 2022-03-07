@@ -106,7 +106,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 		_projectService.save(project); // Insert dữ liệu dự án mới
 		_picService.save(project_id, pic_id); // Insert PIC tương ứng của dự án
 		
-		String week_link = "";
+		String week_link = Integer.toString(project.getWeek());
 		if (project.getWeek() < 10) {
 			week_link = "0" + project.getWeek();
 		}
@@ -123,7 +123,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now) ; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
-		String week_link = "";
+		String week_link = Integer.toString(current_week);
 		if (current_week < 10) {
 			week_link = "0" + current_week;
 	    }
@@ -162,7 +162,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		
-		String week_link = "";
+		String week_link = Integer.toString(week);
 		if (week < 10) {
 			week_link = "0" + week;
 	    }
@@ -220,7 +220,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		int current_year = Calendar.getInstance().get(Calendar.YEAR); // Get the curent year
-		String week_link = "";
+		String week_link = Integer.toString(current_week);
 		if (current_week < 10) {
 			week_link = "0" + current_week;
 	    }
@@ -299,7 +299,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
-		String week_link = "";
+		String week_link = Integer.toString(current_week);
 		if (current_week < 10) {
 			week_link = "0" + current_week;
 	    }

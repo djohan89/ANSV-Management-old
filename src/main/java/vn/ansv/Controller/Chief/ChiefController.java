@@ -72,7 +72,7 @@ public class ChiefController extends ChiefBaseController {
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
-		String week_link = "";
+		String week_link = Integer.toString(current_week);
 		if (current_week < 10) {
 			week_link = "0" + current_week;
 	    }

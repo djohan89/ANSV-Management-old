@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.ansv.Entity.Project;
@@ -67,7 +66,7 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 			Date now = new Date();   
 			int current_week = getWeekOfYear(now) -1; // Gọi hàm lấy số tuần => Lấy số tuần trước đó
 			int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
-			String week_link = "";
+			String week_link = Integer.toString(current_week);
 			if (current_week < 10) {
 				week_link = "0" + current_week;
 		    }
@@ -97,7 +96,7 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		
-		String week_link = "";
+		String week_link = Integer.toString(week);
 		if (week < 10) {
 			week_link = "0" + week;
 	    }
@@ -134,7 +133,7 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now) - 1; // Gọi hàm lấy số tuần => Lấy số tuần trước
 		int current_year = Calendar.getInstance().get(Calendar.YEAR) ; // Get the curent year
-		String week_link = "";
+		String week_link = Integer.toString(current_week);
 		if (current_week < 10) {
 			week_link = "0" + current_week;
 	    }
