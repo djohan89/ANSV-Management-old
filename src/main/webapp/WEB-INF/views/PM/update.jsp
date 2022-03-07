@@ -244,7 +244,7 @@
 										<div class="input-group-prepend">
 											<label class="input-group-text fw-400">Kế hoạch tạm ứng</label>
 										</div>
-										<input type="text" id="ke_hoach_tam_ung_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_tam_ung_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden  path="ke_hoach_tam_ung" id="ke_hoach_tam_ung1" class="form-control" />
 									</div>
 									
@@ -252,7 +252,7 @@
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100 fw-400">DAC</label>
 										</div>
-										<input type="text" id="DAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="DAC_test" value="" readonly="readonly" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="DAC" class="form-control datepickerJavascript" id="DAC1" />
 									</div>
 									
@@ -260,7 +260,7 @@
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100 fw-400">PAC</label>
 										</div>
-										<input type="text" id="PAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="PAC_test" value="" readonly="readonly" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="PAC" id="PAC1" class="form-control datepickerJavascript" />
 									</div>
 									
@@ -268,7 +268,7 @@
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100 fw-400">FAC</label>
 										</div>
-										<input type="text" id="FAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="FAC_test" value="" readonly="readonly" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="FAC" id="FAC1" class="form-control datepickerJavascript" />
 									</div>
 								</div>
@@ -306,7 +306,7 @@
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100 fw-400">Kế hoạch</label>
 										</div>
-										<input type="text" id="ke_hoach_thanh_toan_DAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_thanh_toan_DAC_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="ke_hoach_thanh_toan_DAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_DAC1" />
 									</div>
 									
@@ -324,7 +324,7 @@
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100 fw-400">Kế hoạch</label>
 										</div>
-										<input type="text" id="ke_hoach_thanh_toan_PAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_thanh_toan_PAC_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden  path="ke_hoach_thanh_toan_PAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_PAC1" />
 									</div>
 									
@@ -342,7 +342,7 @@
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100 fw-400">Kế hoạch</label>
 										</div>
-										<input type="text" id="ke_hoach_thanh_toan_FAC_test" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<input type="text" id="ke_hoach_thanh_toan_FAC_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="ke_hoach_thanh_toan_FAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_FAC1" />
 									</div>
 									
