@@ -23,7 +23,7 @@
 								style="width: 58px; float: left; font-size: 30px; font-weight: bold; margin-top:-2px; background-color: #f4f6f9;" />
 							<span style="float: left;">- Năm:</span>
 							<form:input path="year" class="form-control border-0" readonly="true" value="${current_year}" 
-								style="width: 88px; float: left; font-size: 30px; font-weight: bold; margin-top:-2px; background-color: #f4f6f9;" />
+								style="width: 80px; float: left; padding-right:0px; font-size: 30px; font-weight: bold; margin-top:-2px; background-color: #f4f6f9;" />
 							<span style="float: left;">)</span>
 						</h1>
 					</div>
