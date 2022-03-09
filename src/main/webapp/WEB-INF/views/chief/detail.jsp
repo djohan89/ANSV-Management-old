@@ -195,15 +195,15 @@
 									<table class="table table-bordered table-hover">
 										<tr>
 											<th>Tình trạng & Kế hoạch chi tiết</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
+											<td class="text-justify">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
 										</tr>
 										<tr>
 											<th>Phân tích SWOT</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.phan_tich_SWOT }</td>
+											<td class="text-justify">${detail.phan_tich_SWOT }</td>
 										</tr>
 										<tr>
 											<th>Kết quả thực hiện kế hoạch</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.ket_qua_thuc_hien_ke_hoach }</td>
+											<td class="text-justify" >${detail.ket_qua_thuc_hien_ke_hoach }</td>
 										</tr>
 										<tr>
 											<th>Phụ trách</th>
@@ -284,15 +284,15 @@
 									<table class="table table-bordered table-hover">
 										<tr>
 											<th>Tình trạng & Kế hoạch chi tiết</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
+											<td class="text-justify" >${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
 										</tr>
 										<tr>
 											<th>Phân tích SWOT</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.phan_tich_SWOT }</td>
+											<td class="text-justify" >${detail.phan_tich_SWOT }</td>
 										</tr>
 										<tr>
 											<th>Kết quả thực hiện kế hoạch</th>
-											<td class="text-justify" style="white-space: pre-wrap;">${detail.ket_qua_thuc_hien_ke_hoach }</td>
+											<td class="text-justify" >${detail.ket_qua_thuc_hien_ke_hoach }</td>
 										</tr>
 										<tr>
 											<th>Phụ trách</th>

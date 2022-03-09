@@ -55,7 +55,7 @@
 											<td>${detail.pham_vi_cung_cap}</td>
 										</tr>
 										<tr>
-											<th>Tình trạng & kế hoạch chị tiết</th>
+											<th>Tình trạng & kế hoạch chi tiết</th>
 											<td>${detail.tinh_trang_va_ke_hoach_chi_tiet}</td>
 										</tr>
 										<tr>
