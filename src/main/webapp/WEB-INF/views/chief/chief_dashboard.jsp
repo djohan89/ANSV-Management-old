@@ -330,31 +330,31 @@
 															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
 														</c:if>
-															<c:if test="${project_item.status =='High' }">
+															<c:if test="${project_item.status == 'High'}">
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
-															<c:if test="${project_item.status =='Medium' }">
+															<c:if test="${project_item.status == 'Medium'}">
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
-															<c:if test="${project_item.status =='Low' }">
+															<c:if test="${project_item.status == 'Low'}">
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
-															<c:if test="${project_item.status =='Complete' }">
+															<c:if test="${project_item.status == 'Complete'}">
 																<span class="tooltiptext" style="background-color: #007bff">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
 														</a>
 													</td>
 													<td>
-														<c:if test="${project_item.status =='High' }">
+														<c:if test="${project_item.status == 'High'}">
 															<button type="button" class="btn btn-danger w-100"><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.status =='Medium' }">
+														<c:if test="${project_item.status == 'Medium'}">
 															<button type="button" class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.status =='Low' }">
+														<c:if test="${project_item.status == 'Low'}">
 															<button type="button" class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.status =='Complete' }">
+														<c:if test="${project_item.status == 'Complete'}">
 															<button type="button" class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 													</td>
@@ -410,31 +410,31 @@
 															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
 														</c:if>
-															<c:if test="${project_item.status =='High' }">
+															<c:if test="${project_item.status == 'High'}">
 																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
-															<c:if test="${project_item.status =='Medium' }">
+															<c:if test="${project_item.status == 'Medium'}">
 																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
-															<c:if test="${project_item.status =='Low' }">
+															<c:if test="${project_item.status == 'Low'}">
 																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
-															<c:if test="${project_item.status =='Complete' }">
+															<c:if test="${project_item.status == 'Complete'}">
 																<span class="tooltiptext" style="background-color: #007bff">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 															</c:if>
 														</a>
 													</td>
 													<td>
-														<c:if test="${project_item.status =='High' }">
+														<c:if test="${project_item.status == 'High'}">
 															<button type="button" class="btn btn-danger w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.status =='Medium' }">
+														<c:if test="${project_item.status == 'Medium'}">
 															<button type="button" class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.status =='Low' }">
+														<c:if test="${project_item.status == 'Low'}">
 															<button type="button" class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
-														<c:if test="${project_item.status =='Complete' }">
+														<c:if test="${project_item.status == 'Complete'}">
 															<button type="button" class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></button>
 														</c:if>
 													</td>
@@ -480,11 +480,11 @@
 											<c:if test="${project_item.type == 'Chuyển đổi số' }">
 												<tr>
 													<td>
-														<c:if test="${week < 10 }">
+														<c:if test="${week < 10}">
 															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
 														</c:if>
-														<c:if test="${week >=10 }">
+														<c:if test="${week >= 10}">
 															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
 															${project_item.project_name }
 														</c:if>

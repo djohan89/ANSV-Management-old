@@ -232,7 +232,7 @@
 								<c:if test="${week < 10 }">
 									<a href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
 								</c:if>
-								<c:if test="${week > 10 }">
+								<c:if test="${week >= 10 }">
 									<a href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
 								</c:if>
 							</c:if>

@@ -94,6 +94,9 @@
 																<c:if test="${project_item.status == 'Low' }">
 																	<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
 																</c:if>
+																<c:if test="${project_item.status == 'Complete'}">
+																	<span class="tooltiptext" style="background-color: #007bff">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																</c:if>
 															</a>
 													</td>
 													<td>${project_item.type}</td>
@@ -106,6 +109,9 @@
 														</c:if>
 														<c:if test="${project_item.status =='Low' }">
 															<button type="button" class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></button>
+														</c:if>
+														<c:if test="${project_item.status == 'Complete'}">
+															<button type="button" class="btn btn-light w-100"><font size="-1">${project_item.priority}</font></button>
 														</c:if>
 													</td>
 													<td>${project_item.customer }</td>
