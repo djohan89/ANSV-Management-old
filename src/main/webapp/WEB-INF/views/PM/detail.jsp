@@ -128,13 +128,16 @@
 								</div>
 							</div>
 						</div>
-					 
 					</c:if>
-					<c:if test="${week < 10 }">
-						<a type="button" class="btn btn-warning mr-2" href="<c:url value='/PM/update_project/0${week}_${year}_${detail.id}' />" style="color:white;" >Sửa</a>
-					</c:if>
-					<c:if test="${week >= 10 }">
-						<a type="button" class="btn btn-warning mr-2" href="<c:url value='/PM/update_project/${week}_${year}_${detail.id}' />" style="color:white;" >Sửa</a>
+					<c:if test="${week == (current_week - 1) || week == current_week}"> <%-- Chỉ cho phép thao tác trong tuần hiện tại và tuần trước đó --%>
+						<c:if test="${detail.interactive != 'old'}"> <%-- Chỉ cho phép thao tác với những bản ghi không phải "CŨ" --%>
+							<c:if test="${week < 10}">
+								<a type="button" class="btn btn-warning mr-2" href="<c:url value='/PM/update_project/0${week}_${year}_${detail.id}' />" style="color:white;" >Sửa</a>
+							</c:if>
+							<c:if test="${week >= 10}">
+								<a type="button" class="btn btn-warning mr-2" href="<c:url value='/PM/update_project/${week}_${year}_${detail.id}' />" style="color:white;" >Sửa</a>
+							</c:if>
+						</c:if>
 					</c:if>
 					
 				</c:forEach>

@@ -27,7 +27,7 @@
 			<div class="container-fluid">
 				<c:forEach var="detail" items="${detail}" varStatus="detailIndex">
 					<c:if test="${detail.type == 'Triển khai'}">
-						<h2 class="text-center mt-3">${detail.name }</h2>
+						<h2 class="text-center mt-3">${detail.name}</h2>
 						<div class="row pt-2">
 							<div class="col-md-7">
 								<div class="table-responsive-sm">
@@ -138,8 +138,8 @@
 					
 					
 					
-					<c:if test="${detail.type=='Viễn thông' }">
-						<h2 class="text-center mt-3">${detail.name }</h2>
+					<c:if test="${detail.type=='Viễn thông'}">
+						<h2 class="text-center mt-3">${detail.name}</h2>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="table-responsive-sm">
@@ -228,11 +228,13 @@
 							</div>
 						</div>
 						<c:if test="${week == (current_week - 1) || week == current_week}">
-							<c:if test="${week < 10 }">
-								<a href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
-							</c:if>
-							<c:if test="${week > 10 }">
-								<a href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
+							<c:if test="${detail.interactive != 'old'}">
+								<c:if test="${week < 10 }">
+									<a href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
+								</c:if>
+								<c:if test="${week > 10 }">
+									<a href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
+								</c:if>
 							</c:if>
 						</c:if>
 					</c:if>
@@ -240,7 +242,7 @@
 					
 					
 					<c:if test="${detail.type=='Chuyển đổi số'}">
-						<h2 class="text-center mt-3">${detail.name }</h2>
+						<h2 class="text-center mt-3">${detail.name}</h2>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="table-responsive-sm">
@@ -327,14 +329,16 @@
 								</div> --%>
 							</div>
 						</div>
-						<c:if test="${week == (current_week - 1) || week == current_week}">
-							<c:if test="${week < 10 }">
-								<a href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" 
-									class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
-							</c:if>
-							<c:if test="${week > 10 }">
-								<a href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" 
-									class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
+						<c:if test="${week == (current_week - 1) || week == current_week}"> <%-- Chỉ cho phép thao tác trong tuần hiện tại và tuần trước đó --%>
+							<c:if test="${detail.interactive != 'old'}"> <%-- Chỉ cho phép thao tác với những bản ghi không phải "CŨ" --%>
+								<c:if test="${week < 10 }">
+									<a href="<c:url value='/AM/update_project/0${week}_${year}_${detail.id}' />" 
+										class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
+								</c:if>
+								<c:if test="${week >= 10 }">
+									<a href="<c:url value='/AM/update_project/${week}_${year}_${detail.id}' />" 
+										class="btn btn-warning mr-2 float-right" style="color: white;">Cập nhật</a>
+								</c:if>
 							</c:if>
 						</c:if>
 					</c:if>

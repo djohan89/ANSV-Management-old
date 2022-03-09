@@ -40,6 +40,7 @@ public class ProjectDetailDtoMapper implements RowMapper<ProjectDetailDto> {
 		detail.setKe_hoach_thanh_toan_FAC(rs.getDate("ke_hoach_thanh_toan_FAC"));
 		detail.setNote(rs.getString("note"));
 		detail.setWeek(rs.getInt("week"));
+		detail.setInteractive(rs.getString("interactive"));
 		
 		return detail;
 	}

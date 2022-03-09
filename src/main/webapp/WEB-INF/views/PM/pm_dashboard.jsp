@@ -77,24 +77,24 @@
 												<tr>
 													<td>
 														<c:if test="${week < 10 }">
-															<a href="<c:url value='/PM/detail/0${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-															${project_item.name }
+															<a href="<c:url value='/PM/detail/0${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" 
+																style="font-weight: bold" data-html="true">${project_item.name }
 														</c:if>
 														<c:if test="${week >= 10 }">
-															<a href="<c:url value='/PM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" style="font-weight: bold" data-html="true">
-															${project_item.name }
+															<a href="<c:url value='/PM/detail/${week}_${year}_${project_item.id_pk}' />" class="tooltip_css" 
+																style="font-weight: bold" data-html="true">${project_item.name }
 														</c:if>
 														
-															<c:if test="${project_item.status == 'High' }">
-																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
-															</c:if>
-															<c:if test="${project_item.status == 'Medium' }">
-																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
-															</c:if>
-															<c:if test="${project_item.status == 'Low' }">
-																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
-															</c:if>
-														</a>
+																<c:if test="${project_item.status == 'High' }">
+																	<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet}</span>
+																</c:if>
+																<c:if test="${project_item.status == 'Medium' }">
+																	<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																</c:if>
+																<c:if test="${project_item.status == 'Low' }">
+																	<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																</c:if>
+															</a>
 													</td>
 													<td>${project_item.type}</td>
 													<td align="center">

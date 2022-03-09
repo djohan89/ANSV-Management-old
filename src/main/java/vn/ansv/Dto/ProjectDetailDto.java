@@ -35,7 +35,10 @@ public class ProjectDetailDto {
 	private double so_tien_FAC;
 	private Date ke_hoach_thanh_toan_FAC;
 	private String note;
+	private String interactive;
 	
+	
+
 	public ProjectDetailDto() {
 		super();
 	}
@@ -294,6 +297,14 @@ public class ProjectDetailDto {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+	
+	public String getInteractive() {
+		return interactive;
+	}
+
+	public void setInteractive(String interactive) {
+		this.interactive = interactive;
 	}
 	
 }
