@@ -4,7 +4,15 @@ import java.security.Principal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Hashtable;
+import java.util.List;
 
+import javax.naming.AuthenticationException;
+import javax.naming.AuthenticationNotSupportedException;
+import javax.naming.Context;
+import javax.naming.NamingException;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,8 +21,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import vn.ansv.Service.RoleServiceImpl;
 import vn.ansv.Service.User.UsersServiceImpl;
@@ -27,6 +38,40 @@ public class LoginController {
 	
 	@Autowired
 	RoleServiceImpl roleService;
+	
+	// Hàm check tài khoản login tương ứng trên LDAP
+	public String ldapAuthentication(String username, String password) {
+		String result = "1";
+		
+		String url = "ldap://172.24.104.6:389";
+		Hashtable env = new Hashtable();
+		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+		env.put(Context.PROVIDER_URL, url);
+		env.put(Context.SECURITY_AUTHENTICATION, "simple");
+		env.put(Context.SECURITY_PRINCIPAL, username);
+		env.put(Context.SECURITY_CREDENTIALS, password);
+
+		try {
+			DirContext ctx = new InitialDirContext(env);
+			System.out.println("Connected");
+			System.out.println(ctx.getEnvironment());
+			
+			// do something useful with the context...
+
+			ctx.close();
+
+		} catch (AuthenticationNotSupportedException ex) {
+			System.out.println("The authentication is not supported by the server");
+			result = "0";
+		} catch (AuthenticationException ex) {
+			System.out.println("incorrect password or username");
+			result = "0";
+		} catch (NamingException ex) {
+			System.out.println("error when trying to create the context");
+			result = "0";
+		}
+		return result;
+	}
 	
 	// Hàm lấy số tuần
 	public int getWeekOfYear(Date date) {
@@ -56,6 +101,45 @@ public class LoginController {
 		}
 		return "security/login";
 	}
+	
+	
+	
+	@RequestMapping(value = "/login_process", method = RequestMethod.GET)
+	public @ResponseBody String loginProcess(HttpServletRequest request) {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password_main");
+		
+		System.out.println("User: " + username + " - Pass: " + password);
+		
+		// Trả về giá trị của hàm check LDAP
+		return ldapAuthentication(username, password);
+	}
+	
+	@RequestMapping(value = "/compare_role_user", method = RequestMethod.POST)
+	public @ResponseBody String compareRole(HttpServletRequest request) {
+		String result = "0";
+		String username = request.getParameter("username");
+		String role = "";
+		String size_role = request.getParameter("size_role");
+		int check = 0;
+		
+		/* int check = usersService.checkUsersRoleExist(username, role); */
+		
+		for (int i = 1; i <= Integer.parseInt(size_role); i++) {
+			role = request.getParameter("role"+i);
+			if (usersService.checkUsersRoleExist(username, role) == 1) {
+				check++;
+			}
+		}
+		
+		if (check != 0) {
+			result = "1";
+		}
+		
+		return result;
+	}
+	
+	
 	
 	@RequestMapping("/login_success_test")
 	public String loginSuccessTest(HttpSession session, Model model, Principal principal) {

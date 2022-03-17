@@ -10,14 +10,13 @@
 		<div class="form-group">
 			<p align="center">
 				<font size="+3" color="#FF6600"><b>ANSV Management</b></font>
-				<span id="output"></span>
 			</p>
 		</div>
-		<form name='loginForm' action="<c:url value='/admin/j_spring_security_login' />" method='POST' id="my_form">
+		<form name='loginForm' action="<c:url value='/admin/j_spring_security_login' />" method='POST'>
 			<div class="form-group">
 				<label class="label">Tên đăng nhập<dec:body /></label>
 				<div class="input-group">
-					<input type="text" name='username' id="usn" class="form-control" placeholder="Tên đăng nhập">
+					<input type="text" name='username' class="form-control" placeholder="Tên đăng nhập">
 					<div class="input-group-append">
 						<span class="input-group-text"> <i
 							class="mdi mdi-check-circle-outline"></i>
@@ -28,8 +27,7 @@
 			<div class="form-group">
 				<label class="label">Mật khẩu</label>
 				<div class="input-group">
-					<input type='hidden' name='password' id="psw" />
-					<input type="password" name='password_main' id="psw_main" class="form-control" placeholder="*********">
+					<input type="password" name='password' class="form-control" placeholder="*********">
 					<div class="input-group-append">
 						<span class="input-group-text"> <i
 							class="mdi mdi-check-circle-outline"></i>
@@ -38,10 +36,8 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<!-- <button type="submit" id="btn_form" class="btn btn-primary submit-btn btn-block" onclick="return check_data()">
-					Đăng nhập</button> -->
-				<button type="submit" id="btn_form" class="btn btn-primary submit-btn btn-block">
-					Đăng nhập</button>
+				<button type="submit" class="btn btn-primary submit-btn btn-block">Đăng
+					nhập</button>
 				<c:if test="${ not empty message }">
 					<p align="center">
 						<font color="red" size="2"><i>${message}</i></font>
@@ -58,11 +54,8 @@
 					mật khẩu</a>
 			</div>
 			
-			<input type="hidden" id="token" name="${_csrf.parameterName}" value="${_csrf.token}" id="token" />
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			
 		</form>
 	</div>
-	
-	<script src="<c:url value='/assets/user/plugins/jquery/jquery.min.js' />"></script>
-	<script src="<c:url value='/assets/login/js/LdapAuthenticate.js' />" type="text/javascript"></script>
 </body>

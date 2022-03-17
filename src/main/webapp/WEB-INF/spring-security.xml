@@ -44,13 +44,6 @@
 				users-by-username-query="select username,password, enabled from users where username=?"
 				authorities-by-username-query="select users.username, role.name from users, role, users_roles 
 						where username =? and users.id = users_roles.user and users_roles.role = role.id " />
-			<password-encoder ref="encoder" />
 		</authentication-provider>
 	</authentication-manager>
-
-	<beans:bean id="encoder"
-		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-		<beans:constructor-arg name="strength"
-			value="10" />
-	</beans:bean>
 </beans:beans>

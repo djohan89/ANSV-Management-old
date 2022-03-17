@@ -27,8 +27,11 @@ public class UsersServiceImpl implements IUsersService {
 	}
 	
 	public int getCountUsersRole(String username){
-		// validate business
 		return usersDao.getCountUsersRole(username);
+	}
+	
+	public int checkUsersRoleExist(String username, String role){
+		return usersDao.checkUsersRoleExist(username, role);
 	}
 
 	public List<MenuPicDto> getMenu(int week, int year) {

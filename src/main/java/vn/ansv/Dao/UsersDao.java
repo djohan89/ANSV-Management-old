@@ -42,6 +42,16 @@ public class UsersDao extends BaseDao {
 		return result;
 	}
 	
+	// Kiểm tra role trên LDAP với role sãn có trên database
+	public int checkUsersRoleExist(String username, String role) {
+		String sql = "SELECT EXISTS(SELECT * FROM role "
+				+ "INNER JOIN users_roles ON role.id = users_roles.role "
+				+ "INNER JOIN users ON users_roles.user = users.id "
+				+ "WHERE users.username = ? AND role.name = ?)";
+		int result = _jdbcTemplate.queryForObject(sql, Integer.class, username, role);
+		return result;
+	}
+	
 	// Get data for menu showing PIC with project ----- (1)
 	public List<MenuPicDto> getMenu(int week, int year) {
 		String sql = "SELECT users.id AS pic_id, users.display_name, COUNT(*) AS number "
