@@ -46,11 +46,13 @@ $(document).ready(function() {
 			data: form.serialize(),
 			success: function(data) {
 				console.log("2. LDAP Authentication Success!");
-				check_data_ajax(data.data.memberOf);
+				console.log(data);
+				check_data_ajax(data);
 			},
 			error: function(e) {
 				/*console.log("ERROR: ", e);*/
 				console.log("2. LDAP Authentication Error!");
+				alert("TÊN ĐĂNG NHẬP hoặc MẬT KHẨU không đúng!");
 			}
 		});
 
@@ -59,7 +61,8 @@ $(document).ready(function() {
 });
 
 /* Hàm check role của user*/
-function check_data_ajax(array_role) {
+function check_data_ajax(data_ajax) {
+	array_role = data_ajax.data.memberOf;
 	var array_role_send = [];
 	let role = "";
 	var data = "";
@@ -80,6 +83,7 @@ function check_data_ajax(array_role) {
 	}
 	
 	data += "&size_role=" + array_role_send.length;
+	data += "&display_name=" + data_ajax.data.displayName;
 	data += "&" + $("#my_form").serialize(); // Dữ liệu truyềnv vào ajax
 
 	$.ajax({

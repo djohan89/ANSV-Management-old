@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Hashtable;
-import java.util.List;
 
 import javax.naming.AuthenticationException;
 import javax.naming.AuthenticationNotSupportedException;
@@ -21,12 +20,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import vn.ansv.Entity.Users;
 import vn.ansv.Service.RoleServiceImpl;
 import vn.ansv.Service.User.UsersServiceImpl;
 
@@ -117,18 +116,50 @@ public class LoginController {
 	
 	@RequestMapping(value = "/compare_role_user", method = RequestMethod.POST)
 	public @ResponseBody String compareRole(HttpServletRequest request) {
+		String[] role_accept = {"ROLE_ADMIN", "ROLE_CEO", "ROLE_AM", "ROLE_PM", "ROLE_MEMBER"};
+		
 		String result = "0";
 		String username = request.getParameter("username");
 		String role = "";
 		String size_role = request.getParameter("size_role");
+		String display_name = request.getParameter("display_name");
 		int check = 0;
+		int check_status = 0;
 		
 		/* int check = usersService.checkUsersRoleExist(username, role); */
 		
 		for (int i = 1; i <= Integer.parseInt(size_role); i++) {
 			role = request.getParameter("role"+i);
-			if (usersService.checkUsersRoleExist(username, role) == 1) {
-				check++;
+			// Vòng lặp kiểm tra role lớn nhất user có, so sánh với role được cấp trên database => Nếu khác, thực hiện update role mới trên database
+			for (int j = 0; j < 5; j++) {
+			    if (role.equals(role_accept[j]) == true && check_status == 0) {
+			    	check++;
+			    	check_status++;
+			    	System.out.println("OK  for j - 0");
+			    	
+			    	// Kiểm tra user trên database
+			    	if (usersService.checkUserExist(username) == 1) {
+			    		System.out.println("OK  for j - 1");
+			    		// Nếu đã tồn tại => So sánh role của user đó
+			    		if (usersService.checkUsersRoleExist(username, role) != 1) {
+			    			// Nếu khác => Thực hiện update role mới
+			    			usersService.updateRoleByUser(username, role);
+						}
+			    	} else {
+			    		System.out.println("OK  for j - 2");
+			    		// Nếu chưa tồn tại => Tạo mới user và role cho user đó
+			    		Users data_user_insert = new Users();
+			    		data_user_insert.setId(String.valueOf(usersService.count() + 1));
+			    		data_user_insert.setUsername(username);
+			    		data_user_insert.setPassword("{noop}");
+			    		data_user_insert.setDisplay_name(display_name);
+			    		data_user_insert.setEnabled(1);
+			    		data_user_insert.setCreated_by("System");
+			    		
+			    		usersService.save(data_user_insert); // Lưu user
+			    		usersService.saveRoleForUser(username, role); // Cấp role cho user
+			    	}
+			    }
 			}
 		}
 		

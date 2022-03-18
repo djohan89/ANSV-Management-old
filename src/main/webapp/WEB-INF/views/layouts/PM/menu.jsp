@@ -16,17 +16,17 @@
 	<div class="sidebar">
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel mt-2 pb-1 mb-3 d-flex">
-			<ul class="nav nav-list nav-menu-list-style">
-                <li>
-                	<label class="tree-toggle nav-header" id="display_name">
-                		<div class="image">
+			<ul class="nav nav-list nav-menu-list-style w-100">
+                <li class="w-100">
+                	<label class="tree-toggle nav-header w-100" id="display_name">
+                		<div class="image" style="width: 20%!important;">
 							<img src="<c:url value='/assets/user/dist/img/user2-160x160.jpg' />"
 								class="img-circle elevation-2" alt="User Image">
 						</div>
-						<div class="info" style="overflow: visible;">
+						<div class="info" style="overflow: visible; width: 80%!important;">
 							<a href="javascript:void(0)" class="d-block">
 								${display_name}
-								<i class="right fas fa-angle-left" id="arrow_icon" style="margin-left: 13px;"></i>
+								<i class="fas fa-angle-left" id="arrow_icon" style="float: right; margin-top: 5px;"></i>
 							</a>
 						</div>
                 	</label>

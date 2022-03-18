@@ -1,5 +1,6 @@
 package vn.ansv.Dao;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,10 +10,42 @@ import vn.ansv.Dto.UsersDto;
 import vn.ansv.Dto.UsersDtoMapper;
 import vn.ansv.Dto.Menu.MenuPicDto;
 import vn.ansv.Dto.Menu.MenuPicDtoMapper;
+import vn.ansv.Entity.Users;
 
 @Repository
 public class UsersDao extends BaseDao {
+	
+	private LocalDateTime _now = LocalDateTime.now();
+	
+	// Đếm tổng số bản ghi
+	public int count() {
+		String sql = "SELECT COUNT(*) FROM users";
+		int result = _jdbcTemplate.queryForObject(sql, Integer.class);
+		return result;
+	}
 
+	// Insert user
+	public void save(Users users) {
+		String sql = "INSERT INTO users (id, username, password, display_name, enabled, created_at, created_by) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
+		_jdbcTemplate.update(sql, users.getId(), users.getUsername(), users.getPassword(), users.getDisplay_name(), 
+				users.getEnabled(), _now, users.getCreated_by());
+	}
+	
+	// Thêm role cho user
+	public void saveRoleForUser(String username, String role) {
+		String sql = "INSERT INTO users_roles (user, role) VALUES ((SELECT users.id FROM users WHERE users.username = ?), (SELECT role.id FROM role WHERE role.name = ?))";
+		_jdbcTemplate.update(sql, username, role);
+	}
+	
+	// Cập nhật role của user
+	public void updateRoleByUser(String username, String role) {
+		String sql = "UPDATE users_roles "
+				+ "SET users_roles.role = (SELECT role.id FROM role WHERE role.name = ?) "
+				+ "WHERE user = (SELECT users.id FROM users WHERE users.username = ?)";
+		_jdbcTemplate.update(sql, role, username);
+	}
+	
 	public List<UsersDto> getAllUsers() {
 		List<UsersDto> list = new ArrayList<UsersDto>();
 		String sql = "SELECT users.id,users.username, "
@@ -42,12 +75,29 @@ public class UsersDao extends BaseDao {
 		return result;
 	}
 	
-	// Kiểm tra role trên LDAP với role sãn có trên database
-	public int checkUsersRoleExist(String username, String role) {
-		String sql = "SELECT EXISTS(SELECT * FROM role "
+	// Kiểm tra username đã tồn tại trên database chưa
+	public int checkUserExist(String username) {
+		String sql = "SELECT count(*) FROM users WHERE username = ?";
+		int result = _jdbcTemplate.queryForObject(sql, Integer.class, username);
+		return result;
+	}
+	
+	// Truy vấn role của user
+	public String findRoleByUser(String username) {
+		String sql = "SELECT role.name FROM role "
 				+ "INNER JOIN users_roles ON role.id = users_roles.role "
 				+ "INNER JOIN users ON users_roles.user = users.id "
-				+ "WHERE users.username = ? AND role.name = ?)";
+				+ "WHERE users.username = ?";
+		String result = _jdbcTemplate.queryForObject(sql, String.class, username);
+		return result;
+	}
+	
+	// Kiểm tra role trên LDAP với role sãn có trên database
+	public int checkUsersRoleExist(String username, String role) {
+		String sql = "SELECT count(*) FROM role "
+				+ "INNER JOIN users_roles ON role.id = users_roles.role "
+				+ "INNER JOIN users ON users_roles.user = users.id "
+				+ "WHERE users.username = ? AND role.name = ?";
 		int result = _jdbcTemplate.queryForObject(sql, Integer.class, username, role);
 		return result;
 	}
