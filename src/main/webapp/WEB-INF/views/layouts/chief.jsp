@@ -174,6 +174,11 @@
 	    .card-header{
 	      background-color: rgb(0 0 0 / 25%);
 	    }
+	    .overflow{
+	    	height: 400px;
+	    	overflow: auto;
+	    	border-bottom: 1px solid lightgray;
+	    }
 	    
 	    .dataTables_scrollHeadInner {
 			min-width: 96%;
