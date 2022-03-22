@@ -81,7 +81,6 @@ public class AccountManagerController extends AccountManagerBaseController {
 	@RequestMapping(value = { "/create_project/{week}_{year}" }, method = RequestMethod.GET)
 	public ModelAndView AmCreateProject(@PathVariable int week, @PathVariable int year, Model model, HttpSession session) {
 		String pic_id = (String) session.getAttribute("user_id");
-		int Project_new_id = _projectService.getMaxId() + 1;
 		InitAM(week, year, pic_id);
 		
 		Date now = new Date();   
@@ -91,7 +90,6 @@ public class AccountManagerController extends AccountManagerBaseController {
 		
 		_mvShare.addObject("current_week", current_week);
 		_mvShare.addObject("current_year", current_year);
-		_mvShare.addObject("project_new_id", Project_new_id);
 		FormAM(); // Gọi hàm lấy dữ liệu cần thiết cho form báo cáo đầu ra
 		_mvShare.setViewName("AM/create_project");
 		return _mvShare;
@@ -101,7 +99,13 @@ public class AccountManagerController extends AccountManagerBaseController {
 	@RequestMapping("/insertProject/{week}_{year}")
 	public String doInsertProject(@PathVariable int week, @PathVariable int year, @ModelAttribute("Project") Project project, Model model, HttpSession session) {
 		String pic_id = (String) session.getAttribute("user_id");
-		int project_id = project.getId();
+		int project_id = _projectService.getMaxId() + 1;
+		project.setId(project_id);
+		
+		if (pic_id == null) {
+			return "redirect:/login?message=session_error";
+		}
+		
 		project.setInteractive("create");
 		_projectService.save(project); // Insert dữ liệu dự án mới
 		_picService.save(project_id, pic_id); // Insert PIC tương ứng của dự án
@@ -210,6 +214,37 @@ public class AccountManagerController extends AccountManagerBaseController {
 		FormAM(); // Gọi hàm lấy dữ liệu cần thiết cho form báo cáo đầu ra
 		_mvShare.setViewName("AM/deployment");
 		return _mvShare;
+	}
+	
+	// Test insert triển khai
+	@RequestMapping("/deployment_test")
+	public ModelAndView deploymentCreate(@ModelAttribute("Project") Project project, HttpSession session, Model model) {
+		String pic_id = (String) session.getAttribute("user_id");
+		int week = 11;
+		int year = 2022;
+		InitAM(week, year, pic_id);
+		
+		model.addAttribute("project", new Project());
+		
+		_mvShare.addObject("pic_form", _usersService.getAllPicForm());
+		FormAM(); // Gọi hàm lấy dữ liệu cần thiết cho form báo cáo đầu ra
+		_mvShare.setViewName("AM/deployment_test_2");
+		return _mvShare;
+	}
+	
+	// Test: Thực thi chuyển giai đoạn dự án
+	@RequestMapping("/createDeployment_test")
+	public String doDeploymentTest(@ModelAttribute("Project") Project project, Model model, HttpSession session) {
+		String am_id = (String) session.getAttribute("user_id");
+		
+		int Project_new_id = _projectService.getMaxId() + 1;
+		project.setId(Project_new_id);
+		
+		_projectService.saveDeploymentTest(project); // Lưu dự án Triển khai (cột note sẽ chứa "id" của dự án giai đoạn trước)
+		_picService.save(project.getId(), am_id); // Insert Acount Manager (người tạo dự án)
+		_picService.save(project.getId(), project.getNote()); // Insert PIC được uỷ quyền thực hiện
+		
+		return "redirect:/AM/deployment_test?error=create_success";
 	}
 	
 	// Thực thi chuyển giai đoạn dự án

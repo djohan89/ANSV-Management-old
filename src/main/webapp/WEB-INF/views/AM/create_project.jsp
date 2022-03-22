@@ -73,7 +73,6 @@
 										<div class="input-group-prepend">
 											<label class="input-group-text fw-400" >Tên dự án</label>
 										</div>
-										<form:hidden path="id" value="${project_new_id}" />
 										<form:input path="name" class="form-control" placeholder="Tên dự án..." />
 									</div>
 									

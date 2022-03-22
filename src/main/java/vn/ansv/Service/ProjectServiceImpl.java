@@ -117,7 +117,7 @@ public class ProjectServiceImpl implements IProjectService {
 			}
 		}
 		// Thống kê ưu tiên thứ hai
-		if (list.get(i).getPriority().contains("Seccond")) {
+		if (list.get(i).getPriority().contains("Second")) {
 			if (list.get(i).getStatus().contains("High")) {
 				System.out.println(i + ", " + "Seccond - High");
 				thong_ke.set(position + 3, thong_ke.get(position + 3)+1);
@@ -185,6 +185,11 @@ public class ProjectServiceImpl implements IProjectService {
 
 	public Project getFormDeployment(int id) {
 		return projectDao.getFormDeployment(id);
+	}
+	
+	// Test: Insert dự án (Triển khai)
+	public void saveDeploymentTest(Project project){
+		projectDao.saveDeploymentTest(project);
 	}
 	
 	// Insert dự án (Triển khai)

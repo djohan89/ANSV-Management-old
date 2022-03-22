@@ -338,6 +338,18 @@ public class ProjectDao extends BaseDao {
 				project.getKet_qua_thuc_hien_ke_hoach(), id, _now);
 	}
 	
+	// Tạo dụ án (Triển khai)
+	public void saveDeploymentTest(Project project) {
+		int week = 11;
+		int year = 2022;
+		String interactive = "deployment";
+		String sql = "INSERT INTO project (id, project_type, priority, project_status, customer, week, year, name, "
+				+ "tong_gia_tri_thuc_te, tinh_trang_va_ke_hoach_chi_tiet, ket_qua_thuc_hien_ke_hoach, interactive, created_at) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		_jdbcTemplate.update(sql, project.getId(), project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), week, year, project.getName(), 
+				project.getTong_gia_tri_thuc_te(), project.getTinh_trang_va_ke_hoach_chi_tiet(), project.getKet_qua_thuc_hien_ke_hoach(), interactive, _now);
+	}
+	
 	public void update(Project project) {
 		String sql = "UPDATE project SET project_type = ?, priority = ?, project_status = ?, customer = ?, week = ?, year = ?, name = ?, description = ?, "
 				+ "tong_muc_dau_tu_du_kien = ?, hinh_thuc_dau_tu = ?, muc_do_kha_thi = ?, phan_tich_SWOT = ?, tinh_trang_va_ke_hoach_chi_tiet = ?, "

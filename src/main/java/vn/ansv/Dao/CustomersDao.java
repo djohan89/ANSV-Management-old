@@ -36,7 +36,7 @@ public class CustomersDao extends BaseDao {
 	}
 	
 	public List<Customer> getAllCustomerForm(){
-		String sql ="SELECT id, name FROM customers WHERE enabled = 1";
+		String sql ="SELECT id, name FROM customers WHERE enabled = 1 ORDER BY name";
 		
 		return _jdbcTemplate.query(sql, new CustomerMapper() {
 			public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -66,8 +66,8 @@ public class CustomersDao extends BaseDao {
 	
 	// Thêm khách hàng
 	public void save(Customer customer) {
-		String sql = "INSERT INTO customers (name, enabled, created_by, created_at) VALUES (?, 1, ?, ?)";
-		_jdbcTemplate.update(sql, customer.getName(), customer.getCreated_by(), _now);
+		String sql = "INSERT INTO customers (name, enabled, created_by) VALUES (?, 1, ?)";
+		_jdbcTemplate.update(sql, customer.getName(), customer.getCreated_by());
 	}
 	
 	// Cập nhật khách hàng

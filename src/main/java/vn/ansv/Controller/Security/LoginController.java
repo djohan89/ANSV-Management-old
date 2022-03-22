@@ -97,6 +97,9 @@ public class LoginController {
 			if (message.equals("authorization_error")) {
 				model.addAttribute("message", "(*) Không đủ quyền truy cập.");
 			}
+			if (message.equals("session_error")) {
+				model.addAttribute("message", "(*) Lỗi thông tin.<br>Vui lòng đăng nhập lại!");
+			}
 		}
 		return "security/login";
 	}
