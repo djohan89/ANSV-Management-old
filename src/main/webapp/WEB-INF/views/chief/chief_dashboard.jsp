@@ -96,19 +96,21 @@
 																	
 																	<div class="table-responsive">
 																		<div class="row" style="width: 99.9%;">
-																			<div class="col-6">
-																				<p>
-																					<b>Phạm vi cung cấp:</b><br/>
-																					<span class="d-flex">
-																						<i class="far fa-hand-point-right"></i>
-																						<span class="ml-2 pl-2 border-left border-primary">${project_item.pham_vi_cung_cap}</span>	
-																					</span>
-																				</p><hr>
+																			<div class="col-6 overflow">
+																				<c:if test="${not empty project_item.pham_vi_cung_cap}">
+																					<p>
+																						<b>Phạm vi cung cấp:</b><br/>
+																						<span class="d-flex">
+																							<i class="far fa-hand-point-right"></i>
+																							<span class="ml-2 pl-2 border-left border-primary">${project_item.pham_vi_cung_cap}</span>	
+																						</span>
+																					</p><hr>
+																				</c:if>
 																				<p>
 																					<b>Tình trạng:</b><br/>
-																					<span class="d-flex">
+																					<span class="d-flex ">
 																						<i class="far fa-hand-point-right"></i>
-																						<span class="ml-2 pl-2 border-left border-primary">${project_item.tinh_trang_va_ke_hoach_chi_tiet}</span>
+																						<span class="ml-2 pl-2 border-left border-primary ">${project_item.tinh_trang_va_ke_hoach_chi_tiet}</span>
 																					</span>
 																				</p>
 																			</div>
@@ -174,9 +176,11 @@
 																			</div>
 																		</div>
 													            	</div>
+													            	
 													            	<div class="row">
-													            		<div class="col-12">
+													            		<div class="col-12 pt-3">
 													                		<p class="text-justify">
+													                		
 													                			<b>Kết quả thực hiện kế hoạch:</b><br/>
 													                			${project_item.ket_qua_thuc_hien_ke_hoach}
 													                		</p>
@@ -688,14 +692,14 @@
 	       autoplayHoverPause: true
 	   	});
 	    
-	  	owl.on('mousewheel', '.owl-stage', function (e) {
+	  	/* owl.on('mousewheel', '.owl-stage', function (e) {
 	        if (e.deltaY>0) {
 	            owl.trigger('next.owl');
 	        } else {
 	            owl.trigger('prev.owl');
 	        }
 	        e.preventDefault();
-	    });
+	    }); */
 		
 	  	$('#myModal').modal('show');
 		$('div.dataTables_wrapper').addClass("change_font_size");
