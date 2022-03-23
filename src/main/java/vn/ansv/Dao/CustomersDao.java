@@ -66,8 +66,8 @@ public class CustomersDao extends BaseDao {
 	
 	// Thêm khách hàng
 	public void save(Customer customer) {
-		String sql = "INSERT INTO customers (name, enabled, created_by) VALUES (?, 1, ?)";
-		_jdbcTemplate.update(sql, customer.getName(), customer.getCreated_by());
+		String sql = "INSERT INTO customers (name, enabled, created_by, created_at) VALUES (?, 1, ?, ?)";
+		_jdbcTemplate.update(sql, customer.getName(), customer.getCreated_by(), _now);
 	}
 	
 	// Cập nhật khách hàng
