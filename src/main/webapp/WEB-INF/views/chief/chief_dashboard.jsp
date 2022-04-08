@@ -319,6 +319,7 @@
 											<th style="width: 14%;">Priority</th>
 											<th>Nhóm</th>
 											<th style="width: 22%;">PIC</th>
+											<th style="width: 14%;"></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -364,6 +365,21 @@
 													</td>
 													<td>${project_item.customer }</td>
 													<td>${project_item.pic }</td>
+													<td>
+														<c:if test="${project_item.week != current_week && project_item.week != (current_week - 1)}">
+																
+														</c:if>
+														<c:if test="${project_item.week == current_week || project_item.week == (current_week - 1)}">
+															<c:if test="${project_item.week < 10 }">
+																<a href="<c:url value='/chief/update_project_tk/0${project_item.week}_${year}_${project_item.id}' />" 
+																	class="float-right btn btn-warning">Update</a>
+															</c:if>
+															<c:if test="${project_item.week >= 10 }">
+																<a href="<c:url value='/chief/update_project_tk/${project_item.week}_${year}_${project_item.id}' />" 
+																	class="float-right btn btn-warning">Update</a>
+															</c:if>
+														</c:if>
+													</td>
 												</tr>
 											</c:if>
 										</c:forEach>	
@@ -399,6 +415,7 @@
 											<th style="width: 14%;">Priority</th>
 											<th>Nhóm</th>
 											<th style="width: 22%;">PIC</th>
+											<th style="width: 10%;"></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -444,6 +461,21 @@
 													</td>
 													<td>${project_item.customer }</td>
 													<td>${project_item.pic }</td>
+													<td>
+														<c:if test="${project_item.week != current_week && project_item.week != (current_week - 1)}">
+																
+														</c:if>
+														<c:if test="${project_item.week == current_week || project_item.week == (current_week - 1)}">
+															<c:if test="${project_item.week < 10 }">
+																<a href="<c:url value='/chief/update_project/0${project_item.week}_${year}_${project_item.id}' />" 
+																	class="float-right btn btn-warning">Update</a>
+															</c:if>
+															<c:if test="${project_item.week >= 10 }">
+																<a href="<c:url value='/chief/update_project/${project_item.week}_${year}_${project_item.id}' />" 
+																	class="float-right btn btn-warning">Update</a>
+															</c:if>
+														</c:if>
+													</td>
 												</tr>
 											</c:if>
 										</c:forEach>
@@ -477,6 +509,7 @@
 											<th style="width: 14%;">Priority</th>
 											<th>Nhóm</th>
 											<th style="width: 22%;">PIC</th>
+											<th style="width: 10%;"></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -523,6 +556,21 @@
 													</td>
 													<td>${project_item.customer }</td>
 													<td>${project_item.pic }</td>
+													<td>
+														<c:if test="${project_item.week != current_week && project_item.week != (current_week - 1)}">
+																
+														</c:if>
+														<c:if test="${project_item.week == current_week || project_item.week == (current_week - 1)}">
+															<c:if test="${project_item.week < 10 }">
+																<a href="<c:url value='/chief/update_project/0${project_item.week}_${year}_${project_item.id}' />" 
+																	class="float-right btn btn-warning">Update</a>
+															</c:if>
+															<c:if test="${project_item.week >= 10 }">
+																<a href="<c:url value='/chief/update_project/${project_item.week}_${year}_${project_item.id}' />" 
+																	class="float-right btn btn-warning">Update</a>
+															</c:if>
+														</c:if>
+													</td>
 												</tr>
 											</c:if>
 										</c:forEach>

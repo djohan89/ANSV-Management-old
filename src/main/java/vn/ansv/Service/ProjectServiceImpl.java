@@ -48,6 +48,13 @@ public class ProjectServiceImpl implements IProjectService {
 	public Project getMorebyId(int id, String pic) {
 		return projectDao.getMorebyId(id, pic);
 	}
+	public Project getProjectTkById(int id) {
+		return projectDao.getProjectTkById(id);
+	}
+	
+	public Project getProjectById(int id) {
+		return projectDao.getProjectById(id);
+	}
 	
 	public List<ProjectDetailDto> getByIdAndPic(int id, String pic) {
 		return projectDao.getByIdAndPic(id,pic);
