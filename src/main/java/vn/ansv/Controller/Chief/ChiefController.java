@@ -61,6 +61,9 @@ public class ChiefController extends ChiefBaseController {
 	public ModelAndView chiefDetail(@PathVariable int week, @PathVariable int year, @PathVariable int id) {
 		
 		InitCEO(week,year);
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+		_mvShare.addObject("current_week", current_week);
 		_mvShare.addObject("detail",_projectService.getById(id));
 		_mvShare.setViewName("chief/detail");
 		

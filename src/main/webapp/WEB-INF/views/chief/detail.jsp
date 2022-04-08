@@ -57,7 +57,22 @@
 											<td>${detail.ket_qua_thuc_hien_ke_hoach}</td>
 										</tr>
 									</table>
+									<div>
+										<c:if test="${detail.week != current_week && detail.week != (current_week - 1)}"></c:if>
+										<c:if test="${detail.week == current_week || detail.week == (current_week - 1)}">
+											<c:if test="${detail.week < 10 }">
+												<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/0${detail.week}_${detail.year}_${detail.id}' />" 
+													class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
+											</c:if>
+											<c:if test="${detail.week >= 10 }">
+												<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/${detail.week}_${detail.year}_${detail.id}' />" 
+													class="float-right btn btn-warning"><i class="fas fa-edit"></i></a>
+											</c:if>
+										</c:if>
+									</div>
 								</div>
+								
+								
 							</div>
 							<div class="col-md-5">
 								<div class="table-responsive-sm">
@@ -122,6 +137,7 @@
 								</div>
 							</div>
 						</div>
+						
 						
 						<%-- <div class="row">
 							<div class="col-md-12 d-flex flex-row-reverse">
@@ -188,6 +204,19 @@
 											<td>${detail.priority }</td>
 										</tr>
 									</table>
+									<div>
+										<c:if test="${detail.week != current_week && detail.week != (current_week - 1)}"></c:if>
+										<c:if test="${detail.week == current_week || detail.week == (current_week - 1)}">
+											<c:if test="${detail.week < 10 }">
+												<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project/0${detail.week}_${detail.year}_${detail.id}' />" 
+													class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
+											</c:if>
+											<c:if test="${detail.week >= 10 }">
+												<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project/${detail.week}_${detail.year}_${detail.id}' />" 
+													class="float-right btn btn-warning"><i class="fas fa-edit"></i></a>
+											</c:if>
+										</c:if>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -277,6 +306,19 @@
 											<td>${detail.priority }</td>
 										</tr>
 									</table>
+									<div>
+										<c:if test="${detail.week != current_week && detail.week != (current_week - 1)}"></c:if>
+										<c:if test="${detail.week == current_week || detail.week == (current_week - 1)}">
+											<c:if test="${detail.week < 10 }">
+												<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project/0${detail.week}_${detail.year}_${detail.id}' />" 
+													class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
+											</c:if>
+											<c:if test="${detail.week >= 10 }">
+												<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project/${detail.week}_${detail.year}_${detail.id}' />" 
+													class="float-right btn btn-warning"><i class="fas fa-edit"></i></a>
+											</c:if>
+										</c:if>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
