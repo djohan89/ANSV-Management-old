@@ -372,11 +372,11 @@
 														<c:if test="${project_item.week == current_week || project_item.week == (current_week - 1)}">
 															<c:if test="${project_item.week < 10 }">
 																<a href="<c:url value='/chief/update_project_tk/0${project_item.week}_${year}_${project_item.id}' />" 
-																	class="float-right btn btn-warning">Update</a>
+																	class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
 															</c:if>
 															<c:if test="${project_item.week >= 10 }">
 																<a href="<c:url value='/chief/update_project_tk/${project_item.week}_${year}_${project_item.id}' />" 
-																	class="float-right btn btn-warning">Update</a>
+																	class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
 															</c:if>
 														</c:if>
 													</td>
@@ -468,11 +468,11 @@
 														<c:if test="${project_item.week == current_week || project_item.week == (current_week - 1)}">
 															<c:if test="${project_item.week < 10 }">
 																<a href="<c:url value='/chief/update_project/0${project_item.week}_${year}_${project_item.id}' />" 
-																	class="float-right btn btn-warning">Update</a>
+																	class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
 															</c:if>
 															<c:if test="${project_item.week >= 10 }">
 																<a href="<c:url value='/chief/update_project/${project_item.week}_${year}_${project_item.id}' />" 
-																	class="float-right btn btn-warning">Update</a>
+																	class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
 															</c:if>
 														</c:if>
 													</td>
@@ -563,11 +563,11 @@
 														<c:if test="${project_item.week == current_week || project_item.week == (current_week - 1)}">
 															<c:if test="${project_item.week < 10 }">
 																<a href="<c:url value='/chief/update_project/0${project_item.week}_${year}_${project_item.id}' />" 
-																	class="float-right btn btn-warning">Update</a>
+																	class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
 															</c:if>
 															<c:if test="${project_item.week >= 10 }">
 																<a href="<c:url value='/chief/update_project/${project_item.week}_${year}_${project_item.id}' />" 
-																	class="float-right btn btn-warning">Update</a>
+																	class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
 															</c:if>
 														</c:if>
 													</td>
