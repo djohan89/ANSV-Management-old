@@ -14,6 +14,7 @@ public class DashboardProjectDto {
 	private String tinh_trang_va_ke_hoach_chi_tiet;
 	private int week;
 	
+	
 	public DashboardProjectDto() {
 		super();
 	}

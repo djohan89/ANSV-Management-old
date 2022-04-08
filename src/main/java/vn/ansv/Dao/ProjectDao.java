@@ -189,6 +189,7 @@ public class ProjectDao extends BaseDao {
 		
 	}
 	
+	
 	/*Truy vấn dữ liệu chi tiết của sản phẩm theo id project của mỗi PIC */
 	public List<ProjectDetailDto> getByIdAndPic(int id, String pic){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
@@ -460,5 +461,46 @@ public class ProjectDao extends BaseDao {
 				project.getKet_qua_thuc_hien_ke_hoach(), project.getNote(), project.getInteractive() , _now);
 	}
 /* ===== Cuối: Project Manager ===== */
+	
+/* ===== Đầu: CEO Manager ===== */
+//	Lấy dữ liệu project triển khai theo id
+	public Project getProjectTkById(int id) {
+		Project object = new Project();
+		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, projects_status.id AS project_status, customers.id AS customer, "
+				+ "project.week, project.year, project.name, project.projects_id AS project_id, project.ma_so_ke_toan, project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, project.DAC, "
+				+ "project.PAC, project.FAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, project.so_tien_PAC, "
+				+ "project.ke_hoach_thanh_toan_PAC, project.so_tien_FAC, project.ke_hoach_thanh_toan_FAC, project.tinh_trang_va_ke_hoach_chi_tiet, project.ket_qua_thuc_hien_ke_hoach "
+				+ "FROM project "
+				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
+				+ "INNER JOIN priorities ON project.priority = priorities.id "
+				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
+				+ "INNER JOIN customers ON project.customer = customers.id "
+				+ "INNER JOIN pic ON project.id = pic.project_id "
+				+ "WHERE project.id = ? LIMIT 1";
+		object = _jdbcTemplate.queryForObject(sql, new ProjectDetailMoreMapper(), id);
+		return object;
+		
+	}
+	
+//	Lấy dữ liệu project viễn thông hoặc chuyển đổi số theo id
+	public Project getProjectById(int id){
+		Project object = new Project();
+		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, projects_status.id AS project_status, customers.id AS customer, "
+				+ "project.week, project.year, project.name, project.description, project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu, project.muc_do_kha_thi, "
+				+ "project.phan_tich_SWOT, project.tinh_trang_va_ke_hoach_chi_tiet, project.ket_qua_thuc_hien_ke_hoach, project.note "
+				+ "FROM project "
+				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
+				+ "INNER JOIN priorities ON project.priority = priorities.id "
+				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
+				+ "INNER JOIN customers ON project.customer = customers.id "
+				+ "INNER JOIN pic ON project.id = pic.project_id "
+				+ "WHERE project.id = ?";
+		
+		object = _jdbcTemplate.queryForObject(sql, new ProjectDetailLessMapper(), id);
+		return object;
+		
+	}
+	
+/* ===== Cuối: CEO Manager ===== */
 
 }
