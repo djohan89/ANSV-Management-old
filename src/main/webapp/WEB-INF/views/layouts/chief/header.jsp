@@ -30,9 +30,9 @@
 			  </a>
 		</li>
 		<li class="nav-item"  id="li_1" >
-			<c:forEach items="${ project_types }" var="types" varStatus="type_status">
+			<c:forEach items="${project_types}" var="types" varStatus="type_status">
 				<div class="row">
-					<div class="col-12"><b>Báo cáo - ${ types.name } (tuần ${week})</b></div>
+					<div class="col-12"><b>Báo cáo ${ types.name } (tuần ${week})</b></div>
 					
 					<c:url value="${ (types.id - 1) * 10 }" var="position"/> <!-- Tạo biến đánh số vị trí trong mảng thống kê -->
 					
@@ -71,10 +71,10 @@
 	<!-- Right navbar links -->
 	<ul class="navbar-nav ml-auto" id="thong-ke">
 		
-		<li class="nav-item text-uppercase" style="width: 650px;" id="li_2">
-			<c:forEach items="${ project_types }" var="types" varStatus="type_status">
+		<li class="nav-item text-uppercase" style="width: 700px;" id="li_2">
+			<c:forEach items="${project_types}" var="types" varStatus="type_status">
 				<div class="row">
-					<div class="col-md-5"><b>Báo cáo - ${ types.name } (tuần ${week})</b></div>
+					<div class="col-md-5"><b>Báo cáo ${ types.name } (tuần ${week})</b></div>
 					
 					<c:url value="${ (types.id - 1) * 10 }" var="position"/> <!-- Tạo biến đánh số vị trí trong mảng thống kê -->
 					
