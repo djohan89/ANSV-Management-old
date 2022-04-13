@@ -10,7 +10,7 @@
 	</div>
 </footer> --%>
 
-<footer class="main-footer">
+<footer class="main-footer mt-5">
 	<strong> <a href="http://www.ansv.vn/" style="color: #ff8b3e;">ANSV.vn</a>
 	</strong>
 	<div class="float-right d-none d-sm-inline-block">

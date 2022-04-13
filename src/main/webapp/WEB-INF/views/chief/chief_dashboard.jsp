@@ -349,18 +349,35 @@
 														</a>
 													</td>
 													<td>
+													<c:if test="${week < 10 }">
 														<c:if test="${project_item.status == 'High'}">
-															<button type="button" class="btn btn-danger w-100"><font size="-1">${project_item.priority }</font></button>
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-danger w-100"><font size="-1">${project_item.priority }</font></a>
 														</c:if>
 														<c:if test="${project_item.status == 'Medium'}">
-															<button type="button" class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></button>
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></a>
 														</c:if>
 														<c:if test="${project_item.status == 'Low'}">
-															<button type="button" class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></button>
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></a>
 														</c:if>
 														<c:if test="${project_item.status == 'Complete'}">
-															<button type="button" class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></button>
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></a>
 														</c:if>
+													</c:if>
+													<c:if test="${week >=10 }">
+														<c:if test="${project_item.status == 'High'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-danger w-100"><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+														<c:if test="${project_item.status == 'Medium'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+														<c:if test="${project_item.status == 'Low'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+														<c:if test="${project_item.status == 'Complete'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+													</c:if>
+														
 													</td>
 													<td>${project_item.customer }</td>
 													<td>${project_item.pic }</td>
@@ -430,18 +447,35 @@
 														</a>
 													</td>
 													<td>
+													<c:if test="${week < 10 }">
 														<c:if test="${project_item.status == 'High'}">
-															<button type="button" class="btn btn-danger w-100" ><font size="-1">${project_item.priority }</font></button>
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-danger w-100"><font size="-1">${project_item.priority }</font></a>
 														</c:if>
 														<c:if test="${project_item.status == 'Medium'}">
-															<button type="button" class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></button>
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></a>
 														</c:if>
 														<c:if test="${project_item.status == 'Low'}">
-															<button type="button" class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></button>
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></a>
 														</c:if>
 														<c:if test="${project_item.status == 'Complete'}">
-															<button type="button" class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></button>
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></a>
 														</c:if>
+													</c:if>
+													<c:if test="${week >=10 }">
+														<c:if test="${project_item.status == 'High'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-danger w-100"><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+														<c:if test="${project_item.status == 'Medium'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+														<c:if test="${project_item.status == 'Low'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+														<c:if test="${project_item.status == 'Complete'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+													</c:if>
+														
 													</td>
 													<td>${project_item.customer }</td>
 													<td>${project_item.pic }</td>
@@ -511,18 +545,35 @@
 														</a>
 													</td>
 													<td>
-														<c:if test="${project_item.status =='High' }">
-															<button type="button" class="btn btn-danger w-100" ><font size="-1">${project_item.priority }</font></button>
+													<c:if test="${week < 10 }">
+														<c:if test="${project_item.status == 'High'}">
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-danger w-100"><font size="-1">${project_item.priority }</font></a>
 														</c:if>
-														<c:if test="${project_item.status =='Medium' }">
-															<button type="button" class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></button>
+														<c:if test="${project_item.status == 'Medium'}">
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></a>
 														</c:if>
-														<c:if test="${project_item.status =='Low' }">
-															<button type="button" class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></button>
+														<c:if test="${project_item.status == 'Low'}">
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></a>
 														</c:if>
-														<c:if test="${project_item.status =='Complete'}">
-															<button type="button" class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></button>
-														</c:if> 
+														<c:if test="${project_item.status == 'Complete'}">
+															<a href="<c:url value='/chief/detail/0${week}_${year}_${project_item.id}' />"  class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+													</c:if>
+													<c:if test="${week >=10 }">
+														<c:if test="${project_item.status == 'High'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-danger w-100"><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+														<c:if test="${project_item.status == 'Medium'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-warning w-100" ><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+														<c:if test="${project_item.status == 'Low'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-success w-100" ><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+														<c:if test="${project_item.status == 'Complete'}">
+															<a href="<c:url value='/chief/detail/${week}_${year}_${project_item.id}' />"  class="btn btn-primary w-100" ><font size="-1">${project_item.priority }</font></a>
+														</c:if>
+													</c:if>
+														
 													</td>
 													<td>${project_item.customer }</td>
 													<td>${project_item.pic }</td>
