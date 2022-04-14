@@ -44,9 +44,8 @@
 <link rel="stylesheet"
 	href="<c:url value='/assets/user/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' />">
 
-<!-- Daterange picker -->
-<link rel="stylesheet"
-	href="<c:url value='/assets/user/plugins/daterangepicker/daterangepicker.css' />">
+<!-- Datepicker -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 
 <!-- === Select 2 === -->
 	<link href="<c:url value="/assets/user/vendor/select2/css/select2.min.css" />" rel="stylesheet" />
@@ -467,6 +466,10 @@
 				uiColor : '#F7D358',
 				height  : 100 
 		  	});
+			
+			$( ".datepickerJavascript" ).datepicker({
+				dateFormat: 'dd / mm / yy'
+			});
 			
 		});
 		
