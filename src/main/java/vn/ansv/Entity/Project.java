@@ -38,10 +38,14 @@ public class Project {
 	private double so_tien_FAC;
 	private Date ke_hoach_thanh_toan_FAC;
 	private String tinh_trang_va_ke_hoach_chi_tiet;
-	private String ket_qua_thuc_hien_ke_hoach;
+	private String ke_hoach;
 	
+	private String general_issue;
+	private String solution;
+	private String ket_qua_thuc_hien_ke_hoach;
 	private String note;
 	private String interactive;
+	
 	private Date created_at;
 
 	
@@ -97,7 +101,7 @@ public class Project {
 	public void setWeek(int week) {
 		this.week = week;
 	}
-	
+
 	public int getYear() {
 		return year;
 	}
@@ -282,6 +286,30 @@ public class Project {
 		this.tinh_trang_va_ke_hoach_chi_tiet = tinh_trang_va_ke_hoach_chi_tiet;
 	}
 
+	public String getKe_hoach() {
+		return ke_hoach;
+	}
+
+	public void setKe_hoach(String ke_hoach) {
+		this.ke_hoach = ke_hoach;
+	}
+
+	public String getGeneral_issue() {
+		return general_issue;
+	}
+
+	public void setGeneral_issue(String general_issue) {
+		this.general_issue = general_issue;
+	}
+
+	public String getSolution() {
+		return solution;
+	}
+
+	public void setSolution(String solution) {
+		this.solution = solution;
+	}
+
 	public String getKet_qua_thuc_hien_ke_hoach() {
 		return ket_qua_thuc_hien_ke_hoach;
 	}
@@ -297,7 +325,7 @@ public class Project {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
+
 	public String getInteractive() {
 		return interactive;
 	}

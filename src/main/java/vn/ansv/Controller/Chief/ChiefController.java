@@ -64,7 +64,7 @@ public class ChiefController extends ChiefBaseController {
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		_mvShare.addObject("current_week", current_week);
-		_mvShare.addObject("detail",_projectService.getById(id));
+		_mvShare.addObject("project_detail",_projectService.getById(id));
 		_mvShare.setViewName("chief/detail");
 		
 		return _mvShare;
@@ -95,8 +95,9 @@ public class ChiefController extends ChiefBaseController {
 	@RequestMapping(value = { "/chief/update_project_tk/{week}_{year}_{id}" }, method = RequestMethod.GET)
 	public ModelAndView CeoUpdateProject_tk(@PathVariable int week, @PathVariable int year, @PathVariable int id, HttpSession session, Model model) {
 	FormCEO();
-	Project project = _projectService.getProjectTkById(id);
-	model.addAttribute("project", project);
+	Project project_update = new Project();
+	project_update = _projectService.getProjectTkById(id);
+	model.addAttribute("project_update", project_update);
 		
 		
 	_mvShare.setViewName("chief/update_tk");
@@ -106,7 +107,7 @@ public class ChiefController extends ChiefBaseController {
 		
 	//Thực thi update dự án triển khai
 	@RequestMapping("chief/updateProjectTkCEO/{week}_{year}_{id}")
-	public String CeoDoUpdateProject1(@ModelAttribute("Project") Project project, @PathVariable int week,
+	public String CeoDoUpdateProject1(@ModelAttribute("Project") Project project_update, @PathVariable int week,
 			@PathVariable int year, @PathVariable int id, HttpSession session, Model model) {
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
@@ -115,8 +116,8 @@ public class ChiefController extends ChiefBaseController {
 		if (week < 10) {
 			week_link = "0" + week;
 	    }
-		_projectService.update_tk(project);
-		return "redirect:/chief/dashboard/" + week_link + "_" + year;
+		_projectService.update_tk(project_update);
+		return "redirect:/chief/detail/" + week_link + "_" + year + "_" + id;
 		
 	}
 		
@@ -144,7 +145,7 @@ public class ChiefController extends ChiefBaseController {
 			week_link = "0" + week;
 	    }
 		_projectService.update(project);
-		return "redirect:/chief/dashboard/" + week_link + "_" + year;
+		return "redirect:/chief/detail/" + week_link + "_" + year + "_" + id;
 		
 	}
 	

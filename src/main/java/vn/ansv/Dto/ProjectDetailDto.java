@@ -3,42 +3,59 @@ package vn.ansv.Dto;
 import java.sql.Date;
 
 public class ProjectDetailDto {
+	
 	private int id;
 	private String type;
 	private String priority;
-	private String pic_id;
-	private String pic_name;
 	private String status;
 	private String customer;
+	
 	private int week;
 	private int year;
 	private String name;
-	private String pic_role;
-	private String tinh_trang_va_ke_hoach_chi_tiet;
-	private String ket_qua_thuc_hien_ke_hoach;
 	private String description;
 	private String tong_muc_dau_tu_du_kien;
+	
 	private String hinh_thuc_dau_tu;
 	private int muc_do_kha_thi;
 	private String phan_tich_SWOT;
 	private String pham_vi_cung_cap;
 	private double tong_gia_tri_thuc_te;
+	
 	private Date DAC;
 	private Date PAC;
 	private Date FAC;
 	private double so_tien_tam_ung;
 	private Date ke_hoach_tam_ung;
+	
 	private double so_tien_DAC;
 	private Date ke_hoach_thanh_toan_DAC;
+	private Date thuc_te_thanh_toan_DAC;
+	private String chenh_lech_DAC;
+	
 	private double so_tien_PAC;
 	private Date ke_hoach_thanh_toan_PAC;
+	private Date thuc_te_thanh_toan_PAC;
+	private String chenh_lech_PAC;
+	
 	private double so_tien_FAC;
 	private Date ke_hoach_thanh_toan_FAC;
+	private Date thuc_te_thanh_toan_FAC;
+	private String chenh_lech_FAC;
+	
+	private String ke_hoach;
+	private String general_issue;
+	private String solution;
+	private String ket_qua_thuc_hien_ke_hoach;
 	private String note;
 	private String interactive;
 	
+	private String pic_id;
+	private String pic_name;
+	private String pic_role;
 	
-
+	
+	
 	public ProjectDetailDto() {
 		super();
 	}
@@ -65,22 +82,6 @@ public class ProjectDetailDto {
 
 	public void setPriority(String priority) {
 		this.priority = priority;
-	}
-
-	public String getPic_id() {
-		return pic_id;
-	}
-
-	public void setPic_id(String pic_id) {
-		this.pic_id = pic_id;
-	}
-
-	public String getPic_name() {
-		return pic_name;
-	}
-
-	public void setPic_name(String pic_name) {
-		this.pic_name = pic_name;
 	}
 
 	public String getStatus() {
@@ -121,30 +122,6 @@ public class ProjectDetailDto {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getPic_role() {
-		return pic_role;
-	}
-
-	public void setPic_role(String pic_role) {
-		this.pic_role = pic_role;
-	}
-
-	public String getTinh_trang_va_ke_hoach_chi_tiet() {
-		return tinh_trang_va_ke_hoach_chi_tiet;
-	}
-
-	public void setTinh_trang_va_ke_hoach_chi_tiet(String tinh_trang_va_ke_hoach_chi_tiet) {
-		this.tinh_trang_va_ke_hoach_chi_tiet = tinh_trang_va_ke_hoach_chi_tiet;
-	}
-
-	public String getKet_qua_thuc_hien_ke_hoach() {
-		return ket_qua_thuc_hien_ke_hoach;
-	}
-
-	public void setKet_qua_thuc_hien_ke_hoach(String ket_qua_thuc_hien_ke_hoach) {
-		this.ket_qua_thuc_hien_ke_hoach = ket_qua_thuc_hien_ke_hoach;
 	}
 
 	public String getDescription() {
@@ -259,6 +236,22 @@ public class ProjectDetailDto {
 		this.ke_hoach_thanh_toan_DAC = ke_hoach_thanh_toan_DAC;
 	}
 
+	public Date getThuc_te_thanh_toan_DAC() {
+		return thuc_te_thanh_toan_DAC;
+	}
+
+	public void setThuc_te_thanh_toan_DAC(Date thuc_te_thanh_toan_DAC) {
+		this.thuc_te_thanh_toan_DAC = thuc_te_thanh_toan_DAC;
+	}
+
+	public String getChenh_lech_DAC() {
+		return chenh_lech_DAC;
+	}
+
+	public void setChenh_lech_DAC(String chenh_lech_DAC) {
+		this.chenh_lech_DAC = chenh_lech_DAC;
+	}
+
 	public double getSo_tien_PAC() {
 		return so_tien_PAC;
 	}
@@ -273,6 +266,22 @@ public class ProjectDetailDto {
 
 	public void setKe_hoach_thanh_toan_PAC(Date ke_hoach_thanh_toan_PAC) {
 		this.ke_hoach_thanh_toan_PAC = ke_hoach_thanh_toan_PAC;
+	}
+
+	public Date getThuc_te_thanh_toan_PAC() {
+		return thuc_te_thanh_toan_PAC;
+	}
+
+	public void setThuc_te_thanh_toan_PAC(Date thuc_te_thanh_toan_PAC) {
+		this.thuc_te_thanh_toan_PAC = thuc_te_thanh_toan_PAC;
+	}
+
+	public String getChenh_lech_PAC() {
+		return chenh_lech_PAC;
+	}
+
+	public void setChenh_lech_PAC(String chenh_lech_PAC) {
+		this.chenh_lech_PAC = chenh_lech_PAC;
 	}
 
 	public double getSo_tien_FAC() {
@@ -291,6 +300,54 @@ public class ProjectDetailDto {
 		this.ke_hoach_thanh_toan_FAC = ke_hoach_thanh_toan_FAC;
 	}
 
+	public Date getThuc_te_thanh_toan_FAC() {
+		return thuc_te_thanh_toan_FAC;
+	}
+
+	public void setThuc_te_thanh_toan_FAC(Date thuc_te_thanh_toan_FAC) {
+		this.thuc_te_thanh_toan_FAC = thuc_te_thanh_toan_FAC;
+	}
+
+	public String getChenh_lech_FAC() {
+		return chenh_lech_FAC;
+	}
+
+	public void setChenh_lech_FAC(String chenh_lech_FAC) {
+		this.chenh_lech_FAC = chenh_lech_FAC;
+	}
+
+	public String getKe_hoach() {
+		return ke_hoach;
+	}
+
+	public void setKe_hoach(String ke_hoach) {
+		this.ke_hoach = ke_hoach;
+	}
+
+	public String getGeneral_issue() {
+		return general_issue;
+	}
+
+	public void setGeneral_issue(String general_issue) {
+		this.general_issue = general_issue;
+	}
+
+	public String getSolution() {
+		return solution;
+	}
+
+	public void setSolution(String solution) {
+		this.solution = solution;
+	}
+
+	public String getKet_qua_thuc_hien_ke_hoach() {
+		return ket_qua_thuc_hien_ke_hoach;
+	}
+
+	public void setKet_qua_thuc_hien_ke_hoach(String ket_qua_thuc_hien_ke_hoach) {
+		this.ket_qua_thuc_hien_ke_hoach = ket_qua_thuc_hien_ke_hoach;
+	}
+
 	public String getNote() {
 		return note;
 	}
@@ -298,13 +355,37 @@ public class ProjectDetailDto {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
+
 	public String getInteractive() {
 		return interactive;
 	}
 
 	public void setInteractive(String interactive) {
 		this.interactive = interactive;
+	}
+
+	public String getPic_id() {
+		return pic_id;
+	}
+
+	public void setPic_id(String pic_id) {
+		this.pic_id = pic_id;
+	}
+
+	public String getPic_name() {
+		return pic_name;
+	}
+
+	public void setPic_name(String pic_name) {
+		this.pic_name = pic_name;
+	}
+
+	public String getPic_role() {
+		return pic_role;
+	}
+
+	public void setPic_role(String pic_role) {
+		this.pic_role = pic_role;
 	}
 	
 }

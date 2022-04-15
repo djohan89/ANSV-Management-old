@@ -14,11 +14,11 @@
 	<div class="content-wrapper bg-light">
 		<section class="content">
 			<div class="container-fluid">
-				<c:forEach var="detail" items="${detail }" varStatus="detailIndex">
+				<c:forEach var="detail" items="${project_detail}" varStatus="detailIndex">
 					<c:if test="${detail.pic_role=='ROLE_PM' && detail.type=='Triển khai'}">
 						<h2 class="text-center mt-3">${detail.name}</h2>
 						<div class="row pt-2">
-							<div class="col-md-7">
+							<div class="col-md-5">
 								<div class="table-responsive-sm">
 									<table class="table table-hover table-bordered">
 										<tr>
@@ -45,15 +45,23 @@
 									
 									<table class="table table-hover table-bordered">
 										<tr>
-											<th class="w-25">Phạm vi cung cấp</th>
+											<th class="w-25">Tiến độ chung</th>
 											<td>${detail.pham_vi_cung_cap}</td>
 										</tr>
 										<tr>
-											<th>Tình trạng & kế hoạch chi tiết</th>
-											<td>${detail.tinh_trang_va_ke_hoach_chi_tiet}</td>
+											<th>Khó khăn</th>
+											<td>${detail.general_issue}</td>
 										</tr>
 										<tr>
-											<th>Kết quả thực hiện kế hoạch</th>
+											<th>Giải pháp</th>
+											<td>${detail.solution}</td>
+										</tr>
+										<tr>
+											<th>Kế hoạch</th>
+											<td>${detail.ke_hoach}</td>
+										</tr>
+										<tr>
+											<th>Kết quả</th>
 											<td>${detail.ket_qua_thuc_hien_ke_hoach}</td>
 										</tr>
 									</table>
@@ -62,14 +70,16 @@
 								
 								
 							</div>
-							<div class="col-md-5">
+							<div class="col-md-7">
 								<div class="table-responsive-sm">
 									<table class="table table-hover table-bordered">
 										<tr>
-											<th style="width: 20%;" class="text-center">Kế hoạch</th>
+											<th style="width: 14%;" class="text-center">Kế hoạch</th>
 											<th class="text-center">Số tiền<br />(VNĐ)</th>
-											<th class="text-center" style="width: 26%;">Ngày thanh toán<br/>(D / M / Y)</th>
-											<th class="text-center" style="width: 26%;">Nghiệm thu<br/>(D / M / Y)</th>
+											<th class="text-center" style="width: 17%;">Hợp đồng<br/>(D / M / Y)</th>
+											<th class="text-center" style="width: 17%;">Mục tiêu<br/>(D / M / Y)</th>
+											<th class="text-center" style="width: 17%;">Thực tế<br/>(D / M / Y)</th>
+											<th class="text-center" style="width: 9%;">CL<br/>(Ngày)</th>
 										</tr>
 										<tr class="text-center">
 											<th>DAC</th>
@@ -78,8 +88,10 @@
 													<fmt:formatNumber type="number" value="${detail.so_tien_DAC}" />
 												</c:if>
 											</td>
-											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_DAC}" pattern="dd / MM / yyyy" /></td>
 											<td><fmt:formatDate value="${detail.DAC}" pattern="dd / MM / yyyy" /></td>
+											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_DAC}" pattern="dd / MM / yyyy" /></td>
+											<td><fmt:formatDate value="${detail.thuc_te_thanh_toan_DAC}" pattern="dd / MM / yyyy" /></td>
+											<td>${detail.chenh_lech_DAC}</td>
 										</tr>
 										<tr class="text-center">
 											<th>PAC</th>
@@ -88,8 +100,10 @@
 													<fmt:formatNumber type="number" value="${detail.so_tien_PAC}" />
 												</c:if>
 											</td>
-											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_PAC}" pattern="dd / MM / yyyy" /></td>
 											<td><fmt:formatDate value="${detail.PAC}" pattern="dd / MM / yyyy" /></td>
+											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_PAC}" pattern="dd / MM / yyyy" /></td>
+											<td><fmt:formatDate value="${detail.thuc_te_thanh_toan_PAC}" pattern="dd / MM / yyyy" /></td>
+											<td>${detail.chenh_lech_PAC}</td>
 										</tr>
 										<tr class="text-center">
 											<th>FAC</th>
@@ -98,8 +112,10 @@
 													<fmt:formatNumber type="number" value="${detail.so_tien_FAC}" />
 												</c:if>
 											</td>
-											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_FAC}" pattern="dd / MM / yyyy" /></td>
 											<td><fmt:formatDate value="${detail.FAC}" pattern="dd / MM / yyyy" /></td>
+											<td><fmt:formatDate value="${detail.ke_hoach_thanh_toan_FAC}" pattern="dd / MM / yyyy" /></td>
+											<td><fmt:formatDate value="${detail.thuc_te_thanh_toan_FAC}" pattern="dd / MM / yyyy" /></td>
+											<td>${detail.chenh_lech_FAC}</td>
 										</tr>
 										<tr class="text-center">
 											<th>Tổng</th>
@@ -108,6 +124,8 @@
 													<fmt:formatNumber type="number" value="${detail.tong_gia_tri_thuc_te }" />
 												</c:if>
 											</td>
+											<td>N/A</td>
+											<td>N/A</td>
 											<td>N/A</td>
 											<td>N/A</td>
 										</tr>
@@ -120,6 +138,8 @@
 											</td>
 											<td><fmt:formatDate value="${detail.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
 											<td>N/A</td>
+											<td>N/A</td>
+											<td>N/A</td>
 										</tr>
 									</table>
 								</div>
@@ -131,11 +151,11 @@
 									<c:if test="${detail.week != current_week && detail.week != (current_week - 1)}"></c:if>
 									<c:if test="${detail.week == current_week || detail.week == (current_week - 1)}">
 										<c:if test="${detail.week < 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/0${detail.week}_${detail.year}_${detail.id}' />" 
+											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/0${detail.week}_${year}_${detail.id}' />" 
 												class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
 										</c:if>
 										<c:if test="${detail.week >= 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/${detail.week}_${detail.year}_${detail.id}' />" 
+											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/${detail.week}_${year}_${detail.id}' />" 
 												class="float-right btn btn-warning"><i class="fas fa-edit"></i></a>
 										</c:if>
 									</c:if>
@@ -270,11 +290,11 @@
 									<c:if test="${detail.week != current_week && detail.week != (current_week - 1)}"></c:if>
 									<c:if test="${detail.week == current_week || detail.week == (current_week - 1)}">
 										<c:if test="${detail.week < 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/0${detail.week}_${detail.year}_${detail.id}' />" 
+											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/0${detail.week}_${year}_${detail.id}' />" 
 												class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
 										</c:if>
 										<c:if test="${detail.week >= 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/${detail.week}_${detail.year}_${detail.id}' />" 
+											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/${detail.week}_${year}_${detail.id}' />" 
 												class="float-right btn btn-warning"><i class="fas fa-edit"></i></a>
 										</c:if>
 									</c:if>
@@ -377,11 +397,11 @@
 									<c:if test="${detail.week != current_week && detail.week != (current_week - 1)}"></c:if>
 									<c:if test="${detail.week == current_week || detail.week == (current_week - 1)}">
 										<c:if test="${detail.week < 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/0${detail.week}_${detail.year}_${detail.id}' />" 
+											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/0${detail.week}_${year}_${detail.id}' />" 
 												class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
 										</c:if>
 										<c:if test="${detail.week >= 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/${detail.week}_${detail.year}_${detail.id}' />" 
+											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/${detail.week}_${year}_${detail.id}' />" 
 												class="float-right btn btn-warning"><i class="fas fa-edit"></i></a>
 										</c:if>
 									</c:if>

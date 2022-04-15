@@ -9,8 +9,8 @@
 </head>
 <body>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-<c:url value="/chief/updateProjectTkCEO/${week}_${year}_${project.id}" var="updateProjectTkCEO"/> 
-<form:form action="${updateProjectTkCEO}" method="POST" modelAttribute="project">
+<c:url value="/chief/updateProjectTkCEO/${week}_${year}_${project_update.id}" var="updateProjectTkCEO"/> 
+<form:form action="${updateProjectTkCEO}" method="POST" modelAttribute="project_update">
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
@@ -79,7 +79,7 @@
 											<label class="input-group-text w-100 fw-400">Tên dự án</label>
 										</div>
 										<form:hidden path="id"/>
-										<form:input path="name" class="form-control" value="${project.name}" placeholder="Tên dự án triển khai..." />
+										<form:input path="name" class="form-control" value="${project_update.name}" placeholder="Tên dự án triển khai..." />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -90,7 +90,7 @@
         									<form:option value="0" label="Choose..."/>  
         									<c:forEach var="customer" items="${customers_form}">
 	        									<c:choose>
-	        										<c:when test="${customer.id == project.customer}">
+	        										<c:when test="${customer.id == project_update.customer}">
 	        											<form:option value="${customer.id }" label="${customer.name}" selected="true" class="font-weight-bold bg-info" />
 													</c:when>
 	        										<c:otherwise>
@@ -117,7 +117,7 @@
         									<form:option value="0" label="Choose..."/>  
         									<c:forEach var="priority" items="${priorities}">
         										<c:choose>
-   													<c:when test="${priority.id == project.priority}">
+   													<c:when test="${priority.id == project_update.priority}">
 														<form:option value="${priority.id }" label="${priority.name}" selected="true" class="font-weight-bold bg-info" />
 													</c:when>
    													<c:otherwise>
@@ -136,7 +136,7 @@
         									<form:option value="0" label="Choose..."/>  
         									<c:forEach var="status" items="${status}">
         										<c:choose>
-   													<c:when test="${status.id == project.project_status}">
+   													<c:when test="${status.id == project_update.project_status}">
 														<form:option value="${status.id }" label="${status.name}" selected="true" class="font-weight-bold bg-info" />
 													</c:when>
    													<c:otherwise>
@@ -192,7 +192,7 @@
 										<div class="input-group-prepend w-100">
 											<label class="input-group-text w-100 fw-400">Tình trạng kế hoạch</label>
 										</div>
-										<textarea id="tinh_trang_test" style="display:none;">${project.tinh_trang_va_ke_hoach_chi_tiet}</textarea>
+										<textarea id="tinh_trang_test" style="display:none;">${project_update.tinh_trang_va_ke_hoach_chi_tiet}</textarea>
 										<form:textarea path="tinh_trang_va_ke_hoach_chi_tiet" class="form-control" id="cr_tinh_trang" />
 									</div>
 		
@@ -200,7 +200,7 @@
 										<div class="input-group-prepend w-100">
 											<label class="input-group-text w-100 fw-400">Kết quả thực hiện</label>
 										</div>
-										<textarea id="ket_qua_test" style="display:none;">${project.ket_qua_thuc_hien_ke_hoach}</textarea>
+										<textarea id="ket_qua_test" style="display:none;">${project_update.ket_qua_thuc_hien_ke_hoach}</textarea>
 										<form:textarea path="ket_qua_thuc_hien_ke_hoach" class="form-control" id="cr_ket_qua" />
 									</div>
 								</div>
@@ -236,7 +236,7 @@
 										</div>
 										<input type="text" value="" class="form-control" id="so_tien_tam_ung_test" />
 										<fmt:formatNumber type="number"
-														value="${project.so_tien_tam_ung }" var="so_tien_tam_ung"/>
+														value="${project_update.so_tien_tam_ung }" var="so_tien_tam_ung"/>
 										<form:hidden path="so_tien_tam_ung" value="${so_tien_tam_ung }" class="form-control" id="so_tien_tam_ung1" />
 									</div>
 									
@@ -298,7 +298,7 @@
 										</div>
 										<input type="text" value="" class="form-control" id="so_tien_DAC_test" />
 										<fmt:formatNumber type="number"
-														value="${project.so_tien_DAC }" var="so_tien_DAC"/>
+														value="${project_update.so_tien_DAC }" var="so_tien_DAC"/>
 										<form:hidden path="so_tien_DAC" class="form-control" value="${so_tien_DAC }" id="so_tien_DAC1" />
 									</div>
 									
@@ -316,7 +316,7 @@
 										</div>
 										<input type="text" class="form-control" value="" id="so_tien_PAC_test" />
 										<fmt:formatNumber type="number"
-														value="${project.so_tien_PAC }" var="so_tien_PAC"/>
+														value="${project_update.so_tien_PAC }" var="so_tien_PAC"/>
 										<form:hidden path="so_tien_PAC" class="form-control" value="${so_tien_PAC }" id="so_tien_PAC1" />
 									</div>
 									
@@ -334,7 +334,7 @@
 										</div>
 										<input type="text" value="" class="form-control" id="so_tien_FAC_test" />
 										<fmt:formatNumber type="number"
-														value="${project.so_tien_FAC }" var="so_tien_FAC"/>
+														value="${project_update.so_tien_FAC }" var="so_tien_FAC"/>
 										<form:hidden path="so_tien_FAC" class="form-control" value="${so_tien_FAC }" id="so_tien_FAC1" />
 									</div>
 									
@@ -352,7 +352,7 @@
 										</div>
 										<input type="text" value="" class="form-control" id="tong_gia_tri_thuc_te_test" />
 										<fmt:formatNumber type="number"
-														value="${project.tong_gia_tri_thuc_te }" var="tong_gia_tri"/>
+														value="${project_update.tong_gia_tri_thuc_te }" var="tong_gia_tri"/>
 										<form:hidden path="tong_gia_tri_thuc_te" class="form-control" id="tong_gia_tri_thuc_te1" value="${tong_gia_tri }" />
 									</div>
 								</div>

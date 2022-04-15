@@ -1,6 +1,9 @@
 package vn.ansv.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +41,54 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 	
 	public List<ProjectDetailDto> getById(int id) {
-		return projectDao.getById(id);
+		
+		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
+		list = projectDao.getById(id);
+		
+		for (int i = 0; i < list.size(); i++) {
+			
+			String a = date_diff(list.get(i).getKe_hoach_thanh_toan_DAC(), list.get(i).getThuc_te_thanh_toan_DAC());
+			list.get(i).setChenh_lech_DAC(a);
+			
+			String b = date_diff(list.get(i).getKe_hoach_thanh_toan_PAC(), list.get(i).getThuc_te_thanh_toan_PAC());
+			list.get(i).setChenh_lech_PAC(b);
+			
+			String c = date_diff(list.get(i).getKe_hoach_thanh_toan_FAC(), list.get(i).getThuc_te_thanh_toan_FAC());
+			list.get(i).setChenh_lech_FAC(c);
+			
+			System.out.println("DIFF a: " + a);
+			System.out.println("DIFF b: " + b);
+			System.out.println("DIFF c: " + c);
+		}
+		
+		return list;
+	}
+	
+	public String date_diff(Date muc_tieu, Date thuc_te) {
+		
+		Calendar set_now = Calendar.getInstance();
+		
+		LocalDate localDate = LocalDate.now();
+		set_now.set(Calendar.DATE, localDate.getDayOfMonth());
+		set_now.set(Calendar.MONTH, localDate.getMonthValue());
+		set_now.set(Calendar.YEAR, localDate.getYear());
+		
+		String result = "";
+		long diff = 0;
+		long diffDays = 0;
+		
+		if (muc_tieu != null) {
+			System.out.println(muc_tieu.getTime() + " - " + localDate);
+			if (thuc_te != null) {
+				diff = muc_tieu.getTime() - thuc_te.getTime();
+			} else {
+				diff = muc_tieu.getTime() - set_now.getTime().getTime();
+			}
+			diffDays = diff / (24 * 60 * 60 * 1000);
+			result = "" + diffDays;
+		}
+		
+		return result;
 	}
 	
 	public Project getLessById(int id, String pic) {
