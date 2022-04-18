@@ -74,16 +74,16 @@
 															${project_item.name }
 														</c:if>
 																<c:if test="${project_item.status == 'High'}">
-																	<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																	<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.ke_hoach }</span>
 																</c:if>
 																<c:if test="${project_item.status == 'Medium'}">
-																	<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																	<span class="tooltiptext" style="background-color: #ff9900">${project_item.ke_hoach }</span>
 																</c:if>
 																<c:if test="${project_item.status == 'Low'}">
-																	<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																	<span class="tooltiptext" style="background-color: #262626">${project_item.ke_hoach }</span>
 																</c:if>
 																<c:if test="${project_item.status == 'Complete'}">
-																	<span class="tooltiptext" style="background-color: #007bff">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																	<span class="tooltiptext" style="background-color: #007bff">${project_item.ke_hoach }</span>
 																</c:if>
 															</a>
 													</td>

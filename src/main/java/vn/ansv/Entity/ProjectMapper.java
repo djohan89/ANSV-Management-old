@@ -38,11 +38,18 @@ public class ProjectMapper implements RowMapper<Project> {
 		project.setKe_hoach_tam_ung(rs.getDate("ke_hoach_tam_ung"));
 		project.setSo_tien_DAC(rs.getDouble("so_tien_DAC"));
 		project.setKe_hoach_thanh_toan_DAC(rs.getDate("ke_hoach_thanh_toan_DAC"));
+		project.setThuc_te_thanh_toan_DAC(rs.getDate("thuc_te_thanh_toan_DAC"));
 		project.setSo_tien_PAC(rs.getDouble("so_tien_PAC"));
 		
+		project.setKe_hoach(rs.getString("ke_hoach"));
+		project.setGeneral_issue(rs.getString("general_issue"));
+		project.setSolution(rs.getString("solution"));
 		project.setKe_hoach_thanh_toan_PAC(rs.getDate("ke_hoach_thanh_toan_PAC"));
+		project.setThuc_te_thanh_toan_PAC(rs.getDate("thuc_te_thanh_toan_PAC"));
+		
 		project.setSo_tien_FAC(rs.getDouble("so_tien_FAC"));
 		project.setKe_hoach_thanh_toan_FAC(rs.getDate("ke_hoach_thanh_toan_FAC"));
+		project.setThuc_te_thanh_toan_FAC(rs.getDate("thuc_te_thanh_toan_FAC"));
 		project.setTinh_trang_va_ke_hoach_chi_tiet(rs.getString("tinh_trang_va_ke_hoach_chi_tiet"));
 		project.setKet_qua_thuc_hien_ke_hoach(rs.getString("ket_qua_thuc_hien_ke_hoach"));
 		
