@@ -378,14 +378,18 @@ public class ProjectDao extends BaseDao {
 	}
 	
 	public void update(Project project) {
-		String sql = "UPDATE project SET project_type = ?, priority = ?, project_status = ?, customer = ?, week = ?, year = ?, name = ?, description = ?, "
-				+ "tong_muc_dau_tu_du_kien = ?, hinh_thuc_dau_tu = ?, muc_do_kha_thi = ?, phan_tich_SWOT = ?, tinh_trang_va_ke_hoach_chi_tiet = ?, "
+		String sql = "UPDATE project SET project_type = ?, priority = ?, project_status = ?, "
+				+ "customer = ?, week = ?, year = ?, name = ?, description = ?, "
+				+ "tong_muc_dau_tu_du_kien = ?, hinh_thuc_dau_tu = ?, muc_do_kha_thi = ?, "
+				+ "phan_tich_SWOT = ?, ke_hoach = ?, general_issue = ?, solution = ?, "
 				+ "ket_qua_thuc_hien_ke_hoach = ?, created_at = ?, note = ? "
 				+ "WHERE id = ?";
-		_jdbcTemplate.update(sql, project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), project.getWeek(), project.getYear(), 
-				project.getName(), project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), project.getMuc_do_kha_thi(), 
-				project.getPhan_tich_SWOT(), project.getTinh_trang_va_ke_hoach_chi_tiet(), project.getKet_qua_thuc_hien_ke_hoach(), _now, project.getNote(), 
-				project.getId());
+		_jdbcTemplate.update(sql, project.getProject_type(), project.getPriority(), project.getProject_status(), 
+				project.getCustomer(), project.getWeek(), project.getYear(), project.getName(), 
+				project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), 
+				project.getMuc_do_kha_thi(), project.getPhan_tich_SWOT(), project.getKe_hoach(), 
+				project.getGeneral_issue(), project.getSolution(), project.getKet_qua_thuc_hien_ke_hoach(), _now, 
+				project.getNote(), project.getId());
 		
 	}
 	
@@ -522,9 +526,12 @@ public class ProjectDao extends BaseDao {
 //	Lấy dữ liệu project viễn thông hoặc chuyển đổi số theo id
 	public Project getProjectById(int id){
 		Project object = new Project();
-		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, projects_status.id AS project_status, customers.id AS customer, "
-				+ "project.week, project.year, project.name, project.description, project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu, project.muc_do_kha_thi, "
-				+ "project.phan_tich_SWOT, project.tinh_trang_va_ke_hoach_chi_tiet, project.ket_qua_thuc_hien_ke_hoach, project.note "
+		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, "
+				+ "projects_status.id AS project_status, customers.id AS customer, project.week, "
+				+ "project.year, project.name, project.description, project.tong_muc_dau_tu_du_kien, "
+				+ "project.hinh_thuc_dau_tu, project.muc_do_kha_thi, project.phan_tich_SWOT, "
+				+ "project.ke_hoach, project.general_issue, project.solution, "
+				+ "project.ket_qua_thuc_hien_ke_hoach, project.note "
 				+ "FROM project "
 				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
 				+ "INNER JOIN priorities ON project.priority = priorities.id "

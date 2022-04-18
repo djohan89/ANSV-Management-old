@@ -106,9 +106,23 @@
 								<div class="card-body">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-100">
-											<span class="input-group-text w-100">Tình trạng kế hoạch</span>
+											<span class="input-group-text w-100">Kế hoạch</span>
 										</div>
-										<form:textarea path="tinh_trang_va_ke_hoach_chi_tiet" class="form-control" id="cr_tinh_trang" />
+										<form:textarea path="ke_hoach" class="form-control" id="cr_tinh_trang" />
+									</div>
+									
+									<div class="input-group mb-3">
+										<div class="input-group-prepend w-100">
+											<span class="input-group-text w-100">Khó khăn</span>
+										</div>
+										<form:textarea path="general_issue" class="form-control" id="cr_general_issue" />
+									</div>
+									
+									<div class="input-group mb-3">
+										<div class="input-group-prepend w-100">
+											<span class="input-group-text w-100">Giải pháp</span>
+										</div>
+										<form:textarea path="solution" class="form-control" id="cr_solution" />
 									</div>
 		
 									<div class="input-group mb-3">
