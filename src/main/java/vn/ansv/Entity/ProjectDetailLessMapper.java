@@ -23,7 +23,9 @@ public class ProjectDetailLessMapper implements RowMapper<Project> {
 		Project.setHinh_thuc_dau_tu(rs.getString("hinh_thuc_dau_tu"));
 		Project.setMuc_do_kha_thi(rs.getInt("muc_do_kha_thi"));
 		Project.setPhan_tich_SWOT(rs.getString("phan_tich_SWOT"));
-		Project.setTinh_trang_va_ke_hoach_chi_tiet(rs.getString("tinh_trang_va_ke_hoach_chi_tiet"));
+		Project.setKe_hoach(rs.getString("ke_hoach"));
+		Project.setGeneral_issue(rs.getString("general_issue"));
+		Project.setSolution(rs.getString("solution"));
 		Project.setKet_qua_thuc_hien_ke_hoach(rs.getString("ket_qua_thuc_hien_ke_hoach"));
 		Project.setNote(rs.getString("note"));
 		

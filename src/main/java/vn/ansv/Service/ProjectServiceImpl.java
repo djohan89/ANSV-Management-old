@@ -115,7 +115,26 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 	
 	public List<ProjectDetailDto> getByIdAndPic(int id, String pic) {
-		return projectDao.getByIdAndPic(id,pic);
+		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
+		list =  projectDao.getByIdAndPic(id,pic);
+		for (int i = 0; i < list.size(); i++) {
+			
+			String a = date_diff(list.get(i).getKe_hoach_thanh_toan_DAC(), list.get(i).getThuc_te_thanh_toan_DAC());
+			list.get(i).setChenh_lech_DAC(a);
+			
+			String b = date_diff(list.get(i).getKe_hoach_thanh_toan_PAC(), list.get(i).getThuc_te_thanh_toan_PAC());
+			list.get(i).setChenh_lech_PAC(b);
+			
+			String c = date_diff(list.get(i).getKe_hoach_thanh_toan_FAC(), list.get(i).getThuc_te_thanh_toan_FAC());
+			list.get(i).setChenh_lech_FAC(c);
+			
+			System.out.println("DIFF a: " + a);
+			System.out.println("DIFF b: " + b);
+			System.out.println("DIFF c: " + c);
+		}
+		
+		
+		return list;
 	}
 	
 	public List<ProjectDetailDto> getAllProjectByCustomer(int week, int year, int customer, int type) {
