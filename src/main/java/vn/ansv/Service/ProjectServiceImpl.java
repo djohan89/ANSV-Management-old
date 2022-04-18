@@ -117,22 +117,24 @@ public class ProjectServiceImpl implements IProjectService {
 	public List<ProjectDetailDto> getByIdAndPic(int id, String pic) {
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
 		list =  projectDao.getByIdAndPic(id,pic);
+		boolean st = false;
+		
 		for (int i = 0; i < list.size(); i++) {
+			// Kiểm tra dự án đã "Complete" hay chưa
+			st = list.get(i).getStatus().contains("Complete");
 			
-			String a = date_diff(list.get(i).getKe_hoach_thanh_toan_DAC(), list.get(i).getThuc_te_thanh_toan_DAC());
+			// Tính toán chênh lệch thời gian DAC
+			String a = date_diff(list.get(i).getKe_hoach_thanh_toan_DAC(), list.get(i).getThuc_te_thanh_toan_DAC(), st);
 			list.get(i).setChenh_lech_DAC(a);
 			
-			String b = date_diff(list.get(i).getKe_hoach_thanh_toan_PAC(), list.get(i).getThuc_te_thanh_toan_PAC());
+			// Tính toán chênh lệch thời gian PAC
+			String b = date_diff(list.get(i).getKe_hoach_thanh_toan_PAC(), list.get(i).getThuc_te_thanh_toan_PAC(), st);
 			list.get(i).setChenh_lech_PAC(b);
 			
-			String c = date_diff(list.get(i).getKe_hoach_thanh_toan_FAC(), list.get(i).getThuc_te_thanh_toan_FAC());
+			// Tính toán chênh lệch thời gian FAC
+			String c = date_diff(list.get(i).getKe_hoach_thanh_toan_FAC(), list.get(i).getThuc_te_thanh_toan_FAC(), st);
 			list.get(i).setChenh_lech_FAC(c);
-			
-			System.out.println("DIFF a: " + a);
-			System.out.println("DIFF b: " + b);
-			System.out.println("DIFF c: " + c);
 		}
-		
 		
 		return list;
 	}

@@ -193,11 +193,11 @@
 					<c:if test="${detail.type=='Viễn thông' }">
 						<h2 class="text-center mt-3">${detail.name}</h2>
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-5">
 								<div class="table-responsive-sm">
 									<table class="table table-hover table-bordered ">
 										<tr>
-											<th>Dự án/Gói thầu</th>
+											<th width="30%">Dự án/Gói thầu</th>
 											<td>${detail.name}</td>
 										</tr>
 										<tr>
@@ -227,11 +227,11 @@
 									
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-7">
 								<div class="table-responsive-sm">
 									<table class="table table-bordered table-hover">
 										<tr>
-											<th>Kế hoạch</th>
+											<th width="35%">Kế hoạch</th>
 											<td class="text-justify">${detail.ke_hoach}</td>
 										</tr>
 										<tr>

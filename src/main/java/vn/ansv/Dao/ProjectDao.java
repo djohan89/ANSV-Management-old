@@ -449,7 +449,7 @@ public class ProjectDao extends BaseDao {
 				project.setType(rs.getString("type"));
 				project.setAm(rs.getString("am"));
 				project.setPm(rs.getString("pm"));
-				project.setTinh_trang_va_ke_hoach_chi_tiet(rs.getString("tinh_trang_va_ke_hoach_chi_tiet"));
+				project.setKe_hoach(rs.getString("ke_hoach"));
 				project.setWeek(rs.getInt("week"));
 				project.setYear(rs.getInt("year"));
 				project.setInteractive(rs.getString("interactive"));
