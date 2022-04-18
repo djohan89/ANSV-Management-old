@@ -4,7 +4,7 @@
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #04355d; color: white;">
 	<!-- Brand Logo -->
-	<a href="<c:url value='/chief/home/${week}_${year}' />" class="brand-link"> 
+	<a href="<c:url value='/chief/home/${week_option}_${year_option}' />" class="brand-link"> 
 		<img src="<c:url value='/assets/user/img/logo/logo_menu.png' />"
 			alt="ANSV Logo" class="brand-image img-circle elevation-3"
 			style="opacity: .8; width: 33px; height: 33px; background-color: white;">

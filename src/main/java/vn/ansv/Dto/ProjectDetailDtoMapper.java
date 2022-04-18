@@ -12,17 +12,18 @@ public class ProjectDetailDtoMapper implements RowMapper<ProjectDetailDto> {
 		ProjectDetailDto detail = new ProjectDetailDto();
 		
 		detail.setId(rs.getInt("id"));
+		detail.setType_id(rs.getInt("type_id"));
 		detail.setType(rs.getString("type"));
 		detail.setPriority(rs.getString("priority"));
 		detail.setStatus(rs.getString("status"));
-		detail.setCustomer(rs.getString("customer"));
 		
+		detail.setCustomer(rs.getString("customer"));
 		detail.setWeek(rs.getInt("week"));
 //		detail.setYear(rs.getInt("year"));
 		detail.setName(rs.getString("name"));
 		detail.setDescription(rs.getString("description"));
-		detail.setTong_muc_dau_tu_du_kien(rs.getString("tong_muc_dau_tu_du_kien"));
 		
+		detail.setTong_muc_dau_tu_du_kien(rs.getString("tong_muc_dau_tu_du_kien"));
 		detail.setHinh_thuc_dau_tu(rs.getString("hinh_thuc_dau_tu"));
 		detail.setMuc_do_kha_thi(rs.getInt("muc_do_kha_thi"));
 		detail.setPhan_tich_SWOT(rs.getString("phan_tich_SWOT"));

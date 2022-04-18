@@ -33,8 +33,11 @@ public class ChiefController extends ChiefBaseController {
 		}
 	
 	@RequestMapping(value = { "/chief/dashboard/{week}_{year}" }, method = RequestMethod.GET)
-	public ModelAndView chiefHome(@PathVariable int week, @PathVariable int year) {
-		InitCEO(week,year);
+	public ModelAndView chiefHome(@PathVariable int week, @PathVariable int year, HttpSession session) {
+		session.setAttribute("week_option", week);
+	    session.setAttribute("year_option", year);
+		
+		InitCEO(week, year);
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		// Dữ liệu khái quát hiển thị lên dashboard (datatable)
@@ -70,7 +73,7 @@ public class ChiefController extends ChiefBaseController {
 		return _mvShare;
 	}
 	
-	@RequestMapping("chief/delete_project/{week}_{year}_{id}")
+	@RequestMapping("/chief/delete_project/{week}_{year}_{id}")
 	public String doDeleteCustomer(@PathVariable int week, @PathVariable int year, @PathVariable int id) {
 		_picService.delete(id);
 		_projectService.delete(id);
@@ -93,9 +96,10 @@ public class ChiefController extends ChiefBaseController {
 	
 	// Link đến form update dự án triển khai 
 	@RequestMapping(value = { "/chief/update_project_tk/{week}_{year}_{id}" }, method = RequestMethod.GET)
-	public ModelAndView CeoUpdateProject_tk(@PathVariable int week, @PathVariable int year, @PathVariable int id, HttpSession session, Model model) {
+	public ModelAndView CeoUpdateProject_tk(@PathVariable int id, HttpSession session, Model model) {
 	FormCEO();
 	Project project_update = new Project();
+	
 	project_update = _projectService.getProjectTkById(id);
 	model.addAttribute("project_update", project_update);
 		
@@ -107,11 +111,9 @@ public class ChiefController extends ChiefBaseController {
 		
 	//Thực thi update dự án triển khai
 	@RequestMapping("chief/updateProjectTkCEO/{week}_{year}_{id}")
-	public String CeoDoUpdateProject1(@ModelAttribute("Project") Project project_update, @PathVariable int week,
-			@PathVariable int year, @PathVariable int id, HttpSession session, Model model) {
-		Date now = new Date();   
-		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
-		
+	public String CeoDoUpdateProject1(@ModelAttribute("Project") Project project_update, 
+			@PathVariable int week, @PathVariable int year, @PathVariable int id, 
+			HttpSession session, Model model) {
 		String week_link = Integer.toString(week);
 		if (week < 10) {
 			week_link = "0" + week;

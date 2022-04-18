@@ -30,14 +30,23 @@ public class ProjectDetailMoreMapper implements RowMapper<Project> {
 		
 		Project.setSo_tien_tam_ung(rs.getDouble("so_tien_tam_ung"));
 		Project.setKe_hoach_tam_ung(rs.getDate("ke_hoach_tam_ung"));
+		
 		Project.setSo_tien_DAC(rs.getDouble("so_tien_DAC"));
 		Project.setKe_hoach_thanh_toan_DAC(rs.getDate("ke_hoach_thanh_toan_DAC"));
-		Project.setSo_tien_PAC(rs.getDouble("so_tien_PAC"));
+		Project.setThuc_te_thanh_toan_DAC(rs.getDate("thuc_te_thanh_toan_DAC"));
 		
+		Project.setSo_tien_PAC(rs.getDouble("so_tien_PAC"));
 		Project.setKe_hoach_thanh_toan_PAC(rs.getDate("ke_hoach_thanh_toan_PAC"));
+		Project.setThuc_te_thanh_toan_PAC(rs.getDate("thuc_te_thanh_toan_PAC"));
+		
 		Project.setSo_tien_FAC(rs.getDouble("so_tien_FAC"));
 		Project.setKe_hoach_thanh_toan_FAC(rs.getDate("ke_hoach_thanh_toan_FAC"));
+		Project.setThuc_te_thanh_toan_FAC(rs.getDate("thuc_te_thanh_toan_FAC"));
+		
 		Project.setTinh_trang_va_ke_hoach_chi_tiet(rs.getString("tinh_trang_va_ke_hoach_chi_tiet"));
+		Project.setKe_hoach(rs.getString("ke_hoach"));
+		Project.setGeneral_issue(rs.getString("general_issue"));
+		Project.setSolution(rs.getString("solution"));
 		Project.setKet_qua_thuc_hien_ke_hoach(rs.getString("ket_qua_thuc_hien_ke_hoach"));
 		
 		return Project;

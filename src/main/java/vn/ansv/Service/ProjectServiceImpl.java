@@ -44,33 +44,35 @@ public class ProjectServiceImpl implements IProjectService {
 		
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
 		list = projectDao.getById(id);
+		boolean st = false;
 		
 		for (int i = 0; i < list.size(); i++) {
+			// Kiểm tra dự án đã "Complete" hay chưa
+			st = list.get(i).getStatus().contains("Complete");
 			
-			String a = date_diff(list.get(i).getKe_hoach_thanh_toan_DAC(), list.get(i).getThuc_te_thanh_toan_DAC());
+			// Tính toán chênh lệch thời gian DAC
+			String a = date_diff(list.get(i).getKe_hoach_thanh_toan_DAC(), list.get(i).getThuc_te_thanh_toan_DAC(), st);
 			list.get(i).setChenh_lech_DAC(a);
 			
-			String b = date_diff(list.get(i).getKe_hoach_thanh_toan_PAC(), list.get(i).getThuc_te_thanh_toan_PAC());
+			// Tính toán chênh lệch thời gian PAC
+			String b = date_diff(list.get(i).getKe_hoach_thanh_toan_PAC(), list.get(i).getThuc_te_thanh_toan_PAC(), st);
 			list.get(i).setChenh_lech_PAC(b);
 			
-			String c = date_diff(list.get(i).getKe_hoach_thanh_toan_FAC(), list.get(i).getThuc_te_thanh_toan_FAC());
+			// Tính toán chênh lệch thời gian FAC
+			String c = date_diff(list.get(i).getKe_hoach_thanh_toan_FAC(), list.get(i).getThuc_te_thanh_toan_FAC(), st);
 			list.get(i).setChenh_lech_FAC(c);
-			
-			System.out.println("DIFF a: " + a);
-			System.out.println("DIFF b: " + b);
-			System.out.println("DIFF c: " + c);
 		}
 		
 		return list;
 	}
 	
-	public String date_diff(Date muc_tieu, Date thuc_te) {
+	public String date_diff(Date muc_tieu, Date thuc_te, boolean st) {
 		
 		Calendar set_now = Calendar.getInstance();
 		
 		LocalDate localDate = LocalDate.now();
 		set_now.set(Calendar.DATE, localDate.getDayOfMonth());
-		set_now.set(Calendar.MONTH, localDate.getMonthValue());
+		set_now.set(Calendar.MONTH, localDate.getMonthValue() - 1);
 		set_now.set(Calendar.YEAR, localDate.getYear());
 		
 		String result = "";
@@ -78,14 +80,19 @@ public class ProjectServiceImpl implements IProjectService {
 		long diffDays = 0;
 		
 		if (muc_tieu != null) {
-			System.out.println(muc_tieu.getTime() + " - " + localDate);
 			if (thuc_te != null) {
 				diff = muc_tieu.getTime() - thuc_te.getTime();
 			} else {
-				diff = muc_tieu.getTime() - set_now.getTime().getTime();
+				diff = muc_tieu.getTime() - set_now.getTimeInMillis();
 			}
 			diffDays = diff / (24 * 60 * 60 * 1000);
-			result = "" + diffDays;
+			
+			if (diffDays < 0 && st == false) {
+				result = "<font color='red'>" + diffDays + "</font>";
+			} else {
+				result = "" + diffDays;
+			}
+			
 		}
 		
 		return result;
@@ -98,6 +105,7 @@ public class ProjectServiceImpl implements IProjectService {
 	public Project getMorebyId(int id, String pic) {
 		return projectDao.getMorebyId(id, pic);
 	}
+	
 	public Project getProjectTkById(int id) {
 		return projectDao.getProjectTkById(id);
 	}

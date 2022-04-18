@@ -24,6 +24,8 @@ public interface IProjectService {
 	public List<ProjectDetailDto> getById(int id);
 	public Project getLessById(int id, String pic);
 	public Project getMorebyId(int id, String pic);
+	public Project getProjectTkById(int id);
+	public Project getProjectById(int id);
 	public List<ProjectDetailDto> getByIdAndPic(int id, String pic);
 	public List<ProjectDetailDto> getAllProjectByCustomer(int week, int year, int customer, int type);
 	public List<DashboardProjectPicDto> getDashboardAM(int week, int year, String pic_id);

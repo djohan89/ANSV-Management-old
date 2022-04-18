@@ -452,7 +452,11 @@
 				document.getElementById("formLogout").submit();
 			}
 			
-			$("#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua").ckeditor({
+			var id_add_ckediter = "#ud_tinh_trang, #cr_tinh_trang, #cr_ket_qua, #cr_swot, " + 
+				"#cr_mo_ta_du_an, #ud_swot, #ud_ket_qua, #cr_general_issue, #cr_solution, " + 
+				"#cr_ke_hoach, #cr_ket_qua";
+			
+			$(id_add_ckediter).ckeditor({
 			  	toolbar: [
 					{ name: 'document', items: [ 'Source', '-' ] },											
 					{ name: 'undo', items: [ 'Undo', 'Redo' ] },																

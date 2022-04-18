@@ -131,15 +131,18 @@ public class ProjectDao extends BaseDao {
 	public List<ProjectDetailDto> getById(int id){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
 		
-		String select_column = "project.id, projects_types.name AS type, priorities.name AS priority, projects_status.name AS status, customers.name AS customer, "
+		String select_column = "project.id, projects_types.id AS type_id, projects_types.name AS type, "
+				+ "priorities.name AS priority, projects_status.name AS status, customers.name AS customer, "
 				+ "project.week, project.year, project.name, project.description, project.tong_muc_dau_tu_du_kien, "
-				+ "project.hinh_thuc_dau_tu, project.muc_do_kha_thi, project.phan_tich_SWOT, project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, "
-				+ "project.DAC, project.FAC, project.PAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, "
-				+ "project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, project.thuc_te_thanh_toan_DAC, "
-				+ "project.so_tien_PAC, project.ke_hoach_thanh_toan_PAC, project.thuc_te_thanh_toan_PAC, "
-				+ "project.so_tien_FAC, project.ke_hoach_thanh_toan_FAC, project.thuc_te_thanh_toan_FAC, "
-				+ "project.ke_hoach, project.general_issue, project.solution, project.ket_qua_thuc_hien_ke_hoach, project.note, project.interactive, "
-				+ "users.id AS pic_id, users.display_name AS pic_name, role.name AS pic_role ";
+				+ "project.hinh_thuc_dau_tu, project.muc_do_kha_thi, project.phan_tich_SWOT, "
+				+ "project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, project.DAC, project.FAC, "
+				+ "project.PAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, project.so_tien_DAC, "
+				+ "project.ke_hoach_thanh_toan_DAC, project.thuc_te_thanh_toan_DAC, project.so_tien_PAC, "
+				+ "project.ke_hoach_thanh_toan_PAC, project.thuc_te_thanh_toan_PAC, project.so_tien_FAC, "
+				+ "project.ke_hoach_thanh_toan_FAC, project.thuc_te_thanh_toan_FAC, project.ke_hoach, "
+				+ "project.general_issue, project.solution, project.ket_qua_thuc_hien_ke_hoach, "
+				+ "project.note, project.interactive, users.id AS pic_id, users.display_name AS pic_name, "
+				+ "role.name AS pic_role ";
 		
 		String sql = "SELECT " + select_column
 				+ "FROM project INNER JOIN pic ON project.id = pic.project_id "
@@ -179,10 +182,16 @@ public class ProjectDao extends BaseDao {
 	
 	public Project getMorebyId(int id, String pic) {
 		Project object = new Project();
-		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, projects_status.id AS project_status, customers.id AS customer, "
-				+ "project.week, project.year, project.name, project.projects_id AS project_id, project.ma_so_ke_toan, project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, project.DAC, "
-				+ "project.PAC, project.FAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, project.so_tien_PAC, "
-				+ "project.ke_hoach_thanh_toan_PAC, project.so_tien_FAC, project.ke_hoach_thanh_toan_FAC, project.tinh_trang_va_ke_hoach_chi_tiet, project.ket_qua_thuc_hien_ke_hoach "
+		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, "
+				+ "projects_status.id AS project_status, customers.id AS customer, project.week, "
+				+ "project.year, project.name, project.projects_id AS project_id, project.ma_so_ke_toan, "
+				+ "project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, project.DAC, project.PAC, "
+				+ "project.FAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, project.so_tien_DAC, "
+				+ "project.ke_hoach_thanh_toan_DAC, project.thuc_te_thanh_toan_DAC, project.so_tien_PAC, "
+				+ "project.ke_hoach_thanh_toan_PAC, project.thuc_te_thanh_toan_PAC, project.so_tien_FAC, "
+				+ "project.ke_hoach_thanh_toan_FAC, project.thuc_te_thanh_toan_FAC, "
+				+ "project.tinh_trang_va_ke_hoach_chi_tiet, project.ke_hoach, project.general_issue, "
+				+ "project.solution, project.ket_qua_thuc_hien_ke_hoach "
 				+ "FROM project "
 				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
 				+ "INNER JOIN priorities ON project.priority = priorities.id "
@@ -199,14 +208,16 @@ public class ProjectDao extends BaseDao {
 	/*Truy vấn dữ liệu chi tiết của sản phẩm theo id project của mỗi PIC */
 	public List<ProjectDetailDto> getByIdAndPic(int id, String pic){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
-		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id , role.name AS pic_role, "
-				+ "projects_types.name AS type, priorities.name AS priority, projects_status.name AS status, "
-				+ "customers.name AS customer, project.name, project.ke_hoach, project.general_issue, project.solution, "
-				+ "project.week, project.description, project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu, "
-				+ "project.muc_do_kha_thi, project.phan_tich_SWOT, project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, "
-				+ "project.DAC, project.FAC, project.PAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, "
-				+ "project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, project.so_tien_PAC, project.ke_hoach_thanh_toan_PAC, "
-				+ "project.so_tien_FAC, project.ke_hoach_thanh_toan_FAC, project.ket_qua_thuc_hien_ke_hoach, project.note, "
+		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id, "
+				+ "role.name AS pic_role, projects_types.id AS type_id, projects_types.name AS type, "
+				+ "priorities.name AS priority, projects_status.name AS status, customers.name AS customer, "
+				+ "project.name, project.ke_hoach, project.general_issue, project.solution, project.week, "
+				+ "project.description, project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu, "
+				+ "project.muc_do_kha_thi, project.phan_tich_SWOT, project.pham_vi_cung_cap, "
+				+ "project.tong_gia_tri_thuc_te, project.DAC, project.FAC, project.PAC, project.so_tien_tam_ung, "
+				+ "project.ke_hoach_tam_ung, project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, "
+				+ "project.so_tien_PAC, project.ke_hoach_thanh_toan_PAC, project.so_tien_FAC, "
+				+ "project.ke_hoach_thanh_toan_FAC, project.ket_qua_thuc_hien_ke_hoach, project.note, "
 				+ "project.interactive "
 				+ "FROM project INNER JOIN pic ON project.id = pic.project_id "
 				+ "INNER JOIN users ON pic.pic = users.id "
@@ -227,14 +238,16 @@ public class ProjectDao extends BaseDao {
 	/*Truy vấn dữ liệu chi tiết của sản phẩm theo khách hàng, tuần và theo loại project */
 	public List<ProjectDetailDto> getAllProjectByCustomer(int week, int year, int customer, int type){
 		List<ProjectDetailDto> list = new ArrayList<ProjectDetailDto>();
-		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id , role.name AS pic_role, "
-				+ "projects_types.name AS type, priorities.name AS priority, projects_status.name AS status, "
-				+ "customers.name AS customer, project.name, project.ke_hoach, project.general_issue, project.solution, "
-				+ "project.week, project.description, project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu, "
-				+ "project.muc_do_kha_thi,project.phan_tich_SWOT,project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, "
-				+ "project.DAC, project.FAC, project.PAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, "
-				+ "project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, project.so_tien_PAC, project.ke_hoach_thanh_toan_PAC, "
-				+ "project.so_tien_FAC, project.ke_hoach_thanh_toan_FAC, project.ket_qua_thuc_hien_ke_hoach, project.note, "
+		String sql = "SELECT project.id, users.display_name AS pic_name, users.id AS pic_id , "
+				+ "role.name AS pic_role, projects_types.id AS type_id, projects_types.name AS type, "
+				+ "priorities.name AS priority, projects_status.name AS status, customers.name AS customer, "
+				+ "project.name, project.ke_hoach, project.general_issue, project.solution, project.week, "
+				+ "project.description, project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu, "
+				+ "project.muc_do_kha_thi, project.phan_tich_SWOT, project.pham_vi_cung_cap, "
+				+ "project.tong_gia_tri_thuc_te, project.DAC, project.FAC, project.PAC, project.so_tien_tam_ung, "
+				+ "project.ke_hoach_tam_ung, project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, "
+				+ "project.so_tien_PAC, project.ke_hoach_thanh_toan_PAC, project.so_tien_FAC, "
+				+ "project.ke_hoach_thanh_toan_FAC, project.ket_qua_thuc_hien_ke_hoach, project.note, "
 				+ "project.interactive "
 				+ "FROM project INNER JOIN pic ON project.id = pic.project_id "
 				+ "INNER JOIN users ON pic.pic = users.id "
@@ -447,16 +460,21 @@ public class ProjectDao extends BaseDao {
 	}
 	
 	public void update_tk(Project project) {
-		String sql = "UPDATE project SET project_type = ?, priority = ?, project_status = ?, customer = ?, week = ?, year = ?, name = ?, projects_id = ?, "
-				+ "ma_so_ke_toan = ?, pham_vi_cung_cap = ?, tong_gia_tri_thuc_te = ?, DAC = ?, PAC = ?, FAC = ?, so_tien_tam_ung = ?, ke_hoach_tam_ung = ?, "
-				+ "so_tien_DAC = ?, ke_hoach_thanh_toan_DAC = ?, so_tien_PAC = ?, ke_hoach_thanh_toan_PAC = ?, so_tien_FAC = ?, ke_hoach_thanh_toan_FAC = ?,  "
-				+ "tinh_trang_va_ke_hoach_chi_tiet = ?, ket_qua_thuc_hien_ke_hoach = ?, created_at = ? "
+		String sql = "UPDATE project SET project_type = ?, priority = ?, project_status = ?, customer = ?, "
+				+ "week = ?, year = ?, name = ?, projects_id = ?, ma_so_ke_toan = ?, pham_vi_cung_cap = ?, "
+				+ "tong_gia_tri_thuc_te = ?, DAC = ?, PAC = ?, FAC = ?, so_tien_tam_ung = ?, ke_hoach_tam_ung = ?, "
+				+ "so_tien_DAC = ?, ke_hoach_thanh_toan_DAC = ?, so_tien_PAC = ?, ke_hoach_thanh_toan_PAC = ?, "
+				+ "so_tien_FAC = ?, ke_hoach_thanh_toan_FAC = ?, general_issue = ?, solution = ?, ke_hoach = ?, "
+				+ "ket_qua_thuc_hien_ke_hoach = ?, created_at = ? "
 				+ "WHERE id = ?";
-		_jdbcTemplate.update(sql, project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), project.getWeek(), project.getYear(), 
-				project.getName(), project.getProject_id(), project.getMa_so_ke_toan(), project.getPham_vi_cung_cap(), project.getTong_gia_tri_thuc_te(), project.getDAC(),
-				project.getPAC(),project.getFAC(),project.getSo_tien_tam_ung(),project.getKe_hoach_tam_ung(),project.getSo_tien_DAC(),project.getKe_hoach_thanh_toan_DAC(),
-				project.getSo_tien_PAC(),project.getKe_hoach_thanh_toan_PAC(),project.getSo_tien_FAC(),project.getKe_hoach_thanh_toan_FAC(),
-				project.getTinh_trang_va_ke_hoach_chi_tiet(), project.getKet_qua_thuc_hien_ke_hoach(), _now, 
+		_jdbcTemplate.update(sql, project.getProject_type(), project.getPriority(), project.getProject_status(), 
+				project.getCustomer(), project.getWeek(), project.getYear(), project.getName(), 
+				project.getProject_id(), project.getMa_so_ke_toan(), project.getPham_vi_cung_cap(), 
+				project.getTong_gia_tri_thuc_te(), project.getDAC(), project.getPAC(),project.getFAC(), 
+				project.getSo_tien_tam_ung(), project.getKe_hoach_tam_ung(), project.getSo_tien_DAC(), 
+				project.getKe_hoach_thanh_toan_DAC(), project.getSo_tien_PAC(), project.getKe_hoach_thanh_toan_PAC(), 
+				project.getSo_tien_FAC(),project.getKe_hoach_thanh_toan_FAC(), project.getGeneral_issue(), 
+				project.getSolution(), project.getKe_hoach(), project.getKet_qua_thuc_hien_ke_hoach(), _now, 
 				project.getId());
 	}
 	
@@ -479,10 +497,16 @@ public class ProjectDao extends BaseDao {
 //	Lấy dữ liệu project triển khai theo id
 	public Project getProjectTkById(int id) {
 		Project object = new Project();
-		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, projects_status.id AS project_status, customers.id AS customer, "
-				+ "project.week, project.year, project.name, project.projects_id AS project_id, project.ma_so_ke_toan, project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, project.DAC, "
-				+ "project.PAC, project.FAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, project.so_tien_PAC, "
-				+ "project.ke_hoach_thanh_toan_PAC, project.so_tien_FAC, project.ke_hoach_thanh_toan_FAC, project.tinh_trang_va_ke_hoach_chi_tiet, project.ket_qua_thuc_hien_ke_hoach "
+		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, "
+				+ "projects_status.id AS project_status, customers.id AS customer, project.week, "
+				+ "project.year, project.name, project.projects_id AS project_id, project.ma_so_ke_toan, "
+				+ "project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, project.DAC, project.PAC, "
+				+ "project.FAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, project.so_tien_DAC, "
+				+ "project.ke_hoach_thanh_toan_DAC, project.thuc_te_thanh_toan_DAC, project.so_tien_PAC, "
+				+ "project.ke_hoach_thanh_toan_PAC, project.thuc_te_thanh_toan_PAC, project.so_tien_FAC, "
+				+ "project.ke_hoach_thanh_toan_FAC, project.thuc_te_thanh_toan_FAC, "
+				+ "project.tinh_trang_va_ke_hoach_chi_tiet, project.ke_hoach, project.general_issue, "
+				+ "project.solution, project.ket_qua_thuc_hien_ke_hoach "
 				+ "FROM project "
 				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
 				+ "INNER JOIN priorities ON project.priority = priorities.id "

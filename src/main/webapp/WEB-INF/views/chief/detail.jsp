@@ -148,16 +148,11 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div>
-									<c:if test="${detail.week != current_week && detail.week != (current_week - 1)}"></c:if>
 									<c:if test="${detail.week == current_week || detail.week == (current_week - 1)}">
-										<c:if test="${detail.week < 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/0${detail.week}_${year}_${detail.id}' />" 
-												class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
-										</c:if>
-										<c:if test="${detail.week >= 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/${detail.week}_${year}_${detail.id}' />" 
-												class="float-right btn btn-warning"><i class="fas fa-edit"></i></a>
-										</c:if>
+										<a href="<c:url value='/chief/update_project_tk/${week_option}_${year_option}_${detail.id}' />"
+											style="position: absolute; left: 1%;" class="float-right btn btn-warning">
+											<i class="fas fa-edit"></i>
+										</a>
 									</c:if>
 								</div>
 							</div>
@@ -196,31 +191,31 @@
 						</div> --%>
 					</c:if>
 					<c:if test="${detail.type=='Viễn thông' }">
-						<h2 class="text-center mt-3">${detail.name }</h2>
+						<h2 class="text-center mt-3">${detail.name}</h2>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="table-responsive-sm">
 									<table class="table table-hover table-bordered ">
 										<tr>
 											<th>Dự án/Gói thầu</th>
-											<td>${detail.name }</td>
+											<td>${detail.name}</td>
 										</tr>
 										<tr>
 											<th>Mô tả dự án</th>
-											<td >${detail.description }</td>
+											<td >${detail.description}</td>
 										</tr>
 										<tr>
 											<th>Tổng mức đầu tư</th>
-											<td>${detail.tong_muc_dau_tu_du_kien }</td>
+											<td>${detail.tong_muc_dau_tu_du_kien}</td>
 										</tr>
 										<tr>
 											<th>Hình thức đầu tư</th>
-											<td>${detail.hinh_thuc_dau_tu }</td>
+											<td>${detail.hinh_thuc_dau_tu}</td>
 										</tr>
 										<tr>
 											<th>Mức độ khả thi</th>
 
-											<td><c:if test="${detail.muc_do_kha_thi != 0  }">
+											<td><c:if test="${detail.muc_do_kha_thi != 0}">
 													${detail.muc_do_kha_thi }%
 												</c:if></td>
 										</tr>
@@ -236,8 +231,16 @@
 								<div class="table-responsive-sm">
 									<table class="table table-bordered table-hover">
 										<tr>
-											<th>Tình trạng & Kế hoạch chi tiết</th>
-											<td class="text-justify">${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
+											<th>Kế hoạch</th>
+											<td class="text-justify">${detail.ke_hoach}</td>
+										</tr>
+										<tr>
+											<th>Khó khăn</th>
+											<td class="text-justify" >${detail.general_issue}</td>
+										</tr>
+										<tr>
+											<th>Giải pháp</th>
+											<td class="text-justify" >${detail.solution}</td>
 										</tr>
 										<tr>
 											<th>Phân tích SWOT</th>
@@ -289,14 +292,10 @@
 								<div>
 									<c:if test="${detail.week != current_week && detail.week != (current_week - 1)}"></c:if>
 									<c:if test="${detail.week == current_week || detail.week == (current_week - 1)}">
-										<c:if test="${detail.week < 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/0${detail.week}_${year}_${detail.id}' />" 
-												class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
-										</c:if>
-										<c:if test="${detail.week >= 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/${detail.week}_${year}_${detail.id}' />" 
-												class="float-right btn btn-warning"><i class="fas fa-edit"></i></a>
-										</c:if>
+										<a href="<c:url value='/chief/update_project/${week_option}_${year_option}_${detail.id}' />"
+											style="position: absolute; left: 1%;" class="float-right btn btn-warning">
+											<i class="fas fa-edit"></i>
+										</a>
 									</c:if>
 								</div>
 							</div>
@@ -343,16 +342,24 @@
 								<div class="table-responsive-sm">
 									<table class="table table-bordered table-hover">
 										<tr>
-											<th>Tình trạng & Kế hoạch chi tiết</th>
-											<td class="text-justify" >${detail.tinh_trang_va_ke_hoach_chi_tiet }</td>
+											<th>Kế hoạch</th>
+											<td class="text-justify">${detail.ke_hoach}</td>
+										</tr>
+										<tr>
+											<th>Khó khăn</th>
+											<td class="text-justify" >${detail.general_issue}</td>
+										</tr>
+										<tr>
+											<th>Giải pháp</th>
+											<td class="text-justify" >${detail.solution}</td>
 										</tr>
 										<tr>
 											<th>Phân tích SWOT</th>
-											<td class="text-justify" >${detail.phan_tich_SWOT }</td>
+											<td class="text-justify">${detail.phan_tich_SWOT}</td>
 										</tr>
 										<tr>
 											<th>Kết quả thực hiện kế hoạch</th>
-											<td class="text-justify" >${detail.ket_qua_thuc_hien_ke_hoach }</td>
+											<td class="text-justify" >${detail.ket_qua_thuc_hien_ke_hoach}</td>
 										</tr>
 										<tr>
 											<th>Phụ trách</th>
@@ -396,14 +403,10 @@
 								<div>
 									<c:if test="${detail.week != current_week && detail.week != (current_week - 1)}"></c:if>
 									<c:if test="${detail.week == current_week || detail.week == (current_week - 1)}">
-										<c:if test="${detail.week < 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/0${detail.week}_${year}_${detail.id}' />" 
-												class="float-right btn btn-light"><i class="fas fa-edit"></i></a>
-										</c:if>
-										<c:if test="${detail.week >= 10 }">
-											<a style="position: absolute; left: 1%;" href="<c:url value='/chief/update_project_tk/${detail.week}_${year}_${detail.id}' />" 
-												class="float-right btn btn-warning"><i class="fas fa-edit"></i></a>
-										</c:if>
+										<a href="<c:url value='/chief/update_project/${week_option}_${year_option}_${detail.id}' />"
+											style="position: absolute; left: 1%;" class="float-right btn btn-warning">
+											<i class="fas fa-edit"></i>
+										</a>
 									</c:if>
 								</div>
 							</div>

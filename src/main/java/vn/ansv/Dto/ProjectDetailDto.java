@@ -5,17 +5,18 @@ import java.sql.Date;
 public class ProjectDetailDto {
 	
 	private int id;
+	private int type_id;
 	private String type;
 	private String priority;
 	private String status;
-	private String customer;
 	
+	private String customer;
 	private int week;
 	private int year;
 	private String name;
 	private String description;
-	private String tong_muc_dau_tu_du_kien;
 	
+	private String tong_muc_dau_tu_du_kien;
 	private String hinh_thuc_dau_tu;
 	private int muc_do_kha_thi;
 	private String phan_tich_SWOT;
@@ -60,12 +61,22 @@ public class ProjectDetailDto {
 		super();
 	}
 
+
+
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getType_id() {
+		return type_id;
+	}
+
+	public void setType_id(int type_id) {
+		this.type_id = type_id;
 	}
 
 	public String getType() {

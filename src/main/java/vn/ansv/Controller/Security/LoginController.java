@@ -234,6 +234,8 @@ public class LoginController {
 		    	the_week_before_format = "0" + the_week_before_format;
 		    }
 		    
+		    session.setAttribute("week_option", the_week_before_format);
+		    session.setAttribute("year_option", year);
 		    
 		    // Check user's role and then redirect
 		    if (request.isUserInRole("ROLE_ADMIN")) {

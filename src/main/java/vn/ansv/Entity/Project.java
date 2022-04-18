@@ -30,16 +30,21 @@ public class Project {
 	
 	private double so_tien_tam_ung;
 	private Date ke_hoach_tam_ung;
+	
 	private double so_tien_DAC;
 	private Date ke_hoach_thanh_toan_DAC;
-	private double so_tien_PAC;
+	private Date thuc_te_thanh_toan_DAC;
 	
+	private double so_tien_PAC;
 	private Date ke_hoach_thanh_toan_PAC;
+	private Date thuc_te_thanh_toan_PAC;
+	
 	private double so_tien_FAC;
 	private Date ke_hoach_thanh_toan_FAC;
+	private Date thuc_te_thanh_toan_FAC;
+	
 	private String tinh_trang_va_ke_hoach_chi_tiet;
 	private String ke_hoach;
-	
 	private String general_issue;
 	private String solution;
 	private String ket_qua_thuc_hien_ke_hoach;
@@ -48,8 +53,6 @@ public class Project {
 	
 	private Date created_at;
 
-	
-	
 	public Project() {
 		super();
 	}
@@ -246,6 +249,14 @@ public class Project {
 		this.ke_hoach_thanh_toan_DAC = ke_hoach_thanh_toan_DAC;
 	}
 
+	public Date getThuc_te_thanh_toan_DAC() {
+		return thuc_te_thanh_toan_DAC;
+	}
+
+	public void setThuc_te_thanh_toan_DAC(Date thuc_te_thanh_toan_DAC) {
+		this.thuc_te_thanh_toan_DAC = thuc_te_thanh_toan_DAC;
+	}
+
 	public double getSo_tien_PAC() {
 		return so_tien_PAC;
 	}
@@ -262,6 +273,14 @@ public class Project {
 		this.ke_hoach_thanh_toan_PAC = ke_hoach_thanh_toan_PAC;
 	}
 
+	public Date getThuc_te_thanh_toan_PAC() {
+		return thuc_te_thanh_toan_PAC;
+	}
+
+	public void setThuc_te_thanh_toan_PAC(Date thuc_te_thanh_toan_PAC) {
+		this.thuc_te_thanh_toan_PAC = thuc_te_thanh_toan_PAC;
+	}
+
 	public double getSo_tien_FAC() {
 		return so_tien_FAC;
 	}
@@ -276,6 +295,14 @@ public class Project {
 
 	public void setKe_hoach_thanh_toan_FAC(Date ke_hoach_thanh_toan_FAC) {
 		this.ke_hoach_thanh_toan_FAC = ke_hoach_thanh_toan_FAC;
+	}
+
+	public Date getThuc_te_thanh_toan_FAC() {
+		return thuc_te_thanh_toan_FAC;
+	}
+
+	public void setThuc_te_thanh_toan_FAC(Date thuc_te_thanh_toan_FAC) {
+		this.thuc_te_thanh_toan_FAC = thuc_te_thanh_toan_FAC;
 	}
 
 	public String getTinh_trang_va_ke_hoach_chi_tiet() {

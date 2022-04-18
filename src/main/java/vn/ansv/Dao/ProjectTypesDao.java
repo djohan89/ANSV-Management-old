@@ -17,7 +17,7 @@ public class ProjectTypesDao extends BaseDao {
 	
 	// Lấy dữ liệu cho phần menu (role CEO)
 	public List<ProjectTypes> getMenu(int week, int year) {
-		String sql = "SELECT projects_types.id, projects_types.name, COUNT(*) AS number FROM projects_types "
+		String sql = "SELECT projects_types.id, projects_types.display AS name, COUNT(*) AS number FROM projects_types "
 				+ "INNER JOIN project ON projects_types.id = project.project_type "
 				+ "WHERE project.week = ? AND project.year = ? "
 				+ "GROUP BY projects_types.name "
