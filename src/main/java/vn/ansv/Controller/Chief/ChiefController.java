@@ -103,7 +103,6 @@ public class ChiefController extends ChiefBaseController {
 	project_update = _projectService.getProjectTkById(id);
 	model.addAttribute("project_update", project_update);
 		
-		
 	_mvShare.setViewName("chief/update_tk");
 	return _mvShare;
 	
@@ -114,11 +113,35 @@ public class ChiefController extends ChiefBaseController {
 	public String CeoDoUpdateProject1(@ModelAttribute("Project") Project project_update, 
 			@PathVariable int week, @PathVariable int year, @PathVariable int id, 
 			HttpSession session, Model model) {
+		String pic_id = (String) session.getAttribute("user_id");
 		String week_link = Integer.toString(week);
 		if (week < 10) {
 			week_link = "0" + week;
 	    }
-		_projectService.update_tk(project_update);
+		
+		if (_picService.checkPicOfProjectIsset(id, pic_id) == true) {
+			Date now = new Date();   
+			int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
+			
+			if(current_week < 10) {
+				week_link = "0" + current_week;
+			}
+			
+			_projectService.updateInteractive(project_update.getId(), "old");
+			String am_id = _picService.getPICByProjectId(project_update.getId());
+			project_update.setNote(Integer.toString(project_update.getId()));
+			project_update.setId(_projectService.getMaxId() + 1);
+			project_update.setWeek(current_week);
+			project_update.setInteractive("update");
+			
+			_projectService.saveDep(project_update);
+			_picService.save(project_update.getId(), pic_id);
+			_picService.save(project_update.getId(), am_id);
+			return "redirect:/chief/dashboard/" + week_link + "_" + year;
+		} else {
+			_projectService.update_tk(project_update);
+		}
+		
 		return "redirect:/chief/detail/" + week_link + "_" + year + "_" + id;
 		
 	}

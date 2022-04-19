@@ -136,8 +136,8 @@
 													<fmt:formatNumber type="number" value="${detail.so_tien_tam_ung }" />
 												</c:if>
 											</td>
-											<td><fmt:formatDate value="${detail.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
 											<td>N/A</td>
+											<td><fmt:formatDate value="${detail.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
 											<td>N/A</td>
 											<td>N/A</td>
 										</tr>
