@@ -183,17 +183,33 @@
 								<div class="card-body">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-100">
-											<label class="input-group-text w-100 fw-400">Phạm vi cung cấp</label>
+											<label class="input-group-text w-100 fw-400">Tiến độ chung</label>
 										</div>
 										<form:textarea path="pham_vi_cung_cap" class="form-control" id="add_ckeditor" />
 									</div>
 									
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-100">
-											<label class="input-group-text w-100 fw-400">Tình trạng kế hoạch</label>
+											<label class="input-group-text w-100 fw-400">Kế hoạch</label>
 										</div>
-										<textarea id="tinh_trang_test" style="display:none;">${project.tinh_trang_va_ke_hoach_chi_tiet}</textarea>
-										<form:textarea path="tinh_trang_va_ke_hoach_chi_tiet" class="form-control" id="cr_tinh_trang" />
+										<textarea id="ke_hoach_test" style="display:none;">${project.tinh_trang_va_ke_hoach_chi_tiet}</textarea>
+										<form:textarea path="ke_hoach" class="form-control" id="cr_ke_hoach" />
+									</div>
+									
+									<div class="input-group mb-3">
+										<div class="input-group-prepend w-100">
+											<label class="input-group-text w-100 fw-400">Khó khăn</label>
+										</div>
+										<textarea id="kho_khan_test" style="display:none;">${project.general_issue}</textarea>
+										<form:textarea path="general_issue" class="form-control" id="cr_kho_khan" />
+									</div>
+									
+									<div class="input-group mb-3">
+										<div class="input-group-prepend w-100">
+											<label class="input-group-text w-100 fw-400">Giải pháp</label>
+										</div>
+										<textarea id="giai_phap_test" style="display:none;">${project.solution}</textarea>
+										<form:textarea path="solution" class="form-control" id="cr_giai_phap" />
 									</div>
 		
 									<div class="input-group mb-3">
@@ -248,29 +264,7 @@
 										<form:hidden  path="ke_hoach_tam_ung" id="ke_hoach_tam_ung1" class="form-control" />
 									</div>
 									
-									<div class="input-group mb-3">
-										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100 fw-400">DAC</label>
-										</div>
-										<input type="text" id="DAC_test" value="" readonly="readonly" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
-										<form:hidden path="DAC" class="form-control datepickerJavascript" id="DAC1" />
-									</div>
 									
-									<div class="input-group mb-3">
-										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100 fw-400">PAC</label>
-										</div>
-										<input type="text" id="PAC_test" value="" readonly="readonly" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
-										<form:hidden path="PAC" id="PAC1" class="form-control datepickerJavascript" />
-									</div>
-									
-									<div class="input-group mb-3">
-										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100 fw-400">FAC</label>
-										</div>
-										<input type="text" id="FAC_test" value="" readonly="readonly" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
-										<form:hidden path="FAC" id="FAC1" class="form-control datepickerJavascript" />
-									</div>
 								</div>
 								<!-- /.card-body-->
 							</div>
@@ -293,6 +287,13 @@
 								</div>
 								<div class="card-body">
 									<div class="input-group mb-1">
+										<div class="input-group-prepend w-30">
+											<label class="input-group-text w-100 fw-400">DAC(Hợp đồng)</label>
+										</div>
+										<input type="text" id="DAC_test" value="" readonly="readonly" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:hidden path="DAC" class="form-control datepickerJavascript" id="DAC1" />
+									</div>
+									<div class="input-group mb-1">
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100 fw-400">DAC (VNĐ)</label>
 										</div>
@@ -301,15 +302,29 @@
 														value="${project.so_tien_DAC }" var="so_tien_DAC"/>
 										<form:hidden path="so_tien_DAC" class="form-control" value="${so_tien_DAC }" id="so_tien_DAC1" />
 									</div>
-									
-									<div class="input-group mb-3">
-										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100 fw-400">Kế hoạch</label>
+									<div class="input-group mb-1">
+										<div class="input-group-prepend w-30">
+											<label class="input-group-text w-100 fw-400">Mục tiêu DAC</label>
 										</div>
 										<input type="text" id="ke_hoach_thanh_toan_DAC_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="ke_hoach_thanh_toan_DAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_DAC1" />
 									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend w-30">
+											<label class="input-group-text w-100 fw-400">Thực tế DAC</label>
+										</div>
+										<input type="text" id="thuc_te_thanh_toan_DAC_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:hidden path="thuc_te_thanh_toan_DAC" class="form-control datepickerJavascript" id="thuc_te_thanh_toan_DAC1" />
+									</div>
 									
+									
+									<div class="input-group mb-1">
+										<div class="input-group-prepend w-30">
+											<label class="input-group-text w-100 fw-400">PAC(Hợp đồng)</label>
+										</div>
+										<input type="text" id="PAC_test" value="" readonly="readonly" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:hidden path="PAC" id="PAC1" class="form-control datepickerJavascript" />
+									</div>
 									<div class="input-group mb-1">
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100 fw-400">PAC (VNĐ)</label>
@@ -319,15 +334,29 @@
 														value="${project.so_tien_PAC }" var="so_tien_PAC"/>
 										<form:hidden path="so_tien_PAC" class="form-control" value="${so_tien_PAC }" id="so_tien_PAC1" />
 									</div>
-									
-									<div class="input-group mb-3">
-										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100 fw-400">Kế hoạch</label>
+									<div class="input-group mb-1">
+										<div class="input-group-prepend w-30">
+											<label class="input-group-text w-100 fw-400">Mục tiêu PAC</label>
 										</div>
 										<input type="text" id="ke_hoach_thanh_toan_PAC_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden  path="ke_hoach_thanh_toan_PAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_PAC1" />
 									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend w-30">
+											<label class="input-group-text w-100 fw-400">Thực tế PAC</label>
+										</div>
+										<input type="text" id="thuc_te_thanh_toan_PAC_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:hidden path="thuc_te_thanh_toan_PAC" class="form-control datepickerJavascript" id="thuc_te_thanh_toan_PAC1" />
+									</div>
 									
+									
+									<div class="input-group mb-1">
+										<div class="input-group-prepend w-30">
+											<label class="input-group-text w-100 fw-400">FAC(Hợp đồng)</label>
+										</div>
+										<input type="text" id="FAC_test" value="" readonly="readonly" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:hidden path="FAC" id="FAC1" class="form-control datepickerJavascript" />
+									</div>
 									<div class="input-group mb-1">
 										<div class="input-group-prepend w-25">
 											<label class="input-group-text w-100 fw-400">FAC (VNĐ)</label>
@@ -338,12 +367,19 @@
 										<form:hidden path="so_tien_FAC" class="form-control" value="${so_tien_FAC }" id="so_tien_FAC1" />
 									</div>
 									
-									<div class="input-group mb-3">
+									<div class="input-group mb-1">
 										<div class="input-group-prepend w-25">
-											<label class="input-group-text w-100 fw-400">Kế hoạch</label>
+											<label class="input-group-text w-100 fw-400">Mục tiêu FAC</label>
 										</div>
 										<input type="text" id="ke_hoach_thanh_toan_FAC_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden path="ke_hoach_thanh_toan_FAC" class="form-control datepickerJavascript" id="ke_hoach_thanh_toan_FAC1" />
+									</div>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend w-30">
+											<label class="input-group-text w-100 fw-400">Thực tế FAC</label>
+										</div>
+										<input type="text" id="thuc_te_thanh_toan_FAC_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
+										<form:hidden path="thuc_te_thanh_toan_FAC" class="form-control datepickerJavascript" id="thuc_te_thanh_toan_FAC1" />
 									</div>
 									
 									<div class="input-group mb-3">
@@ -399,14 +435,20 @@
 		});
     }
 	
-	var tinh_trang = document.getElementById('tinh_trang_test').value;
+	var tinh_trang = document.getElementById('ke_hoach_test').value;
 	var ket_qua = document.getElementById('ket_qua_test').value;
-	document.getElementById('cr_tinh_trang').value = tinh_trang;
+	var kho_khan = document.getElementById('kho_khan_test').value;
+	var giai_phap = document.getElementById('giai_phap_test').value;
+	document.getElementById('cr_ke_hoach').value = tinh_trang;
 	document.getElementById('cr_ket_qua').value = ket_qua;
+	document.getElementById('cr_kho_khan').value = kho_khan;
+	document.getElementById('cr_giai_phap').value = giai_phap;
 	
 	function complete_form() {
 		let priceIdList = ['so_tien_tam_ung_test', 'tong_gia_tri_thuc_te_test', 'so_tien_DAC_test', 'so_tien_PAC_test', 'so_tien_FAC_test'];
-		let dateIdList = ['ke_hoach_tam_ung_test', 'DAC_test', 'PAC_test', 'FAC_test', 'ke_hoach_thanh_toan_DAC_test', 'ke_hoach_thanh_toan_PAC_test', 'ke_hoach_thanh_toan_FAC_test'];
+		let dateIdList = ['ke_hoach_tam_ung_test', 'DAC_test', 'PAC_test', 'FAC_test', 
+			'ke_hoach_thanh_toan_DAC_test', 'ke_hoach_thanh_toan_PAC_test', 'ke_hoach_thanh_toan_FAC_test',
+			'thuc_te_thanh_toan_DAC_test', 'thuc_te_thanh_toan_PAC_test', 'thuc_te_thanh_toan_FAC_test'];
 		
 		for (var i = 0; i < priceIdList.length; i++) {
 			price_into_form(priceIdList[i]);
@@ -448,7 +490,9 @@
 		
 		function load(){
 			let priceId_list = ['so_tien_tam_ung1', 'tong_gia_tri_thuc_te1', 'so_tien_DAC1', 'so_tien_PAC1', 'so_tien_FAC1'];
-			let dateId_list = ['ke_hoach_tam_ung1', 'DAC1', 'PAC1', 'FAC1', 'ke_hoach_thanh_toan_DAC1', 'ke_hoach_thanh_toan_PAC1', 'ke_hoach_thanh_toan_FAC1'];
+			let dateId_list = ['ke_hoach_tam_ung1', 'DAC1', 'PAC1', 'FAC1', 
+				'ke_hoach_thanh_toan_DAC1', 'ke_hoach_thanh_toan_PAC1', 'ke_hoach_thanh_toan_FAC1',
+				'thuc_te_thanh_toan_DAC1','thuc_te_thanh_toan_PAC1','thuc_te_thanh_toan_FAC1'];
 			
 			for (var i = 0; i < priceId_list.length; i++) {
 				form_into_price(priceId_list[i]);

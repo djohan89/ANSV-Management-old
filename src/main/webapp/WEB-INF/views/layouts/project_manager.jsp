@@ -222,6 +222,9 @@
 		.tooltip_icon:hover .tooltip_for_icon {
 		  	visibility: visible;
 		}
+		.w30{
+		width: 30%;
+		}
 	</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -402,7 +405,7 @@
 			    document.getElementById("formLogout").submit();
 			}
 			
-			$("#add_ckeditor,#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua").ckeditor({
+			$("#add_ckeditor,#ud_tinh_trang,#cr_tinh_trang,#cr_ket_qua,#cr_swot,#cr_mo_ta_du_an,#ud_swot,#ud_ket_qua,#cr_ke_hoach,#cr_kho_khan,#cr_giai_phap").ckeditor({
 				editorplaceholder: 'Nội dung...',
 			  	toolbar: [
 					{ name: 'document', items: [ 'Source', '-' ] },											
