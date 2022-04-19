@@ -195,7 +195,7 @@
 								<div class="card-body">
 									<div class="input-group mb-3">
 										<div class="input-group-prepend w-100">
-											<label class="input-group-text w-100">Phạm vi cung cấp</label>
+											<label class="input-group-text w-100">Tiến độ chung</label>
 										</div>
 										<form:textarea path="pham_vi_cung_cap" class="form-control" id="add_ckeditor" />
 									</div>

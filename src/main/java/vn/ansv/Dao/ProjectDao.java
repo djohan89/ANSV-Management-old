@@ -166,7 +166,7 @@ public class ProjectDao extends BaseDao {
 		Project object = new Project();
 		String sql = "SELECT project.id, projects_types.id AS project_type, priorities.id AS priority, projects_status.id AS project_status, customers.id AS customer, "
 				+ "project.week, project.year, project.name, project.description, project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu, project.muc_do_kha_thi, "
-				+ "project.phan_tich_SWOT, project.tinh_trang_va_ke_hoach_chi_tiet, project.ket_qua_thuc_hien_ke_hoach, project.note "
+				+ "project.phan_tich_SWOT, project.ke_hoach, project.general_issue, project.solution, project.ket_qua_thuc_hien_ke_hoach, project.note "
 				+ "FROM project "
 				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
 				+ "INNER JOIN priorities ON project.priority = priorities.id "
@@ -215,9 +215,9 @@ public class ProjectDao extends BaseDao {
 				+ "project.description, project.tong_muc_dau_tu_du_kien, project.hinh_thuc_dau_tu, "
 				+ "project.muc_do_kha_thi, project.phan_tich_SWOT, project.pham_vi_cung_cap, "
 				+ "project.tong_gia_tri_thuc_te, project.DAC, project.FAC, project.PAC, project.so_tien_tam_ung, "
-				+ "project.ke_hoach_tam_ung, project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, "
-				+ "project.so_tien_PAC, project.ke_hoach_thanh_toan_PAC, project.so_tien_FAC, "
-				+ "project.ke_hoach_thanh_toan_FAC, project.ket_qua_thuc_hien_ke_hoach, project.note, "
+				+ "project.ke_hoach_tam_ung, project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, thuc_te_thanh_toan_DAC, "
+				+ "project.so_tien_PAC, project.ke_hoach_thanh_toan_PAC, thuc_te_thanh_toan_PAC, project.so_tien_FAC, "
+				+ "project.ke_hoach_thanh_toan_FAC, thuc_te_thanh_toan_FAC, project.ket_qua_thuc_hien_ke_hoach, project.note, "
 				+ "project.interactive "
 				+ "FROM project INNER JOIN pic ON project.id = pic.project_id "
 				+ "INNER JOIN users ON pic.pic = users.id "
@@ -295,7 +295,7 @@ public class ProjectDao extends BaseDao {
 				+ "projects_status.name AS status, project.name, customers.name AS customer, projects_types.name AS type, "
 				+ "(" + pm_name + ") AS pm, "
 				+ "(" + am_name + ") AS am, "
-				+ "project.tinh_trang_va_ke_hoach_chi_tiet, "
+				+ "project.ke_hoach, "
 				+ "(" + deployment + ") AS note, interactive "
 				+ "FROM project "
 				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
@@ -318,11 +318,11 @@ public class ProjectDao extends BaseDao {
 	// Tạo dụ án (VIễn thông / Chuyển đổi số)
 	public void save(Project project) {
 		String sql = "INSERT INTO project (id, project_type, priority, project_status, customer, week, year, name, description, "
-				+ "tong_muc_dau_tu_du_kien, hinh_thuc_dau_tu, muc_do_kha_thi, phan_tich_SWOT, tinh_trang_va_ke_hoach_chi_tiet, "
-				+ "ket_qua_thuc_hien_ke_hoach, note, interactive, created_at) VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "tong_muc_dau_tu_du_kien, hinh_thuc_dau_tu, muc_do_kha_thi, phan_tich_SWOT, ke_hoach, general_issue, solution, "
+				+ "ket_qua_thuc_hien_ke_hoach, note, interactive, created_at) VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		_jdbcTemplate.update(sql, project.getId(), project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), 
 				project.getWeek(), project.getName(), project.getDescription(), project.getTong_muc_dau_tu_du_kien(), project.getHinh_thuc_dau_tu(), 
-				project.getMuc_do_kha_thi(), project.getPhan_tich_SWOT(), project.getTinh_trang_va_ke_hoach_chi_tiet(), 
+				project.getMuc_do_kha_thi(), project.getPhan_tich_SWOT(), project.getKe_hoach(), project.getGeneral_issue(), project.getSolution(),
 				project.getKet_qua_thuc_hien_ke_hoach(), project.getNote(), project.getInteractive(), _now);
 	}
 	
@@ -332,7 +332,7 @@ public class ProjectDao extends BaseDao {
 	public Project getFormDeployment(int id) {
 		Project list = new Project();
 		
-		String sql = "SELECT name, customer, priority, project_status, tinh_trang_va_ke_hoach_chi_tiet, ket_qua_thuc_hien_ke_hoach FROM project WHERE id = ?";
+		String sql = "SELECT name, customer, priority, project_status, ke_hoach, general_issue, solution, ket_qua_thuc_hien_ke_hoach FROM project WHERE id = ?";
 		list = _jdbcTemplate.queryForObject(sql, new ProjectMapper() {
 			public Project mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Project project = new Project();
@@ -341,7 +341,9 @@ public class ProjectDao extends BaseDao {
 				project.setCustomer(rs.getInt("customer"));
 				project.setPriority(rs.getInt("priority"));
 				project.setProject_status(rs.getInt("project_status"));
-				project.setTinh_trang_va_ke_hoach_chi_tiet(rs.getString("tinh_trang_va_ke_hoach_chi_tiet"));
+				project.setKe_hoach(rs.getString("ke_hoach"));
+				project.setGeneral_issue(rs.getString("general_issue"));
+				project.setSolution(rs.getString("solution"));
 				project.setKet_qua_thuc_hien_ke_hoach(rs.getString("ket_qua_thuc_hien_ke_hoach"));
 				
 				return project;
@@ -353,16 +355,16 @@ public class ProjectDao extends BaseDao {
 	// Tạo dụ án (Triển khai)
 	public void saveDeployment(Project project, int id) {
 		String sql = "INSERT INTO project (id, project_type, priority, project_status, customer, week, year, projects_id, ma_so_ke_toan, name, "
-				+ "pham_vi_cung_cap, tong_gia_tri_thuc_te, DAC, PAC, FAC, so_tien_tam_ung, ke_hoach_tam_ung, so_tien_DAC, ke_hoach_thanh_toan_DAC, "
-				+ "so_tien_PAC, ke_hoach_thanh_toan_PAC, so_tien_FAC, ke_hoach_thanh_toan_FAC, tinh_trang_va_ke_hoach_chi_tiet, "
+				+ "pham_vi_cung_cap, tong_gia_tri_thuc_te, DAC, PAC, FAC, so_tien_tam_ung, ke_hoach_tam_ung, so_tien_DAC, ke_hoach_thanh_toan_DAC, thuc_te_thanh_toan_DAC, "
+				+ "so_tien_PAC, ke_hoach_thanh_toan_PAC, thuc_te_thanh_toan_PAC, so_tien_FAC, ke_hoach_thanh_toan_FAC, thuc_te_thanh_toan_FAC, ke_hoach, general_issue, solution, "
 				+ "ket_qua_thuc_hien_ke_hoach, note, created_at) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		_jdbcTemplate.update(sql, project.getId(), project.getProject_type(), project.getPriority(), project.getProject_status(), project.getCustomer(), 
 				project.getWeek(), project.getProject_id(), project.getMa_so_ke_toan(), project.getName(), project.getPham_vi_cung_cap(), 
 				project.getTong_gia_tri_thuc_te(), project.getDAC(), project.getPAC(), project.getFAC(), project.getSo_tien_tam_ung(), 
-				project.getKe_hoach_tam_ung(), project.getSo_tien_DAC(), project.getKe_hoach_thanh_toan_DAC(), project.getSo_tien_PAC(), 
-				project.getKe_hoach_thanh_toan_PAC(), project.getSo_tien_FAC(), project.getKe_hoach_thanh_toan_FAC(), project.getTinh_trang_va_ke_hoach_chi_tiet(), 
-				project.getKet_qua_thuc_hien_ke_hoach(), id, _now);
+				project.getKe_hoach_tam_ung(), project.getSo_tien_DAC(), project.getKe_hoach_thanh_toan_DAC(), project.getThuc_te_thanh_toan_DAC(), project.getSo_tien_PAC(), 
+				project.getKe_hoach_thanh_toan_PAC(), project.getThuc_te_thanh_toan_PAC(), project.getSo_tien_FAC(), project.getKe_hoach_thanh_toan_FAC(), project.getThuc_te_thanh_toan_FAC(), 
+				project.getKe_hoach(), project.getGeneral_issue(), project.getSolution(), project.getKet_qua_thuc_hien_ke_hoach(), id, _now);
 	}
 	
 	// Tạo dụ án (Triển khai)
@@ -467,8 +469,8 @@ public class ProjectDao extends BaseDao {
 		String sql = "UPDATE project SET project_type = ?, priority = ?, project_status = ?, customer = ?, "
 				+ "week = ?, year = ?, name = ?, projects_id = ?, ma_so_ke_toan = ?, pham_vi_cung_cap = ?, "
 				+ "tong_gia_tri_thuc_te = ?, DAC = ?, PAC = ?, FAC = ?, so_tien_tam_ung = ?, ke_hoach_tam_ung = ?, "
-				+ "so_tien_DAC = ?, ke_hoach_thanh_toan_DAC = ?, so_tien_PAC = ?, ke_hoach_thanh_toan_PAC = ?, "
-				+ "so_tien_FAC = ?, ke_hoach_thanh_toan_FAC = ?, general_issue = ?, solution = ?, ke_hoach = ?, "
+				+ "so_tien_DAC = ?, ke_hoach_thanh_toan_DAC = ?, thuc_te_thanh_toan_DAC = ?, so_tien_PAC = ?, ke_hoach_thanh_toan_PAC = ?, "
+				+ "thuc_te_thanh_toan_PAC = ?, so_tien_FAC = ?, ke_hoach_thanh_toan_FAC = ?, thuc_te_thanh_toan_FAC = ?, general_issue = ?, solution = ?, ke_hoach = ?, "
 				+ "ket_qua_thuc_hien_ke_hoach = ?, created_at = ? "
 				+ "WHERE id = ?";
 		_jdbcTemplate.update(sql, project.getProject_type(), project.getPriority(), project.getProject_status(), 
@@ -476,9 +478,9 @@ public class ProjectDao extends BaseDao {
 				project.getProject_id(), project.getMa_so_ke_toan(), project.getPham_vi_cung_cap(), 
 				project.getTong_gia_tri_thuc_te(), project.getDAC(), project.getPAC(),project.getFAC(), 
 				project.getSo_tien_tam_ung(), project.getKe_hoach_tam_ung(), project.getSo_tien_DAC(), 
-				project.getKe_hoach_thanh_toan_DAC(), project.getSo_tien_PAC(), project.getKe_hoach_thanh_toan_PAC(), 
-				project.getSo_tien_FAC(),project.getKe_hoach_thanh_toan_FAC(), project.getGeneral_issue(), 
-				project.getSolution(), project.getKe_hoach(), project.getKet_qua_thuc_hien_ke_hoach(), _now, 
+				project.getKe_hoach_thanh_toan_DAC(), project.getThuc_te_thanh_toan_DAC(), project.getSo_tien_PAC(), project.getKe_hoach_thanh_toan_PAC(), 
+				project.getThuc_te_thanh_toan_PAC(), project.getSo_tien_FAC(),project.getKe_hoach_thanh_toan_FAC(), project.getThuc_te_thanh_toan_FAC(),
+				project.getGeneral_issue(), project.getSolution(), project.getKe_hoach(), project.getKet_qua_thuc_hien_ke_hoach(), _now, 
 				project.getId());
 	}
 	
