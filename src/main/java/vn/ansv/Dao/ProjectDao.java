@@ -440,7 +440,7 @@ public class ProjectDao extends BaseDao {
 					+ "INNER JOIN pic ON users.id = pic.pic "
 					+ "INNER JOIN project ON pic.project_id = project.id "
 					+ "WHERE role.name = 'ROLE_AM' AND project.id = id_pk) AS am, "
-				+ "project.interactive, project.tinh_trang_va_ke_hoach_chi_tiet "
+				+ "project.interactive, project.ke_hoach "
 				+ "FROM project "
 				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
 				+ "INNER JOIN pic ON project.id =pic.project_id "
@@ -492,19 +492,19 @@ public class ProjectDao extends BaseDao {
 	public void saveDep(Project project) {
 		String sql = "INSERT INTO project (id, project_type, priority, project_status, customer, week, year, "
 				+ "ma_so_ke_toan, name, projects_id, pham_vi_cung_cap, tong_gia_tri_thuc_te, DAC, PAC, FAC, "
-				+ "so_tien_tam_ung, ke_hoach_tam_ung, so_tien_DAC, ke_hoach_thanh_toan_DAC, so_tien_PAC, "
-				+ "ke_hoach_thanh_toan_PAC, so_tien_FAC, ke_hoach_thanh_toan_FAC, ke_hoach, general_issue, "
+				+ "so_tien_tam_ung, ke_hoach_tam_ung, so_tien_DAC, ke_hoach_thanh_toan_DAC, thuc_te_thanh_toan_DAC, so_tien_PAC, "
+				+ "ke_hoach_thanh_toan_PAC, thuc_te_thanh_toan_PAC, so_tien_FAC, ke_hoach_thanh_toan_FAC, thuc_te_thanh_toan_FAC, ke_hoach, general_issue, "
 				+ "solution, ket_qua_thuc_hien_ke_hoach, note, interactive, created_at) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
+				+ "VALUES (?, ?, ?, ?, ?, ?, year(curdate()), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
 				+ "?, ?, ?, ?, ?)";
 		_jdbcTemplate.update(sql, project.getId(), project.getProject_type(), project.getPriority(), 
 				project.getProject_status(), project.getCustomer(), project.getWeek(), project.getMa_so_ke_toan(), 
 				project.getName(), project.getProject_id(), project.getPham_vi_cung_cap(), 
 				project.getTong_gia_tri_thuc_te(), project.getDAC(), project.getPAC(), project.getFAC(), 
 				project.getSo_tien_tam_ung(), project.getKe_hoach_tam_ung(), project.getSo_tien_DAC(), 
-				project.getKe_hoach_thanh_toan_DAC(), project.getSo_tien_PAC(), project.getKe_hoach_thanh_toan_PAC(), 
-				project.getSo_tien_FAC(), project.getKe_hoach_thanh_toan_FAC(), project.getKe_hoach(), 
-				project.getGeneral_issue(), project.getSolution(), project.getKet_qua_thuc_hien_ke_hoach(), 
+				project.getKe_hoach_thanh_toan_DAC(), project.getThuc_te_thanh_toan_DAC(), project.getSo_tien_PAC(), project.getKe_hoach_thanh_toan_PAC(),
+				project.getThuc_te_thanh_toan_PAC(), project.getSo_tien_FAC(), project.getKe_hoach_thanh_toan_FAC(), project.getThuc_te_thanh_toan_FAC(), 
+				project.getKe_hoach(), project.getGeneral_issue(), project.getSolution(), project.getKet_qua_thuc_hien_ke_hoach(), 
 				project.getNote(), project.getInteractive() , _now);
 	}
 /* ===== Cuối: Project Manager ===== */
