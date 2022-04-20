@@ -99,28 +99,50 @@
 																			<div class="col-6 overflow">
 																				<c:if test="${not empty project_item.pham_vi_cung_cap}">
 																					<p>
-																						<b>Phạm vi cung cấp:</b><br/>
+																						<b>Tiến độ chung:</b><br/>
 																						<span class="d-flex">
 																							<i class="far fa-hand-point-right"></i>
 																							<span class="ml-2 pl-2 border-left border-primary">${project_item.pham_vi_cung_cap}</span>	
 																						</span>
 																					</p><hr>
 																				</c:if>
-																				<p>
-																					<b>Tình trạng:</b><br/>
-																					<span class="d-flex ">
-																						<i class="far fa-hand-point-right"></i>
-																						<span class="ml-2 pl-2 border-left border-primary ">${project_item.tinh_trang_va_ke_hoach_chi_tiet}</span>
-																					</span>
-																				</p>
+																				<c:if test="${not empty project_item.ke_hoach}">
+																					<p>
+																						<b>Kế hoạch:</b><br/>
+																						<span class="d-flex ">
+																							<i class="far fa-hand-point-right"></i>
+																							<span class="ml-2 pl-2 border-left border-primary ">${project_item.ke_hoach}</span>
+																						</span>
+																					</p><hr>
+																				</c:if>
+																				<c:if test="${not empty project_item.general_issue}">
+																					<p>
+																						<b>Khó khăn:</b><br/>
+																						<span class="d-flex ">
+																							<i class="far fa-hand-point-right"></i>
+																							<span class="ml-2 pl-2 border-left border-primary ">${project_item.general_issue}</span>
+																						</span>
+																					</p><hr>
+																				</c:if>
+																				<c:if test="${not empty project_item.solution}">
+																					<p>
+																						<b>Giải pháp:</b><br/>
+																						<span class="d-flex ">
+																							<i class="far fa-hand-point-right"></i>
+																							<span class="ml-2 pl-2 border-left border-primary ">${project_item.solution}</span>
+																						</span>
+																					</p>
+																				</c:if>
 																			</div>
 																			<div class="col-6 pl-4">
 																				<table class="table table-hover table-bordered">
 																					<tr>
-																						<th style="width: 20%;" class="text-center">Kế hoạch</th>
+																						<th style="width: 14%;" class="text-center">Kế hoạch</th>
 																						<th class="text-center">Số tiền<br />(VNĐ)</th>
-																						<th class="text-center" style="width: 26%;">Ngày thanh toán<br/>(D / M / Y)</th>
-																						<th class="text-center" style="width: 26%;">Nghiệm thu<br/>(D / M / Y)</th>
+																						<th class="text-center" style="width: 17%;">Hợp đồng<br/>(D / M / Y)</th>
+																						<th class="text-center" style="width: 17%;">Mục tiêu<br/>(D / M / Y)</th>
+																						<th class="text-center" style="width: 17%;">Thực tế<br/>(D / M / Y)</th>
+																						<th class="text-center" style="width: 9%;">CL<br/>(Ngày)</th>
 																					</tr>
 																					<tr class="text-center">
 																						<th>DAC</th>
@@ -129,8 +151,10 @@
 																								<fmt:formatNumber type="number" value="${project_item.so_tien_DAC}" />
 																							</c:if>
 																						</td>
-																						<td><fmt:formatDate value="${project_item.ke_hoach_thanh_toan_DAC}" pattern="dd / MM / yyyy" /></td>
 																						<td><fmt:formatDate value="${project_item.DAC}" pattern="dd / MM / yyyy" /></td>
+																						<td><fmt:formatDate value="${project_item.ke_hoach_thanh_toan_DAC}" pattern="dd / MM / yyyy" /></td>
+																						<td><fmt:formatDate value="${project_item.thuc_te_thanh_toan_DAC}" pattern="dd / MM / yyyy" /></td>
+																						<td>${project_item.chenh_lech_DAC}</td>
 																					</tr>
 																					<tr class="text-center">
 																						<th>PAC</th>
@@ -139,8 +163,10 @@
 																								<fmt:formatNumber type="number" value="${project_item.so_tien_PAC}" />
 																							</c:if>
 																						</td>
-																						<td><fmt:formatDate value="${project_item.ke_hoach_thanh_toan_PAC}" pattern="dd / MM / yyyy" /></td>
 																						<td><fmt:formatDate value="${project_item.PAC}" pattern="dd / MM / yyyy" /></td>
+																						<td><fmt:formatDate value="${project_item.ke_hoach_thanh_toan_PAC}" pattern="dd / MM / yyyy" /></td>
+																						<td><fmt:formatDate value="${project_item.thuc_te_thanh_toan_PAC}" pattern="dd / MM / yyyy" /></td>
+																						<td>${project_item.chenh_lech_PAC}</td>
 																					</tr>
 																					<tr class="text-center">
 																						<th>FAC</th>
@@ -149,8 +175,10 @@
 																								<fmt:formatNumber type="number" value="${project_item.so_tien_FAC}" />
 																							</c:if>
 																						</td>
-																						<td><fmt:formatDate value="${project_item.ke_hoach_thanh_toan_FAC}" pattern="dd / MM / yyyy" /></td>
 																						<td><fmt:formatDate value="${project_item.FAC}" pattern="dd / MM / yyyy" /></td>
+																						<td><fmt:formatDate value="${project_item.ke_hoach_thanh_toan_FAC}" pattern="dd / MM / yyyy" /></td>
+																						<td><fmt:formatDate value="${project_item.thuc_te_thanh_toan_FAC}" pattern="dd / MM / yyyy" /></td>
+																						<td>${project_item.chenh_lech_FAC}</td>
 																					</tr>
 																					<tr class="text-center">
 																						<th>Tổng</th>
@@ -161,6 +189,8 @@
 																						</td>
 																						<td>N/A</td>
 																						<td>N/A</td>
+																						<td>N/A</td>
+																						<td>N/A</td>
 																					</tr>
 																					<tr class="text-center">
 																						<th>Tạm ứng</th>
@@ -169,7 +199,9 @@
 																								<fmt:formatNumber type="number" value="${project_item.so_tien_tam_ung }" />
 																							</c:if>
 																						</td>
+																						<td>N/A</td>
 																						<td><fmt:formatDate value="${project_item.ke_hoach_tam_ung}" pattern="dd / MM / yyyy" /></td>
+																						<td>N/A</td>
 																						<td>N/A</td>
 																					</tr>
 																				</table>
@@ -223,7 +255,7 @@
 																			</div>
 																			<div class="row">
 																				<div class="col-6">
-																					<p ><b>Phạm vi cung cấp:</b> ${project_item.pham_vi_cung_cap }</p>
+																					<p ><b>Tiến độ chung:</b> ${project_item.pham_vi_cung_cap }</p>
 																				</div>
 																				<div class="col-6">
 																					<p><b>Tổng giá trị:</b> 
@@ -238,9 +270,9 @@
 																			
 																		</div>
 																		<div class="row">
-																			<div class="col-4"><b>Kế hoạch DAC: </b></div>
-																			<div class="col-4"><b>Kế hoạch PAC: </b></div>
-																			<div class="col-4"><b>Kế hoạch FAC: </b></div>
+																			<div class="col-4"><b>DAC(Hợp đồng): </b></div>
+																			<div class="col-4"><b>PAC(Hợp đồng): </b></div>
+																			<div class="col-4"><b>FAC(Hợp đồng): </b></div>
 																			<div class="col-4"><fmt:formatDate value="${project_item.DAC}" pattern="dd/MM/yyyy" /></div>
 																			<div class="col-4"><fmt:formatDate value="${project_item.PAC}" pattern="dd/MM/yyyy" /></div>
 																			<div class="col-4"><fmt:formatDate value="${project_item.FAC}" pattern="dd/MM/yyyy" /></div>
@@ -252,7 +284,9 @@
 																						value="${project_item.so_tien_tam_ung  }" />
 																				</c:if>
 																			</div>
-																			<div class="col-6"><b>Kế hoạch thanh toán tạm ứng:</b><fmt:formatDate value="${project_item.ke_hoach_tam_ung}" pattern="dd/MM/yyyy" /> </div>
+																			<div class="col-6"><b>Kế hoạch tạm ứng:</b><br>
+																				<fmt:formatDate value="${project_item.ke_hoach_tam_ung}" pattern="dd/MM/yyyy" /> 
+																			</div>
 																		</div>
 																		<div class="row">
 																			<div class="col-6"><b>Số tiền DAC: </b>
@@ -261,7 +295,7 @@
 																						value="${project_item.so_tien_DAC }" />
 																				</c:if>
 																			</div>
-																			<div class="col-6"><b>Kế hoạch DAC: </b>
+																			<div class="col-6"><b>Mục tiêu DAC: </b>
 																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_DAC}" pattern="dd/MM/yyyy" />
 																			</div>
 																		</div>
@@ -272,7 +306,7 @@
 																						value="${project_item.so_tien_PAC }" />
 																				</c:if>
 																			</div>
-																			<div class="col-6"><b>Kế hoạch PAC: </b>
+																			<div class="col-6"><b>Mục tiêu PAC: </b>
 																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_PAC}" pattern="dd/MM/yyyy" />
 																			</div>
 																		</div>
@@ -283,18 +317,42 @@
 																						value="${project_item.so_tien_FAC }" />
 																				</c:if>
 																			</div>
-																			<div class="col-6"><b>Kế hoạch FAC: </b>
+																			<div class="col-6"><b>Mục tiêu FAC: </b>
 																				<fmt:formatDate value="${project_item.ke_hoach_thanh_toan_FAC}" pattern="dd/MM/yyyy" />
 																			</div>
 																		</div>
+																		<div class="row">
+																			<div class="col-4"><b>DAC(Thực tế): </b></div>
+																			<div class="col-4"><b>PAC(Thực tế): </b></div>
+																			<div class="col-4"><b>FAC(Thực tế): </b></div>
+																			<div class="col-4"><fmt:formatDate value="${project_item.thuc_te_thanh_toan_DAC}" pattern="dd/MM/yyyy" /></div>
+																			<div class="col-4"><fmt:formatDate value="${project_item.thuc_te_thanh_toan_PAC}" pattern="dd/MM/yyyy" /></div>
+																			<div class="col-4"><fmt:formatDate value="${project_item.thuc_te_thanh_toan_FAC}" pattern="dd/MM/yyyy" /></div>
+																		</div>
 														            	<div class="row">
-														            		<div class="col-6">
+														            		<div class="col-6 left">
 														            			<p><b>Tình trạng:</b> </p>
-														            			<p class="text-justify" >${project_item.tinh_trang_va_ke_hoach_chi_tiet }</p>
+														            			<div class="overflow_mb"><p class="text-justify" >${project_item.ke_hoach }</p></div>
+														            			
 														                	</div>
-														                	<div class="col-6">
+														                	<div class="col-6 ">
+														                		<p><b>Khó khăn:</b> </p>
+														                		<div class="overflow_mb"><p class="text-justify" >${project_item.general_issue}</p></div>
+														                		
+														                	</div>
+														                </div>
+														                <div class="row">
+														            		<div class="col-6 left">
+														            			<p><b>Giải pháp:</b> </p>
+														            			<div class="overflow_mb"><p class="text-justify" >${project_item.solution }</p></div>
+														            			
+														                	</div>
+														                	<div class="col-6 ">
 														                		<p><b>Kết quả thực hiện kế hoạch:</b> </p>
-														                		<p class="text-justify" >${project_item.ket_qua_thuc_hien_ke_hoach }</p>
+														                		<div class="overflow_mb">
+														                			<p class="text-justify" >${project_item.ket_qua_thuc_hien_ke_hoach }</p>
+														                		</div>
+														                		
 														                	</div>
 														                </div>
 														                <div>
@@ -335,16 +393,16 @@
 															${project_item.project_name }
 														</c:if>
 															<c:if test="${project_item.status == 'High'}">
-																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.ke_hoach }</span>
 															</c:if>
 															<c:if test="${project_item.status == 'Medium'}">
-																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: #ff9900">${project_item.ke_hoach }</span>
 															</c:if>
 															<c:if test="${project_item.status == 'Low'}">
-																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: #262626">${project_item.ke_hoach }</span>
 															</c:if>
 															<c:if test="${project_item.status == 'Complete'}">
-																<span class="tooltiptext" style="background-color: #007bff">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: #007bff">${project_item.ke_hoach }</span>
 															</c:if>
 														</a>
 													</td>
@@ -433,16 +491,16 @@
 															${project_item.project_name }
 														</c:if>
 															<c:if test="${project_item.status == 'High'}">
-																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.ke_hoach }</span>
 															</c:if>
 															<c:if test="${project_item.status == 'Medium'}">
-																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: #ff9900">${project_item.ke_hoach }</span>
 															</c:if>
 															<c:if test="${project_item.status == 'Low'}">
-																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: #262626">${project_item.ke_hoach }</span>
 															</c:if>
 															<c:if test="${project_item.status == 'Complete'}">
-																<span class="tooltiptext" style="background-color: #007bff">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: #007bff">${project_item.ke_hoach }</span>
 															</c:if>
 														</a>
 													</td>
@@ -530,16 +588,16 @@
 															${project_item.project_name }
 														</c:if>
 															<c:if test="${project_item.status =='High' }">
-																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: rgb(230, 46, 51)">${project_item.ke_hoach }</span>
 															</c:if>
 															<c:if test="${project_item.status =='Medium' }">
-																<span class="tooltiptext" style="background-color: #ff9900">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: #ff9900">${project_item.ke_hoach }</span>
 															</c:if>
 															<c:if test="${project_item.status =='Low' }">
-																<span class="tooltiptext" style="background-color: #262626">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: #262626">${project_item.ke_hoach }</span>
 															</c:if>
 															<c:if test="${project_item.status =='Complete' }">
-																<span class="tooltiptext" style="background-color: #007bff">${project_item.tinh_trang_va_ke_hoach_chi_tiet }</span>
+																<span class="tooltiptext" style="background-color: #007bff">${project_item.ke_hoach }</span>
 															</c:if>
 															
 														</a>
@@ -740,8 +798,8 @@
 	       loop: true,
 	       nav: true,
 	       margin: 10,
-	       autoplay: true,
-	       autoplayTimeout: 5000,
+	       autoplay: false,
+	       
 	       responsiveClass: true,
 	       autoplayHoverPause: true
 	   	});

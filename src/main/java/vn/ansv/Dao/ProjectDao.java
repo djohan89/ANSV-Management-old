@@ -61,7 +61,7 @@ public class ProjectDao extends BaseDao {
 		
 		String sql = "SELECT project.id, users.id AS id_user, users.display_name AS pic, role.name AS pic_role, projects_types.name AS type, "
 				+ "priorities.name AS priority, projects_status.name AS status, customers.name AS customer, project.name AS project_name, "
-				+ "project.tinh_trang_va_ke_hoach_chi_tiet, project.week "
+				+ "project.ke_hoach, project.week "
 				+ "FROM project "
 				+ "INNER JOIN pic ON project.id = pic.project_id "
 				+ "INNER JOIN users ON pic.pic = users.id "
@@ -97,7 +97,8 @@ public class ProjectDao extends BaseDao {
 					+ "WHERE role.name = 'ROLE_AM' AND project.id = id_pk) AS am, "
 				+ "project.pham_vi_cung_cap, project.tong_gia_tri_thuc_te, project.DAC, project.PAC, project.FAC, project.so_tien_tam_ung, project.ke_hoach_tam_ung, "
 				+ "project.so_tien_DAC, project.ke_hoach_thanh_toan_DAC, project.so_tien_PAC, project.ke_hoach_thanh_toan_PAC, project.so_tien_FAC, "
-				+ "project.ke_hoach_thanh_toan_FAC, project.ket_qua_thuc_hien_ke_hoach, project.tinh_trang_va_ke_hoach_chi_tiet "
+				+ "project.ke_hoach_thanh_toan_FAC, project.ket_qua_thuc_hien_ke_hoach, project.ke_hoach,project.general_issue, project.solution, "
+				+ "project.thuc_te_thanh_toan_DAC, project.thuc_te_thanh_toan_PAC, project.thuc_te_thanh_toan_FAC, project.tinh_trang_va_ke_hoach_chi_tiet "
 				+ "FROM project "
 				+ "INNER JOIN priorities ON project.priority = priorities.id "
 				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "

@@ -11,7 +11,7 @@ public class DashboardProjectDto {
 	private String status;
 	private String customer;
 	private String project_name;
-	private String tinh_trang_va_ke_hoach_chi_tiet;
+	private String ke_hoach;
 	private int week;
 	
 	
@@ -91,12 +91,12 @@ public class DashboardProjectDto {
 		this.project_name = project_name;
 	}
 
-	public String getTinh_trang_va_ke_hoach_chi_tiet() {
-		return tinh_trang_va_ke_hoach_chi_tiet;
+	public String getKe_hoach() {
+		return ke_hoach;
 	}
 
-	public void setTinh_trang_va_ke_hoach_chi_tiet(String tinh_trang_va_ke_hoach_chi_tiet) {
-		this.tinh_trang_va_ke_hoach_chi_tiet = tinh_trang_va_ke_hoach_chi_tiet;
+	public void setKe_hoach(String ke_hoach) {
+		this.ke_hoach = ke_hoach;
 	}
 
 	public int getWeek() {
