@@ -13,6 +13,7 @@ public class MenuPicDtoMapper implements RowMapper<MenuPicDto> {
 		
 		pic.setPic_id(rs.getString("pic_id"));
 		pic.setDisplay_name(rs.getString("display_name"));
+		pic.setLevel(rs.getInt("level"));
 		pic.setNumber(rs.getInt("number"));
 		
 		return pic;

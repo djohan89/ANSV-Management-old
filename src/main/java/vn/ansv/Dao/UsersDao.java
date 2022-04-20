@@ -104,7 +104,7 @@ public class UsersDao extends BaseDao {
 	
 	// Get data for menu showing PIC with project ----- (1)
 	public List<MenuPicDto> getMenu(int week, int year) {
-		String sql = "SELECT users.id AS pic_id, users.display_name, COUNT(*) AS number "
+		String sql = "SELECT users.id AS pic_id, users.display_name, users.level, COUNT(*) AS number "
 				+ "FROM project "
 				+ "INNER JOIN pic ON project.id = pic.project_id "
 				+ "INNER JOIN users ON pic.pic = users.id "

@@ -4,6 +4,7 @@ public class MenuPicDto {
 
 	private String pic_id;
 	private String display_name;
+	private int level;
 	private int number;
 	
 	public MenuPicDto() {
@@ -24,6 +25,14 @@ public class MenuPicDto {
 
 	public void setDisplay_name(String display_name) {
 		this.display_name = display_name;
+	}
+	
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	public int getNumber() {

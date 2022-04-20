@@ -114,15 +114,14 @@ public class ChiefController extends ChiefBaseController {
 			@PathVariable int week, @PathVariable int year, @PathVariable int id, 
 			HttpSession session, Model model) {
 		String pic_id = (String) session.getAttribute("user_id");
+		Date now = new Date();   
+		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		String week_link = Integer.toString(week);
 		if (week < 10) {
 			week_link = "0" + week;
 	    }
 		
-		if (_picService.checkPicOfProjectIsset(id, pic_id) == true) {
-			Date now = new Date();   
-			int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
-			
+		if (_picService.checkPicOfProjectIsset(id, pic_id) == true && (week != current_week && week != (current_week - 1))) {
 			if(current_week < 10) {
 				week_link = "0" + current_week;
 			}
@@ -162,14 +161,28 @@ public class ChiefController extends ChiefBaseController {
 	@RequestMapping("chief/updateProjectCEO/{week}_{year}_{id}")
 	public String CeoDoUpdateProject(@ModelAttribute("Project") Project project, @PathVariable int week,
 			@PathVariable int year, @PathVariable int id, HttpSession session, Model model) {
+		String pic_id = (String) session.getAttribute("user_id");
 		Date now = new Date();   
 		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
-		
 		String week_link = Integer.toString(week);
 		if (week < 10) {
 			week_link = "0" + week;
 	    }
-		_projectService.update(project);
+		
+		if (_picService.checkPicOfProjectIsset(id, pic_id) == true && (week != current_week && week != (current_week - 1))) {
+			if(current_week < 10) {
+				week_link = "0" + current_week;
+			}
+			
+			_projectService.updateInteractive(project.getId(), "old");
+			project.setInteractive("create");
+			_projectService.save(project); // Insert dữ liệu dự án mới
+			_picService.save(project.getId(), pic_id); // Insert PIC tương ứng của dự án
+			return "redirect:/chief/dashboard/" + week_link + "_" + year;
+		} else {
+			_projectService.update(project);
+		}
+		
 		return "redirect:/chief/detail/" + week_link + "_" + year + "_" + id;
 		
 	}

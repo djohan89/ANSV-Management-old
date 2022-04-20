@@ -124,35 +124,73 @@
 					<p align="center" style="color: white; margin-bottom: 0;">===== Empty =====</p>
 				</c:if>
 				
+				<li class="nav-header">Trưởng ban / Phó ban</li>
+				
+				<c:forEach var="pic" items="${ pic }" varStatus="index_pic">
+					<c:if test="${pic.level == 1}">
+						<li class="nav-item menu-click"> <!-- class 'menu-click' không có thuộc tính -->
+							<a href="#" class="nav-link">
+								<i class="nav-icon fas fa-user"></i>
+								<p>
+									${ pic.display_name }
+									<i class="right fas fa-angle-left"></i>
+		                           	<span class="badge badge-info right">${ pic.number }</span>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<c:forEach var="project" items="${ menu_project }" varStatus="index_project">
+									<c:if test="${ project.pic == pic.pic_id }">
+										<li class="nav-item">
+											<c:if test="${week < 10 }">
+												<a id="project-${project.id }" href="<c:url value='/chief/detail/0${week}_${year}_${project.id}' />" class="nav-link">
+											</c:if>
+											<c:if test="${week >= 10 }">
+												<a id="project-${project.id }" href="<c:url value='/chief/detail/${week}_${year}_${project.id}' />" class="nav-link">
+											</c:if>
+												<i class="far fa-circle nav-icon"></i><p>${project.name}</p>
+											</a>
+										</li>
+									</c:if>
+								</c:forEach>
+							</ul>
+						</li>
+					</c:if>
+				</c:forEach>
+				<c:if test="${ empty pic }">
+					<p align="center" style="color: white; margin-bottom: 0;">===== Empty =====</p>
+				</c:if>
+				
 				<li class="nav-header">PIC</li>
 				
 				<c:forEach var="pic" items="${ pic }" varStatus="index_pic">
-					<li class="nav-item menu-click"> <!-- class 'menu-click' không có thuộc tính -->
-						<a href="#" class="nav-link">
-							<i class="nav-icon fas fa-user"></i>
-							<p>
-								${ pic.display_name }
-								<i class="right fas fa-angle-left"></i>
-	                           	<span class="badge badge-info right">${ pic.number }</span>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<c:forEach var="project" items="${ menu_project }" varStatus="index_project">
-								<c:if test="${ project.pic == pic.pic_id }">
-									<li class="nav-item">
-										<c:if test="${week < 10 }">
-											<a id="project-${project.id }" href="<c:url value='/chief/detail/0${week}_${year}_${project.id}' />" class="nav-link">
-										</c:if>
-										<c:if test="${week >= 10 }">
-											<a id="project-${project.id }" href="<c:url value='/chief/detail/${week}_${year}_${project.id}' />" class="nav-link">
-										</c:if>
-											<i class="far fa-circle nav-icon"></i><p>${project.name}</p>
-										</a>
-									</li>
-								</c:if>
-							</c:forEach>
-						</ul>
-					</li>
+					<c:if test="${pic.level != 1}">
+						<li class="nav-item menu-click"> <!-- class 'menu-click' không có thuộc tính -->
+							<a href="#" class="nav-link">
+								<i class="nav-icon fas fa-user"></i>
+								<p>
+									${ pic.display_name }
+									<i class="right fas fa-angle-left"></i>
+		                           	<span class="badge badge-info right">${ pic.number }</span>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<c:forEach var="project" items="${ menu_project }" varStatus="index_project">
+									<c:if test="${ project.pic == pic.pic_id }">
+										<li class="nav-item">
+											<c:if test="${week < 10 }">
+												<a id="project-${project.id }" href="<c:url value='/chief/detail/0${week}_${year}_${project.id}' />" class="nav-link">
+											</c:if>
+											<c:if test="${week >= 10 }">
+												<a id="project-${project.id }" href="<c:url value='/chief/detail/${week}_${year}_${project.id}' />" class="nav-link">
+											</c:if>
+												<i class="far fa-circle nav-icon"></i><p>${project.name}</p>
+											</a>
+										</li>
+									</c:if>
+								</c:forEach>
+							</ul>
+						</li>
+					</c:if>
 				</c:forEach>
 				<c:if test="${ empty pic }">
 					<p align="center" style="color: white; margin-bottom: 0;">===== Empty =====</p>
