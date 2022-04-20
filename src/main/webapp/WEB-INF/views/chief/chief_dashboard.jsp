@@ -340,8 +340,7 @@
 														                		<div class="overflow_mb"><p class="text-justify" >${project_item.general_issue}</p></div>
 														                		
 														                	</div>
-														                </div>
-														                <div class="row">
+														                </div><br>												                <div class="row">
 														            		<div class="col-6 left">
 														            			<p><b>Giải pháp:</b> </p>
 														            			<div class="overflow_mb"><p class="text-justify" >${project_item.solution }</p></div>
@@ -798,8 +797,8 @@
 	       loop: true,
 	       nav: true,
 	       margin: 10,
-	       autoplay: false,
-	       
+	       autoplay: true,
+	       autoplayTimeout: 10000,
 	       responsiveClass: true,
 	       autoplayHoverPause: true
 	   	});

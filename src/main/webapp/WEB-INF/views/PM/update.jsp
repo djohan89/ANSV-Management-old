@@ -247,8 +247,8 @@
 								</div>
 								<div class="card-body">
 									<div class="input-group mb-3">
-										<div class="input-group-prepend">
-											<label class="input-group-text fw-400">Tạm ứng (VNĐ)</label>
+										<div class="input-group-prepend w-30">
+											<label class="input-group-text fw-400 w-100">Tạm ứng (VNĐ)</label>
 										</div>
 										<input type="text" value="" class="form-control" id="so_tien_tam_ung_test" />
 										<fmt:formatNumber type="number"
@@ -256,9 +256,9 @@
 										<form:hidden path="so_tien_tam_ung" value="${so_tien_tam_ung }" class="form-control" id="so_tien_tam_ung1" />
 									</div>
 									
-									<div class="input-group mb-3">
-										<div class="input-group-prepend">
-											<label class="input-group-text fw-400">Kế hoạch tạm ứng</label>
+									<div class="input-group mb-3 ">
+										<div class="input-group-prepend w-30">
+											<label class="input-group-text fw-400 w-100">Kế hoạch tạm ứng</label>
 										</div>
 										<input type="text" id="ke_hoach_tam_ung_test" readonly="readonly" value="" class="form-control datepickerJavascript" placeholder="Day / Month / Year" />
 										<form:hidden  path="ke_hoach_tam_ung" id="ke_hoach_tam_ung1" class="form-control" />

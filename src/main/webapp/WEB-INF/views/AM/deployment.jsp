@@ -275,32 +275,11 @@
 										<form:hidden path="ke_hoach_tam_ung" id="ke_hoach_tam_ung" class="form-control" />
 									</div>
 									
-									<div class="input-group mb-3">
-										<div class="input-group-prepend ">
-											<label class="input-group-text ">DAC(Hợp đồng)</label>
-										</div>
-										<input type="text" id="DAC_test" 
-											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
-										<form:hidden path="DAC" class="form-control datepickerJavascript" id="DAC" />
-									</div>
 									
-									<div class="input-group mb-3">
-										<div class="input-group-prepend ">
-											<label class="input-group-text ">PAC(Hợp đồng)</label>
-										</div>
-										<input type="text" id="PAC_test" 
-											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
-										<form:hidden path="PAC" id="PAC" class="form-control datepickerJavascript" />
-									</div>
 									
-									<div class="input-group mb-3">
-										<div class="input-group-prepend ">
-											<label class="input-group-text ">FAC(Hợp đồng)</label>
-										</div>
-										<input type="text" id="FAC_test" 
-											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
-										<form:hidden path="FAC" id="FAC" class="form-control datepickerJavascript" />
-									</div>
+									
+									
+									
 								</div>
 								<!-- /.card-body-->
 							</div>
@@ -323,7 +302,15 @@
 								</div>
 								<div class="card-body">
 									<div class="input-group mb-1">
-										<div class="input-group-prepend w-25">
+										<div class="input-group-prepend ">
+											<label class="input-group-text ">DAC(Hợp đồng)</label>
+										</div>
+										<input type="text" id="DAC_test" 
+											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
+										<form:hidden path="DAC" class="form-control datepickerJavascript" id="DAC" />
+									</div>
+									<div class="input-group mb-1">
+										<div class="input-group-prepend w-30">
 											<label class="input-group-text w-100">DAC (VNĐ)</label>
 										</div>
 										<input type="text" value="" class="form-control" id="so_tien_DAC_test" placeholder="1.000.000.000" />
@@ -348,8 +335,17 @@
 										<form:hidden path="thuc_te_thanh_toan_DAC" class="form-control datepickerJavascript" id="thuc_te_thanh_toan_DAC" />
 									</div>
 									
+									
 									<div class="input-group mb-1">
-										<div class="input-group-prepend w-25">
+										<div class="input-group-prepend ">
+											<label class="input-group-text ">PAC(Hợp đồng)</label>
+										</div>
+										<input type="text" id="PAC_test" 
+											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
+										<form:hidden path="PAC" id="PAC" class="form-control datepickerJavascript" />
+									</div>
+									<div class="input-group mb-1">
+										<div class="input-group-prepend w-30">
 											<label class="input-group-text w-100">PAC (VNĐ)</label>
 										</div>
 										<input type="text" value="" class="form-control" id="so_tien_PAC_test" placeholder="1.000.000.000" />
@@ -375,7 +371,15 @@
 									</div>
 									
 									<div class="input-group mb-1">
-										<div class="input-group-prepend w-25">
+										<div class="input-group-prepend ">
+											<label class="input-group-text ">FAC(Hợp đồng)</label>
+										</div>
+										<input type="text" id="FAC_test" 
+											class="form-control datepickerJavascript bg-light" placeholder="Day / Month / Year" readonly="readonly" />
+										<form:hidden path="FAC" id="FAC" class="form-control datepickerJavascript" />
+									</div>
+									<div class="input-group mb-1">
+										<div class="input-group-prepend w-30">
 											<label class="input-group-text w-100">FAC (VNĐ)</label>
 										</div>
 										<input type="text" value="" class="form-control" id="so_tien_FAC_test" placeholder="1.000.000.000" />
