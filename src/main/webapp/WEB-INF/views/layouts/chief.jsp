@@ -150,9 +150,9 @@
 		/* Màn hình desktop */
 	    @media screen and (min-width: 1024px){
 	      body .modal-content {
-	      width: 220%;
+	      width: 230%;
 	      position: absolute;
-	      left: -50%;
+	      left: -55%;
 	      }
 	      #thong-ke,#fullScreen{
 	      	display: block;	
@@ -174,9 +174,13 @@
 	      background-color: rgb(0 0 0 / 25%);
 	    }
 	    .overflow{
-	    	height: 400px;
+	    	height: 383px;
 	    	overflow: auto;
 	    	border-bottom: 1px solid lightgray;
+	    }
+	    .overflow_mb{
+	    	height: 200px;
+	    	overflow: auto;
 	    }
 	    
 	    .dataTables_scrollHeadInner {

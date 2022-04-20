@@ -36,6 +36,13 @@ public class SlideshowProjectsDtoMapper implements RowMapper<SlideshowProjectsDt
 		dashboardProjects.setSo_tien_FAC(rs.getDouble("so_tien_FAC"));
 		dashboardProjects.setKe_hoach_thanh_toan_FAC(rs.getDate("ke_hoach_thanh_toan_FAC"));
 		
+		dashboardProjects.setThuc_te_thanh_toan_DAC(rs.getDate("thuc_te_thanh_toan_DAC"));
+		dashboardProjects.setThuc_te_thanh_toan_PAC(rs.getDate("thuc_te_thanh_toan_PAC"));
+		dashboardProjects.setThuc_te_thanh_toan_FAC(rs.getDate("thuc_te_thanh_toan_FAC"));
+		
+		dashboardProjects.setGeneral_issue(rs.getString("general_issue"));
+		dashboardProjects.setSolution(rs.getString("solution"));
+		dashboardProjects.setKe_hoach(rs.getString("ke_hoach"));
 		dashboardProjects.setKet_qua_thuc_hien_ke_hoach(rs.getString("ket_qua_thuc_hien_ke_hoach"));
 		dashboardProjects.setTinh_trang_va_ke_hoach_chi_tiet(rs.getString("tinh_trang_va_ke_hoach_chi_tiet"));
 		

@@ -27,7 +27,18 @@ public class SlideshowProjectsDto {
 	private double so_tien_PAC;
 	private Date ke_hoach_thanh_toan_PAC;
 	private double so_tien_FAC;
+	
+	private Date thuc_te_thanh_toan_DAC;
+	private String chenh_lech_DAC;
+	private Date thuc_te_thanh_toan_PAC;
+	private String chenh_lech_PAC;
+	private Date thuc_te_thanh_toan_FAC;
+	
+	private String chenh_lech_FAC;
 	private Date ke_hoach_thanh_toan_FAC;
+	private String ke_hoach;
+	private String general_issue;
+	private String solution;
 	
 	private String ket_qua_thuc_hien_ke_hoach;
 	private String tinh_trang_va_ke_hoach_chi_tiet;
@@ -187,6 +198,30 @@ public class SlideshowProjectsDto {
 	public void setKe_hoach_thanh_toan_PAC(Date ke_hoach_thanh_toan_PAC) {
 		this.ke_hoach_thanh_toan_PAC = ke_hoach_thanh_toan_PAC;
 	}
+	
+	public String getKe_hoach() {
+		return ke_hoach;
+	}
+
+	public void setKe_hoach(String ke_hoach) {
+		this.ke_hoach = ke_hoach;
+	}
+
+	public String getGeneral_issue() {
+		return general_issue;
+	}
+
+	public void setGeneral_issue(String general_issue) {
+		this.general_issue = general_issue;
+	}
+
+	public String getSolution() {
+		return solution;
+	}
+
+	public void setSolution(String solution) {
+		this.solution = solution;
+	}
 
 	public double getSo_tien_FAC() {
 		return so_tien_FAC;
@@ -219,5 +254,55 @@ public class SlideshowProjectsDto {
 	public void setTinh_trang_va_ke_hoach_chi_tiet(String tinh_trang_va_ke_hoach_chi_tiet) {
 		this.tinh_trang_va_ke_hoach_chi_tiet = tinh_trang_va_ke_hoach_chi_tiet;
 	}
+
+	public Date getThuc_te_thanh_toan_DAC() {
+		return thuc_te_thanh_toan_DAC;
+	}
+
+	public void setThuc_te_thanh_toan_DAC(Date thuc_te_thanh_toan_DAC) {
+		this.thuc_te_thanh_toan_DAC = thuc_te_thanh_toan_DAC;
+	}
+
+	public String getChenh_lech_DAC() {
+		return chenh_lech_DAC;
+	}
+
+	public void setChenh_lech_DAC(String chenh_lech_DAC) {
+		this.chenh_lech_DAC = chenh_lech_DAC;
+	}
+
+	public Date getThuc_te_thanh_toan_PAC() {
+		return thuc_te_thanh_toan_PAC;
+	}
+
+	public void setThuc_te_thanh_toan_PAC(Date thuc_te_thanh_toan_PAC) {
+		this.thuc_te_thanh_toan_PAC = thuc_te_thanh_toan_PAC;
+	}
+
+	public String getChenh_lech_PAC() {
+		return chenh_lech_PAC;
+	}
+
+	public void setChenh_lech_PAC(String chenh_lech_PAC) {
+		this.chenh_lech_PAC = chenh_lech_PAC;
+	}
+
+	public Date getThuc_te_thanh_toan_FAC() {
+		return thuc_te_thanh_toan_FAC;
+	}
+
+	public void setThuc_te_thanh_toan_FAC(Date thuc_te_thanh_toan_FAC) {
+		this.thuc_te_thanh_toan_FAC = thuc_te_thanh_toan_FAC;
+	}
+
+	public String getChenh_lech_FAC() {
+		return chenh_lech_FAC;
+	}
+
+	public void setChenh_lech_FAC(String chenh_lech_FAC) {
+		this.chenh_lech_FAC = chenh_lech_FAC;
+	}
+	
+	
 	
 }

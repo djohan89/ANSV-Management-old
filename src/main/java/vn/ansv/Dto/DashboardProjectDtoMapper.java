@@ -20,7 +20,7 @@ public class DashboardProjectDtoMapper implements RowMapper<DashboardProjectDto>
 		project.setStatus(rs.getString("status"));
 		project.setCustomer(rs.getString("customer"));
 		project.setProject_name(rs.getString("project_name"));
-		project.setTinh_trang_va_ke_hoach_chi_tiet(rs.getString("tinh_trang_va_ke_hoach_chi_tiet"));
+		project.setKe_hoach(rs.getString("ke_hoach"));
 		project.setWeek(rs.getInt("week"));
 		
 		return project;
