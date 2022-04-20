@@ -82,15 +82,17 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 		String pic_id = (String) session.getAttribute("user_id");
 		FormPM();
 		
-		Project project = _projectService.getMorebyId(id, pic_id);
-		model.addAttribute("project", project);
+		Project project = new Project();
+		
+		project = _projectService.getMorebyId(id, pic_id);
+		model.addAttribute("projectUpdatePM", project);
 		
 		_mvShare.setViewName("PM/update");
 		return _mvShare;
 	}
 	//Thực thi update dự án
 	@RequestMapping("/updateProjectPM/{week}_{year}_{id}")
-	public String doUpdateProject(@ModelAttribute("Project") Project project, @PathVariable int week,
+	public String doUpdateProject(@ModelAttribute("projectUpdatePM") Project projectUpdatePM, @PathVariable int week,
 			@PathVariable int year, @PathVariable int id, HttpSession session, Model model) {
 		
 		Date now = new Date();   
@@ -101,30 +103,31 @@ public class ProjectManagerController extends ProjectManagerBaseController {
 			week_link = "0" + week;
 	    }
 		
-		if(project.getWeek() == current_week) {
-			_projectService.update_tk(project);
+		if(projectUpdatePM.getWeek() == current_week) {
+			_projectService.update_tk(projectUpdatePM);
+			
 		} else {
 			if(current_week<10) {
 				week_link = "0" + current_week;
 			}
 			String pic_id = (String) session.getAttribute("user_id");
 			
-			_projectService.updateInteractive(project.getId(), "old");
-			String am_id = _picService.getPICByProjectId(project.getId());
-			project.setNote(Integer.toString(project.getId()));
-			project.setId(_projectService.getMaxId() + 1);
-			project.setWeek(current_week);
-			project.setInteractive("update");
+			_projectService.updateInteractive(projectUpdatePM.getId(), "old");
+			String am_id = _picService.getPICByProjectId(projectUpdatePM.getId());
+			projectUpdatePM.setNote(Integer.toString(projectUpdatePM.getId()));
+			projectUpdatePM.setId(_projectService.getMaxId() + 1);
+			projectUpdatePM.setWeek(current_week);
+			projectUpdatePM.setInteractive("update");
 			
-			_projectService.saveDep(project);
-			_picService.save(project.getId(), pic_id);
-			_picService.save(project.getId(), am_id);
+			_projectService.saveDep(projectUpdatePM);
+			_picService.save(projectUpdatePM.getId(), pic_id);
+			_picService.save(projectUpdatePM.getId(), am_id);
 			return "redirect:/PM/dashboard/" + week_link + "_" + year;
 			
 		}
 		
 		
-		return "redirect:/PM/dashboard/" + week_link + "_" + year;
+		return "redirect:/PM/detail/" + week_link + "_" + year + "_" + id;
 	}
 	
 	@RequestMapping("/home/{week}_{year}")
