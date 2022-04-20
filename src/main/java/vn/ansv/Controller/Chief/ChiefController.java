@@ -121,7 +121,7 @@ public class ChiefController extends ChiefBaseController {
 			week_link = "0" + week;
 	    }
 		
-		if (_picService.checkPicOfProjectIsset(id, pic_id) == true && (week != current_week && week != (current_week - 1))) {
+		if (_picService.checkPicOfProjectIsset(id, pic_id) == true && week != current_week) {
 			if(current_week < 10) {
 				week_link = "0" + current_week;
 			}
@@ -169,7 +169,7 @@ public class ChiefController extends ChiefBaseController {
 			week_link = "0" + week;
 	    }
 		
-		if (_picService.checkPicOfProjectIsset(id, pic_id) == true && (week != current_week && week != (current_week - 1))) {
+		if (_picService.checkPicOfProjectIsset(id, pic_id) == true && week != current_week) {
 			if(current_week < 10) {
 				week_link = "0" + current_week;
 			}

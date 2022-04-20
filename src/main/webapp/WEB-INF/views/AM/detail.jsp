@@ -159,7 +159,7 @@
 					
 					
 					
-					<c:if test="${detail.type=='KD - Viễn thông'}">
+					<c:if test="${detail.type=='Viễn thông'}">
 						<h2 class="text-center mt-3">${detail.name}</h2>
 						<div class="row">
 							<div class="col-md-6">
@@ -270,7 +270,7 @@
 					
 					
 					
-					<c:if test="${detail.type=='KD - Chuyển đổi số'}">
+					<c:if test="${detail.type=='Chuyển đổi số'}">
 						<h2 class="text-center mt-3">${detail.name}</h2>
 						<div class="row">
 							<div class="col-md-6">
