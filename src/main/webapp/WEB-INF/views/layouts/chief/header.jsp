@@ -51,9 +51,9 @@
                   		<span class="badge badge-statistic badge-warning">${ statistics[position + 7] }</span>
                   		<span class="badge badge-statistic badge-success">${ statistics[position + 8] }</span>
 					</div>
-					<div class="col-3 pl-3">
+					<%-- <div class="col-3 pl-3">
 						<span class="badge badge-statistics badge-primary  ">${ statistics[position + 9] }</span>
-					</div>
+					</div> --%>
 				</div>
 			</c:forEach>
 
@@ -62,7 +62,7 @@
 				<div class="col-3" >Ưu tiên 1</div>
 				<div class="col-3" >Ưu tiên 2</div>
 				<div class="col-3" >Ưu tiên 3</div>
-				<div class="col-3" >Done</div>
+				<%-- <div class="col-3" >Done</div> --%>
 			</div>
 		</li>
 		
@@ -74,6 +74,7 @@
 		<li class="nav-item text-uppercase" style="width: 700px;" id="li_2">
 			<c:forEach items="${project_types}" var="types" varStatus="type_status">
 				<div class="row">
+					<div class="col-md-1"></div>
 					<div class="col-md-5"><b>Báo cáo ${ types.name } (tuần ${week})</b></div>
 					
 					<c:url value="${ (types.id - 1) * 10 }" var="position"/> <!-- Tạo biến đánh số vị trí trong mảng thống kê -->
@@ -93,18 +94,19 @@
                   		<span class="badge badge-warning right badge-statistics">${ statistics[position + 7] }</span>
                   		<span class="badge badge-success right badge-statistics">${ statistics[position + 8] }</span>
 					</div>
-					<div class="col-1 pl-2">
+					<%-- <div class="col-1 pl-2">
 						<span class="badge badge-primary right badge-statistics">${ statistics[position + 9] }</span>
-					</div>
+					</div> --%>
 				</div>
 			</c:forEach>
 
 			<div class="row" style="font-weight: bold;">
+				<div class="col-md-1"></div>
 				<div class="col-md-5"></div>
 				<div class="col-md-2" style="padding-left: 11px;">Ưu tiên 1</div>
 				<div class="col-md-2" style="padding-left: 11px;">Ưu tiên 2</div>
 				<div class="col-md-2" style="padding-left: 11px;">Ưu tiên 3</div>
-				<div class="col-md-1" style="margin-left: -7px;">Done</div>
+				<%-- <div class="col-md-1" style="margin-left: -7px;">Done</div> --%>
 			</div>
 		</li>
 	</ul>

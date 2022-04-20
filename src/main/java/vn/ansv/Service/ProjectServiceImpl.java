@@ -183,6 +183,7 @@ public class ProjectServiceImpl implements IProjectService {
 		int size = list.size();
 		int count_status = 0,
 			position = 0;
+		int count1 = 0, count2 = 0, count3 = 0;
 		// Tạo ra mảng chứa dữ liệu thống kê cho phần menu
 		List<Integer> thong_ke = new ArrayList<Integer>();
 		for (int i = 0; i < 30; i++) {
@@ -192,18 +193,25 @@ public class ProjectServiceImpl implements IProjectService {
 		for (int i = 0; i < size; i++) {
 			// Thống kê số lượng dự án cho phần menu (loại dự án "triển khai")
 			if (list.get(i).getType().contains("Triển khai")) {
+				position = 0;
 				statisticalByType(list, thong_ke, i, position);
+				count1++;
 			}
 			if (list.get(i).getType().contains("Viễn thông")) {
 				position = 10;
 				statisticalByType(list, thong_ke, i, position);
+				count2++;
 			}
 			if (list.get(i).getType().contains("Chuyển đổi số")) {
 				position = 20;
 				statisticalByType(list, thong_ke, i, position);
+				count3++;
 			}
 		}
 		System.out.println("Thống kê: " + thong_ke);
+		System.out.println("Count 1: " + count1);
+		System.out.println("Count 2: " + count2);
+		System.out.println("Count 3: " + count3);
 		
 		return thong_ke;
 	}
@@ -213,45 +221,45 @@ public class ProjectServiceImpl implements IProjectService {
 		// Thống kê ưu tiên thứ nhất
 		if (list.get(i).getPriority().contains("First")) {
 			if (list.get(i).getStatus().contains("High")) {
-				System.out.println(i + ", " + "First - High");
+				/* System.out.println(i + ", " + "First - High"); */
 				thong_ke.set(position, thong_ke.get(position) + 1);
 			}
 			if (list.get(i).getStatus().contains("Medium")) {
-				System.out.println(i + ", " + "First - Medium");
+				/* System.out.println(i + ", " + "First - Medium"); */
 				thong_ke.set(position + 1, thong_ke.get(position + 1) + 1);
 			}
 			if (list.get(i).getStatus().contains("Low")) {
-				System.out.println(i + ", " + "First - Low");
+				/* System.out.println(i + ", " + "First - Low"); */
 				thong_ke.set(position + 2, thong_ke.get(position + 2) + 1);
 			}
 		}
 		// Thống kê ưu tiên thứ hai
 		if (list.get(i).getPriority().contains("Second")) {
 			if (list.get(i).getStatus().contains("High")) {
-				System.out.println(i + ", " + "Seccond - High");
+				/* System.out.println(i + ", " + "Seccond - High"); */
 				thong_ke.set(position + 3, thong_ke.get(position + 3)+1);
 			}
 			if (list.get(i).getStatus().contains("Medium")) {
-				System.out.println(i + ", " + "Seccond - Medium");
+				/* System.out.println(i + ", " + "Seccond - Medium"); */
 				thong_ke.set(position + 4, thong_ke.get(position + 4)+1);
 			}
 			if (list.get(i).getStatus().contains("Low")) {
-				System.out.println(i + ", " + "Seccond - Low");
+				/* System.out.println(i + ", " + "Seccond - Low"); */
 				thong_ke.set(position + 5, thong_ke.get(position + 5)+1);
 			}
 		}
 		// Thống kê ưu tiên thứ ba
 		if (list.get(i).getPriority().contains("Third")) {
 			if (list.get(i).getStatus().contains("High")) {
-				System.out.println(i + ", " + "Third - High");
+				/* System.out.println(i + ", " + "Third - High"); */
 				thong_ke.set(position + 6, thong_ke.get(position + 6)+1);
 			}
 			if (list.get(i).getStatus().contains("Medium")) {
-				System.out.println(i + ", " + "Third - Medium");
+				/* System.out.println(i + ", " + "Third - Medium"); */
 				thong_ke.set(position + 7, thong_ke.get(position + 7)+1);
 			}
 			if (list.get(i).getStatus().contains("Low")) {
-				System.out.println(i + ", " + "Third - Low");
+				/* System.out.println(i + ", " + "Third - Low"); */
 				thong_ke.set(position + 8, thong_ke.get(position + 8)+1);
 			}
 		}
