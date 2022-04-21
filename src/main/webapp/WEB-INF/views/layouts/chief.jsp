@@ -458,7 +458,7 @@
 			
 			var id_add_ckediter = "#ud_tinh_trang, #cr_tinh_trang, #cr_ket_qua, #cr_swot, " + 
 				"#cr_mo_ta_du_an, #ud_swot, #ud_ket_qua, #cr_general_issue, #cr_solution, " + 
-				"#cr_ke_hoach, #cr_ket_qua";
+				"#cr_ke_hoach, #cr_ket_qua,#add_ckeditor";
 			
 			$(id_add_ckediter).ckeditor({
 			  	toolbar: [

@@ -13,6 +13,7 @@ public class ProjectTypesMapper implements RowMapper<ProjectTypes> {
 		
 		types.setId(rs.getInt("id"));
 		types.setName(rs.getString("name"));
+		types.setDisplay(rs.getString("display"));
 		types.setNumber(rs.getInt("number"));
 		
 		return types;

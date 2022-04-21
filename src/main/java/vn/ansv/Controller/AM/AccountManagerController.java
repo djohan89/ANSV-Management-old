@@ -189,7 +189,7 @@ public class AccountManagerController extends AccountManagerBaseController {
 			return "redirect:/AM/dashboard/" + week_link + "_" + year; // Sau khi thực hiện insert, điều hướng về thời điểm hiện tại
 		}
 		
-		return "redirect:/AM/dashboard/" + week_link + "_" + year;
+		return "redirect:/AM/detail/" + week_link + "_" + year + "_" + id;
 	}
 	
 	// Link đến form chuyển giai đoạn dự án

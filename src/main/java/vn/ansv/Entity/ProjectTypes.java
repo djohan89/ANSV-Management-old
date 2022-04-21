@@ -4,6 +4,7 @@ public class ProjectTypes {
 	
 	private int id;
 	private String name;
+	private String display;
 	private int number;
 	
 	public ProjectTypes() {
@@ -24,6 +25,14 @@ public class ProjectTypes {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(String display) {
+		this.display = display;
 	}
 
 	public int getNumber() {

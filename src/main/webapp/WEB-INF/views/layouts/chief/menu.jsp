@@ -90,7 +90,7 @@
 									${item.name} <i class="right fas fa-angle-left"></i>
 								</p> --%>
 								<p>
-	                                ${item.name}
+	                                ${item.display}
 	                                <i class="right fas fa-angle-left"></i>
 	                                <span class="badge badge-info right">${item.number}</span>
 	                            </p>
@@ -98,7 +98,6 @@
 							<ul class="nav nav-treeview">
 							
 								<c:forEach var="customers" items="${customers}" varStatus="index_type">
-								
 									<c:if test="${ customers.project_type == item.name }">
 										<li class="nav-item">
 											<c:if test="${week < 10 }">
