@@ -28,23 +28,8 @@ public class PicServiceImpl {
 	}
 	
 	// Kiểm tra pic có đảm nhận dự án này ko
-	public boolean checkPicOfProjectIsset(int id, String pic_id) {
-		List<MenuPicDto> list = new ArrayList<MenuPicDto>();
-		list = picDao.getAllPicOfProject(id);
-		boolean st = false;
-		int count = 0;
-		
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getPic_id() == pic_id) {
-				count++;
-			}
-		}
-		
-		if (count > 0) {
-			st = true;
-		}
-		
-		return st;
+	public int checkPicOfProjectIsset(int id, String pic_id) {
+		return picDao.getAllPicOfProject(id, pic_id);
 	}
 	
 }

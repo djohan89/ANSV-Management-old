@@ -554,7 +554,7 @@
 			var string_replace = "";
 			
 			if (document.getElementById(data).value) {
-				string_replace = data_price_value.replaceAll(".", "");
+				string_replace = data_price_value.replaceAll(",", ".");
 				document.getElementById(data.replace("1", "_test")).value = string_replace;
 		  	}
 			

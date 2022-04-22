@@ -54,18 +54,9 @@ public class PicDao extends BaseDao {
 	}
 /* ===== Cuối: Account Manager ===== */
 	
-	public List<MenuPicDto> getAllPicOfProject(int id){
-		String sql ="SELECT pic.pic AS pic_id FROM pic WHERE pic.project_id = ?";
-		
-		return _jdbcTemplate.query(sql, new MenuPicDtoMapper() {
-			public MenuPicDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-				MenuPicDto pic = new MenuPicDto();
-				
-				pic.setPic_id(rs.getString("pic_id"));
-				
-				return pic;
-			}
-		}, id);
+	public int getAllPicOfProject(int id, String pic_id){
+		String sql ="SELECT COUNT(*) FROM pic WHERE project_id = ? AND pic = ?";
+		return _jdbcTemplate.queryForObject(sql, Integer.class, id, pic_id);
 		
 	}
 	

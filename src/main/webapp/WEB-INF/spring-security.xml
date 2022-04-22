@@ -35,6 +35,7 @@
 			session-fixation-protection="newSession"
 			invalid-session-url="/login?error=sessionExpired"
 			session-authentication-error-url="/login?auth_error=BadCredencials">
+			<concurrency-control max-sessions="2" />
 		</session-management>
 	</http>
 
