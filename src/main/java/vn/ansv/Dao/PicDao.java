@@ -60,4 +60,28 @@ public class PicDao extends BaseDao {
 		
 	}
 	
+	// Check if pic issets
+	public int checkUsersIssets(String pic_name){
+		String sql ="SELECT count(*) FROM pic INNER JOIN users ON pic.pic = users.id WHERE users.display_name = ?";
+		return _jdbcTemplate.queryForObject(sql, Integer.class, pic_name);
+	}
+	
+	// Get pic id by name
+	public String getIdByName(String pic_name){
+		String sql ="SELECT users.id FROM users WHERE users.display_name = ?";
+		return _jdbcTemplate.queryForObject(sql, String.class, pic_name);
+	}
+	
+	public String getAllPicByProjectAndRole(int project_id, String role_name){
+		String sql ="SELECT users.display_name FROM users "
+				+ "INNER JOIN users_roles ON users.id = users_roles.user "
+				+ "INNER JOIN role ON users_roles.role = role.id "
+				+ "INNER JOIN pic ON users.id = pic.pic "
+				+ "INNER JOIN project ON pic.project_id = project.id "
+				+ "WHERE project.id = ? AND role.name = ? LIMIT 1";
+		
+		return _jdbcTemplate.queryForObject(sql, String.class, project_id, role_name);
+		
+	}
+	
 }

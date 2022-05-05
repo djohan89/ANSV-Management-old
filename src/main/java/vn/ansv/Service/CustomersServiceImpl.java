@@ -15,6 +15,14 @@ public class CustomersServiceImpl implements ICustomersService {
 	@Autowired
 	private CustomersDao customersDao;
 	
+	public int getIdByName(String customer_name) {
+		return customersDao.getIdByName(customer_name);
+	}
+	
+	public int checkIssets(String customer_name) {
+		return customersDao.checkIssets(customer_name);
+	}
+	
 	public List<MenuCustomersDto> getMenu(int week, int year) {
 		return customersDao.getMenu(week,year);
 	}

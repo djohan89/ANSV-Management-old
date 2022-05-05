@@ -365,7 +365,51 @@
 	<script src="<c:url value='/assets/user/dist/js/pages/dashboard.js' />"></script>
 	
 	<script type="text/javascript">
+		/* function abc() {
+			console.log(document.getElementById("file_idid").value);
+			var form = new FormData();
+			form.append("file", document.getElementById("file_idid").files[0]);
+
+			var settings = {
+			  	"url": "http://10.2.8.31:3000/upload",
+			  	"method": "POST",
+			  	"timeout": 0,
+			  	"processData": false,
+			  	"mimeType": "multipart/form-data",
+			  	"contentType": false,
+			  	"data": form
+			};
+	
+			$.ajax(settings).done(function (response) {
+			  	console.log(response);
+			});
+		} */
+		
+		/* function abcabc() {
+			window.open('http://10.2.8.31:3000/download?file=' + document.getElementById("text_text").value);
+		} */
+	
 		$( document ).ready(function() {
+			
+			/* var abc = {"error_code":0,"fileType":"Triển khai","fileTypeCode":0,"err_desc":null,"data":[{"stt":1,"duan":"Cung cấp dịch vụ CNTT Hosting các hệ thống của Cổng thông tin điện tử Chính phủ","sohopdong":"211213-02/KHDN QLDA- ANSV/HĐDV","masoketoan":"","khachhang":"Vinaphone","giatri":11700000000,"sotiendac":"","dachopdong":"","muctieudac":"","dacthucte":"","songayconlaidac":"","sotienpac":"","pachopdong":"","muctieupac":"","pacthucte":"","songayconlaipac":"","sotienfac":"","fachopdong":"","muctieufac":"","facthucte":"","songayconlaifac":"","tiendochung":"Hợp đồng ký tính từ ngày 13/12/2021.\r\nThời hạn cho thuê 36 tháng kể từ ngày nghiệm thu hệ thống.","khokhan":"1. Chưa có tiến độ cuối cùng (Liên quan hàng hóa bị chậm) và VPCP chưa chốt phương án triển khai để dự kiến thời gian gia hạn thực hiện HĐ.\r\n2. Hàng Router dự kiến đầu tháng 7 mới về tới ANSV","giaiphap":"1. BDC đang đàm phán với VNP để gia hạn thời gian hợp đồng.\r\n2. BDC trao đổi với NCC để đẩy nhanh tiến độ giao hàng.","priority":"Third","status":"Low","pic":"Hoàng Trọng Phúc","phoban":"Trần Văn Hùng","ketquathuchientuantruoc":"Triển khai thiết bị đang lắp đặt tại LAB sẽ bắt đầu theo các khung thời gian sau:\r\n- 04/05/2022 - 13/05/2022: Triển khai cài đặt hạ tầng.\r\n- 16/05/2022-20/05/2022: thực hiện tối ưu","ketquathuchientuannay":"","kehoachtuannay":" _Đã phối hợp hoàn thiện các yêu cầu về thông tin quy hoạch, năng lực dự phòng mở rộng của hệ thống sang VNP để chuyển sang VPCP.\r\n- DBC đang trong quá trình đàm phán với VNP trong việc gia hạn thực hiện hợp đồng.","kehoachtuansau":""},{"stt":2,"duan":"Cung cấp và lắp đặt thiết bị Firewall mới thay thế thiết bị F5 4000 lỗi tại IDC An Đồn","sohopdong":"006 -2022/BQLDA-ANSV VNPT IT","masoketoan":"","khachhang":"VNPT IT","giatri":2200000000,"sotiendac":"","dachopdong":"","muctieudac":"","dacthucte":"","songayconlaidac":"","sotienpac":"","pachopdong":"","muctieupac":"","pacthucte":"","songayconlaipac":"","sotienfac":2024470800,"fachopdong":"27 / 04 / 2022","muctieufac":"25 / 04 / 2022","facthucte":"","songayconlaifac":0,"tiendochung":"1. Hoàn thành ký FAC.\r\n2.Chuyển hồ sơ thanh toán FAC tới ban QLDA ","khokhan":"","giaiphap":"","priority":"Medium","status":"Second","pic":"Nguyễn Anh Tuấn","phoban":"Nguyễn Hoài Nam","ketquathuchientuantruoc":"Chuyển hồ sơ thanh toán FAC tới ban QLDA - ngày 19/4/2022","ketquathuchientuannay":"","kehoachtuannay":"Push ký hồ sơ thanh toán, push thanh toán","kehoachtuansau":""}]};
+			
+			$.ajax({
+				type: "POST",
+				url: "http://10.2.8.31:3000/export",
+				data: JSON.stringify(abc),
+				headers: {
+					"content-type": "application/json"
+				},
+				success: function(data) {
+					console.log(data.data.file);
+					window.open('http://10.2.8.31:3000/download?file=' + data.data.file);
+					document.getElementById("text_text").value = data.data.file;
+				},
+				error: function(e) {
+					console.log("ERROR: ", e);
+				}
+			}); */
+			
 			var pathArray = window.location.pathname.split('/'); // Get item from url
 			var get_data_id_url = pathArray[4]; // Get the fifth item
 			var week_from_url = get_data_id_url.slice(0,2);

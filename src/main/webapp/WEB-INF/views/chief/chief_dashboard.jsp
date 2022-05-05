@@ -43,7 +43,7 @@
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
 										<b id="name_sheet_1"> Báo cáo triển khai tuần ${week} năm ${year}</b><br>
-										<br>
+										<input type="button" id="export_1" value="Export" class="btn btn-success">
 									</h3>
 								</div>
 								<div class=" ml-auto card-tools">
@@ -77,7 +77,7 @@
 																<div class="container item">
 																	<div class="row d-flex">
 																		<h5 class="pb-2 pt-1 pl-3" style="width: 97%; background: red; border-radius: 16px; text-align: center;">
-																			<a href="javascript:void(0)" style="color: #fff; font-weight: bold;">${project_item.name }</a>
+																			<a href="javascript:void(0)" style="color: #fff; font-weight: bold;">${project_item.name}</a>
 																		</h5>
 																		<button type="button" class="close ml-3 pb-2" data-dismiss="modal">&times;</button>
 																	</div>
@@ -455,7 +455,7 @@
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
 										<b id="name_sheet_1"> Báo cáo viễn thông tuần ${week} năm ${year}</b><br>
-										<br>
+										<input type="button" id="export_2" value="Export" class="btn btn-success">
 									</h3>
 								</div>
 								<div class="card-tools">
@@ -551,8 +551,8 @@
 								<div class="title-card">
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
-										<b id="name_sheet_1"> Báo cáo chuyển đổi số ${week} năm ${year}</b><br>
-										<br>
+										<b id="name_sheet_1"> Báo cáo chuyển đổi số ${week} năm ${year}</b>
+										<input type="button" id="export_3" value="Export" class="btn btn-success float-right">
 									</h3>
 								</div> 
 								<div class="card-tools">
@@ -656,6 +656,43 @@
 		<!-- /.content -->
 	</div>
 <script type="text/javascript">	
+	function myFunction() {
+		var settings = {
+			  	"url": "http://10.1.3.10:3001/export",
+			  	"method": "POST",
+			  	"timeout": 0,
+			  	"headers": {
+			    	"Content-Type": "application/json"
+			  	},
+			  	"data": JSON.stringify({
+			    	"week": 19,
+			    	"type": 2
+			  	}),
+			};
+
+			$.ajax(settings).done(function (response) {
+			  	console.log(response);
+			});
+	}
+	$( "#export_1" ).on( "click",  function() {
+		var settings = {
+		  	"url": "http://10.1.3.10:3001/export",
+		  	"method": "POST",
+		  	"headers": {
+		    	"Content-Type": "application/json"
+		  	},
+		  	"data": JSON.stringify({
+		    	"week": 19,
+		    	"type": 2
+		  	}),
+		};
+
+		$.ajax(settings).done(function (response) {
+			window.open('http://10.1.3.10:3001/download?file=' + response.data.file);
+		  	console.log(response);
+		});
+	});
+
 	$(document).ready(function(){
 		var groupColumn = 2;
 		/*Option table 1  */

@@ -24,6 +24,14 @@ public class ProjectServiceImpl implements IProjectService {
 	@Autowired
 	private ProjectDao projectDao;
 	
+	public int getIdByName(String project_name) {
+		return projectDao.getIdByName(project_name);
+	}
+	
+	public int checkIssetsProject(String project_name) {
+		return projectDao.checkIssetsProject(project_name);
+	}
+	
 	public List<DashboardProjectDto> getDashboardTable(int week, int year) {
 		return projectDao.getDashboardTable(week,year);
 	}

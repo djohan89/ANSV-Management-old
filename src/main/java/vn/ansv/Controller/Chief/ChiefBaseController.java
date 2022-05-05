@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.ansv.Dao.CustomersDao;
-import vn.ansv.Entity.Project;
 import vn.ansv.Service.CustomersServiceImpl;
+import vn.ansv.Service.ImportServiceImpl;
 import vn.ansv.Service.PicServiceImpl;
 import vn.ansv.Service.PriorityServiceImpl;
 import vn.ansv.Service.ProjectServiceImpl;
@@ -15,6 +15,9 @@ import vn.ansv.Service.User.UsersServiceImpl;
 
 @Controller
 public class ChiefBaseController {
+	
+	@Autowired
+	ImportServiceImpl _importServiceImpl;
 
 	@Autowired
 	ProjectTypesServiceImpl _projectTypesService;

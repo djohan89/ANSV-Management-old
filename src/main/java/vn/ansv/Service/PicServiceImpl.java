@@ -1,19 +1,23 @@
 package vn.ansv.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import vn.ansv.Dao.PicDao;
-import vn.ansv.Dto.Menu.MenuPicDto;
 
 @Service
 public class PicServiceImpl {
 
 	@Autowired
 	private PicDao picDao;
+	
+	public int checkUsersIssets(String pic_name) {
+		return picDao.checkUsersIssets(pic_name);
+	}
+	
+	public String getIdByName(String pic_name) {
+		return picDao.getIdByName(pic_name);
+	}
 	
 	public void save(int project_id, String pic){
 		picDao.save(project_id, pic);

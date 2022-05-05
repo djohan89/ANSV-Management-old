@@ -7,13 +7,28 @@ import org.springframework.stereotype.Service;
 
 import vn.ansv.Dao.PriorityDao;
 import vn.ansv.Entity.Priority;
-import vn.ansv.Entity.Project;
 
 @Service
 public class PriorityServiceImpl implements IPriorityService{
 	@Autowired
 	private PriorityDao priorityDao;
 
+	public int checkPriorityIssets(String priority_name) {
+		return priorityDao.checkPriorityIssets(priority_name);
+	}
+	
+	public int getPriorityIdByName(String priority_name) {
+		return priorityDao.getPriorityIdByName(priority_name);
+	}
+	
+	public int checkStatusIssets(String status_name) {
+		return priorityDao.checkStatusIssets(status_name);
+	}
+	
+	public int getStatusIdByName(String status_name) {
+		return priorityDao.getStatusIdByName(status_name);
+	}
+	
 	public List<Priority> getAllPriorityForm() {
 		return priorityDao.getAllPriorityForm();
 	}

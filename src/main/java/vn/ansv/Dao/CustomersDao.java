@@ -81,4 +81,16 @@ public class CustomersDao extends BaseDao {
 		String sql ="UPDATE customers SET enabled = 0 WHERE id = ?";
 		_jdbcTemplate.update(sql, id);
 	}
+	
+	// Check if customer issets
+	public int checkIssets(String customer_name){
+		String sql ="SELECT count(*) FROM customers WHERE customers.name = ?";
+		return _jdbcTemplate.queryForObject(sql, Integer.class, customer_name);
+	}
+	
+	// Get customer id by name
+	public int getIdByName(String customer_name){
+		String sql ="SELECT customers.id FROM customers WHERE customers.name = ?";
+		return _jdbcTemplate.queryForObject(sql, Integer.class, customer_name);
+	}
 }

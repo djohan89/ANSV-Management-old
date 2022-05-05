@@ -19,6 +19,7 @@ import vn.ansv.Dto.ProjectStatisticsDto;
 import vn.ansv.Dto.ProjectStatisticsDtoMapper;
 import vn.ansv.Dto.SlideshowProjectsDto;
 import vn.ansv.Dto.SlideshowProjectsDtoMapper;
+import vn.ansv.Dto.Import.ProjectImport;
 import vn.ansv.Dto.Menu.MenuProjectsDto;
 import vn.ansv.Dto.Menu.MenuProjectsDtoMapper;
 import vn.ansv.Entity.Project;
@@ -559,5 +560,37 @@ public class ProjectDao extends BaseDao {
 	}
 	
 /* ===== Cuối: CEO Manager ===== */
+	
+	
+	// Check if project issets
+	public int checkIssetsProject(String project_name){
+		String sql ="SELECT count(*) FROM project WHERE project.name = ?";
+		return _jdbcTemplate.queryForObject(sql, Integer.class, project_name);
+	}
+	
+	// get project id by name (for importing)
+	public int getIdByName(String project_name){
+		String sql ="SELECT project.id FROM project "
+				+ "WHERE project.name = ? AND (project.interactive = 'deployment' OR project.interactive = 'create') "
+				+ "ORDER BY project.id DESC LIMIT 1";
+		return _jdbcTemplate.queryForObject(sql, Integer.class, project_name);
+	}
+	
+	// Lấy dữ liệu => Export
+	public List<ProjectImport> getExport(int week, int type){
+		List<ProjectImport> list = new ArrayList<ProjectImport>();
+		
+		String sql = "SELECT " + sql_project_export(type)
+				+ "FROM project "
+				+ "INNER JOIN projects_types ON project.project_type = projects_types.id "
+				+ "INNER JOIN priorities ON project.priority = priorities.id "
+				+ "INNER JOIN projects_status ON project.project_status = projects_status.id "
+				+ "INNER JOIN customers ON project.customer = customers.id "
+				+ "WHERE project.week = ? AND project.project_type = ?";
+		
+		list = _jdbcTemplate.query(sql, mapper_project_export(type), week, type);
+		return list;
+		
+	}
 
 }

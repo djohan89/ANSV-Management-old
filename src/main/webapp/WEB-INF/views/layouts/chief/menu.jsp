@@ -38,14 +38,26 @@
 	                        	<span class="pl-3">Thông tin cá nhân</span>
 							</a>
 	                    </li>
-	                    <li class="text-white pl-3 mt-1">
+	                    <li class="text-white pl-3 mt-1" style="width: 93%;">
                         	<form action="<c:url value="/j_spring_security_logout" />" id="formLogout" method="post">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 								<a href="javascript:void(0)" id="yourLinkId">
 	                        		<i class="fas fa-sign-out-alt" style="font-size: 25px;"></i>
 		                        	<span class="pl-3">Đăng xuất</span>
 								</a>
-							</form>
+							</form><hr style="background-color: gray;">
+	                    </li>
+	                    <li class="text-white pl-3" style="width: 100%;">
+	                    	<form action="<c:url value='/chief/upload_project' />" method='POST' id="form_import_file">
+	                    		<input type="hidden" id="file_import_name" name="file_import_name">
+	                    		<input type="hidden" id="token" name="${_csrf.parameterName}" value="${_csrf.token}" id="token" />
+	                    	</form>
+                        	<input type="file" id="file_import" class="form-control mb-3" style="width: 93%;" 
+                        		accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  />
+                        	<a href="javascript:void(0)" id="a_href_import_file">
+                        		<i class="fas fa-file-import" style="font-size: 25px;"></i>
+	                        	<span class="pl-3">Import File</span>
+							</a>
 	                    </li>
                     </ul>
                 </li>
@@ -203,3 +215,4 @@
 	</div>
 	<!-- /.sidebar -->
 </aside>
+<script src="<c:url value='/assets/demo/js/import_file.js' />" type="text/javascript"></script>
