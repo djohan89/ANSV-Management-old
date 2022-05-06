@@ -290,7 +290,6 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div>
-									<c:if test="${detail.week != current_week && detail.week != (current_week - 1)}"></c:if>
 									<c:if test="${detail.week == current_week || detail.week == (current_week - 1)}">
 										<a href="<c:url value='/chief/update_project/${week_option}_${year_option}_${detail.id}' />"
 											style="position: absolute; left: 1%;" class="float-right btn btn-warning">
