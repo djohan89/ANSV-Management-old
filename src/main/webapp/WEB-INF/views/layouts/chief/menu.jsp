@@ -38,6 +38,12 @@
 	                        	<span class="pl-3">Thông tin cá nhân</span>
 							</a>
 	                    </li>
+	                    <li class="text-white pl-3" style="width: 100%;">
+                        	<a href="<c:url value='http://10.2.8.31:8080/SpringMVCFileUD/uploadOneFile' />">
+								<i class="fas fa-file-import" style="font-size: 25px;"></i>
+	                        	<span class="pl-3">Import link</span>
+							</a>
+	                    </li>
 	                    <li class="text-white pl-3 mt-1" style="width: 93%;">
                         	<form action="<c:url value="/j_spring_security_logout" />" id="formLogout" method="post">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

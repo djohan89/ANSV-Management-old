@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type: "POST",
-			url: "http://10.1.3.10:3001/login",
+			url: "http://10.2.8.31:3001/login",
 			data: form.serialize(),
 			success: function(data) {
 				console.log("2. LDAP Authentication Success!");

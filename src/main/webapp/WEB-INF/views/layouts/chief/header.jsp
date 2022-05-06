@@ -17,9 +17,6 @@
 		</li>
 		
 		<li class="nav-item dp-il" style="width: 300px; padding-top: 7px;">
-		<input type="file" id="file_idid" onchange="return abc();">
-		<input type="text" id="text_text">
-		<input type="button" onclick="return abcabc();">
 			<font color="orange" style="font-size: 18px; padding-top: 1px">
     			<b>Tuần / Năm:</b>
     		</font>

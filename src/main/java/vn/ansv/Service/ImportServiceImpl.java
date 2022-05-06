@@ -253,7 +253,8 @@ public class ImportServiceImpl {
 		int week_import = 17; // Week option
 		int type_import = 0;
 		
-		File myFile = new File("D://test/" + file_name); 
+//		File myFile = new File("D://test/" + file_name); 
+		File myFile = new File("opt/tomcat/apache-tomcat-8.5.68/webapps/SpringMVCFileUD/upload/"+ file_name + ".xlsx"); 
 		FileInputStream fis = new FileInputStream(myFile); 
 		
 		// Kiểm tra loại dự án

@@ -656,9 +656,11 @@
 		<!-- /.content -->
 	</div>
 <script type="text/javascript">	
-	function myFunction() {
+	var week_import = ${week};
+	
+	function export_data(week, type) {
 		var settings = {
-			  	"url": "http://10.1.3.10:3001/export",
+			  	"url": "http://10.2.8.31:3000/export",
 			  	"method": "POST",
 			  	"timeout": 0,
 			  	"headers": {
@@ -670,28 +672,14 @@
 			  	}),
 			};
 
-			$.ajax(settings).done(function (response) {
-			  	console.log(response);
-			});
-	}
-	$( "#export_1" ).on( "click",  function() {
-		var settings = {
-		  	"url": "http://10.1.3.10:3001/export",
-		  	"method": "POST",
-		  	"headers": {
-		    	"Content-Type": "application/json"
-		  	},
-		  	"data": JSON.stringify({
-		    	"week": 19,
-		    	"type": 2
-		  	}),
-		};
-
 		$.ajax(settings).done(function (response) {
-			window.open('http://10.1.3.10:3001/download?file=' + response.data.file);
+			window.open('http://10.2.8.31:3000/download?file=' + response.data.file);
 		  	console.log(response);
 		});
-	});
+	}
+	$( "#export_1" ).on( "click",  function() { export_data(week_import, 1) });
+	$( "#export_2" ).on( "click",  function() { export_data(week_import, 2) });
+	$( "#export_3" ).on( "click",  function() { export_data(week_import, 3) });
 
 	$(document).ready(function(){
 		var groupColumn = 2;

@@ -28,15 +28,15 @@ public class ChiefController extends ChiefBaseController {
 		return _importServiceImpl.exportProject(week, type);
 	}
 	
-	@RequestMapping(value = "/chief/upload_project", method = RequestMethod.POST)
-	public String processExcel2003(Model model, HttpServletRequest request) throws IOException {
-		String file_name = request.getParameter("file_import_name");
+	@RequestMapping(value = "/chief/upload_project/{file_name}", method = RequestMethod.GET)
+	public String processExcel2003(@PathVariable String file_name, Model model, HttpServletRequest request) throws IOException {
+//		String file_name = request.getParameter("file_import_name");
 		Date now = new Date();
 		int current_week = getWeekOfYear(now); // Gọi hàm lấy số tuần => Lấy số tuần hiện tại
 		
 		// Thực hiện import
 		_importServiceImpl.importProject(file_name, current_week);
-		_importServiceImpl.exportProject(19, 1);
+//		_importServiceImpl.exportProject(19, 1);
 
 		int current_year = Calendar.getInstance().get(Calendar.YEAR); // Get the curent year
 		return "redirect:/chief/dashboard/" + current_week + "_" + current_year;
