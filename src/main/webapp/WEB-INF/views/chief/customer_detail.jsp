@@ -218,6 +218,14 @@ a:hover {
 													</tr>
 												</table>
 											</div>
+											<div>
+												<c:if test="${item.week == current_week || item.week == (current_week - 1)}">
+													<a href="<c:url value='/chief/update_project_tk/${week_option}_${year_option}_${item.id}' />"
+														style="position: absolute; left: 1%;" class="float-right btn btn-warning">
+														<i class="fas fa-edit"></i>
+													</a>
+												</c:if>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -279,7 +287,17 @@ a:hover {
 											<b>Kết quả thực hiện kế hoạch:</b> 
 											<span class="text-justify">${item.ket_qua_thuc_hien_ke_hoach }</span>
 										</p>
+										<div class="row">
+											<c:if test="${item.week == current_week || item.week == (current_week - 1)}">
+												<a href="<c:url value='/chief/update_project/${week_option}_${year_option}_${item.id}' />"
+													 class="float-right btn btn-warning">
+													<i class="fas fa-edit"></i> 
+												</a>
+											</c:if>
+										</div>
+										
 									</div>
+									
 								</c:if>
 								
 								<c:if test="${ item.type=='Chuyển đổi số'}">
@@ -327,6 +345,14 @@ a:hover {
 											<b>Kết quả thực hiện kế hoạch:</b> 
 											<span class="text-justify">${item.ket_qua_thuc_hien_ke_hoach }</span>
 										</p>
+										<div class="row">
+											<c:if test="${item.week == current_week || item.week == (current_week - 1)}">
+												<a href="<c:url value='/chief/update_project/${week_option}_${year_option}_${item.id}' />"
+													 class="float-right btn btn-warning">
+													<i class="fas fa-edit"></i> 
+												</a>
+											</c:if>
+										</div>
 									</div>	
 								</c:if>
 					

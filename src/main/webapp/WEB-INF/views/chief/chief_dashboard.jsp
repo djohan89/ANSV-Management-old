@@ -43,14 +43,17 @@
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
 										<b id="name_sheet_1"> Báo cáo triển khai tuần ${week} năm ${year}</b><br>
-										<input type="button" id="export_1" value="Export" class="btn btn-success">
+										
 									</h3>
+									
 								</div>
-								<div class=" ml-auto card-tools">
+								<div class=" ml-auto card-tools d-flex">
+									<div><input type="button" id="export_1" value="Export" class="btn btn-success"></div>
+									
 									<div class="container">
 										<!-- Trigger the modal with a button -->
 										<c:if test="${not empty project_slideshow }">
-										<button type="button" class="btn btn-danger btn-sm"
+										<button type="button" style="height: 100%" class="btn btn-danger btn-sm"
 											data-toggle="modal" data-target="#myModal">
 											<!-- <i class="fas fa-exclamation-triangle"></i> -->
 											<i class="fas fa-play"></i>
@@ -455,13 +458,13 @@
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
 										<b id="name_sheet_1"> Báo cáo viễn thông tuần ${week} năm ${year}</b><br>
-										<input type="button" id="export_2" value="Export" class="btn btn-success">
+										
 									</h3>
 								</div>
-								<div class="card-tools">
+								<div class="card-tools ml-auto">
 									<div class="container">
 										<!-- Trigger the modal with a button -->
-
+										<input type="button" id="export_2" value="Export" class="btn btn-success">
 									</div>
 								</div>
 							</div>
@@ -552,13 +555,13 @@
 									<h3 class="card-title d-flex">
 										<i class="fas fa-clipboard-list" style="padding-right: 8px;"></i>
 										<b id="name_sheet_1"> Báo cáo chuyển đổi số ${week} năm ${year}</b>
-										<input type="button" id="export_3" value="Export" class="btn btn-success float-right">
+										
 									</h3>
 								</div> 
-								<div class="card-tools">
+								<div class="card-tools ml-auto">
 									<div class="container">
 										<!-- Trigger the modal with a button -->
-
+										<input type="button" id="export_3" value="Export" class="btn btn-success float-right">
 									</div>
 								</div>
 							</div>
